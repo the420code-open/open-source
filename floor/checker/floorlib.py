@@ -69,14 +69,26 @@ def pdf_text(data):
         open(p, "wb").write(data)
         out = subprocess.run(["pdftotext", "-enc", "UTF-8", p, "-"], capture_output=True, check=True).stdout.decode("utf-8", "replace")
     out = out.replace("\r\n", "\n").replace("\f", "\n")
-    flat = re.sub(r"\s+", " ", out)
+    # "elsewhere in the same paper" is read with every dash as one hyphen, as everywhere in the comparison
+    flat = normalise(out)
 
     def join(m):
         a, b = m.group(1), m.group(2)
-        hyphenated = re.search(r"(?<![\w-])" + re.escape(a) + r"[-‐‑]" + re.escape(b) + r"(?![\w])", flat)
+        hyphenated = re.search(r"(?<![\w-])" + re.escape(a) + "-" + re.escape(b) + r"(?![\w])", flat)
         return a + "-" + b if hyphenated else a + b
-    out = re.sub(r"(\w+)[-‐‑]\n(\w+)", join, out)
+    out = re.sub(r"(\w+)[-‐‑­][ \t]*\n[ \t]*(\w+)", join, out)
     return normalise(out)
+
+
+def nearest(line_text, source_text, width=90):
+    """Where a line's opening words stand in its source, for a note a desk can read."""
+    words = line_text.split(" ")
+    for n in (8, 5, 3):
+        probe = " ".join(words[:n])
+        i = source_text.find(probe)
+        if i >= 0:
+            return source_text[i:i + len(line_text) + 20][:width * 3]
+    return None
 
 
 def text_text(data):

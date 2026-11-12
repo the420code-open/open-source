@@ -95,9 +95,12 @@ def check(floor, fingerprint, snap):
         src = l.get("source")
         if l["kind"] != "work" or not src or sources[src["code"]]["kind"] == "registry":
             continue
-        if F.tidy_markup_spaces(F.normalise(l["text"])) not in texts.get(src["code"], ""):
+        want = F.tidy_markup_spaces(F.normalise(l["text"]))
+        if want not in texts.get(src["code"], ""):
             why = SOURCE_CHANGED if src["code"] in changed else NOT_FOUND
-            notes.append("%s: not found word for word in %s (%s)" % (l["id"], src["code"], why))
+            near = F.nearest(want, texts.get(src["code"], ""))
+            notes.append("%s: not found word for word in %s (%s)%s" % (l["id"], src["code"], why,
+                                                                     "; the source reads: " + near if near else ""))
             named.append(l["id"])
             page_lines.append(why)
     checks.append({"check": "every extract, against its source", "ok": not notes, "notes": notes,
