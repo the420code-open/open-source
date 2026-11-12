@@ -20,6 +20,10 @@ import floorlib as F  # noqa: E402
 
 SOURCE_CHANGED = "A source has changed since this version was read. A new version follows."
 NOT_FOUND = "A line could not be found in its source."
+# the third line (AG Opus, 12 November 2026): the floor's own files out of step with its source. The page never
+# hides a failure, so every failure that is neither of the two above is shown with this line.
+FORMS_MISMATCH = "This page’s files do not match the floor’s source. A new build follows."
+PAGE_LINES = (SOURCE_CHANGED, NOT_FOUND, FORMS_MISMATCH)      # the order the page shows them in
 
 
 TEST_OVERRIDES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test-overrides.json")
@@ -63,7 +67,12 @@ def take_snapshot(floor):
 
 def check(floor, fingerprint, snap):
     ov = overrides()
-    checks, named, page_lines = [], [], []
+    checks, flags = [], {}
+
+    def flag(line, *names):
+        """A failure, with the page line it shows and the lines or switches it names."""
+        flags.setdefault(line, []).extend(names)
+
     today = dt.date.today().isoformat()
     lines = floor["lines"]
     sources = floor["sources"]
@@ -83,10 +92,9 @@ def check(floor, fingerprint, snap):
         for k in l.get("keys", []):
             if k not in by:
                 notes.append("%s: %s is not a code in the live registry" % (l["id"], k))
-                named.append(k)
                 # a switch the registry had when the version was read has gone: the source changed; a code it never
                 # had cannot be found in its source
-                page_lines.append(SOURCE_CHANGED if snap and k in snap["registry"]["rows"] else NOT_FOUND)
+                flag(SOURCE_CHANGED if snap and k in snap["registry"]["rows"] else NOT_FOUND, k)
     pending = [l["id"] for l in lines if l["kind"] == "desk" and (l.get("approval") or {}).get("status") != "approved"]
     rules_ok = not notes
     checks.append({"check": "the source's own rules", "ok": rules_ok, "notes": notes,
@@ -113,8 +121,7 @@ def check(floor, fingerprint, snap):
             near = F.nearest(want, texts.get(src["code"], ""))
             notes.append("%s: not found word for word in %s (%s)%s" % (l["id"], src["code"], why,
                                                                      "; the source reads: " + near if near else ""))
-            named.append(l["id"])
-            page_lines.append(why)
+            flag(why, l["id"])
     checks.append({"check": "every extract, against its source", "ok": not notes, "notes": notes,
                    "sources_changed_since_snapshot": sorted(changed)})
 
@@ -126,8 +133,7 @@ def check(floor, fingerprint, snap):
             continue
         if live.get("description") != row["description"] or live.get("status_raw") != row["status_raw"]:
             notes.append("%s: its row or status differs from the snapshot" % k)
-            named.append(k)
-            page_lines.append(SOURCE_CHANGED)
+            flag(SOURCE_CHANGED, k)
     if snap and reg["registry"]["version"] != snap["registry"]["version"] and not notes:
         info.append("The registry's version has moved from %s to %s; no keyed switch's row or status changed. "
                     "The next version of the floor takes the new number." % (snap["registry"]["version"], reg["registry"]["version"]))
@@ -144,8 +150,7 @@ def check(floor, fingerprint, snap):
             if live is None or cells != live:
                 bad = [n for n, a, b in zip(["id", "description", "status_raw", "home_ap"], cells, live or [""] * 4) if a != b]
                 notes.append("%s: the row for %s differs in %s" % (l["id"], k, ", ".join(bad) or "its cells"))
-                named.append(l["id"])
-                page_lines.append(SOURCE_CHANGED)
+                flag(SOURCE_CHANGED, l["id"])
     checks.append({"check": "every registry row, cell by cell", "ok": not notes, "notes": notes})
 
     # 5. the root: this check never fails; a change opens a "floor-watch" issue
@@ -167,6 +172,7 @@ def check(floor, fingerprint, snap):
             b = open(p, "rb").read() if os.path.exists(p) else b""
             if a != b:
                 notes.append("%s differs from what the source generates" % name)
+                flag(FORMS_MISMATCH)
     checks.append({"check": "the three forms, against the source", "ok": not notes, "notes": notes})
 
     passed = all(c["ok"] for c in checks)
@@ -174,17 +180,27 @@ def check(floor, fingerprint, snap):
         checks[0]["ok"] = False
         checks[0]["notes"].append("status is final, but %s" % ("desk lines wait for approval" if pending else "a check fails"))
         passed = False
-    line = None
-    if not passed:
-        # only the brief's two plain lines ever reach the page; a fault in the floor's own generated files (only a
-        # hand edit can make one) is named in the result, and the page keeps showing the last pass
-        line = SOURCE_CHANGED if SOURCE_CHANGED in page_lines else (NOT_FOUND if page_lines else None)
     used = {k: v for k, v in ov.items() if v}
-    return {**({"test_addresses": used} if used.get("sources") or used.get("registry") else {}),
-            "version": str(floor["version"]), "status": floor["status"], "fingerprint": fingerprint,
-            "date": today, "passed": passed, "page_line": line, "named": sorted(set(named)),
-            "registry": {"floor_reads": floor["registry"]["version"], "live": reg["registry"]["version"]},
-            "root_changed": root_changed, "checks": checks}
+    result = {**({"test_addresses": used} if used.get("sources") or used.get("registry") else {}),
+              "version": str(floor["version"]), "status": floor["status"], "fingerprint": fingerprint,
+              "date": today, "passed": passed, "page_line": None, "page_lines": [], "named": [],
+              "registry": {"floor_reads": floor["registry"]["version"], "live": reg["registry"]["version"]},
+              "root_changed": root_changed, "checks": checks}
+    return page_lines(result, flags)
+
+
+def page_lines(result, flags):
+    """The plain lines the page shows for a failing run, each with what it names, in the page's order. A failure
+    that gives no line of its own (the floor's own rules broken, its snapshot missing) shows the third line, so the
+    page never hides a failure."""
+    if result["passed"]:
+        flags = {}
+    elif not flags:
+        flags = {FORMS_MISMATCH: []}
+    result["page_lines"] = [{"line": l, "named": sorted(set(flags[l]))} for l in PAGE_LINES if l in flags]
+    result["page_line"] = result["page_lines"][0]["line"] if result["page_lines"] else None
+    result["named"] = sorted({n for l in result["page_lines"] for n in l["named"]})
+    return result
 
 
 # ---------------------------------------------------------------- GitHub: the result, the snapshot, the watch
@@ -253,6 +269,7 @@ def main():
     if snap is None:
         result["checks"].append({"check": "the snapshot", "ok": False, "notes": ["no snapshot for this version yet"]})
         result["passed"] = False
+        result = page_lines(result, {**{l["line"]: l["named"] for l in result["page_lines"]}, FORMS_MISMATCH: []})
     out = os.path.join(F.FLOOR, "checker", "result.json")
     before = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
     # the page shows the date of the last pass; a failing run carries the last pass forward

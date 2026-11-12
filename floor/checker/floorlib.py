@@ -1,5 +1,6 @@
 # The floor's shared library: loading the source, normalising text, reading the sources, writing the three forms.
 # Zero-Clause BSD, Studio G. Brief "phase 2, the floor, build" v2.
+import datetime
 import hashlib
 import html
 import io
@@ -244,6 +245,17 @@ def esc(s):
     return html.escape(s or "", quote=True)
 
 
+MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+          "November", "December")
+
+
+def words(d):
+    """A date for people, in words, as the family's footers write it: 12 November 2026 (AG Opus, 12 November 2026).
+    The machine forms keep the ISO date."""
+    d = datetime.date.fromisoformat(str(d))
+    return "%d %s %d" % (d.day, MONTHS[d.month - 1], d.year)
+
+
 def page_html(floor, fingerprint, json_sha, txt_sha):
     """The page's body, for aiethics.global's own shell (brief Part Two, 1). Plain text only: every line escaped."""
     sources = floor["sources"]
@@ -254,7 +266,7 @@ def page_html(floor, fingerprint, json_sha, txt_sha):
     for l in head:
         out.append("<p>%s</p>" % esc(l["text"]))
     if floor["status"] == "final":
-        out.append('<p class="fl-status">Approved, %s.</p>' % esc(str(floor["date"])))
+        out.append('<p class="fl-status">Approved, %s.</p>' % esc(words(floor["date"])))
     else:
         out.append('<p class="fl-status">Draft. Not yet approved.</p>')
     out.append('<p class="fl-small">Lines with a source are the work’s own. Every other line, headings included, is the desk’s.</p>')
@@ -277,7 +289,7 @@ def page_html(floor, fingerprint, json_sha, txt_sha):
             out.append('<p class="fl-small fl-src"><span class="fl-id">%s</span> Desk wording.%s</p>' % (lid, pend))
     reg = floor["registry"]
     out.append('<div class="fl-foot">')
-    out.append("<p>Version %s. Registry %s, %s.</p>" % (esc(str(floor["version"])), esc(reg["version"]), esc(str(reg["date"]))))
+    out.append("<p>Version %s. Registry %s, %s.</p>" % (esc(str(floor["version"])), esc(reg["version"]), esc(words(reg["date"]))))
     out.append('<p>Fingerprint, the SHA-256 of the source as tagged floor-v%s: <code class="fl-hash">%s</code></p>'
                % (esc(str(floor["version"])), fingerprint))
     out.append('<p>The structured file, <a href="floor.json">floor.json</a>: <code class="fl-hash">%s</code></p>' % json_sha)
