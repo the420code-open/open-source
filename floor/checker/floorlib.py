@@ -55,8 +55,12 @@ def tidy_markup_spaces(text):
 
 
 def html_text(page):
-    """HTML: scripts and styles dropped, tags stripped, entities read, then normalised."""
+    """HTML: scripts and styles dropped, the footer's "Last changed" line dropped, tags stripped, entities read, then
+    normalised. The family's footers give the day the whole site was last published, so that line moves with every
+    publish; it is no part of any page's own text, and kept in, it would make every source look changed."""
     page = re.sub(r"(?is)<(script|style)\b.*?</\1\s*>", " ", page)
+    page = re.sub(r'(?is)<p class="lc">.*?</p>', " ", page)
+    page = re.sub(r'(?is)<time class="lc"[^>]*>.*?</time>', " ", page)
     page = re.sub(r"(?s)<!--.*?-->", " ", page)
     page = re.sub(r"(?s)<[^>]+>", " ", page)
     return tidy_markup_spaces(normalise(html.unescape(page)))
