@@ -77,7 +77,13 @@ def pdf_text(data):
         hyphenated = re.search(r"(?<![\w-])" + re.escape(a) + "-" + re.escape(b) + r"(?![\w])", flat)
         return a + "-" + b if hyphenated else a + b
     out = re.sub(r"(\w+)[-‐‑­][ \t]*\n[ \t]*(\w+)", join, out)
-    return normalise(out)
+    text = normalise(out)
+    # pdftotext (poppler and xpdf both) already joins a word broken at a line's end and drops its hyphen, before
+    # the rule above can see it. So the same rule, from the other side: a word that stands joined, where the same
+    # paper writes it hyphenated elsewhere, takes its hyphen back. Today: social-credit (AP33), NON-NEGOTIABLE (AP38).
+    for a, b in sorted(set(re.findall(r"(?<![\w-])([A-Za-z]{2,})-([A-Za-z]{2,})(?![\w-])", text))):
+        text = re.sub(r"(?<![\w-])" + re.escape(a + b) + r"(?![\w-])", a + "-" + b, text)
+    return text
 
 
 def nearest(line_text, source_text, width=90):
