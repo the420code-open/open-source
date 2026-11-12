@@ -5,6 +5,7 @@
  "date": "2026-11-12",
  "passed": true,
  "page_line": null,
+ "page_lines": [],
  "named": [],
  "registry": {
   "floor_reads": "v5.39",
@@ -26,7 +27,12 @@
    "check": "every extract, against its source",
    "ok": true,
    "notes": [],
-   "sources_changed_since_snapshot": []
+   "sources_changed_since_snapshot": [
+    "AX",
+    "IN17",
+    "IN23",
+    "OA"
+   ]
   },
   {
    "check": "every key, against the live registry",
