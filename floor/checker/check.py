@@ -22,9 +22,18 @@ SOURCE_CHANGED = "A source has changed since this version was read. A new versio
 NOT_FOUND = "A line could not be found in its source."
 
 
+TEST_OVERRIDES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test-overrides.json")
+
+
 def overrides():
-    p = os.environ.get("FLOOR_OVERRIDES")
-    return json.load(open(p, encoding="utf-8")) if p else {"sources": {}}
+    """Test addresses, for the simulated changes only: from FLOOR_OVERRIDES, or from test-overrides.json, a file
+    that exists only on a test branch, never on main."""
+    p = os.environ.get("FLOOR_OVERRIDES") or (TEST_OVERRIDES if os.path.exists(TEST_OVERRIDES) else None)
+    if not p:
+        return {"sources": {}}
+    ov = json.load(open(p, encoding="utf-8"))
+    ov.setdefault("sources", {})
+    return ov
 
 
 def snapshot_path(version):
@@ -166,7 +175,9 @@ def check(floor, fingerprint, snap):
     if not passed:
         line = SOURCE_CHANGED if SOURCE_CHANGED in page_lines else (NOT_FOUND if page_lines else
                                                                      "The floor's own files need a desk's look.")
-    return {"version": str(floor["version"]), "status": floor["status"], "fingerprint": fingerprint,
+    used = {k: v for k, v in ov.items() if v}
+    return {**({"test_addresses": used} if used.get("sources") or used.get("registry") else {}),
+            "version": str(floor["version"]), "status": floor["status"], "fingerprint": fingerprint,
             "date": today, "passed": passed, "page_line": line, "named": sorted(set(named)),
             "registry": {"floor_reads": floor["registry"]["version"], "live": reg["registry"]["version"]},
             "root_changed": root_changed, "checks": checks}
