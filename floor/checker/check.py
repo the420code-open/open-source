@@ -84,6 +84,9 @@ def check(floor, fingerprint, snap):
             if k not in by:
                 notes.append("%s: %s is not a code in the live registry" % (l["id"], k))
                 named.append(k)
+                # a switch the registry had when the version was read has gone: the source changed; a code it never
+                # had cannot be found in its source
+                page_lines.append(SOURCE_CHANGED if snap and k in snap["registry"]["rows"] else NOT_FOUND)
     pending = [l["id"] for l in lines if l["kind"] == "desk" and (l.get("approval") or {}).get("status") != "approved"]
     rules_ok = not notes
     checks.append({"check": "the source's own rules", "ok": rules_ok, "notes": notes,
@@ -173,8 +176,9 @@ def check(floor, fingerprint, snap):
         passed = False
     line = None
     if not passed:
-        line = SOURCE_CHANGED if SOURCE_CHANGED in page_lines else (NOT_FOUND if page_lines else
-                                                                     "The floor's own files need a desk's look.")
+        # only the brief's two plain lines ever reach the page; a fault in the floor's own generated files (only a
+        # hand edit can make one) is named in the result, and the page keeps showing the last pass
+        line = SOURCE_CHANGED if SOURCE_CHANGED in page_lines else (NOT_FOUND if page_lines else None)
     used = {k: v for k, v in ov.items() if v}
     return {**({"test_addresses": used} if used.get("sources") or used.get("registry") else {}),
             "version": str(floor["version"]), "status": floor["status"], "fingerprint": fingerprint,
