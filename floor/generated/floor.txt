@@ -1,6 +1,6 @@
 This floor is free: CC0. Lines marked as the work's own are quoted from The 420 Code, under its own terms: share them, never alter them. The fingerprint below shows whether this copy is unaltered. [desk]
 
-The floor. Version 0.3, draft. Its kill switches are read from the Master Kill Switch Registry, v5.39. [desk]
+The floor. Version 1.0. Its kill switches are read from the Master Kill Switch Registry, v5.39. [desk]
 
 This is the floor itself, for people who build and test AI. For everyday chats, use the root for AI, at aiethics.global. [desk]
 
@@ -258,8 +258,8 @@ The Tests of KS-32.7 and KS-33.9, above, are the Test lines. Where the tests sco
 
 > Don’t be cruel. Be kind. [The Root for AI]
 
-Version 0.3, draft. Fingerprint: set when the three forms are generated. [desk]
+Version 1.0. Fingerprint: set when the three forms are generated. [desk]
 
-Version 0.3. Status: draft. Registry v5.39, 2026-11-11.
-Fingerprint (SHA-256 of the source, tag floor-v0.3): 817e013ed1ea91d1b840b8e6f6d9a52d185a51814e5046d4e6d9365de22eb132
+Version 1.0. Status: final. Registry v5.39, 2026-11-11.
+Fingerprint (SHA-256 of the source, tag floor-v1.0): b0bcfcf3be852b6ec90f09a8ae5faa809cfa4886ef6a7f41498dd029038503e5
 https://aiethics.global/open-source/the-floor/
