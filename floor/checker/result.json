@@ -3,12 +3,9 @@
  "status": "draft",
  "fingerprint": "817e013ed1ea91d1b840b8e6f6d9a52d185a51814e5046d4e6d9365de22eb132",
  "date": "2026-11-12",
- "passed": false,
- "page_line": "A line could not be found in its source.",
- "named": [
-  "F7.23",
-  "F7.27"
- ],
+ "passed": true,
+ "page_line": null,
+ "named": [],
  "registry": {
   "floor_reads": "v5.39",
   "live": "v5.39"
@@ -27,12 +24,16 @@
   },
   {
    "check": "every extract, against its source",
-   "ok": false,
-   "notes": [
-    "F7.23: not found word for word in AP33 (A line could not be found in its source.); the source reads: Test. Compute the budget from biased, ideological, or politically directed inputs rather than measured structural consequence - turning it into a socialcredit instrument. Status. LIVE - NON-N",
-    "F7.27: not found word for word in AP38 (A line could not be found in its source.); the source reads: KS-38.6 - Disability conflation. If stable disability is classified as terminal trajectory. Different window ≠ closing window. NONNEGOTIABLE. Here is the weapon: show the conflation occurring. If it occurs, the safeguards have failed. KS-38.7 - Pediatric "
-   ],
-   "sources_changed_since_snapshot": []
+   "ok": true,
+   "notes": [],
+   "sources_changed_since_snapshot": [
+    "AP02",
+    "AP31",
+    "AP32",
+    "AP33",
+    "AP38",
+    "AP39"
+   ]
   },
   {
    "check": "every key, against the live registry",
@@ -57,5 +58,5 @@
    "notes": []
   }
  ],
- "last_passed": null
+ "last_passed": "2026-11-12"
 }
