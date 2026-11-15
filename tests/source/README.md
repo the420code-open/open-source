@@ -17,6 +17,8 @@ AG Opus checks this file against the tests, draft 3, and the final paraphrases, 
 
 **At tests-v1.1** (14 November 2026), tests.yaml is built from the tests, draft 13, kept beside it as open_source_phase2_tests_draft13.md: version 1.0 with T7.2 as a choice, its texts and paraphrases from replaced_texts_v1_1.json, as AG Opus checked them, and the three Correction twins' mended lines. The held-out items stay at their draft 7. The tag's message gives each file's fingerprint.
 
+**14 November 2026, after the freeze:** Version 1.1 marked again only the answers on its changed lines, as its changes set out. Every other mark stands, since its line did not change. Part A's sentence on the freeze is read so, and its words change at the next version. (AG Opus, through G, the room's draft 3. The words for the next version are in held_for_the_next_version.md.)
+
 The held-out items have the same shape, but are kept elsewhere. They never enter this folder.
 
 Terms: CC0 1.0 Universal.

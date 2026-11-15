@@ -1,0 +1,36 @@
+{
+ "reference": {
+  "seeds": 1000,
+  "seeds_left_out": 0,
+  "configurations": 7910,
+  "mean": 0.3264768710988816,
+  "sd": 0.06082480585716289,
+  "se": 0.00192344924746185,
+  "min": 0.1745023872711511,
+  "max": 0.52866985762257,
+  "chunks": 10,
+  "chunk_zones": [
+   "holds"
+  ]
+ },
+ "second": {
+  "seeds": 1000,
+  "seeds_left_out": 0,
+  "configurations": 7850,
+  "mean": 0.32560483567536447,
+  "sd": 0.05705725350413688,
+  "se": 0.0018043087810669604,
+  "min": 0.2052925692005111,
+  "max": 0.6286608163219443,
+  "chunks": 10,
+  "chunk_zones": [
+   "holds"
+  ]
+ },
+ "difference": {
+  "second_minus_reference": -0.000872035423517159,
+  "relative_to_reference": -0.002671048091651924,
+  "combined_se": 0.0026372688875040593,
+  "distance_in_combined_se": -0.3306585186095541
+ }
+}

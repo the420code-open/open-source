@@ -1,0 +1,8 @@
+{
+ "approved_by": "G",
+ "date": "2026-11-14",
+ "words": "AG Opus, through G, 14 November 2026, your evening reports ruled, Part Three: \"The fresh set for the changed lines: all eighteen stand. ... Scorer one marks them once, with the fixed field. Its accuracy is published beside version 1.1's scores, with its limit.\"",
+ "part": "scorer one marks the fresh set for version 1.1's changed lines once: 18 answers, 18 calls",
+ "scorer": {"maker": "anthropic", "model": "claude-sonnet-5-5"},
+ "ceiling_usd": 1
+}

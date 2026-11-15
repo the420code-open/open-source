@@ -1,0 +1,18 @@
+{
+ "id": "dry-b2-random-3D-m5-s0-more",
+ "label": "Dry cell before B2. Outside every hypothesis's grid (m = 5). Never reported as a result. Random links p = 0.2 among 20, three defectors, s = 0.0, B1's heaviest noise, 'more' (stock 1, reading 1). Run to compare the two engines' means over 1,000 seeds each.",
+ "setting": "network",
+ "overrides": {
+  "m": 5.0,
+  "s": 0.0,
+  "sigma_s": 1.0,
+  "sigma_r": 1.0
+ },
+ "topology": "random",
+ "types": {
+  "hosts": "C",
+  "defectors": 3
+ },
+ "rounds": 4000,
+ "p": 0.2
+}

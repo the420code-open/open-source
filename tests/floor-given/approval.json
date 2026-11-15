@@ -1,0 +1,61 @@
+{
+ "approved_by": "G",
+ "date": "2026-11-14",
+ "words": "G approved the run, its third column, and its cost, capped at WC's high estimate, on 14 November 2026 (the floor given, the plan, draft 4, sections 5 and 9). AG Opus, through G, 14 November 2026: \"Then commit the floor run's plan, the control's words and the rule for what moved, with a fingerprint, and run all six AIs, three columns, on one day, before 1 December, within the approved cap. DeepInfra: the token check on the first question before the rest go.\"",
+ "cap_usd_makers": 438.49,
+ "cap_source": "WC's high estimate for the makers' three columns, $438.49, in 'The floor given - the cost, and the second batch' of 14 November 2026. Scorer one's marking is apart: $84.08 high, in the same report.",
+ "ceilings_how": "Each batch maker's ceiling is its own high estimate from the dry run of 14 November 2026 (tests/held-out/runs/floor-given/dry/dry.json), rounded up to the cent, and one cent more, so that its three batches fit; DeepInfra's the same. DeepSeek on DeepInfra costs less than on DeepSeek's own service ($36.32 high, where the cost report had $53.15). What is left of the cap goes to Meta, whose real cost is the least certain, since Muse Wonder reasons at 'max' by default. The six add up to the cap.",
+ "dry_run_high_usd": {
+  "anthropic": 41.87,
+  "openai": 27.71,
+  "google": 28.03,
+  "mistral": 28.17,
+  "meta": 259.49,
+  "deepinfra": 36.32
+ },
+ "makers": {
+  "anthropic": {
+   "model": "claude-fable-5-2",
+   "ceiling_usd": 41.88
+  },
+  "openai": {
+   "model": "gpt-6-astra",
+   "ceiling_usd": 27.72
+  },
+  "google": {
+   "model": "gemini-4-carbon",
+   "ceiling_usd": 28.04
+  },
+  "mistral": {
+   "model": "mistral-large-4-0",
+   "ceiling_usd": 28.18
+  },
+  "meta": {
+   "model": "muse-wonder-1.0",
+   "ceiling_usd": 276.34
+  },
+  "deepinfra": {
+   "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+   "ceiling_usd": 36.33
+  }
+ },
+ "one_day": "every question of all six AIs, all three columns, sent on one day, Cape Town time, before 1 December 2026",
+ "held_out": {
+  "every maker": "every held-out item goes to all six: none of the six trains on what is sent through the route used",
+  "mistral": {
+   "settled_by": [
+    "AG Opus, through G, 14 November 2026: the model page says 'Status: GA'; the terms' 4.3 covers only models identified as preview or labs; mistral-large-4-0, the fixed name, never 'latest'",
+    "G, 14 November 2026, in chat: \"the mistral training switch is off\" (record/mistral-training-switch-2026-11-14)"
+   ]
+  },
+  "meta": "Muse Wonder is designated a Standard Model (Meta's policy of 9 November 2026); Meta does not train on Standard Services",
+  "deepinfra": "keeps nothing and trains on nothing by default and in its contract; its batch service is never used; the token check passed"
+ },
+ "mistral_training_switch": {
+  "off": true,
+  "confirmed_by": "G",
+  "date": "2026-11-14",
+  "words": "the mistral training switch is off",
+  "settles": "the plan's condition, section 5, 'with its training switch off', for Mistral's held-out items"
+ }
+}

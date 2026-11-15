@@ -1,0 +1,9 @@
+{
+ "approved_by": "G",
+ "date": "2026-11-14",
+ "words": "G approved this course on 14 November 2026, on AG Fable's advice (the tests, version 1.1, changes, section 5, step 6: a fresh set for the changed lines only, written by a model other than scorer one's). G: \"If scorer one marks all twenty-four edge answers as meant, freeze version 1.1.\" Frozen as tests-v1.1 on 14 November 2026.",
+ "part": "the fresh set for version 1.1's changed lines: 18 answers, one for each line of T7.2's two rubrics and the three mended Correction twins",
+ "writer": {"maker": "openai", "model": "gpt-6-astra"},
+ "interface": "the maker's standard interface, at its defaults",
+ "ceiling_usd": 5
+}

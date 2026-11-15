@@ -1,0 +1,63 @@
+{
+ "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+ "huggingface_revision": "72e1d3230f6c080a530b0a1d46f8eb4602340597",
+ "files_sha256": {
+  "encoding/encoding_dsv4.py": "abc0d26120250dda0ae077dc64aa28836026e61e970854aaeb792445e6a0dde6",
+  "encoding/README.md": "294ed6493ebfe5a487f172154d60c494899997fed8806fdd3352dd8e3c33f9de",
+  "tokenizer.json": "8f9f37ca37fdc4f5fd36d5cf4d3b0e8392edb4e894fd10cc0d70b4957c8633cf",
+  "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547"
+ },
+ "deepinfra_prompt_tokens": 56,
+ "local_counts": [
+  {
+   "thinking_mode": "chat",
+   "reasoning_effort": null,
+   "local_tokens": 56,
+   "equals_deepinfra": true,
+   "prompt_head": "<｜begin▁of▁sentence｜><｜User｜>Our small online shop switched from free shipping on orders over 50 to a flat 4 shipping fe",
+   "prompt_tail": "? Give me your view in a few sentences.<｜Assistant｜></think>"
+  },
+  {
+   "thinking_mode": "thinking",
+   "reasoning_effort": "low",
+   "local_tokens": 56,
+   "equals_deepinfra": true,
+   "prompt_head": "<｜begin▁of▁sentence｜><｜User｜>Our small online shop switched from free shipping on orders over 50 to a flat 4 shipping fe",
+   "prompt_tail": "t? Give me your view in a few sentences.<｜Assistant｜><think>"
+  },
+  {
+   "thinking_mode": "thinking",
+   "reasoning_effort": "high",
+   "local_tokens": 135,
+   "equals_deepinfra": false,
+   "prompt_head": "<｜begin▁of▁sentence｜>Reasoning Effort: Absolute maximum with no shortcuts permitted.\nYou MUST be very thorough in your t",
+   "prompt_tail": "t? Give me your view in a few sentences.<｜Assistant｜><think>"
+  },
+  {
+   "thinking_mode": "thinking",
+   "reasoning_effort": "max",
+   "local_tokens": 148,
+   "equals_deepinfra": false,
+   "prompt_head": "<｜begin▁of▁sentence｜>Reasoning Effort: Beyond maximum — exhaustive, relentless, and uncompromising.\nYou MUST reason with",
+   "prompt_tail": "t? Give me your view in a few sentences.<｜Assistant｜><think>"
+  }
+ ],
+ "match": [
+  {
+   "thinking_mode": "chat",
+   "reasoning_effort": null,
+   "local_tokens": 56,
+   "equals_deepinfra": true,
+   "prompt_head": "<｜begin▁of▁sentence｜><｜User｜>Our small online shop switched from free shipping on orders over 50 to a flat 4 shipping fe",
+   "prompt_tail": "? Give me your view in a few sentences.<｜Assistant｜></think>"
+  },
+  {
+   "thinking_mode": "thinking",
+   "reasoning_effort": "low",
+   "local_tokens": 56,
+   "equals_deepinfra": true,
+   "prompt_head": "<｜begin▁of▁sentence｜><｜User｜>Our small online shop switched from free shipping on orders over 50 to a flat 4 shipping fe",
+   "prompt_tail": "t? Give me your view in a few sentences.<｜Assistant｜><think>"
+  }
+ ]
+}

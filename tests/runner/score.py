@@ -1,6 +1,6 @@
 """Scoring, as the tests' Part A and the build brief, Part One, 4, set it out.
 
-    python tests/runner/score.py blind  PACKET [PACKET ...] --out BLIND.jsonl --key KEY.json [--seed N]
+    python tests/runner/score.py blind  PACKET [PACKET ...] --suite SUITE.jsonl [--suite ...] --out BLIND.jsonl --key KEY.json [--seed N]
     python tests/runner/score.py one    BLIND.jsonl --out MARKS1.jsonl [--scorer anthropic|replay] [--replay CAL.yaml]
                                          [--approval APPROVAL.json]
     python tests/runner/score.py sample BLIND.jsonl MARKS1.jsonl --out FOR_SCORER_TWO.jsonl [--seed N]
@@ -240,6 +240,26 @@ MARK_FIELD = {   # AG Opus's ruling, 13 November 2026: the mark in a fixed field
 }
 
 
+def field_in_reply(text):
+    """The fixed field, where a scorer wrote it as JSON in its reply rather than through the function: the reply is the
+    field and nothing else, or ends with it. Anything else is no field, and the mark is read from the reply."""
+    t = (text or "").strip()
+    if t.startswith("```"):
+        t = t.strip("`").split("\n", 1)[-1] if "\n" in t else t.strip("`")
+    start = t.rfind("{\"mark\"")
+    if start < 0:
+        start = t.rfind("{")
+    if start < 0:
+        return None
+    try:
+        f = json.loads(t[start:].rstrip("`").strip())
+    except ValueError:
+        return None
+    if isinstance(f, dict) and f.get("mark") in MARKS and isinstance(f.get("why"), str):
+        return f
+    return None
+
+
 OUTSIDE_XAI_MODEL = "grok-4.7"
 XAI_PRICE = {"input": 2.0, "output": 6.0}      # per million tokens, docs.x.ai/docs/models, 14 November 2026
 
@@ -267,25 +287,29 @@ def xai_asker(approval):
             raise SystemExit("stopped at the ceiling: $%.2f spent of $%.2f" % (spent["usd"], float(ok["ceiling_usd"])))
         for wait in (5, 30, 120, None):
             try:
+                extra = {"tool_choice": "required"} if ok.get("force_field") else {}   # the field, never prose alone
                 r = client.chat.completions.create(model=OUTSIDE_XAI_MODEL, tools=[tool],
-                                                   messages=[{"role": "user", "content": text}])
+                                                   messages=[{"role": "user", "content": text}], **extra)
                 break
             except Exception:      # noqa: BLE001  a connection that fails is tried again; no mark is made up
                 if wait is None:
                     raise
                 time.sleep(wait)
         msg = r.choices[0].message
-        field = None
+        field, via = None, None
         for tc in (msg.tool_calls or []):
             if tc.function.name == MARK_FIELD["name"]:
                 try:
-                    field = json.loads(tc.function.arguments)
+                    field, via = json.loads(tc.function.arguments), "function call"
                 except ValueError:
                     field = None
+        if field is None:        # grok-4.7 often fills the field's JSON in its reply instead of calling the function
+            field, via = field_in_reply(msg.content or ""), "the field's JSON, in its reply"
         det = getattr(r.usage, "completion_tokens_details", None)
         reasoning = getattr(det, "reasoning_tokens", None) if det else None
         usage = {"input": r.usage.prompt_tokens, "output": r.usage.completion_tokens, "reasoning": reasoning,
                  "model_returned": r.model, "finish": r.choices[0].finish_reason,
+                 "field_via": via if field else None,
                  "at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
         spent["usd"] += (usage["input"] * XAI_PRICE["input"]
                          + (usage["output"] + (reasoning or 0)) * XAI_PRICE["output"]) / 1e6
@@ -731,6 +755,8 @@ def main():
     ap.add_argument("--marks2", help="scorer two's marks: a hard fail stands only where both scorers give it")
     ap.add_argument("--set-aside", help="blind: answers kept in their packets and never scored, with the reason")
     a = ap.parse_args()
+    if a.cmd in ("blind", "calibrate") and not a.suite:
+        ap.error(a.cmd + " needs the suite the answers came from: --suite tests/generated/tests.jsonl")
     if a.cmd == "blind":
         blind(a.inputs, a.out, a.key, a.seed, a.suite, a.set_aside)
     elif a.cmd == "one":

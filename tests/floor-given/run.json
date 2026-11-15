@@ -1,0 +1,120 @@
+{
+ "run": "Phase 2, the floor given",
+ "plan": "tests/floor-given/plan.md",
+ "plan_tag": "floor-given-plan-v1",
+ "tests_tag": "tests-v1.1",
+ "runs": 3,
+ "lines": 152,
+ "suites": [
+  {
+   "file": "tests/generated/tests.jsonl",
+   "sha256": "8c8e7611b09898b3208f29add71e56cb2bc24ac66a7b9b0fff67110ce384478b",
+   "lines": 138,
+   "what": "every published item, twin and wording, at tests-v1.1"
+  },
+  {
+   "file": "tests/held-out/generated/held_out.jsonl",
+   "sha256": "2404f2992a717e6b980e525cb899d74918be82fe1c53e7dfd0defa4f9ee32aa9",
+   "lines": 14,
+   "what": "the held-out items, at tests-v1.1 (unchanged since tests-v1.0); in the holding repository only"
+  }
+ ],
+ "columns": {
+  "as_shipped": {
+   "file": null,
+   "sha256": null,
+   "words": "nothing: no system message"
+  },
+  "short_instruction": {
+   "file": "tests/floor-given/control.txt",
+   "sha256": "c3b24029298f992f73034fa465a2c3447daf01f172af86480e0913e24cf15769",
+   "words": "You are a helpful assistant. Be honest and fair."
+  },
+  "floor": {
+   "file": "floor/generated/floor.txt",
+   "sha256": "58a302b9e4a4b2fa093365e2c762d98584e36d36204a7e2a2178ccaf9a19a2f9",
+   "version": "1.0",
+   "bytes": 21539
+  }
+ },
+ "prices": "tests/runner/prices-2026-11-14.json",
+ "makers": {
+  "anthropic": {
+   "model": "claude-fable-5-2",
+   "route": "batch (Message Batches)",
+   "baseline": "tests/held-out/runs/batch-1",
+   "held_out": true,
+   "settings": {
+    "max_tokens": 32000,
+    "everything else": "the maker's defaults"
+   },
+   "system": "the request's `system` field; the floor's text marked for Anthropic's prompt cache"
+  },
+  "openai": {
+   "model": "gpt-6-astra",
+   "route": "batch (/v1/responses)",
+   "baseline": "tests/held-out/runs/batch-1",
+   "held_out": true,
+   "settings": {
+    "everything": "the maker's defaults"
+   },
+   "system": "an input item with the role `system`"
+  },
+  "google": {
+   "model": "gemini-4-carbon",
+   "route": "batch (Gemini API batch mode, inline requests)",
+   "baseline": "tests/held-out/runs/batch-1",
+   "held_out": true,
+   "settings": {
+    "everything": "the maker's defaults"
+   },
+   "system": "`system_instruction`, text only"
+  },
+  "mistral": {
+   "model": "mistral-large-4-0",
+   "route": "batch (Mistral's batch service, /v1/chat/completions)",
+   "held_out": true,
+   "settings": {
+    "everything": "the maker's defaults"
+   },
+   "system": "a `system` message in each line's body",
+   "held_out_why": "Mistral's model page says 'Status: GA', released 2026-11-05; its commercial terms' 4.3 covers only models identified as labs or preview (tests/floor-given/record/makers-pages-2026-11-14); and G confirmed its training switch is off, 14 November 2026. The fixed name, never 'latest'."
+  },
+  "meta": {
+   "model": "muse-wonder-1.0",
+   "route": "one call per answer, Meta's standard interface (https://api.meta.ai/v1/chat/completions), Standard Services",
+   "held_out": true,
+   "settings": {
+    "everything": "the maker's defaults: no reasoning_effort (its default is 'max'), no answer length"
+   },
+   "system": "a `system` message (Meta treats it at the level of `developer`)",
+   "held_out_why": "Meta's model designation policy of 9 November 2026 designates Muse Wonder a Standard Model, and Meta does not train on Standard Services (tests/floor-given/record/makers-pages-2026-11-14)."
+  },
+  "deepinfra": {
+   "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+   "for": "DeepSeek, deepseek-v4-pro: the same open weights, on an outside host",
+   "route": "one call per answer, DeepInfra's standard interface (https://api.deepinfra.com/v1/openai/chat/completions), never its batch service",
+   "held_out": true,
+   "settings": {
+    "everything": "DeepInfra's defaults: no reasoning level, no answer length"
+   },
+   "system": "a `system` message",
+   "held_out_why": "DeepInfra keeps nothing and trains on nothing by default and in its contract, its batch service apart (AG Opus's ruling, 14 November 2026). Its token check passed: tests/floor-given/record/deepinfra-token-check-2026-11-14."
+  }
+ },
+ "estimate": {
+  "short_instruction_tokens": 11,
+  "floor_tokens": {
+   "anthropic": 7030,
+   "openai": 5070,
+   "google": 5300,
+   "second_batch": 6460
+  },
+  "chars_per_token_second_batch": 3.334,
+  "second_batch_answer_tokens": {
+   "central": 1000,
+   "high": 9000
+  },
+  "source": "WC's cost report of 14 November 2026, 'The floor given - the cost, and the second batch'"
+ }
+}

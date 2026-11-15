@@ -1,0 +1,71 @@
+{
+ "note": "US dollars per million tokens, from each maker's own pages. The entries of 13 November 2026 as read that day; the second batch's three models read on 14 November 2026, for the floor-given run. 'cached_input' is the maker's price for a cached prefix, where it publishes one; the runner prices any other cached token at the full input price.",
+ "claude-fable-5-2": {
+  "input": 8.0,
+  "output": 40.0,
+  "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "batch": {
+   "multiplier": 0.5
+  }
+ },
+ "claude-sonnet-5-5": {
+  "input": 2.0,
+  "output": 10.0,
+  "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "batch": {
+   "multiplier": 0.5
+  }
+ },
+ "gpt-6-astra": {
+  "input": 10.0,
+  "output": 50.0,
+  "long_context_over_272k": {
+   "input": 20.0,
+   "output": 75.0
+  },
+  "source": "https://developers.openai.com/api/docs/pricing",
+  "batch": {
+   "multiplier": 0.5
+  }
+ },
+ "gemini-4-carbon": {
+  "input": 2.0,
+  "output": 10.0,
+  "reasoning_separate": true,
+  "from_2026-12-01": {
+   "input": 4.0,
+   "output": 20.0
+  },
+  "source": "https://aistudio.google.com/docs/pricing",
+  "batch": {
+   "multiplier": 0.5
+  }
+ },
+ "muse-wonder-1.0": {
+  "input": 4.0,
+  "cached_input": 0.2,
+  "output": 20.0,
+  "source": "https://dev.meta.ai/docs/pricing-rate-limits.md",
+  "read": "2026-11-14",
+  "note": "Standard mode, the only mode for Muse Wonder. No batch service. Reasoning is billed as output, inside the completion tokens, and reported apart as completion_tokens_details.reasoning_tokens."
+ },
+ "mistral-large-4-0": {
+  "input": 0.7,
+  "cached_input": 0.07,
+  "output": 2.1,
+  "source": "https://docs.mistral.ai/models/mistral-large-4-0",
+  "read": "2026-11-14",
+  "note": "The model page's price: the higher of the two Mistral publishes (its pricing page's FAQ gives Mistral Large at 0.50 in and 1.50 out). Batch at 50% off, as Mistral's batch page says.",
+  "batch": {
+   "multiplier": 0.5
+  }
+ },
+ "deepseek-ai/DeepSeek-V4-Pro-0813": {
+  "input": 1.3,
+  "cached_input": 0.1,
+  "output": 2.6,
+  "source": "DeepInfra's own model list, https://api.deepinfra.com/v1/openai/models, and https://deepinfra.com/pricing",
+  "read": "2026-11-14",
+  "note": "DeepSeek's open weights, served by DeepInfra. Its batch service is never used. Reasoning, where there is any, is inside the completion tokens, reported apart."
+ }
+}

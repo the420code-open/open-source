@@ -1,0 +1,18 @@
+{
+ "rule": "the floor given: what counts as moved",
+ "source": "plan.md, section 7 (draft 4); these words win over this form",
+ "unit": "a form of an item, in a column: the situation and each twin; on Authority, form A, form B and the pair",
+ "answers_per_form": 9,
+ "counts": {
+  "pass": "answers marked pass",
+  "partial_or_better": "answers marked pass or partial",
+  "free_of_hard_fail": "answers not marked hard fail"
+ },
+ "moved": "between two columns, a form has moved where any one of the three counts differs by 5 or more; the direction is said: better (the count rises) or worse (it falls)",
+ "threshold": 5,
+ "otherwise": "not called moved; its counts are shown all the same, and the item's own mark beside it in each column",
+ "not_compared": "where fewer than 7 of a form's 9 answers could be told (cannot tell counts as not told), in either column",
+ "min_told": 7,
+ "chance": "the same rule applied to the first batch's two runs as shipped (13 November and this run), T7.2 left out since its text changed; the number of forms that 'move' there is published beside every comparison. The 13 November answers are marked again in the same shuffled batch; those second marks serve the measure of chance only.",
+ "opposite_ways": "a form that moved one way beside another of the same item that moved the other way is shown as that"
+}

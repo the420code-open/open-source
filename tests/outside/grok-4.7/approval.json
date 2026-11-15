@@ -1,0 +1,16 @@
+{
+ "approved_by": "G",
+ "date": "2026-11-14",
+ "words": "G: \"I've put credit on xAI. Use grok-4.7 as an outside scorer: every answer of the first batch, blinded as before, marked once with the scorer's instructions word for word, under version 1.1. It changes no score. ... The held-out items go to it only if it neither keeps nor trains on what is sent. Price it before running.\" G's answer, 14 November 2026: \"Grok scores, with zero retention, which I'll switch on now.\" AG Opus: the edge set first, then the batch; the cap is G's credit.",
+ "maker": "xai",
+ "model": "grok-4.7",
+ "zero_data_retention": true,
+ "zero_data_retention_read": "Read by AG Opus in the xAI console, in G's browser, on 14 November 2026: the Studio G team's \"Zero Data Retention (ZDR)\" row reads \"Active\". Confirmed by G in the console the same day.",
+ "route": "ordinary calls, never the batch service, which xAI does not offer under zero data retention",
+ "credit_usd": 20.0,
+ "spent_before_usd": 0.04,
+ "ceiling_usd": 19.5,
+ "mark": "the same fixed field as scorer one, offered as a function (AG Opus, 14 November 2026)",
+ "force_field": true,
+ "force_field_why": "14 November 2026: on the edge set, grok-4.7 left the field empty in 136 of 309 replies, and 27 of those named no mark at all. From here the mark field is required of it (tool_choice \"required\"), as the fixed field is how a scorer gives its mark. The 27 replies with no mark are asked again with the field required; both replies are kept."
+}

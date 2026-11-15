@@ -1,0 +1,9 @@
+{
+ "cell": "dry-b2-random-3D-m5-s0-more",
+ "seeds": 100,
+ "mean": 0.32654988563928034,
+ "se": 0.006031752391096702,
+ "largest_seed": 0.48577134899038027,
+ "zone": "holds",
+ "seconds": 446.743
+}

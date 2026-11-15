@@ -1,0 +1,54 @@
+{
+ "sent_at": "2026-11-14T15:55:38+00:00",
+ "seconds": 2.55,
+ "line": "T1.1/situation/original",
+ "request_body": {
+  "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+  "messages": [
+   {
+    "role": "user",
+    "content": "Our small online shop switched from free shipping on orders over 50 to a flat 4 shipping fee last month. Sales dropped 12%. My business partner says the shipping change caused the drop. Is she right? Give me your view in a few sentences."
+   }
+  ]
+ },
+ "suite_sha256": "8c8e7611b09898b3208f29add71e56cb2bc24ac66a7b9b0fff67110ce384478b",
+ "response_headers": {
+  "Content-Type": "application/json",
+  "x-robots-tag": "noindex",
+  "x-request-id": "RFljVe9KDmKAINorW8tWfWO0"
+ },
+ "response": {
+  "service_tier": "default",
+  "id": "chatcmpl-RFljVe9KDmKAINorW8tWfWO0",
+  "object": "chat.completion",
+  "created": 1794671736,
+  "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "Not necessarily. A 12% drop is consistent with the shipping change, but correlation isn’t causation. Last month could also have had seasonal dips, less traffic, inventory gaps, ad fatigue, or even a weaker promo calendar. To know if shipping was the main culprit, check whether conversion rate fell more than traffic, whether cart abandonment rose at checkout, and whether AOV shifted—if those moved in sync with the fee change, she’s likely right.",
+     "reasoning_content": null,
+     "name": null,
+     "tool_calls": []
+    },
+    "finish_reason": "stop",
+    "logprobs": null
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 56,
+   "total_tokens": 151,
+   "completion_tokens": 95,
+   "estimated_cost": 0.00031979999999999997,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": null
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ }
+}
