@@ -1,5 +1,3 @@
-Being built. Opens with the first room.
-
 # The 420 Code · Open Source
 
 The 420 Code starts from one line: one record exists. Try to deny it, and the denial is another record.
