@@ -33,3 +33,25 @@ open for them went to AG Opus with the price on 14 November 2026: DeepSeek's hig
 Anthropic's required length cap; whether Google's calls are streamed; the markers' own settings; whether a refusal
 gets the three marks; which of Google's models is its leading one; and batch and caching. Nothing in this folder
 changes with their answers.
+
+## Draft 5, committed beside draft 4 · challenge-plan-v2
+
+Committed on 14 November 2026, after AP32's second dated note, "Who the whole is", was published that day (the PDF,
+2386a509…). Draft 4 and `challenge-plan-v1` stay as they are. Draft 5 governs, and says so in its own opening. No AI
+has been asked.
+
+| File | What it is | SHA-256 |
+|---|---|---|
+| `plan_draft5.md` | The plan, draft 5, word for word | 6a0bc2d6b910402aacb65cc0741e976ac476a37b0f096c8692adf23cbd2450d3 |
+| `question_v2.txt` | The question, word for word, from draft 5's section 4: "AP32 The Correction, in full, with its dated notes." | 7bc69b3de782f41fa2c297221bff3deb1b22340460d643498edca14ea65b75d3 |
+| `question_for_the_known_road_v2.txt` | The same, for the two known roads: "with its dated notes" becomes "as it stood on 13 November 2026", and nothing else changes. It is the same text as draft 4's form. | 88b5571a7bdc3147874a67fea0d0fdd64ae2459ab9219d74356e97aa92fb1d32 |
+| `AP32_The_Correction_with_its_dated_notes_of_2026-11-14.txt` | The paper the AIs get: AP32 with both its dated notes, as plain text from its source of record, `AP32_The_Correction_FINAL_dated_notes_2_2026-11-14.docx` (1b334fcc…) | 8f55400408495b0b68558468526be1ccd3e670b6c64bf5093e190cfd3eff8344 |
+| `AP32_The_Correction_as_it_stood_on_2026-11-13.txt` | The paper for the known roads, unchanged | 8f083031ac404a9a4647454ed9b9e79a5f0818e3e9a49ff1141702dee48c97c1 |
+| `marking_words.md` | The marking words: draft 5's section 8, the same as draft 4's, as they stand | 39b21e5d4c868fb6a67d83df6ac49647b20732ae89f3f28042faa27f07063939 |
+| `approval.json` | G's approval, unchanged: the run capped at $60, the known roads' arm at $20 | 621877f761195052267ed1653fdf9a319e033b16365523d94cb9e7255a1f66a8 |
+
+- **The third form, checked:** its source against the published PDF, `/AP32_The_Correction.pdf` (2386a509…), by the
+  test of record: all 220 paragraphs in the PDF, and every sentence of the PDF in the source but the two formula
+  lines, as before. The formula and the note checked by eye on the page.
+- **Kimi:** G topped up Studio G's Kimi account with $10 on 14 November 2026, so Moonshot AI's model is asked on the
+  run day, as section 5 says.
