@@ -1,0 +1,91 @@
+name: "A result"
+description: "A run, a test result, a rerun, or an independent implementation."
+labels: ["kind:result"]
+body:
+  - type: markdown
+    attributes:
+      value: "A run, a result, a rerun, or a second implementation. Send the whole run."
+  - type: textarea
+    id: what
+    attributes:
+      label: "What was run, and the proposal or switch it tests"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: "Its kind"
+      options:
+        - "Reproduction"
+        - "Generalisation"
+        - "Exploratory"
+        - "Rerun"
+        - "Independent implementation"
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: "Its outcome"
+      options:
+        - "Fires"
+        - "Holds"
+        - "Settles nothing"
+        - "Departed from its frozen plan"
+    validations:
+      required: true
+  - type: input
+    id: registry
+    attributes:
+      label: "The registry version"
+    validations:
+      required: true
+  - type: input
+    id: spec
+    attributes:
+      label: "The specification version"
+    validations:
+      required: true
+  - type: input
+    id: code
+    attributes:
+      label: "The code version"
+    validations:
+      required: true
+  - type: textarea
+    id: seeds
+    attributes:
+      label: "The seeds"
+    validations:
+      required: true
+  - type: textarea
+    id: packet
+    attributes:
+      label: "The run packet"
+      description: "Open a pull request into packets/, in a folder named by this issue's number, or give a link to where it is kept."
+    validations:
+      required: true
+  - type: textarea
+    id: differently
+    attributes:
+      label: "Anything done differently from the plan"
+    validations:
+      required: false
+  - type: input
+    id: credit
+    attributes:
+      label: Credit
+      description: The name or handle to credit you by, or leave empty to be credited by your GitHub handle.
+  - type: checkboxes
+    id: no_credit
+    attributes:
+      label: No credit
+      options:
+        - label: Do not credit me.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      options:
+        - label: "I share what I send under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD for code. I know a public repository keeps its history."
+          required: true

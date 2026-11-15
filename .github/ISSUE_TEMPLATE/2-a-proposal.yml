@@ -1,0 +1,118 @@
+name: "A proposal"
+description: "A test, experiment or research proposal."
+labels: ["kind:proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: "A test, an experiment or a proposal. Write it so anyone could run it."
+  - type: input
+    id: title
+    attributes:
+      label: "Title"
+    validations:
+      required: true
+  - type: dropdown
+    id: rung
+    attributes:
+      label: "Rung"
+      options:
+        - "A minute"
+        - "An hour"
+        - "A week"
+    validations:
+      required: true
+  - type: input
+    id: time
+    attributes:
+      label: "Time it takes"
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: "The claim, with its link"
+    validations:
+      required: true
+  - type: input
+    id: switch
+    attributes:
+      label: "The kill switch: its code"
+      description: "For example KS-31.2."
+    validations:
+      required: true
+  - type: input
+    id: registry
+    attributes:
+      label: "The registry version"
+      description: "For example v5.38."
+    validations:
+      required: true
+  - type: textarea
+    id: fires
+    attributes:
+      label: "What would fire it"
+    validations:
+      required: true
+  - type: textarea
+    id: prediction
+    attributes:
+      label: "The prediction"
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: "The test"
+    validations:
+      required: true
+  - type: textarea
+    id: measure
+    attributes:
+      label: "The measure and the threshold"
+    validations:
+      required: true
+  - type: textarea
+    id: runs
+    attributes:
+      label: "Runs and stopping"
+    validations:
+      required: true
+  - type: textarea
+    id: analysis
+    attributes:
+      label: "The analysis"
+    validations:
+      required: true
+  - type: dropdown
+    id: which
+    attributes:
+      label: "Which kind"
+      options:
+        - "Confirmatory"
+        - "Exploratory"
+    validations:
+      required: true
+  - type: textarea
+    id: needs
+    attributes:
+      label: "What it needs"
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: Credit
+      description: The name or handle to credit you by, or leave empty to be credited by your GitHub handle.
+  - type: checkboxes
+    id: no_credit
+    attributes:
+      label: No credit
+      options:
+        - label: Do not credit me.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      options:
+        - label: "I share what I send under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD for code. I know a public repository keeps its history."
+          required: true

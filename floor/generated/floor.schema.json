@@ -1,0 +1,201 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://aiethics.global/open-source/the-floor/floor.schema.json",
+ "title": "The floor",
+ "type": "object",
+ "required": [
+  "floor",
+  "sources",
+  "lines"
+ ],
+ "properties": {
+  "floor": {
+   "type": "object",
+   "required": [
+    "version",
+    "status",
+    "date",
+    "registry",
+    "note",
+    "fingerprint",
+    "tag",
+    "page"
+   ],
+   "properties": {
+    "version": {
+     "type": "string"
+    },
+    "status": {
+     "enum": [
+      "draft",
+      "final"
+     ]
+    },
+    "date": {
+     "type": "string"
+    },
+    "note": {
+     "type": "string"
+    },
+    "fingerprint": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    "tag": {
+     "type": "string"
+    },
+    "page": {
+     "type": "string"
+    },
+    "registry": {
+     "type": "object",
+     "required": [
+      "version",
+      "date",
+      "data"
+     ]
+    }
+   }
+  },
+  "sources": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "title",
+     "url",
+     "version",
+     "kind"
+    ],
+    "properties": {
+     "kind": {
+      "enum": [
+       "html",
+       "pdf",
+       "text",
+       "registry"
+      ]
+     }
+    }
+   }
+  },
+  "lines": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "part",
+     "kind",
+     "text",
+     "short_form"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^F(-H|[0-8])\\.[0-9]+[a-z]?$"
+     },
+     "part": {
+      "type": "string"
+     },
+     "kind": {
+      "enum": [
+       "work",
+       "desk"
+      ]
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "source": {
+      "type": "object",
+      "required": [
+       "code",
+       "title",
+       "url",
+       "version",
+       "kind"
+      ]
+     },
+     "keys": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^KS-"
+      }
+     },
+     "key_links": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "roles": {
+      "type": "array",
+      "items": {
+       "enum": [
+        "heading",
+        "test-line"
+       ]
+      }
+     },
+     "joins": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "approval": {
+      "type": "object",
+      "required": [
+       "status",
+       "by"
+      ],
+      "properties": {
+       "status": {
+        "enum": [
+         "pending",
+         "approved"
+        ]
+       }
+      }
+     },
+     "short_form": {
+      "type": "string"
+     }
+    },
+    "allOf": [
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "work"
+        }
+       }
+      },
+      "then": {
+       "required": [
+        "source"
+       ]
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "desk"
+        }
+       }
+      },
+      "then": {
+       "required": [
+        "approval"
+       ]
+      }
+     }
+    ]
+   }
+  }
+ }
+}

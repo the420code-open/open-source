@@ -1,0 +1,66 @@
+name: "A build"
+description: "Anything that takes the work further."
+labels: ["kind:build"]
+body:
+  - type: markdown
+    attributes:
+      value: "Something you built on the work. Tell us what it adds, and what it keeps."
+  - type: input
+    id: title
+    attributes:
+      label: "Title"
+    validations:
+      required: true
+  - type: textarea
+    id: built_on
+    attributes:
+      label: "Built on"
+    validations:
+      required: true
+  - type: textarea
+    id: adds
+    attributes:
+      label: "What it adds"
+    validations:
+      required: true
+  - type: textarea
+    id: quotes
+    attributes:
+      label: "What it quotes, with links"
+    validations:
+      required: true
+  - type: input
+    id: lives
+    attributes:
+      label: "Where it lives"
+    validations:
+      required: true
+  - type: checkboxes
+    id: keeps
+    attributes:
+      label: What it keeps
+      options:
+        - label: The first principle
+        - label: The four conditions, S, B, R and C
+        - label: Architecture B as working rules
+        - label: Awareness as the work defines it, not consciousness
+        - label: The ethic by both roads, as cost and never command
+        - label: The hard floor
+  - type: input
+    id: credit
+    attributes:
+      label: Credit
+      description: The name or handle to credit you by, or leave empty to be credited by your GitHub handle.
+  - type: checkboxes
+    id: no_credit
+    attributes:
+      label: No credit
+      options:
+        - label: Do not credit me.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      options:
+        - label: "I share what I send under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD for code. I know a public repository keeps its history."
+          required: true

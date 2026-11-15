@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: The front door
+    url: https://aiethics.global/open-source/
+    about: The Open Source rooms, on the family's sites.
+  - name: A question about the work
+    url: https://studiog.global/ask/
+    about: Ask G, on the family's sites.
+  - name: By email
+    url: https://github.com/the420code-open/open-source/blob/main/CONTRIBUTING.md
+    about: Write to open@studiog.global.
+  - name: A safety finding
+    url: https://github.com/the420code-open/open-source/blob/main/SECURITY.md
+    about: The private route, in SECURITY.md.

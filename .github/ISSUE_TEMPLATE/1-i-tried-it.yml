@@ -1,0 +1,58 @@
+name: "I tried it"
+description: "A first try."
+labels: ["kind:try"]
+body:
+  - type: markdown
+    attributes:
+      value: "Tell us what you tried, and what happened. A few short answers."
+  - type: dropdown
+    id: rung
+    attributes:
+      label: "Which rung"
+      options:
+        - "A minute"
+        - "An hour"
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: "What you tried"
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: "What happened"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "A link, if there is one"
+    validations:
+      required: false
+  - type: checkboxes
+    id: self_scored
+    attributes:
+      label: Self-scored
+      options:
+        - label: This is a self-scored card from the test card.
+  - type: input
+    id: credit
+    attributes:
+      label: Credit
+      description: The name or handle to credit you by, or leave empty to be credited by your GitHub handle.
+  - type: checkboxes
+    id: no_credit
+    attributes:
+      label: No credit
+      options:
+        - label: Do not credit me.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      options:
+        - label: "I share what I send under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD for code. I know a public repository keeps its history."
+          required: true
