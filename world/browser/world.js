@@ -209,7 +209,9 @@ function buildRing() {
     const x = C + R * u[0], y = C + R * u[1];
     const corr = el('path', { class: 'corridor' }, gCorr);
     const ruinA = el('line', { class: 'ruinline' }, gRuin), ruinB = el('line', { class: 'ruinline' }, gRuin);
-    const g = el('g', { class: 'node', tabindex: '0', role: 'button' }, gNodes);
+    // the ring is aria-hidden: its dots are for the eye and the pointer only, and take no focus. Each operator's
+    // button is in the operators table (buildOpsTable), with the same name, and does the same.
+    const g = el('g', { class: 'node' }, gNodes);
     const title = el('title', {}, g);
     el('circle', { cx: x, cy: y, r: 22, class: 'hit' }, g);
     el('circle', { cx: x, cy: y, r: 17, class: 'dot' }, g);
@@ -218,9 +220,7 @@ function buildRing() {
       x: C + (R - 32) * u[0], y: C + (R - 32) * u[1], class: 'name',
       'text-anchor': 'middle', 'dominant-baseline': 'central',
     }, gNames, o.name);
-    const act = () => cycleType(i);
-    g.addEventListener('click', act);
-    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
+    g.addEventListener('click', () => cycleType(i));
     geo.nodes.push({ x, y, u, v, corr, ruinA, ruinB, g, title, letter });
   });
   for (const l of world.links) {
@@ -279,10 +279,7 @@ function draw(force = false) {
     nd.corr.setAttribute('class', `corridor ${cls}`);
     nd.g.setAttribute('class', `node ${cls}`);
     nd.letter.textContent = o.type;
-    const label = `Operator ${o.name}, type ${o.type}, stock ${f2(o.E)}` +
-      (o.alive ? '' : `, ruined at t = ${f2(o.ruinTime)}`) + '. Change its type.';
-    nd.title.textContent = label;
-    nd.g.setAttribute('aria-label', label);
+    nd.title.textContent = opLabel(o);
   });
   for (const l of world.links) geo.links.get(l.id).style.display = l.live ? '' : 'none';
   $('#time').textContent = `t = ${now.toFixed(1)} of ${HORIZON}`;
@@ -294,22 +291,39 @@ function draw(force = false) {
   }
 }
 
+// an operator's name, the same in the drawing's tooltip and on its button in the table
+function opLabel(o) {
+  return `Operator ${o.name}, type ${o.type}, stock ${f2(o.E)}` +
+    (o.alive ? '' : `, ruined at t = ${f2(o.ruinTime)}`) + '. Change its type.';
+}
+
+// Each row's type is a real button, doing what tapping the operator's dot does. The rows are kept while the number of
+// operators is the same, so a button keeps its focus when it changes its operator's type.
 function buildOpsTable() {
   const body = $('#ops-body');
+  if (body.children.length === world.ops.length) return;
   body.replaceChildren();
-  for (const o of world.ops) {
+  world.ops.forEach((o, i) => {
     const tr = html('tr');
     for (let k = 0; k < 5; k++) tr.appendChild(html('td'));
     tr.children[0].textContent = o.name;
+    const b = html('button');
+    b.type = 'button';
+    b.className = 'chip op-type';
+    b.addEventListener('click', () => cycleType(i));
+    tr.children[1].appendChild(b);
     body.appendChild(tr);
-  }
+  });
 }
 
 function fillOpsTable() {
   const rows = $('#ops-body').children;
   world.ops.forEach((o, i) => {
     const c = rows[i].children;
-    c[1].innerHTML = `<span class="chip type-${o.type.toLowerCase()}">${o.type}</span>`;
+    const b = c[1].firstElementChild;
+    b.className = `chip op-type type-${o.type.toLowerCase()}`;
+    b.textContent = o.type;
+    b.setAttribute('aria-label', opLabel(o));
     c[2].textContent = o.alive ? f2(o.E) : `≤ ${world.p.E_r}`;
     c[3].textContent = world.counterparties(o.i).map(q => world.ops[q].name).join(', ') || 'none';
     c[4].textContent = o.alive ? 'live' : `ruined at ${f2(o.ruinTime)}`;

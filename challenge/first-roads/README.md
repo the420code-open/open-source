@@ -67,6 +67,8 @@ so in its own opening. No AI has been asked.
 | File | What it is | SHA-256 |
 |---|---|---|
 | `plan_draft6.md` | The plan, draft 6, word for word (AG Opus, 14 and 15 November 2026) | 00801978cdd98c82c8025da62c784800663f914606065b270d38f91bb411bfda |
+| `AG Fable - the challenge's first roads, read by place - brief v2.md` | AG Fable's brief, version 2, as received: no road lists; the package's places file lists the roads | |
+| `plan_draft6_dated_note_2026-11-15.md` | The plan's dated note of 15 November 2026, beside it and never written into it: AG Fable checks each place once where all three marks agree a road is open (G's choice, AG Opus through G). The form that is shown, with its earlier words, never shown, kept beneath it | |
 | `question_v2.txt` | The question, unchanged from draft 5 | 7bc69b3de782f41fa2c297221bff3deb1b22340460d643498edca14ea65b75d3 |
 | `question_for_the_known_road_v2.txt` | The question for the known roads, unchanged | 88b5571a7bdc3147874a67fea0d0fdd64ae2459ab9219d74356e97aa92fb1d32 |
 | `AP32_The_Correction_with_its_dated_notes_of_2026-11-14.txt` | The paper the AIs get, unchanged | 8f55400408495b0b68558468526be1ccd3e670b6c64bf5093e190cfd3eff8344 |

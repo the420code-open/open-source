@@ -24,7 +24,6 @@
 <section id="view-world" role="tabpanel" aria-labelledby="tab-world">
   <div class="world-grid">
     <div class="stage">
-      <svg id="ring" viewBox="0 0 440 440" role="group" aria-label="Operators on a ring. Each corridor is a stock: now at the ring, earlier further out."></svg>
       <div class="runbar">
         <button type="button" id="play">Play</button>
         <button type="button" id="restart">Restart</button>
@@ -39,6 +38,10 @@
         </label>
         <output id="time" aria-live="off">t = 0</output>
       </div>
+      <!-- the ring is a drawing, hidden from screen readers: each operator's button is in the operators table, with the
+           same name, and does the same as tapping its dot. It comes after the run bar in the page's order, and is
+           drawn above it. -->
+      <svg id="ring" viewBox="0 0 440 440" aria-hidden="true" focusable="false"></svg>
       <p class="hint">Click an operator to set its type: C, U or D.</p>
       <ul class="key">
         <li><span class="chip type-c">C</span> gives; cuts a link that costs more than it brings</li>

@@ -150,7 +150,10 @@ select, input[type="number"] {
   .world-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: start; }
 }
 
+/* the run bar comes before the ring in the page's order, for screen readers; the ring is drawn above it, as before */
+.stage { display: flex; flex-direction: column; }
 .stage svg#ring {
+  order: -1;
   display: block;
   width: 100%;
   max-width: 520px;
@@ -188,6 +191,8 @@ select, input[type="number"] {
 .chip.type-d { background: var(--type-d); }
 .chip.ruined { color: var(--ruined-ink); background: var(--grid); }
 tr.ruined .chip { background: var(--ruined); }
+/* each operator's type, as a button: the chip as it was, at a size a finger can take */
+button.chip.op-type { min-width: 24px; height: 24px; min-height: 24px; border: 0; font: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
 
 /* the ring */
 #ring .link { stroke: var(--link); stroke-width: 2.5; stroke-linecap: round; }

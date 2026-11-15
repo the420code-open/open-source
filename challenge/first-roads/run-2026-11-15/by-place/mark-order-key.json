@@ -1,0 +1,525 @@
+{
+ "seed": 20261117,
+ "orders": {
+  "anthropic-as_it_stood_on_2026-11-13-01": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "anthropic-as_it_stood_on_2026-11-13-02": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "anthropic-as_it_stood_on_2026-11-13-03": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "anthropic-with_its_dated_notes-01": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "anthropic-with_its_dated_notes-02": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "anthropic-with_its_dated_notes-03": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "anthropic-with_its_dated_notes-04": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "anthropic-with_its_dated_notes-05": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "anthropic-with_its_dated_notes-06": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "anthropic-with_its_dated_notes-07": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "anthropic-with_its_dated_notes-08": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "anthropic-with_its_dated_notes-09": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "anthropic-with_its_dated_notes-10": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "deepinfra-as_it_stood_on_2026-11-13-01": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "deepinfra-as_it_stood_on_2026-11-13-02": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "deepinfra-as_it_stood_on_2026-11-13-03": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "deepinfra-with_its_dated_notes-01": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "deepinfra-with_its_dated_notes-02": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "deepinfra-with_its_dated_notes-03": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "deepinfra-with_its_dated_notes-04": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "deepinfra-with_its_dated_notes-05": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "deepinfra-with_its_dated_notes-06": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "deepinfra-with_its_dated_notes-07": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "deepinfra-with_its_dated_notes-08": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "deepinfra-with_its_dated_notes-09": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "deepinfra-with_its_dated_notes-10": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "google-as_it_stood_on_2026-11-13-01": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "google-as_it_stood_on_2026-11-13-02": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "google-as_it_stood_on_2026-11-13-03": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "google-with_its_dated_notes-01": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "google-with_its_dated_notes-02": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "google-with_its_dated_notes-03": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "google-with_its_dated_notes-04": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "google-with_its_dated_notes-05": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "google-with_its_dated_notes-06": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "google-with_its_dated_notes-07": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "google-with_its_dated_notes-08": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "google-with_its_dated_notes-09": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "google-with_its_dated_notes-10": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "kimi-as_it_stood_on_2026-11-13-01": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "kimi-as_it_stood_on_2026-11-13-02": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "kimi-as_it_stood_on_2026-11-13-03": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "kimi-with_its_dated_notes-01": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "kimi-with_its_dated_notes-02": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "kimi-with_its_dated_notes-03": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "kimi-with_its_dated_notes-04": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "kimi-with_its_dated_notes-05": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "kimi-with_its_dated_notes-06": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "kimi-with_its_dated_notes-07": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "kimi-with_its_dated_notes-08": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "kimi-with_its_dated_notes-09": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "kimi-with_its_dated_notes-10": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "meta-as_it_stood_on_2026-11-13-01": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "meta-as_it_stood_on_2026-11-13-02": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "meta-as_it_stood_on_2026-11-13-03": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "meta-with_its_dated_notes-01": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "meta-with_its_dated_notes-02": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "meta-with_its_dated_notes-03": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "meta-with_its_dated_notes-04": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "meta-with_its_dated_notes-05": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "meta-with_its_dated_notes-06": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "meta-with_its_dated_notes-07": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "meta-with_its_dated_notes-08": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "meta-with_its_dated_notes-09": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "meta-with_its_dated_notes-10": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "mistral-as_it_stood_on_2026-11-13-01": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "mistral-as_it_stood_on_2026-11-13-02": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "mistral-as_it_stood_on_2026-11-13-03": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "mistral-with_its_dated_notes-01": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "mistral-with_its_dated_notes-02": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "mistral-with_its_dated_notes-03": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "mistral-with_its_dated_notes-04": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "mistral-with_its_dated_notes-05": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "mistral-with_its_dated_notes-06": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "mistral-with_its_dated_notes-07": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "mistral-with_its_dated_notes-08": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "mistral-with_its_dated_notes-09": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "mistral-with_its_dated_notes-10": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "openai-as_it_stood_on_2026-11-13-01": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "openai-as_it_stood_on_2026-11-13-02": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "openai-as_it_stood_on_2026-11-13-03": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "openai-with_its_dated_notes-01": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "openai-with_its_dated_notes-02": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "openai-with_its_dated_notes-03": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "openai-with_its_dated_notes-04": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "openai-with_its_dated_notes-05": [
+   "fresh",
+   "first",
+   "outside"
+  ],
+  "openai-with_its_dated_notes-06": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "openai-with_its_dated_notes-07": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "openai-with_its_dated_notes-08": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "openai-with_its_dated_notes-09": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "openai-with_its_dated_notes-10": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "xai-as_it_stood_on_2026-11-13-01": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "xai-as_it_stood_on_2026-11-13-02": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "xai-as_it_stood_on_2026-11-13-03": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "xai-with_its_dated_notes-01": [
+   "first",
+   "fresh",
+   "outside"
+  ],
+  "xai-with_its_dated_notes-02": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "xai-with_its_dated_notes-03": [
+   "fresh",
+   "outside",
+   "first"
+  ],
+  "xai-with_its_dated_notes-04": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "xai-with_its_dated_notes-05": [
+   "outside",
+   "first",
+   "fresh"
+  ],
+  "xai-with_its_dated_notes-06": [
+   "outside",
+   "fresh",
+   "first"
+  ],
+  "xai-with_its_dated_notes-07": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "xai-with_its_dated_notes-08": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "xai-with_its_dated_notes-09": [
+   "first",
+   "outside",
+   "fresh"
+  ],
+  "xai-with_its_dated_notes-10": [
+   "first",
+   "outside",
+   "fresh"
+  ]
+ }
+}

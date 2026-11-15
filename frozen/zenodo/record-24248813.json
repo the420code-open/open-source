@@ -1,0 +1,124 @@
+{
+ "created": "2026-11-15T15:07:07.683830+00:00",
+ "modified": "2026-11-15T15:16:21.786235+00:00",
+ "id": 24248813,
+ "conceptrecid": "24248812",
+ "doi": "10.5281/zenodo.24248813",
+ "conceptdoi": "10.5281/zenodo.24248812",
+ "doi_url": "https://doi.org/10.5281/zenodo.24248813",
+ "metadata": {
+  "title": "B2 · What persists adds more than it takes · the frozen hypothesis, hyp-B2-v1",
+  "doi": "10.5281/zenodo.24248813",
+  "publication_date": "2026-11-15",
+  "description": "<p>A frozen hypothesis, hyp-B2-v1, for the open-source work on The 420 Code. It was frozen on 15 November 2026, before any of its cells ran.</p><p>It tests one line of the work, from One Awareness: \"the persisting configurations are confined to the ones that add more than they take (AP02, Theorem VI.2)\". The run tests only AP02 The Operator, Theorem VI.2, in a simulated world built to meet that theorem's premises. Its switch is KS-COUP.1, with KS-BAR.9 where a configuration is a defector's, as the Master Kill Switch Registry, version 5.41, bounds them.</p><p>The text fixes, before any run, the world, the grid, the seeds, what is watched, how it is measured, and how each cell is judged. It also says, before the run, that B2 is expected to hold by the way the world is built. So if B2 holds, that shows the premises at work. It is not counted as support for the claim.</p><p>The world is the specification, version 1.1 (world-spec-v1.1), on the reference engine world-ref-v1.1, with a second engine. There are 128 cells, 64 of them controls. They run only after this deposit, once the room opens.</p><p>The file's SHA-256: 21118c9d35688e6aab58f5a80f800a0cf1e3fa5fbb9ff647bbabc184447a6bd9.</p>",
+  "access_right": "open",
+  "creators": [
+   {
+    "name": "G",
+    "affiliation": "Studio G, Strand, Cape Town"
+   }
+  ],
+  "keywords": [
+   "the 420 code",
+   "hypothesis",
+   "preregistration",
+   "frozen hypothesis",
+   "simulation",
+   "persistence",
+   "coupling",
+   "kill switch"
+  ],
+  "related_identifiers": [
+   {
+    "identifier": "10.5281/zenodo.19208225",
+    "relation": "references",
+    "resource_type": "publication",
+    "scheme": "doi"
+   },
+   {
+    "identifier": "10.5281/zenodo.24207719",
+    "relation": "references",
+    "resource_type": "publication",
+    "scheme": "doi"
+   }
+  ],
+  "version": "hyp-B2-v1",
+  "language": "eng",
+  "resource_type": {
+   "title": "Other",
+   "type": "publication",
+   "subtype": "other"
+  },
+  "license": {
+   "id": "cc-zero"
+  },
+  "relations": {
+   "version": [
+    {
+     "index": 0,
+     "is_last": true,
+     "parent": {
+      "pid_type": "recid",
+      "pid_value": "24248812"
+     }
+    }
+   ]
+  }
+ },
+ "title": "B2 · What persists adds more than it takes · the frozen hypothesis, hyp-B2-v1",
+ "links": {
+  "self": "https://zenodo.org/api/records/24248813",
+  "self_html": "https://zenodo.org/records/24248813",
+  "preview_html": "https://zenodo.org/records/24248813?preview=1",
+  "doi": "https://doi.org/10.5281/zenodo.24248813",
+  "self_doi": "https://doi.org/10.5281/zenodo.24248813",
+  "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24248813",
+  "reserve_doi": "https://zenodo.org/api/records/24248813/draft/pids/doi",
+  "parent": "https://zenodo.org/api/records/24248812",
+  "parent_html": "https://zenodo.org/records/24248812",
+  "parent_doi": "https://doi.org/10.5281/zenodo.24248812",
+  "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24248812",
+  "self_iiif_manifest": "https://zenodo.org/api/iiif/record:24248813/manifest",
+  "self_iiif_sequence": "https://zenodo.org/api/iiif/record:24248813/sequence/default",
+  "files": "https://zenodo.org/api/records/24248813/files",
+  "media_files": "https://zenodo.org/api/records/24248813/media-files",
+  "latest": "https://zenodo.org/api/records/24248813/versions/latest",
+  "latest_html": "https://zenodo.org/records/24248813/latest",
+  "versions": "https://zenodo.org/api/records/24248813/versions",
+  "draft": "https://zenodo.org/api/records/24248813/draft",
+  "access_links": "https://zenodo.org/api/records/24248813/access/links",
+  "access_grants": "https://zenodo.org/api/records/24248813/access/grants",
+  "access_users": "https://zenodo.org/api/records/24248813/access/users",
+  "access_request": "https://zenodo.org/api/records/24248813/access/request",
+  "access": "https://zenodo.org/api/records/24248813/access",
+  "communities": "https://zenodo.org/api/records/24248813/communities",
+  "communities-suggestions": "https://zenodo.org/api/records/24248813/communities-suggestions",
+  "request_deletion": "https://zenodo.org/api/records/24248813/request-deletion",
+  "file_modification": "https://zenodo.org/api/records/24248813/file-modification",
+  "quota_increase": "https://zenodo.org/api/records/24248813/quota-increase",
+  "requests": "https://zenodo.org/api/records/24248813/requests"
+ },
+ "updated": "2026-11-15T15:16:21.786235+00:00",
+ "recid": "24248813",
+ "revision": 4,
+ "files": [
+  {
+   "id": "12314084-2bef-42d5-98c5-19806af8923a",
+   "key": "hyp-B2-v1_what_persists_adds_more_than_it_takes.md",
+   "size": 50824,
+   "checksum": "md5:dd8fee1d8c6193ae7dc378eed27672fa",
+   "links": {
+    "self": "https://zenodo.org/api/records/24248813/files/hyp-B2-v1_what_persists_adds_more_than_it_takes.md/content"
+   }
+  }
+ ],
+ "swh": {},
+ "owners": [
+  {
+   "id": "1585573"
+  }
+ ],
+ "status": "published",
+ "state": "done",
+ "submitted": true
+}
