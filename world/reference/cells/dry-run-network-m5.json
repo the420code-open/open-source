@@ -1,0 +1,9 @@
+{
+ "id": "dry-run-network-m5",
+ "label": "Dry run. Outside every hypothesis's grid (m = 5). Never reported as a result. Stock noise set so that its largest ratio of noise to net loss, an operator alone at the ruin line (a E_r - s = 1 a round), is 2.0, the largest found in B1's grid for a configuration that can outlive the window.",
+ "setting": "network",
+ "overrides": {"m": 5, "sigma_s": 2.0, "sigma_r": 1.0},
+ "topology": "ring",
+ "types": {"hosts": "C", "defectors": 1},
+ "rounds": 4000
+}

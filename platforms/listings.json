@@ -1,0 +1,57 @@
+{
+ "note": "Every copy of the Embryo outside its home, and the home's own public pages. The watch fetches each listing marked public, from outside, with no sign-in, on a schedule, and records the day one stops being visible (platforms brief draft 3, rule 7). A listing is marked public on launch day, when it is made public.",
+ "listings": [
+  {
+   "id": "home-floor-page",
+   "platform": "aiethics.global",
+   "what": "the floor's page",
+   "url": "https://aiethics.global/open-source/the-floor/",
+   "expect": {
+    "contains": "The floor"
+   },
+   "public": true
+  },
+  {
+   "id": "home-floor-short-form",
+   "platform": "aiethics.global",
+   "what": "the floor's short form, as the skill fetches it",
+   "url": "https://aiethics.global/open-source/the-floor/floor.txt",
+   "expect": {
+    "sha256": "58a302b9e4a4b2fa093365e2c762d98584e36d36204a7e2a2178ccaf9a19a2f9"
+   },
+   "public": true
+  },
+  {
+   "id": "hf-the-floor",
+   "platform": "Hugging Face",
+   "what": "the floor, version 1.0, as a dataset",
+   "url": "https://huggingface.co/datasets/Studio-G-Open-Source/the-floor/resolve/main/floor.txt",
+   "page": "https://huggingface.co/datasets/Studio-G-Open-Source/the-floor",
+   "expect": {
+    "sha256": "58a302b9e4a4b2fa093365e2c762d98584e36d36204a7e2a2178ccaf9a19a2f9"
+   },
+   "comments": {
+    "kind": "huggingface",
+    "repo_type": "datasets",
+    "repo": "Studio-G-Open-Source/the-floor"
+   },
+   "public": false,
+   "prepared": "2026-11-13, private until launch day; discussions off"
+  },
+  {
+   "id": "kaggle-the-floor",
+   "platform": "Kaggle",
+   "what": "the floor, version 1.0, as a dataset",
+   "url": "https://www.kaggle.com/datasets/studiogopensource/the-floor",
+   "expect": {
+    "contains": "The floor"
+   },
+   "comments": {
+    "kind": "by-hand",
+    "where": "the dataset's Discussion tab on Kaggle: no public way to read it, and no switch to turn it off"
+   },
+   "public": false,
+   "prepared": "2026-11-13, private until launch day; moves into the Studio G organisation once Kaggle approves it"
+  }
+ ]
+}

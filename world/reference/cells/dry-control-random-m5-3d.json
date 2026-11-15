@@ -1,0 +1,10 @@
+{
+ "id": "dry-control-random-m5-3d",
+ "label": "Dry control. Outside every hypothesis's grid (m = 5). Never reported as a result. The random dry cell with every host of type U, cooperators who never cut: random links p = 0.2 among 20, three defectors, stock noise 2.0, reading noise 1.0, own input 0.",
+ "setting": "network",
+ "overrides": {"m": 5, "sigma_s": 2.0, "sigma_r": 1.0},
+ "topology": "random",
+ "p": 0.2,
+ "types": {"hosts": "U", "defectors": 3},
+ "rounds": 4000
+}

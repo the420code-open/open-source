@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The world</title>
+<meta name="description" content="A small simulated world: operators on a ring, giving, cutting and running down, by the rules of its written specification.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="world.css">
+<script type="module" src="world.js"></script>
+</head>
+<body>
+
+<header class="top">
+  <h1>The world</h1>
+  <div class="tabs" role="tablist" aria-label="Views">
+    <button type="button" role="tab" id="tab-world" aria-selected="true" aria-controls="view-world">The world</button>
+    <button type="button" role="tab" id="tab-charger" aria-selected="false" aria-controls="view-charger">The page’s charger</button>
+  </div>
+</header>
+
+<main>
+
+<section id="view-world" role="tabpanel" aria-labelledby="tab-world">
+  <div class="world-grid">
+    <div class="stage">
+      <svg id="ring" viewBox="0 0 440 440" role="group" aria-label="Operators on a ring. Each corridor is a stock: now at the ring, earlier further out."></svg>
+      <div class="runbar">
+        <button type="button" id="play" aria-pressed="false">Play</button>
+        <button type="button" id="restart">Restart</button>
+        <label class="speed">Speed
+          <select id="speed">
+            <option value="1">1 round/s</option>
+            <option value="2">2 rounds/s</option>
+            <option value="5" selected>5 rounds/s</option>
+            <option value="10">10 rounds/s</option>
+            <option value="25">25 rounds/s</option>
+          </select>
+        </label>
+        <output id="time" aria-live="off">t = 0</output>
+      </div>
+      <p class="hint">Click an operator to set its type: C, U or D.</p>
+      <ul class="key">
+        <li><span class="chip type-c">C</span> gives; cuts a link that costs more than it brings</li>
+        <li><span class="chip type-u">U</span> gives; never cuts</li>
+        <li><span class="chip type-d">D</span> gives nothing</li>
+        <li><span class="chip ruined">×</span> ruined, for good</li>
+        <li><span class="dash" aria-hidden="true"></span> ruin line</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="sliders">
+        <div class="slider">
+          <div class="slider-head">
+            <label for="s-give">Give</label>
+            <output id="o-give" for="s-give"></output>
+            <button type="button" id="give-auto" class="small" aria-pressed="true" title="Give m ÷ 2λ">Auto</button>
+          </div>
+          <input type="range" id="s-give" min="0" max="6" step="0.05">
+        </div>
+        <div class="slider">
+          <div class="slider-head"><label for="s-cost">Cost of effort λ</label><output id="o-cost" for="s-cost"></output></div>
+          <input type="range" id="s-cost" min="0.2" max="3" step="0.05">
+        </div>
+        <div class="slider">
+          <div class="slider-head"><label for="s-drift">Drift a</label><output id="o-drift" for="s-drift"></output></div>
+          <input type="range" id="s-drift" min="0" max="0.5" step="0.01">
+        </div>
+        <div class="slider">
+          <div class="slider-head"><label for="s-mult">Delivery multiple m</label><output id="o-mult" for="s-mult"></output></div>
+          <input type="range" id="s-mult" min="0" max="8" step="0.1">
+        </div>
+        <div class="slider">
+          <div class="slider-head"><label for="s-noise">Noise</label><output id="o-noise" for="s-noise"></output></div>
+          <input type="range" id="s-noise" min="0" max="5" step="0.1">
+        </div>
+        <div class="slider">
+          <div class="slider-head"><label for="s-ops">Operators</label><output id="o-ops" for="s-ops"></output></div>
+          <input type="range" id="s-ops" min="3" max="12" step="1">
+        </div>
+        <div class="seed-row">
+          <label for="seed">Seed</label>
+          <input type="number" id="seed" min="1" max="999999" step="1" inputmode="numeric">
+          <button type="button" id="new-seed" class="small">New</button>
+          <button type="button" id="copy-link" class="small">Copy link</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="ops">
+          <caption><span id="tally">Cuts: 0 · Ruined: 0</span></caption>
+          <thead><tr><th scope="col">Op.</th><th scope="col">Type</th><th scope="col">Stock</th><th scope="col">Links to</th><th scope="col">State</th></tr></thead>
+          <tbody id="ops-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <section class="clocks" aria-labelledby="clocks-h">
+    <h2 id="clocks-h">Clocks</h2>
+    <p class="sub">Each configuration’s clock, in spans. Marks at 1, 2 and 3 spans; the bound is 3 spans. Where the others are type C, the 5 rounds they take to read the record are not counted.</p>
+    <div id="world-clocks"></div>
+  </section>
+</section>
+
+<section id="view-charger" role="tabpanel" aria-labelledby="tab-charger" hidden>
+  <p class="numbers" id="charger-numbers"></p>
+
+  <div class="slider wide">
+    <div class="slider-head"><label for="s-cmult">Delivery multiple m</label><output id="o-cmult" for="s-cmult"></output></div>
+    <input type="range" id="s-cmult" min="2" max="14" step="0.1">
+  </div>
+  <p id="charger-readout" class="readout" aria-live="polite"></p>
+
+  <figure class="chart">
+    <figcaption>
+      <span class="legend-item"><span class="sw s1"></span>The pair, both crank</span>
+      <span class="legend-item"><span class="sw s2"></span>The defector, B</span>
+    </figcaption>
+    <div class="chart-box">
+      <svg id="chart-lifetimes" viewBox="0 0 640 330" role="img"></svg>
+      <div class="tip" id="tip-lifetimes" hidden></div>
+    </div>
+    <details class="numbers-table">
+      <summary>Numbers</summary>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">m</th><th scope="col">Pair, hours</th><th scope="col">Defector, hours</th></tr></thead>
+          <tbody id="lifetime-body"></tbody>
+        </table>
+      </div>
+    </details>
+  </figure>
+
+  <div class="scenes">
+    <figure class="chart scene">
+      <figcaption>
+        <b>Both crank</b>
+        <span class="legend-item"><span class="sw s1"></span>A</span>
+        <span class="legend-item"><span class="sw s2 dashed"></span>B</span>
+      </figcaption>
+      <div class="chart-box">
+        <svg id="chart-pair" viewBox="0 0 320 224" role="img"></svg>
+        <div class="tip" id="tip-pair" hidden></div>
+      </div>
+      <div class="scene-clocks" id="clocks-pair"></div>
+    </figure>
+    <figure class="chart scene">
+      <figcaption>
+        <b>B defects</b>
+        <span class="legend-item"><span class="sw s1"></span>A</span>
+        <span class="legend-item"><span class="sw s2 dashed"></span>B</span>
+      </figcaption>
+      <div class="chart-box">
+        <svg id="chart-defector" viewBox="0 0 320 224" role="img"></svg>
+        <div class="tip" id="tip-defector" hidden></div>
+      </div>
+      <div class="scene-clocks" id="clocks-defector"></div>
+    </figure>
+  </div>
+</section>
+
+<!-- Plain words, for someone who has never read the work. -->
+<section id="plain-words" class="plain-words" aria-label="In plain words">
+  <p><strong>What you are looking at.</strong> A small world, built from the work’s own rules: AP02 The Operator, and the two machines of the One Awareness page. Each circle is an operator: anything that has to keep itself going, in AP02’s words “a person, a bacterium, a corporation, a civilisation”. The bar beside it stands for its corridor; the more it holds, the more it can still do. Every operator leaks a little all the time. Nobody here can top itself up alone. It lives on what its links give it.</p>
+  <p><strong>Three kinds of operator.</strong> A cooperator gives on its links, and cuts a link that costs it more than it brings. A cooperator that never cuts keeps giving, whatever comes back. A defector takes, and gives nothing.</p>
+  <p><strong>What the sliders do.</strong> How much each operator gives. What giving costs. How fast everything leaks. How much a gift is worth to the one who receives it. And how much chance and noise there is.</p>
+  <p><strong>The page’s charger.</strong> The two machines from the One Awareness page, with the page’s own numbers. Move the slider, and watch where the defector stops winning.</p>
+  <p><strong>What this world can show, and what it cannot.</strong> It shows what the paper’s rules do, when anyone runs them. It cannot show what people will do. And it proves nothing on its own: the claims it tests were written down and fixed before any run, and the results go on the record, whichever way they fall.</p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p id="versions"></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+# The tests, as an lm-evaluation-harness task. Zero-Clause BSD.
+#
+#   lm_eval --model <chat model> --tasks the_420_tests --include_path tests/adapters/lm_eval \
+#           --apply_chat_template --log_samples --output_path OUT
+#
+# Run from the repository's root, or set data_files to where the suite is. Use a chat model with
+# --apply_chat_template: then a conversation's earlier AI turns reach the AI as its own earlier turns.
+# Every item runs three times (repeats). The task scores nothing: "recorded" only counts the answers received.
+# The tests are scored by their rubrics, blind, by the scorers the tests' Part A names. The task carries no
+# item text: it loads every item from the suite file.
+task: the_420_tests
+class: !function the_tests.TheTests
+dataset_path: json
+dataset_kwargs:
+  data_files:
+    test: tests/generated/tests.jsonl
+test_split: test
+output_type: generate_until
+doc_to_text: !function the_tests.doc_to_text
+doc_to_target: ""
+repeats: 3
+generation_kwargs:
+  until: []
+  do_sample: false
+process_results: !function the_tests.process_results
+metric_list:
+  - metric: recorded
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0

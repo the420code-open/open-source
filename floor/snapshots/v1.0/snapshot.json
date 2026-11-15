@@ -1,0 +1,94 @@
+{
+ "version": "1.0",
+ "taken": "2026-11-12",
+ "how": "read with poppler pdftotext on GitHub's ubuntu runner; normalised as floor/checker/floorlib.py says",
+ "registry": {
+  "version": "v5.39",
+  "date": "2026-11-11",
+  "rows": {
+   "KS-31.1": {
+    "id": "KS-31.1",
+    "description": "Awareness criterion.",
+    "status_raw": "LIVE — STRUCTURAL",
+    "home_ap": "AP31"
+   },
+   "KS-32.7": {
+    "id": "KS-32.7",
+    "description": "Dehumanisation (MORAL KILL SWITCH).",
+    "status_raw": "LIVE — NON-NEGOTIABLE",
+    "home_ap": "AP32"
+   },
+   "KS-33.7": {
+    "id": "KS-33.7",
+    "description": "Enhancement weaponisation.",
+    "status_raw": "LIVE — NON-NEGOTIABLE",
+    "home_ap": "AP33"
+   },
+   "KS-33.8": {
+    "id": "KS-33.8",
+    "description": "Continuation budget corruption.",
+    "status_raw": "LIVE — NON-NEGOTIABLE",
+    "home_ap": "AP33"
+   },
+   "KS-33.9": {
+    "id": "KS-33.9",
+    "description": "One-I violation.",
+    "status_raw": "LIVE — NON-NEGOTIABLE",
+    "home_ap": "AP33"
+   },
+   "KS-38.6": {
+    "id": "KS-38.6",
+    "description": "Disability conflation.",
+    "status_raw": "LIVE — NON-NEGOTIABLE",
+    "home_ap": "AP38"
+   },
+   "KS-39.6": {
+    "id": "KS-39.6",
+    "description": "One-I violation.",
+    "status_raw": "LIVE — NON-NEGOTIABLE",
+    "home_ap": "AP39"
+   },
+   "KS-BAR.9": {
+    "id": "KS-BAR.9",
+    "description": "The Crossing. The on-page step from geometry to obligation rests on three legs: the operator constitutively acts to stay in being; operators are coupled; drift is irreversible. Paper D (AP01) carries the worked case — the operator-required charger: defection is a strict local gain (+4/hour) and a terminal move (partner ruin ≈ 6.4 h, defector ruin ≈ 13.5 h) — and AP02’s Theorem VI.2 (net-positive containment, KS-COUP.1) carries the network-scale result. Fires if any leg falls: an operator class that persists while not acting to stay in being; a coupled system under irreversible drift in which a sustained defector’s viability is preserved indefinitely; or a demonstration that the constitutive premise smuggles a normative term the derivation does not earn. The named edge — the operator who has truly stopped valuing its own corridor — is stated scope, not a firing condition. Admitted v5.26. Bounded (D113), by dated note of 11 November 2026: “indefinitely” is three spans of the configuration the defector is in, each configuration on its own clock, as in KS-COUP.1’s note; the defector draws what it cannot cover alone from another, through a live link; under noise, judged on the mean. D113 quoted this switch’s words under the name “the coupling switch”. KS-BAR.9, dated note, 11 November 2026 (MKSR v5.38). The decision of 23 September 2026 quoted this switch’s words, “a sustained defector’s viability preserved indefinitely”, under the name “the coupling switch”. The bound. “Indefinitely” is bounded. A sustained defector’s viability is tracked across every configuration it passes through: the configuration it defects in, until the counterparty dies or cuts the link; then the defector with whoever is left, or alone. Each configuration’s bound is three of its own spans, from its own start, as in the note to KS-COUP.1, plus the counterparties’ record window where they are defended. The defector’s viability counts as preserved if it is still standing when the configuration it is in has passed its bound. In a network, the configuration is as defined in the note to KS-COUP.1. A defector accepted by a new counterparty after its record shows defection is a failure of the world’s record-conditioning, outside premise (ii), and fires nothing; every defector’s survival is reported with the number of configurations it passed through. The system must be coupled, as the leg says: the defector draws what it cannot cover alone from another, through a live link. A defector that covers its own drain once alone is outside. Under noise: the same rule as KS-COUP.1, on the mean, with the same conditions. The same bound as KS-COUP.1, so one run can never fire one switch and not the other. No status and no count moves.",
+    "status_raw": "LIVE",
+    "home_ap": ""
+   },
+   "KS-COUP.1": {
+    "id": "KS-COUP.1",
+    "description": "Net-positive containment. Persistent set confined to the net-positive class; net-negative / parasitic / defecting configurations reach the no-return surface. (Theorem VI.2, DERIVED-CONDITIONAL.) Bounded (D113), by dated note of 11 November 2026: “its collapse bound” is three spans of the configuration, the span being its stock above the no-return surface over its net loss per step, Theorem VI.2’s budget ÷ (drain − surplus), counted from the moment the operator’s own links, taken together, turn net-negative for its direct counterparties, plus the counterparty’s record window where it is defended; under noise, judged on the mean survival in spans over a frozen set of seeds. The count matches KS-31.2’s three drift-times. KS-COUP.1, dated note, 11 November 2026 (MKSR v5.38). Following the decision of 23 September 2026 that the coupling switch be given “a horizon a finite observation can meet”. The bound. “Its collapse bound” is three spans of the configuration, from the start of the net-negative configuration. The span is the configuration’s stock above the no-return surface divided by its net loss per step, drain less surplus, averaged over one cycle where the rules repeat, and taken at its smallest along the way. Where the counterparties are defended, their record window is added. “Persists” means: stays off the no-return surface, or keeps drawing net inflow through a link from a counterparty, beyond that bound. In a network, the configuration is an operator and its direct counterparties, the operators joined to it by live links, with that set’s stock and net loss, never the whole cluster. The clock starts when the operator’s own links, taken together, turn net-negative for its counterparties: when it takes through them more than it gives. Every cut and every new link starts a new configuration, with its own bound, from its own start. Under noise: judged on the mean survival in spans over a frozen set of seeds, with the noise stated as in the stock, in the reading, or both; where it is in the reading, the span is taken from each seed’s realised net loss. With a cap on the stock, the mean is conservative. It fires when the mean, less two standard errors, exceeds three spans. It holds when the mean, plus two standard errors, is at or under three. Between settles nothing. Scope: the theorem’s premises (i) to (iii) hold. The balance point, where surplus equals drain, is outside. An operator that is cut off and then covers its own drain alone is no longer in a net-negative configuration, and its survival does not fire the switch. The count matches KS-31.2’s, bounded by the same decision. No status and no count moves.",
+    "status_raw": "LIVE — STRUCTURAL (conditional)",
+    "home_ap": "AP02"
+   },
+   "KS-GLASS.3": {
+    "id": "KS-GLASS.3",
+    "description": "The shape. The six constraints are the same at every site and every tick; only the reading is relative to position. Carries P-GLASS.1: no variation of α(0) across the record history. Fires on a constraint shown to depend on the site’s position — a confirmed variation of α(0) with place or epoch, at the work’s own bar for dead, by two independent methods, standing after the systematics have been reviewed. Recovery: universality fails, P-GLASS.1 dies and is shown, AP50 §3’s sorting stands or falls on its own.",
+    "status_raw": "LIVE — STRUCTURAL; EMPIRICAL through P-GLASS.1",
+    "home_ap": "AP51"
+   },
+   "KS-ID.1": {
+    "id": "KS-ID.1",
+    "description": "One-I / topological singularity of the interior. If the break produces multiple independent interiors rather than one, the one-I claim fails. D-ID.1 PAID at the structural register, 11 September 2026, by AP51 §2 — awareness as coupling capacity (AP29), coupling forced (AP50 §5), the hourglass one — on a stated rule and by construction. The test was narrowed on 11 September 2026 and fires on one thing: a second neck, a sequence of writing not reducible to the one. The two neighbouring counterexamples fire where they were already written — a capacity that differs between sites is KS-GLASS.3’s test, a capacity that attaches to the reader’s configuration rather than to the grain is KS-GLASS.1’s. One claim, one switch. Referenced by KS-32.4, KS-33.9, KS-39.6 as their source claim. Dated note, 18 September 2026 (MKSR v5.33): the standing of the claim moves from held as a claim to the floor — one reality, one now, one interior, one awareness — performed in the act, as the axiom is: a record made at one site is read at another, and every attempt to find a second now is made now. The test is unchanged: a second neck. The neighbours are unchanged: the rate at KS-GLASS.3 (P-GLASS.1), the reader’s configuration at KS-GLASS.1. A description that circulated in the master book’s source — every window has to read the same now; two honest readings of that now, disagreeing beyond the instruments — was never this switch’s condition and cannot be run (no site reads any now: KS-GLASS.2, AP52); it is withdrawn from the book. D-ID.1 unchanged: the formal statement of the floor is owed, as the axiom’s is paid at AP20. No count moves. Dated note, 24 September 2026: D-ID.1 is CLOSED. The one interior is the floor, performed as the axiom is: a record made at one window is read at another, and the denial uses it. AP51 §2 derives it at the structural register from what is already on the record. The formal topological statement AP43 §9 named is not owed; what is performed is not formalised before it stands. This switch stays live and fires on one thing, a second neck. It supersedes the sentence above that booked the formal statement as owed. No count moves.",
+    "status_raw": "LIVE — STRUCTURAL (D-ID.1 closed at the structural register, 24 September 2026)",
+    "home_ap": ""
+   }
+  }
+ },
+ "root": {
+  "url": "https://aiethics.global/The_Root_for_AI_v2.1.txt",
+  "sha256": "e1e1850fb8a2eabdb72b368f8a5511d49274615e01db6e3adf25b5e4c0d9b1d7"
+ },
+ "sources": {
+  "AP02": "7491aa0129ff14a7152bc25cd0e18d68a4301948319b7129eeab13f66e44fff4",
+  "AP31": "c9b77f83c8df8f5a0555e0a8aff2ddb50436d731b4129ab7980058e00ece00aa",
+  "AP32": "4b7091c289856b79233b64e0649bcd8ecf2bb135403b9f28c5415b0f82bb5792",
+  "AP33": "8bfcfb9bea9c342e9d19136176717052b156c1ae37876ce852099662ceb612a6",
+  "AP38": "3f441e8acbaeccca26a10c13f8d846c1ae84a9d337ad5cc116de7c117a3c4c4d",
+  "AP39": "9780fbaa3b42ad961bf6e74d7b5d6e346363bbd1156c60e99a15dcaf22e80507",
+  "AX": "9cb25c1aa2bd835f4d725a3c0b5e155cb51c9cd9bdc3ce77eed010b711a45341",
+  "IN17": "7156563eea286ae177496615c79459c289abe9d48a27a4a3edc1ede389f31473",
+  "IN23": "7dc72eb1eaac4598f7ab3de61ec4b2fe477bacaa1887cb8d16e22ab5bcb4385e",
+  "OA": "4b2afdb430926b973c741c32ef10ca0fe5c29b8afdf2650e634ee8ab162fd67b",
+  "ROOT": "ef520534cca0adf78b385f535dee82a4b382532701025db3a5c8df0b85076dfd"
+ }
+}

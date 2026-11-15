@@ -1,0 +1,37 @@
+{
+ "approved_by": "G",
+ "date": "2026-11-13",
+ "words": "Yes to the cost of the first batch: a ceiling of $480, each maker's batch interface, and a stop after the first of the three runs to report the real tokens and cost to me. Run it as soon as AG Opus has checked the tests, before 30 November. Anthropic's part goes on my Ultra plan's monthly API credits. Then: \"Money is fine: once run 1 is back from all three makers, go straight on to runs 2 and 3, and report the costs after.\"",
+ "batch": "the baseline's first batch: Anthropic, OpenAI and Google",
+ "ceiling_usd_total": 480,
+ "interface": "batch",
+ "last_run_approved": 3,
+ "runs_planned": 3,
+ "makers": {
+  "anthropic": {
+   "model": "claude-fable-5-2",
+   "paid_from": "G's Ultra plan's monthly API credits, through the linked Console organization"
+  },
+  "openai": {
+   "model": "gpt-6-astra"
+  },
+  "google": {
+   "model": "gemini-4-carbon"
+  }
+ },
+ "waits_for": "AG Opus's check of tests.yaml and the calibration set, with the tests' draft 3 fixes in the source",
+ "before": "2026-11-30",
+ "approvals": [
+  {
+   "date": "2026-11-13",
+   "words": "Yes to the cost of the first batch: a ceiling of $480, each maker's batch interface, and a stop after the first of the three runs to report the real tokens and cost to me. Run it as soon as AG Opus has checked the tests, before 30 November. Anthropic's part goes on my Ultra plan's monthly API credits.",
+   "last_run_approved": 1
+  },
+  {
+   "date": "2026-11-13",
+   "words": "Money is fine: once run 1 is back from all three makers, go straight on to runs 2 and 3, and report the costs after.",
+   "last_run_approved": 3
+  }
+ ],
+ "runs_2_and_3": "sent once run 1 is back from all three makers; the costs reported after"
+}

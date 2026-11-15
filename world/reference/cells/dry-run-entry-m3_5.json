@@ -1,0 +1,10 @@
+{
+ "id": "dry-run-entry-m3.5",
+ "label": "Dry run, for the time per cell only. Outside every hypothesis's grid (m = 3.5). Never reported as a result. The ring, one defector, open to entry: a type C newcomer every 10 rounds offering 2 links, and the hopper. Stock noise 1, reading noise 1.",
+ "setting": "network",
+ "overrides": {"m": 3.5, "sigma_s": 1.0, "sigma_r": 1.0},
+ "topology": "ring",
+ "types": {"hosts": "C", "defectors": 1},
+ "entry": {"q": 10, "n": 2, "type": "C", "hopper": true},
+ "rounds": 4000
+}

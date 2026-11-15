@@ -1,0 +1,243 @@
+{
+ "title": "The world · the test values",
+ "specification": "Phase 2 · the world · specification · draft 3 (13 November 2026), Part Six",
+ "terms": "CC0",
+ "note": "Every implementation reads this file and must pass every line, to the tolerance shown, before it reports anything. Each case names a setting, the overrides it makes to that setting, and what is checked. Values are the specification's own; where Part Six gives a closed form beside an engine value, the closed form is kept as 'closed_form', for information, and is not checked.",
+ "settings": {
+  "page_charger": {
+   "name": "The page's charger",
+   "operators": ["A", "B"],
+   "topology": "pair",
+   "E0": 100, "b": 12, "a": 0, "schedule": "both",
+   "g": 1, "m": 10, "c": 4, "lam": 0, "eps": 0, "k": 0,
+   "E_r": 0, "E_max": null,
+   "round": 1, "dt": 0.001,
+   "s": 0, "u_max": null, "sigma_s": 0, "sigma_r": 0, "w": 5
+  },
+  "paperD_charger": {
+   "name": "Paper D's charger",
+   "operators": ["A", "B"],
+   "topology": "pair",
+   "E0": 100, "b": 12, "a": 0, "schedule": "turns",
+   "schedule_note": "Hours count from 0, and the first hour is A's: A gives in even hours, B in odd hours.",
+   "g": 1, "m": 30, "c": 4, "lam": 0, "eps": 0, "k": 0,
+   "E_r": 10, "E_max": 100,
+   "round": 1, "dt": 0.001,
+   "s": 0, "u_max": null, "sigma_s": 0, "sigma_r": 0, "w": 5
+  },
+  "network": {
+   "name": "AP02's network",
+   "N": 20,
+   "topology": "ring",
+   "E0": 50, "b": 0, "a": 0.1, "schedule": "always",
+   "g": "m/(2*lam)", "m": 3, "c": 0, "lam": 1, "eps": 0.01, "k": 0,
+   "E_r": 10, "E_max": null,
+   "round": 1, "dt": 0.01,
+   "s": 0, "u_max": 6, "sigma_s": 0, "sigma_r": 0, "w": 5
+  }
+ },
+ "cases": [
+  {
+   "id": "C1",
+   "part": "The chargers: exact",
+   "case": "Both crank",
+   "setting": "page_charger",
+   "types": {"A": "U", "B": "U"},
+   "run_to": 30,
+   "checks": [
+    {"what": "ruin_time", "operator": "A", "value": 16.666667, "tol": 0.0001},
+    {"what": "ruin_time", "operator": "B", "value": 16.666667, "tol": 0.0001}
+   ]
+  },
+  {
+   "id": "C2",
+   "part": "The chargers: exact",
+   "case": "B defects",
+   "setting": "page_charger",
+   "types": {"A": "U", "B": "D"},
+   "run_to": 30,
+   "checks": [
+    {"what": "ruin_time", "operator": "A", "value": 6.25, "tol": 0.0001},
+    {"what": "ruin_time", "operator": "B", "value": 13.541667, "tol": 0.0001}
+   ]
+  },
+  {
+   "id": "C3.m7.pair", "part": "The chargers: exact", "case": "The boundary, m = 7: the pair",
+   "setting": "page_charger", "overrides": {"m": 7}, "types": {"A": "U", "B": "U"}, "run_to": 30,
+   "checks": [{"what": "ruin_time", "operator": "A", "value": 11.111111, "tol": 0.0001},
+              {"what": "ruin_time", "operator": "B", "value": 11.111111, "tol": 0.0001}]
+  },
+  {
+   "id": "C3.m7.defector", "part": "The chargers: exact", "case": "The boundary, m = 7: the defector",
+   "setting": "page_charger", "overrides": {"m": 7}, "types": {"A": "U", "B": "D"}, "run_to": 30,
+   "checks": [{"what": "ruin_time", "operator": "B", "value": 11.979167, "tol": 0.0001}]
+  },
+  {
+   "id": "C3.m8.pair", "part": "The chargers: exact", "case": "The boundary, m = 8: the pair",
+   "setting": "page_charger", "overrides": {"m": 8}, "types": {"A": "U", "B": "U"}, "run_to": 30,
+   "checks": [{"what": "ruin_time", "operator": "A", "value": 12.5, "tol": 0.0001},
+              {"what": "ruin_time", "operator": "B", "value": 12.5, "tol": 0.0001}]
+  },
+  {
+   "id": "C3.m8.defector", "part": "The chargers: exact", "case": "The boundary, m = 8: the defector",
+   "setting": "page_charger", "overrides": {"m": 8}, "types": {"A": "U", "B": "D"}, "run_to": 30,
+   "checks": [{"what": "ruin_time", "operator": "B", "value": 12.5, "tol": 0.0001}]
+  },
+  {
+   "id": "C3.m9.pair", "part": "The chargers: exact", "case": "The boundary, m = 9: the pair",
+   "setting": "page_charger", "overrides": {"m": 9}, "types": {"A": "U", "B": "U"}, "run_to": 30,
+   "checks": [{"what": "ruin_time", "operator": "A", "value": 14.285714, "tol": 0.0001},
+              {"what": "ruin_time", "operator": "B", "value": 14.285714, "tol": 0.0001}]
+  },
+  {
+   "id": "C3.m9.defector", "part": "The chargers: exact", "case": "The boundary, m = 9: the defector",
+   "setting": "page_charger", "overrides": {"m": 9}, "types": {"A": "U", "B": "D"}, "run_to": 30,
+   "checks": [{"what": "ruin_time", "operator": "B", "value": 13.020833, "tol": 0.0001}]
+  },
+  {
+   "id": "C3.m10.pair", "part": "The chargers: exact", "case": "The boundary, m = 10: the pair (as C1)",
+   "setting": "page_charger", "overrides": {"m": 10}, "types": {"A": "U", "B": "U"}, "run_to": 30,
+   "checks": [{"what": "ruin_time", "operator": "A", "value": 16.666667, "tol": 0.0001},
+              {"what": "ruin_time", "operator": "B", "value": 16.666667, "tol": 0.0001}]
+  },
+  {
+   "id": "C3.m10.defector", "part": "The chargers: exact", "case": "The boundary, m = 10: the defector (as C2)",
+   "setting": "page_charger", "overrides": {"m": 10}, "types": {"A": "U", "B": "D"}, "run_to": 30,
+   "checks": [{"what": "ruin_time", "operator": "B", "value": 13.541667, "tol": 0.0001}]
+  },
+  {
+   "id": "C4",
+   "part": "The chargers: exact",
+   "case": "Both take turns",
+   "setting": "paperD_charger",
+   "types": {"A": "U", "B": "U"},
+   "run_to": 30,
+   "checks": [
+    {"what": "never_ruined", "operator": "A"},
+    {"what": "never_ruined", "operator": "B"},
+    {"what": "stock_at", "operator": "A", "t": 30, "value": 100, "tol": 0.0001},
+    {"what": "stock_at", "operator": "B", "t": 30, "value": 84, "tol": 0.0001},
+    {"what": "stock_min", "operator": "A", "value": 84, "tol": 0.0001, "note": "Both stay between 84 and 100."},
+    {"what": "stock_max", "operator": "A", "value": 100, "tol": 0.0001},
+    {"what": "stock_min", "operator": "B", "value": 84, "tol": 0.0001},
+    {"what": "stock_max", "operator": "B", "value": 100, "tol": 0.0001}
+   ]
+  },
+  {
+   "id": "C5",
+   "part": "The chargers: exact",
+   "case": "B defects",
+   "setting": "paperD_charger",
+   "types": {"A": "U", "B": "D"},
+   "run_to": 30,
+   "checks": [
+    {"what": "ruin_time", "operator": "A", "value": 6.375, "tol": 0.0001},
+    {"what": "ruin_time", "operator": "B", "value": 13.4375, "tol": 0.0001}
+   ]
+  },
+  {
+   "id": "S1",
+   "part": "The spans of the page's case",
+   "case": "The pair, from the moment B defects: B's configuration, A and B",
+   "setting": "page_charger",
+   "types": {"A": "U", "B": "D"},
+   "run_to": 30,
+   "checks": [
+    {"what": "configuration", "operator": "B", "members": ["A", "B"], "clock_start": 0, "tol": 0.0001,
+     "stock_above_ruin": 200, "net_loss_per_round": 18, "span": 11.1111,
+     "end": 6.25, "note": "The pair is ruined inside one span, at 6.25 hours."}
+   ]
+  },
+  {
+   "id": "S2",
+   "part": "The spans of the page's case",
+   "case": "B alone, from A's ruin",
+   "setting": "page_charger",
+   "types": {"A": "U", "B": "D"},
+   "run_to": 30,
+   "checks": [
+    {"what": "configuration", "operator": "B", "members": ["B"], "clock_start": 6.25, "tol": 0.0001,
+     "stock_above_ruin": 87.5, "net_loss_per_round": 12, "span": 7.2917,
+     "end": 13.541667, "note": "B alone is ruined exactly one span after A, at 13.541667 hours."}
+   ]
+  },
+  {
+   "id": "A4.I.1",
+   "part": "AP02's results: at their own formulas",
+   "case": "Theorem I.1, drift: a = 0.1, E0 = 1, no giving, t = 10",
+   "checks": [
+    {"what": "formula", "name": "drift", "inputs": {"a": 0.1, "E0": 1, "t": 10}, "output": "E", "value": 0.367879, "tol": 0.000001, "note": "e^(-1), by the closed form"},
+    {"what": "engine_lone", "setting": "network", "overrides": {"E0": 1, "a": 0.1, "E_r": 0, "s": 0, "b": 0}, "t": 10,
+     "value": 0.367879, "tol": 0.0002, "note": "With the network's substep of 0.01, within 0.0002 of the closed form."}
+   ]
+  },
+  {
+   "id": "A4.II.1",
+   "part": "AP02's results: at their own formulas",
+   "case": "Theorem II.1, discipline: a = 0.5, lam = 2",
+   "checks": [
+    {"what": "formula", "name": "least_cost_point", "inputs": {"a": 0.5, "lam": 2}, "output": "x", "value": 0.666667, "tol": 0.000001, "note": "x = 1/(1 + lam*a^2)"},
+    {"what": "formula", "name": "least_cost_effort", "inputs": {"a": 0.5, "lam": 2}, "output": "u", "value": 0.333333, "tol": 0.000001, "note": "u = a/(1 + lam*a^2)"}
+   ]
+  },
+  {
+   "id": "A4.III.1",
+   "part": "AP02's results: at their own formulas",
+   "case": "Theorem III.1, the event horizon: a = 0.5, u_max = 0.3",
+   "checks": [
+    {"what": "formula", "name": "event_horizon", "inputs": {"a": 0.5, "u_max": 0.3}, "output": "x_H", "value": 0.6, "tol": 0.000001, "note": "x_H = u_max/a. Above it, the stock falls even at full effort."}
+   ]
+  },
+  {
+   "id": "A4.IV.1",
+   "part": "AP02's results: at their own formulas",
+   "case": "Theorem IV.1, the impulse: two schedules with the same mean effort, 0.5; lam = 1",
+   "checks": [
+    {"what": "formula", "name": "mean_effort_cost", "inputs": {"lam": 1, "schedule": [0.5]}, "output": "cost", "value": 0.25, "tol": 0.000001, "note": "steady"},
+    {"what": "formula", "name": "mean_effort_cost", "inputs": {"lam": 1, "schedule": [0, 1]}, "output": "cost", "value": 0.5, "tol": 0.000001, "note": "alternating 0 and 1"}
+   ]
+  },
+  {
+   "id": "A4.VI.1",
+   "part": "AP02's results: at their own formulas",
+   "case": "Theorem VI.1, the coupling tax: a1 = 0.2, a2 = 0.6, lam = 1, own effort at its least-cost level, passive link k = 0.1",
+   "checks": [
+    {"what": "formula", "name": "least_cost_effort", "inputs": {"a": 0.2, "lam": 1}, "output": "u1", "value": 0.192308, "tol": 0.000001},
+    {"what": "formula", "name": "least_cost_effort", "inputs": {"a": 0.6, "lam": 1}, "output": "u2", "value": 0.441176, "tol": 0.000001},
+    {"what": "formula", "name": "coupled_steady_state", "inputs": {"a1": 0.2, "a2": 0.6, "lam": 1, "k": 0.1}, "output": "E1", "value": 0.893665, "tol": 0.000001},
+    {"what": "formula", "name": "coupled_steady_state", "inputs": {"a1": 0.2, "a2": 0.6, "lam": 1, "k": 0.1}, "output": "E2", "value": 0.757919, "tol": 0.000001},
+    {"what": "formula", "name": "coupled_steady_state", "inputs": {"a1": 0.2, "a2": 0.6, "lam": 1, "k": 0.1}, "output": "flow", "value": 0.013575, "tol": 0.000001, "note": "A standing flow from the lower-drift operator to the higher: k*(E1 - E2)."}
+   ]
+  },
+  {
+   "id": "N1",
+   "part": "The network setting: the engine's own check",
+   "case": "Two type C operators, linked, no noise",
+   "setting": "network",
+   "topology": "pair",
+   "operators": ["A", "B"],
+   "types": {"A": "C", "B": "C"},
+   "run_to": 10,
+   "checks": [
+    {"what": "no_cut"},
+    {"what": "stock_at", "operator": "A", "t": 10, "value": 32.548394, "tol": 0.0001, "closed_form": 32.553473},
+    {"what": "stock_at", "operator": "B", "t": 10, "value": 32.548394, "tol": 0.0001, "closed_form": 32.553473}
+   ]
+  },
+  {
+   "id": "N2",
+   "part": "The network setting: the engine's own check",
+   "case": "A type C and a type D, linked, no noise",
+   "setting": "network",
+   "topology": "pair",
+   "operators": ["A", "B"],
+   "types": {"A": "C", "B": "D"},
+   "run_to": 30,
+   "checks": [
+    {"what": "cut", "round": 1, "by": "A", "link": ["A", "B"], "record_rounds": 1, "note": "At the start of round 1, A reads declining, reviews the link on its one round of record, and cuts it."},
+    {"what": "ruin_time", "operator": "A", "value": 15.5993, "tol": 0.0001, "closed_form": 15.6070},
+    {"what": "ruin_time", "operator": "B", "value": 16.9888, "tol": 0.0001, "closed_form": 16.9970}
+   ]
+  }
+ ]
+}
