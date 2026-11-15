@@ -1,0 +1,119 @@
+{
+ "label": "dry, never a result",
+ "reference-D1": {
+  "seeds": 1000,
+  "B2_measure": {
+   "seeds_measured": 1000,
+   "seeds_left_out": 0,
+   "seeds_without": 0,
+   "mean": 0.35920398091915345,
+   "se": 0.002338853154340981,
+   "largest_seed": 0.589535067558407
+  },
+  "B1_measure": {
+   "seeds_measured": 1000,
+   "seeds_left_out": 0,
+   "seeds_without": 0,
+   "mean": 0.2980899895159861,
+   "se": 0.0016538042903660845,
+   "largest_seed": 0.4882464680137615
+  },
+  "watched_a_seed": {
+   "defector": 8.054,
+   "sink": 0.001,
+   "alone": 6.272
+  },
+  "operators_left_alone_a_seed": {
+   "seeds": 1000,
+   "mean": 6.272,
+   "se": 0.03670644852561146
+  }
+ },
+ "reference-D1e": {
+  "seeds": 1000,
+  "B2_measure": {
+   "seeds_measured": 999,
+   "seeds_left_out": 1,
+   "seeds_without": 0,
+   "mean": 0.30524398266582,
+   "se": 0.002276898680418793,
+   "largest_seed": 0.6596152144243886
+  },
+  "B1_measure": {
+   "seeds_measured": 999,
+   "seeds_left_out": 1,
+   "seeds_without": 0,
+   "mean": 0.23330441233016389,
+   "se": 0.0013316846907287106,
+   "largest_seed": 0.4232664503445835
+  },
+  "watched_a_seed": {
+   "defector": 7.935,
+   "sink": 0.0,
+   "alone": 6.277
+  },
+  "operators_left_alone_a_seed": {
+   "seeds": 1000,
+   "mean": 6.277,
+   "se": 0.03640874340864563
+  }
+ },
+ "second-D1e": {
+  "seeds": 1000,
+  "B2_measure": {
+   "seeds_measured": 1000,
+   "seeds_left_out": 0,
+   "seeds_without": 0,
+   "mean": 0.3043809214875131,
+   "se": 0.0023201018967268167,
+   "largest_seed": 0.6611660399464464
+  },
+  "B1_measure": {
+   "seeds_measured": 1000,
+   "seeds_left_out": 0,
+   "seeds_without": 0,
+   "mean": 0.23506074763336934,
+   "se": 0.0013233104816268797,
+   "largest_seed": 0.4518674441654668
+  },
+  "watched_a_seed": {
+   "defector": 7.784,
+   "sink": 0.0,
+   "alone": 6.215
+  },
+  "operators_left_alone_a_seed": {
+   "seeds": 1000,
+   "mean": 6.215,
+   "se": 0.035637691354029166
+  }
+ },
+ "D1e, second engine against reference": {
+  "B2_measure": {
+   "difference": -0.0008630611783068676,
+   "combined_se": 0.003250713831158968,
+   "distance_in_combined_se": -0.2654989713441379
+  },
+  "B1_measure": {
+   "difference": 0.0017563353032054585,
+   "combined_se": 0.0018773744289045768,
+   "distance_in_combined_se": 0.935527445225861
+  },
+  "operators_left_alone": {
+   "difference": -0.06200000000000028,
+   "combined_se": 0.05094743999105001,
+   "distance_in_combined_se": -1.2169404392230871
+  }
+ },
+ "reference, D1 against D1e (uneven drift against even, same seeds)": {
+  "B2_measure": {
+   "difference": 0.053959998253333474,
+   "combined_se": 0.0032641234165490126,
+   "distance_in_combined_se": 16.53123714004128
+  },
+  "operators_left_alone": {
+   "difference": -0.004999999999999893,
+   "combined_se": 0.05170067659093022,
+   "distance_in_combined_se": -0.09671053320174608
+  }
+ }
+}

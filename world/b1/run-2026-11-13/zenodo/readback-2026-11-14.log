@@ -1,0 +1,40 @@
+downloaded b1-run-2-second-engine.tar.gz 1549083
+downloaded b1-run-1-reference-packets-summaries-console.tar.gz 25306222
+downloaded b1-run-3-reference-event-logs-part01-of-11.tar 292966400
+downloaded b1-run-3-reference-event-logs-part02-of-11.tar 248883200
+downloaded b1-run-3-reference-event-logs-part04-of-11.tar 242513920
+downloaded b1-run-3-reference-event-logs-part05-of-11.tar 202004480
+downloaded b1-run-3-reference-event-logs-part03-of-11.tar 238735360
+downloaded b1-run-3-reference-event-logs-part07-of-11.tar 283658240
+downloaded b1-run-3-reference-event-logs-part06-of-11.tar 217753600
+downloaded b1-run-4-world-code.tar.gz 94642
+downloaded b1-run-3-reference-event-logs-part08-of-11.tar 293130240
+downloaded b1-run-5-judgement.tar.gz 38091
+downloaded b1-run-3-reference-event-logs-part09-of-11.tar 290048000
+downloaded b1-run-3-reference-event-logs-part11-of-11.tar 36300800
+downloaded manifest-code-and-judgement.sha256 26562
+downloaded b1-run-3-reference-event-logs-part10-of-11.tar 291266560
+downloaded README.md 4070
+downloaded manifest.sha256 118432
+same    b1-run-2-second-engine.tar.gz 679af9ca499a16f30840b2a619420549fc0c8a4f7cb0f544962d0e61086f1eef
+same    b1-run-1-reference-packets-summaries-console.tar.gz 90b33fdb993c2073024e7c334205f7204c992d7e46f5b64f64161d403e374f0d
+same    b1-run-3-reference-event-logs-part01-of-11.tar a32b473618793d99e22477402f303a05fe73c578c5e912ba4ea666b281ef0f06
+same    b1-run-3-reference-event-logs-part02-of-11.tar 1c27b28b90ffd0cdcd6d8d777f6169e4975ce9bebd233119dbe6bb63cfb24272
+same    b1-run-3-reference-event-logs-part04-of-11.tar 16a822a4e46e2bce6135bed492474a643adb2c05b8d53c7c7e979bb427906c18
+same    b1-run-3-reference-event-logs-part05-of-11.tar f08d6f3f3e75fa209e4b26618de01752ea38826b10fb3ba60faa18e535081338
+same    b1-run-3-reference-event-logs-part03-of-11.tar d61f131c339722fc98b664598891a18cafdd107917353b5f38b64a7926efa59d
+same    b1-run-3-reference-event-logs-part07-of-11.tar 96c740f9567cfb3fb6b17ba5c876b64813f9f0adfff106f664a479c5d7e36de1
+same    b1-run-3-reference-event-logs-part06-of-11.tar a1ff88620004f66dd69596f9a95cad05df3f4957713556df08c40de619167ad8
+same    b1-run-4-world-code.tar.gz 21190b2989fb17fbfa1380e5a960975555efcd85d769533fda6381d10f3d9bae
+same    b1-run-3-reference-event-logs-part08-of-11.tar 8b716b4ff188b77ac205db5db6110cb0c32c0431d555c4cac51fc6c0c90fdf5f
+same    b1-run-5-judgement.tar.gz 3e0007da0ac587b34ae7b9f495ae4629335a05ac8817a7d817e462b5319d3394
+same    b1-run-3-reference-event-logs-part09-of-11.tar bb171be4f10376e7760e506721a0a7b9d56b9a070e5a27bb1ce0cdfada7033c9
+same    b1-run-3-reference-event-logs-part11-of-11.tar 4b9de339a218af4421efae6037d354109d0fcd6fa6b27523088e74705a68c8f8
+same    manifest-code-and-judgement.sha256 68524ba3fa903e0cd2ed33ef3a65057291f4ef3801445f51c5965d0cb33a6ed7
+same    b1-run-3-reference-event-logs-part10-of-11.tar a0e6a2ce035e54009cee83414c72714ef611eb740867a30e2e871d0115d07350
+same    README.md 781d36782aab858f0eba35d53db7413ced52d94e81f798f39657e440aa29b2aa
+same    manifest.sha256 64961ba85bb6956650a0fc46bf03aa1a574e0ddfaab046a1e644d25fd2f332cd
+== 18 of 18 files the same as this computer's
+== manifest.sha256: 928 of 928 files OK []
+== manifest-code-and-judgement.sha256: 236 of 236 files OK []
+== files unpacked: 1164

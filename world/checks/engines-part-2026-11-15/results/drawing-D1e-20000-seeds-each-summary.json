@@ -1,0 +1,64 @@
+{
+ "theory": {
+  "alone": 0.3920946425579442,
+  "careful_givers_every_link_to_a_defector": 0.4435341945518165,
+  "defectors_linked": 4.82407813955584,
+  "links_CC": 21.0,
+  "links_CD": 15.0,
+  "links_left_out": 2.0
+ },
+ "engines": {
+  "reference": {
+   "alone": {
+    "mean": 0.4007,
+    "se": 0.004605218333781264
+   },
+   "careful_givers_every_link_to_a_defector": {
+    "mean": 0.44325,
+    "se": 0.004879053405437028
+   },
+   "defectors_linked": {
+    "mean": 4.81855,
+    "se": 0.002943930741612406
+   },
+   "links_CC": {
+    "mean": 20.9981,
+    "se": 0.028895615019036477
+   },
+   "links_CD": {
+    "mean": 14.9804,
+    "se": 0.024344926078575153
+   },
+   "links_left_out": {
+    "mean": 2.0093,
+    "se": 0.008905876780646674
+   }
+  },
+  "second": {
+   "alone": {
+    "mean": 0.39405,
+    "se": 0.0045326324705247875
+   },
+   "careful_givers_every_link_to_a_defector": {
+    "mean": 0.4364,
+    "se": 0.004888143481664063
+   },
+   "defectors_linked": {
+    "mean": 4.82165,
+    "se": 0.0029218984837836985
+   },
+   "links_CC": {
+    "mean": 21.03315,
+    "se": 0.02890050719002682
+   },
+   "links_CD": {
+    "mean": 14.97445,
+    "se": 0.024466707806007394
+   },
+   "links_left_out": {
+    "mean": 2.0136,
+    "se": 0.008916822723727007
+   }
+  }
+ }
+}

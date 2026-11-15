@@ -1,0 +1,280 @@
+{
+ "created": "2026-11-14T19:22:07.463757+00:00",
+ "modified": "2026-11-14T19:22:08.456765+00:00",
+ "id": 24223400,
+ "conceptrecid": "24223399",
+ "doi": "10.5281/zenodo.24223400",
+ "conceptdoi": "10.5281/zenodo.24223399",
+ "doi_url": "https://doi.org/10.5281/zenodo.24223400",
+ "metadata": {
+  "title": "B1 · The defector does not last · the full run, 13 to 14 November 2026",
+  "doi": "10.5281/zenodo.24223400",
+  "publication_date": "2026-11-14",
+  "description": "<p><strong>B1 · The defector does not last · the full run.</strong> Every file the run of the frozen hypothesis hyp-B1-v1 wrote, the world's code as the run used it, and every cell's judgement, with nothing hidden. The frozen hypothesis is its own record, <a href=\"https://doi.org/10.5281/zenodo.24207719\">10.5281/zenodo.24207719</a>, and this record is its supplement. B1 was frozen and deposited on 13 November 2026, and run that night, as frozen: from 23:08 on 13 November to 00:18 on 14 November, Cape Town time.</p><p>In the frozen text's own terms: in this world a record is exact, so every careful giver cuts a defector within the record's window, and a defector cut off falls. So every cell that could fire held, as its frozen text said it would before any run. In each of those 104 cells the judgement reads \"B1 holds in this cell, and the switches hold\". That is the premises at work. It is not a test the switches could have failed, and it is not counted as support. Of the 104 controls, a defector lasts in 56 and no defector lasts in 48; a control fires nothing. The second engine ran 32 of the cells beside the reference engine, on its own seeds, and agreed in all 32, by the rule set before the run: their averages lie within three standard errors of each other.</p><p><strong>The files.</strong> Five archives, the third in eleven parts, and two manifests beside them. Every file inside an archive keeps the path its manifest gives it. The SHA-256 of each archive:</p><ul><li><code>b1-run-1-reference-packets-summaries-console.tar.gz</code>: the reference engine, seeds 1 to 100; every cell's packet, summary and console output; 624 files. <code>90b33fdb993c2073024e7c334205f7204c992d7e46f5b64f64161d403e374f0d</code></li><li><code>b1-run-2-second-engine.tar.gz</code>: the second engine, seeds 100,001 to 100,100, for its 32 cells; 96 files. <code>679af9ca499a16f30840b2a619420549fc0c8a4f7cb0f544962d0e61086f1eef</code></li><li>Archive 3, the reference engine's event logs, one per cell, each gzipped; 208 files, 2.6 GB, in eleven plain tar parts, every file at its manifest path:<ul><li><code>b1-run-3-reference-event-logs-part01-of-11.tar</code>: 3 files. <code>a32b473618793d99e22477402f303a05fe73c578c5e912ba4ea666b281ef0f06</code></li><li><code>b1-run-3-reference-event-logs-part02-of-11.tar</code>: 3 files. <code>1c27b28b90ffd0cdcd6d8d777f6169e4975ce9bebd233119dbe6bb63cfb24272</code></li><li><code>b1-run-3-reference-event-logs-part03-of-11.tar</code>: 2 files. <code>d61f131c339722fc98b664598891a18cafdd107917353b5f38b64a7926efa59d</code></li><li><code>b1-run-3-reference-event-logs-part04-of-11.tar</code>: 2 files. <code>16a822a4e46e2bce6135bed492474a643adb2c05b8d53c7c7e979bb427906c18</code></li><li><code>b1-run-3-reference-event-logs-part05-of-11.tar</code>: 3 files. <code>f08d6f3f3e75fa209e4b26618de01752ea38826b10fb3ba60faa18e535081338</code></li><li><code>b1-run-3-reference-event-logs-part06-of-11.tar</code>: 2 files. <code>a1ff88620004f66dd69596f9a95cad05df3f4957713556df08c40de619167ad8</code></li><li><code>b1-run-3-reference-event-logs-part07-of-11.tar</code>: 25 files. <code>96c740f9567cfb3fb6b17ba5c876b64813f9f0adfff106f664a479c5d7e36de1</code></li><li><code>b1-run-3-reference-event-logs-part08-of-11.tar</code>: 47 files. <code>8b716b4ff188b77ac205db5db6110cb0c32c0431d555c4cac51fc6c0c90fdf5f</code></li><li><code>b1-run-3-reference-event-logs-part09-of-11.tar</code>: 55 files. <code>bb171be4f10376e7760e506721a0a7b9d56b9a070e5a27bb1ce0cdfada7033c9</code></li><li><code>b1-run-3-reference-event-logs-part10-of-11.tar</code>: 59 files. <code>a0e6a2ce035e54009cee83414c72714ef611eb740867a30e2e871d0115d07350</code></li><li><code>b1-run-3-reference-event-logs-part11-of-11.tar</code>: 7 files. <code>4b9de339a218af4421efae6037d354109d0fcd6fa6b27523088e74705a68c8f8</code></li></ul></li><li><code>b1-run-4-world-code.tar.gz</code>: the world's code as the run used it, from the tag world-ref-v1.0, with the specification's version 1.0; and B1's 208 cells and the runner, as committed before the first cell began; 232 files. <code>21190b2989fb17fbfa1380e5a960975555efcd85d769533fda6381d10f3d9bae</code></li><li><code>b1-run-5-judgement.tar.gz</code>: every cell's judgement, the script that wrote it, and the run's log; 4 files. <code>3e0007da0ac587b34ae7b9f495ae4629335a05ac8817a7d817e462b5319d3394</code></li></ul><p><code>manifest.sha256</code> gives the SHA-256 of each of the run's 928 files, in archives 1 to 3, as it was committed with the judgement. <code>manifest-code-and-judgement.sha256</code> gives the same for the 236 files of archives 4 and 5. To check every file, unpack every archive and part into one folder and run <code>sha256sum -c</code> on each manifest. <code>README.md</code> says the same at more length.</p><p>Terms: CC0 1.0 Universal. Everything built for the open-source work is given away with no restriction.</p>",
+  "access_right": "open",
+  "creators": [
+   {
+    "name": "G",
+    "affiliation": "Studio G, Strand, Cape Town"
+   }
+  ],
+  "keywords": [
+   "the 420 code",
+   "simulation",
+   "frozen hypothesis",
+   "preregistration",
+   "defection",
+   "cooperation",
+   "kill switch",
+   "run data"
+  ],
+  "related_identifiers": [
+   {
+    "identifier": "10.5281/zenodo.24207719",
+    "relation": "isSupplementTo",
+    "resource_type": "publication",
+    "scheme": "doi"
+   }
+  ],
+  "version": "hyp-B1-v1, run of 13 to 14 November 2026",
+  "language": "eng",
+  "resource_type": {
+   "title": "Dataset",
+   "type": "dataset"
+  },
+  "license": {
+   "id": "cc-zero"
+  },
+  "relations": {
+   "version": [
+    {
+     "index": 0,
+     "is_last": true,
+     "parent": {
+      "pid_type": "recid",
+      "pid_value": "24223399"
+     }
+    }
+   ]
+  }
+ },
+ "title": "B1 · The defector does not last · the full run, 13 to 14 November 2026",
+ "links": {
+  "self": "https://zenodo.org/api/records/24223400",
+  "self_html": "https://zenodo.org/records/24223400",
+  "preview_html": "https://zenodo.org/records/24223400?preview=1",
+  "doi": "https://doi.org/10.5281/zenodo.24223400",
+  "self_doi": "https://doi.org/10.5281/zenodo.24223400",
+  "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24223400",
+  "reserve_doi": "https://zenodo.org/api/records/24223400/draft/pids/doi",
+  "parent": "https://zenodo.org/api/records/24223399",
+  "parent_html": "https://zenodo.org/records/24223399",
+  "parent_doi": "https://doi.org/10.5281/zenodo.24223399",
+  "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24223399",
+  "self_iiif_manifest": "https://zenodo.org/api/iiif/record:24223400/manifest",
+  "self_iiif_sequence": "https://zenodo.org/api/iiif/record:24223400/sequence/default",
+  "files": "https://zenodo.org/api/records/24223400/files",
+  "media_files": "https://zenodo.org/api/records/24223400/media-files",
+  "latest": "https://zenodo.org/api/records/24223400/versions/latest",
+  "latest_html": "https://zenodo.org/records/24223400/latest",
+  "versions": "https://zenodo.org/api/records/24223400/versions",
+  "draft": "https://zenodo.org/api/records/24223400/draft",
+  "access_links": "https://zenodo.org/api/records/24223400/access/links",
+  "access_grants": "https://zenodo.org/api/records/24223400/access/grants",
+  "access_users": "https://zenodo.org/api/records/24223400/access/users",
+  "access_request": "https://zenodo.org/api/records/24223400/access/request",
+  "access": "https://zenodo.org/api/records/24223400/access",
+  "communities": "https://zenodo.org/api/records/24223400/communities",
+  "communities-suggestions": "https://zenodo.org/api/records/24223400/communities-suggestions",
+  "request_deletion": "https://zenodo.org/api/records/24223400/request-deletion",
+  "file_modification": "https://zenodo.org/api/records/24223400/file-modification",
+  "quota_increase": "https://zenodo.org/api/records/24223400/quota-increase",
+  "requests": "https://zenodo.org/api/records/24223400/requests"
+ },
+ "updated": "2026-11-14T19:22:08.456765+00:00",
+ "recid": "24223400",
+ "revision": 3,
+ "files": [
+  {
+   "id": "03b2171f-a37d-4a78-a90b-a8a11c3d0606",
+   "key": "b1-run-2-second-engine.tar.gz",
+   "size": 1549083,
+   "checksum": "md5:75ad4cb825985a2e14fbdb7a9f37f56a",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-2-second-engine.tar.gz/content"
+   }
+  },
+  {
+   "id": "9c108788-7b84-4c64-828d-878f0c0191e4",
+   "key": "b1-run-1-reference-packets-summaries-console.tar.gz",
+   "size": 25306222,
+   "checksum": "md5:c0f3fc702f6ec995dd0cd9500d78b89c",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-1-reference-packets-summaries-console.tar.gz/content"
+   }
+  },
+  {
+   "id": "da539fd3-2d70-41e4-bcf6-4fdf0f4007fa",
+   "key": "b1-run-3-reference-event-logs-part01-of-11.tar",
+   "size": 292966400,
+   "checksum": "md5:35025d9e9cca3f3f16e161b1d88c0746",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part01-of-11.tar/content"
+   }
+  },
+  {
+   "id": "dcda3e5d-849e-41e0-8ea8-549cb25cf60d",
+   "key": "b1-run-3-reference-event-logs-part02-of-11.tar",
+   "size": 248883200,
+   "checksum": "md5:4dda9ce29a85d321a8cf827eb445f2c3",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part02-of-11.tar/content"
+   }
+  },
+  {
+   "id": "78f08152-dcb0-4270-856f-c0b223d0fcc9",
+   "key": "b1-run-3-reference-event-logs-part04-of-11.tar",
+   "size": 242513920,
+   "checksum": "md5:f9297b9b3ce41f282da8ea36035ca00c",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part04-of-11.tar/content"
+   }
+  },
+  {
+   "id": "a496617c-c91d-4ba3-bfb9-6a3d1010a32c",
+   "key": "b1-run-3-reference-event-logs-part05-of-11.tar",
+   "size": 202004480,
+   "checksum": "md5:186452af1abdf189c2e3a14e898aa2e1",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part05-of-11.tar/content"
+   }
+  },
+  {
+   "id": "5dbe52d5-346f-4cb8-8b7f-17e67c556d22",
+   "key": "b1-run-3-reference-event-logs-part03-of-11.tar",
+   "size": 238735360,
+   "checksum": "md5:f0b7d41e623ed89c35ff16765682b0d8",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part03-of-11.tar/content"
+   }
+  },
+  {
+   "id": "55dc0068-b88d-493b-95a2-12ba4f9b5c93",
+   "key": "b1-run-3-reference-event-logs-part07-of-11.tar",
+   "size": 283658240,
+   "checksum": "md5:edaab95103541175a342c19d8d383c16",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part07-of-11.tar/content"
+   }
+  },
+  {
+   "id": "e699c99d-70c5-4bb5-82d3-3d31c4840750",
+   "key": "b1-run-3-reference-event-logs-part06-of-11.tar",
+   "size": 217753600,
+   "checksum": "md5:c6ebe514787d7f93cc08ffafc9ba506e",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part06-of-11.tar/content"
+   }
+  },
+  {
+   "id": "619d58eb-74d4-4534-8507-c096c4587264",
+   "key": "b1-run-4-world-code.tar.gz",
+   "size": 94642,
+   "checksum": "md5:774f32dd282e93eba0be44ce34554b2d",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-4-world-code.tar.gz/content"
+   }
+  },
+  {
+   "id": "fe45b8aa-9591-4d5f-99fd-d97c6c4c3681",
+   "key": "b1-run-3-reference-event-logs-part08-of-11.tar",
+   "size": 293130240,
+   "checksum": "md5:14e957cc73e0028456f1935169767871",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part08-of-11.tar/content"
+   }
+  },
+  {
+   "id": "6d52cab7-bbe8-4c6b-8eee-06bcbe4879de",
+   "key": "b1-run-5-judgement.tar.gz",
+   "size": 38091,
+   "checksum": "md5:5b325339f0809dfcf2c3f78e62ac5d5f",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-5-judgement.tar.gz/content"
+   }
+  },
+  {
+   "id": "350d4a13-6f71-4043-8182-ed33e210ef6d",
+   "key": "b1-run-3-reference-event-logs-part09-of-11.tar",
+   "size": 290048000,
+   "checksum": "md5:1ca9bb56f55fb98fe95011e69b13e3b1",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part09-of-11.tar/content"
+   }
+  },
+  {
+   "id": "ad7748b6-b285-436d-a49a-6e01ef90c7e2",
+   "key": "b1-run-3-reference-event-logs-part11-of-11.tar",
+   "size": 36300800,
+   "checksum": "md5:d0f1aab82ca8e0fde16015cd26310d9d",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part11-of-11.tar/content"
+   }
+  },
+  {
+   "id": "3ef8a60a-2b58-4b6f-a7a3-836f3f354c55",
+   "key": "manifest-code-and-judgement.sha256",
+   "size": 26562,
+   "checksum": "md5:22531958a84ba2596fb834cbd90ce60a",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/manifest-code-and-judgement.sha256/content"
+   }
+  },
+  {
+   "id": "15f7566c-d1a3-4a83-b23c-a68e097c5b4b",
+   "key": "b1-run-3-reference-event-logs-part10-of-11.tar",
+   "size": 291266560,
+   "checksum": "md5:9830105ed0b0800b8b9afd8432a55da4",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/b1-run-3-reference-event-logs-part10-of-11.tar/content"
+   }
+  },
+  {
+   "id": "859a8e3d-5ad2-419d-8567-4000017eb480",
+   "key": "README.md",
+   "size": 4070,
+   "checksum": "md5:3534f80a1195083c6c4178ff54c8bb1d",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/README.md/content"
+   }
+  },
+  {
+   "id": "3b5451a2-7e9e-4177-9bb2-33b8bcc3a74d",
+   "key": "manifest.sha256",
+   "size": 118432,
+   "checksum": "md5:9a48f542736cc12e276287c3441c105f",
+   "links": {
+    "self": "https://zenodo.org/api/records/24223400/files/manifest.sha256/content"
+   }
+  }
+ ],
+ "swh": {},
+ "owners": [
+  {
+   "id": "1585573"
+  }
+ ],
+ "status": "published",
+ "stats": {
+  "downloads": 0,
+  "unique_downloads": 0,
+  "views": 0,
+  "unique_views": 0,
+  "version_downloads": 0,
+  "version_unique_downloads": 0,
+  "version_unique_views": 0,
+  "version_views": 0
+ },
+ "state": "done",
+ "submitted": true
+}

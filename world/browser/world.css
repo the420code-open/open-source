@@ -206,7 +206,7 @@ tr.ruined .chip { background: var(--ruined); }
 #ring .node.ruined .dot { fill: var(--ruined); }
 #ring .node .letter { fill: var(--on-type); font-weight: 700; font-size: calc(16px * var(--u, 1)); pointer-events: none; }
 #ring .node.ruined .letter { fill: var(--ruined-ink); }
-#ring .node .name { fill: var(--ink-2); font-size: calc(16px * var(--u, 1)); pointer-events: none; font-variant-numeric: tabular-nums; }
+#ring .node .name, #ring .names .name { fill: var(--ink-2); font-size: calc(16px * var(--u, 1)); pointer-events: none; font-variant-numeric: tabular-nums; }
 #ring .node:hover .dot, #ring .node:focus-visible .dot { stroke: var(--focus); }
 
 /* sliders */

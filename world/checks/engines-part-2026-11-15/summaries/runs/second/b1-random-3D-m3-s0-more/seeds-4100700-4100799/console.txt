@@ -1,0 +1,10 @@
+{
+ "cell": "b1-random-3D-m3-s0-more",
+ "seeds": 100,
+ "mean": 0.4215575703319028,
+ "se": 0.00599302981692297,
+ "largest_seed": 0.7184637553436595,
+ "zone": "holds",
+ "seconds": 479.207
+}
+probe written: …\engines-part\runs\second\b1-random-3D-m3-s0-more\seeds-4100700-4100799\probe.jsonl.gz 100 seeds

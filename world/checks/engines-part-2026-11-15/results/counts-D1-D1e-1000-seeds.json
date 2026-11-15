@@ -1,0 +1,225 @@
+{
+ "reference-D1": {
+  "seeds": 1000,
+  "alone_a_seed": {
+   "mean": 6.272,
+   "se": 0.03670644852561146,
+   "total": 6272
+  },
+  "watched_alone_a_seed": {
+   "mean": 6.272,
+   "se": 0.03670644852561146,
+   "total": 6272
+  },
+  "alone_at_round_0_in_the_drawing_with_every_link": {
+   "mean": 0.3,
+   "se": 0.018610382756578288,
+   "total": 300
+  },
+  "alone_at_round_0_in_the_world_defector_links_left_out": {
+   "mean": 0.407,
+   "se": 0.021721482979364527,
+   "total": 407
+  },
+  "how_they_came_to_be_alone": {
+   "by a counterparty's cut": {
+    "C": {
+     "all": 1,
+     "watched": 1
+    },
+    "D": {
+     "all": 4814,
+     "watched": 4814
+    },
+    "all": 4815,
+    "watched": 4815
+   },
+   "by its own cuts": {
+    "C": {
+     "all": 1050,
+     "watched": 1050
+    },
+    "all": 1050,
+    "watched": 1050
+   },
+   "no link as drawn: drawn links only to defectors, left out": {
+    "D": {
+     "all": 107,
+     "watched": 107
+    },
+    "all": 107,
+    "watched": 107
+   },
+   "no link as drawn: none drawn at all": {
+    "C": {
+     "all": 230,
+     "watched": 230
+    },
+    "D": {
+     "all": 70,
+     "watched": 70
+    },
+    "all": 300,
+    "watched": 300
+   }
+  },
+  "median_round_left_alone": {
+   "by its own cuts": 1.0,
+   "by a counterparty's cut": 5.0
+  },
+  "defectors_configurations_by_how_they_ended": {
+   "a cut": 8095,
+   "its own ruin (alone)": 4991,
+   "standing at the end": 9
+  }
+ },
+ "reference-D1e": {
+  "seeds": 1000,
+  "alone_a_seed": {
+   "mean": 6.277,
+   "se": 0.03640874340864563,
+   "total": 6277
+  },
+  "watched_alone_a_seed": {
+   "mean": 6.277,
+   "se": 0.03640874340864563,
+   "total": 6277
+  },
+  "alone_at_round_0_in_the_drawing_with_every_link": {
+   "mean": 0.3,
+   "se": 0.018610382756578288,
+   "total": 300
+  },
+  "alone_at_round_0_in_the_world_defector_links_left_out": {
+   "mean": 0.407,
+   "se": 0.021721482979364527,
+   "total": 407
+  },
+  "how_they_came_to_be_alone": {
+   "by a counterparty's cut": {
+    "D": {
+     "all": 4819,
+     "watched": 4819
+    },
+    "all": 4819,
+    "watched": 4819
+   },
+   "by its own cuts": {
+    "C": {
+     "all": 1051,
+     "watched": 1051
+    },
+    "all": 1051,
+    "watched": 1051
+   },
+   "no link as drawn: drawn links only to defectors, left out": {
+    "D": {
+     "all": 107,
+     "watched": 107
+    },
+    "all": 107,
+    "watched": 107
+   },
+   "no link as drawn: none drawn at all": {
+    "C": {
+     "all": 230,
+     "watched": 230
+    },
+    "D": {
+     "all": 70,
+     "watched": 70
+    },
+    "all": 300,
+    "watched": 300
+   }
+  },
+  "median_round_left_alone": {
+   "by its own cuts": 1.0,
+   "by a counterparty's cut": 5.0
+  },
+  "defectors_configurations_by_how_they_ended": {
+   "a cut": 7965,
+   "its own ruin (alone)": 4996,
+   "standing at the end": 4
+  }
+ },
+ "second-D1e": {
+  "seeds": 1000,
+  "alone_a_seed": {
+   "mean": 6.215,
+   "se": 0.035637691354029166,
+   "total": 6215
+  },
+  "watched_alone_a_seed": {
+   "mean": 6.215,
+   "se": 0.035637691354029166,
+   "total": 6215
+  },
+  "alone_at_round_0_in_the_drawing_with_every_link": {
+   "mean": 0.264,
+   "se": 0.016869753661170887,
+   "total": 264
+  },
+  "alone_at_round_0_in_the_world_defector_links_left_out": {
+   "mean": 0.381,
+   "se": 0.01995588227158191,
+   "total": 381
+  },
+  "how_they_came_to_be_alone": {
+   "a mix: cp+own": {
+    "C": {
+     "all": 1,
+     "watched": 1
+    },
+    "all": 1,
+    "watched": 1
+   },
+   "by a counterparty's cut": {
+    "D": {
+     "all": 4811,
+     "watched": 4811
+    },
+    "all": 4811,
+    "watched": 4811
+   },
+   "by its own cuts": {
+    "C": {
+     "all": 1022,
+     "watched": 1022
+    },
+    "all": 1022,
+    "watched": 1022
+   },
+   "no link as drawn: drawn links only to defectors, left out": {
+    "D": {
+     "all": 117,
+     "watched": 117
+    },
+    "all": 117,
+    "watched": 117
+   },
+   "no link as drawn: none drawn at all": {
+    "C": {
+     "all": 196,
+     "watched": 196
+    },
+    "D": {
+     "all": 68,
+     "watched": 68
+    },
+    "all": 264,
+    "watched": 264
+   }
+  },
+  "median_round_left_alone": {
+   "by its own cuts": 1,
+   "by a counterparty's cut": 5,
+   "a mix: cp+own": 1
+  },
+  "defectors_configurations_by_how_they_ended": {
+   "a cut": 7821,
+   "its own ruin (alone)": 4996,
+   "standing at the end": 4
+  }
+ }
+}

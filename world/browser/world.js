@@ -173,8 +173,7 @@ function tick(ts) {
 function setPlaying(on) {
   playing = on && !finished();
   const b = $('#play');
-  b.textContent = playing ? 'Pause' : finished() ? 'Run again' : 'Play';
-  b.setAttribute('aria-pressed', String(playing));
+  b.textContent = playing ? 'Pause' : finished() ? 'Run again' : 'Play';   // the label names what it does now
   if (playing && !raf) { lastTs = 0; raf = requestAnimationFrame(tick); }
 }
 
@@ -201,6 +200,9 @@ function buildRing() {
   const gCorr = el('g', { class: 'corridors' }, ring);
   const gLinks = el('g', { class: 'links' }, ring);
   const gNodes = el('g', { class: 'nodes' }, ring);
+  // each operator's number, drawn beside its button and not inside it: the button's name already says "Operator 1",
+  // and a button's visible text must be part of its name (axe, label-content-name-mismatch; WCAG 2.5.3)
+  const gNames = el('g', { class: 'names', 'aria-hidden': 'true' }, ring);
   world.ops.forEach((o, i) => {
     const th = -Math.PI / 2 + 2 * Math.PI * i / N;
     const u = [Math.cos(th), Math.sin(th)], v = [-Math.sin(th), Math.cos(th)];
@@ -215,7 +217,7 @@ function buildRing() {
     el('text', {
       x: C + (R - 32) * u[0], y: C + (R - 32) * u[1], class: 'name',
       'text-anchor': 'middle', 'dominant-baseline': 'central',
-    }, g, o.name);
+    }, gNames, o.name);
     const act = () => cycleType(i);
     g.addEventListener('click', act);
     g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
@@ -278,7 +280,7 @@ function draw(force = false) {
     nd.g.setAttribute('class', `node ${cls}`);
     nd.letter.textContent = o.type;
     const label = `Operator ${o.name}, type ${o.type}, stock ${f2(o.E)}` +
-      (o.alive ? '' : `, ruined at t = ${f2(o.ruinTime)}`) + '. Click to change type.';
+      (o.alive ? '' : `, ruined at t = ${f2(o.ruinTime)}`) + '. Change its type.';
     nd.title.textContent = label;
     nd.g.setAttribute('aria-label', label);
   });
@@ -403,15 +405,18 @@ function syncControls() {
   for (const k of ['cost', 'drift', 'mult', 'noise', 'ops']) {
     $(`#s-${k}`).value = state[k];
     $(`#o-${k}`).textContent = show(k, state[k]);
+    $(`#s-${k}`).setAttribute('aria-valuetext', show(k, state[k]));
   }
   const auto = state.give === 'auto';
   const g = auto ? state.mult / (2 * state.cost) : state.give;
   $('#s-give').value = Math.min(LIMITS.give[1], g);
   $('#o-give').textContent = auto ? `${g.toFixed(2)} · m ÷ 2λ` : show('give', g);
+  $('#s-give').setAttribute('aria-valuetext', $('#o-give').textContent);
   $('#give-auto').setAttribute('aria-pressed', String(auto));
   $('#seed').value = state.seed;
   $('#s-cmult').value = state.cmult;
   $('#o-cmult').textContent = show('cmult', state.cmult);
+  $('#s-cmult').setAttribute('aria-valuetext', show('cmult', state.cmult));
 }
 
 function settingsChanged() {
@@ -829,8 +834,7 @@ function start() {
     resizeTimer = setTimeout(() => { if (chargerShown) scheduleCharger(); else if (world) fillWorldClocks(); }, 150);
   });
   newWorld();
-  const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  setPlaying(!still);
+  setPlaying(false);   // it never starts by itself, for anyone: it waits for play (the room's build brief, 2)
 }
 
 start();

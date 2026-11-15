@@ -1,0 +1,167 @@
+{
+ "reference-D1": {
+  "seeds": 100,
+  "no link at all": {
+   "total": 25,
+   "a_seed": 0.25,
+   "se": 0.04793724854411023
+  },
+  "careful givers whose every link is to a defector": {
+   "total": 36,
+   "a_seed": 0.36,
+   "se": 0.05777000724747866
+  },
+  "defectors with at least one link": {
+   "total": 486,
+   "a_seed": 4.86,
+   "se": 0.03765875486765087
+  },
+  "careful givers alone by their own cuts, of those drawn so": {
+   "total": 36,
+   "a_seed": 0.36,
+   "se": 0.05777000724747866
+  },
+  "careful givers alone by their own cuts, not drawn so": {
+   "total": 44,
+   "a_seed": 0.44,
+   "se": 0.06562827673397122
+  },
+  "careful givers with some links to defectors, some not": {
+   "total": 1016,
+   "a_seed": 10.16,
+   "se": 0.20187004520610569
+  }
+ },
+ "reference-D1e": {
+  "seeds": 100,
+  "no link at all": {
+   "total": 25,
+   "a_seed": 0.25,
+   "se": 0.04793724854411023
+  },
+  "careful givers whose every link is to a defector": {
+   "total": 36,
+   "a_seed": 0.36,
+   "se": 0.05777000724747866
+  },
+  "defectors with at least one link": {
+   "total": 486,
+   "a_seed": 4.86,
+   "se": 0.03765875486765087
+  },
+  "careful givers alone by their own cuts, of those drawn so": {
+   "total": 36,
+   "a_seed": 0.36,
+   "se": 0.05777000724747866
+  },
+  "careful givers alone by their own cuts, not drawn so": {
+   "total": 44,
+   "a_seed": 0.44,
+   "se": 0.06562827673397122
+  },
+  "careful givers with some links to defectors, some not": {
+   "total": 1016,
+   "a_seed": 10.16,
+   "se": 0.20187004520610569
+  }
+ },
+ "second-D1e": {
+  "seeds": 100,
+  "no link at all": {
+   "total": 42,
+   "a_seed": 0.42,
+   "se": 0.06541244437251889
+  },
+  "careful givers whose every link is to a defector": {
+   "total": 49,
+   "a_seed": 0.49,
+   "se": 0.07176701923937659
+  },
+  "defectors with at least one link": {
+   "total": 481,
+   "a_seed": 4.81,
+   "se": 0.0442559132612339
+  },
+  "careful givers alone by their own cuts, of those drawn so": {
+   "total": 49,
+   "a_seed": 0.49,
+   "se": 0.07176701923937659
+  },
+  "careful givers alone by their own cuts, not drawn so": {
+   "total": 67,
+   "a_seed": 0.67,
+   "se": 0.08882510337679879
+  },
+  "careful givers with some links to defectors, some not": {
+   "total": 960,
+   "a_seed": 9.6,
+   "se": 0.18531981638085643
+  }
+ },
+ "reference-B1": {
+  "seeds": 1000,
+  "no link at all": {
+   "total": 317,
+   "a_seed": 0.317,
+   "se": 0.01846217354083348
+  },
+  "careful givers whose every link is to a defector": {
+   "total": 210,
+   "a_seed": 0.21,
+   "se": 0.01476882250276298
+  },
+  "defectors with at least one link": {
+   "total": 2936,
+   "a_seed": 2.936,
+   "se": 0.007743640226919376
+  },
+  "careful givers alone by their own cuts, of those drawn so": {
+   "total": 210,
+   "a_seed": 0.21,
+   "se": 0.01476882250276298
+  },
+  "careful givers alone by their own cuts, not drawn so": {
+   "total": 121,
+   "a_seed": 0.121,
+   "se": 0.01365816772285161
+  },
+  "careful givers with some links to defectors, some not": {
+   "total": 8136,
+   "a_seed": 8.136,
+   "se": 0.06648250840577485
+  }
+ },
+ "second-B1": {
+  "seeds": 1000,
+  "no link at all": {
+   "total": 323,
+   "a_seed": 0.323,
+   "se": 0.018574606752661444
+  },
+  "careful givers whose every link is to a defector": {
+   "total": 264,
+   "a_seed": 0.264,
+   "se": 0.01632698902341061
+  },
+  "defectors with at least one link": {
+   "total": 2931,
+   "a_seed": 2.931,
+   "se": 0.008264823489180353
+  },
+  "careful givers alone by their own cuts, of those drawn so": {
+   "total": 264,
+   "a_seed": 0.264,
+   "se": 0.01632698902341061
+  },
+  "careful givers alone by their own cuts, not drawn so": {
+   "total": 94,
+   "a_seed": 0.094,
+   "se": 0.010643179848018979
+  },
+  "careful givers with some links to defectors, some not": {
+   "total": 8041,
+   "a_seed": 8.041,
+   "se": 0.064834578139466
+  }
+ }
+}

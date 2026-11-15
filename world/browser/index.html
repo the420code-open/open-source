@@ -26,7 +26,7 @@
     <div class="stage">
       <svg id="ring" viewBox="0 0 440 440" role="group" aria-label="Operators on a ring. Each corridor is a stock: now at the ring, earlier further out."></svg>
       <div class="runbar">
-        <button type="button" id="play" aria-pressed="false">Play</button>
+        <button type="button" id="play">Play</button>
         <button type="button" id="restart">Restart</button>
         <label class="speed">Speed
           <select id="speed">
@@ -54,29 +54,29 @@
         <div class="slider">
           <div class="slider-head">
             <label for="s-give">Give</label>
-            <output id="o-give" for="s-give"></output>
+            <output id="o-give" for="s-give" aria-hidden="true"></output>
             <button type="button" id="give-auto" class="small" aria-pressed="true" title="Give m ÷ 2λ">Auto</button>
           </div>
           <input type="range" id="s-give" min="0" max="6" step="0.05">
         </div>
         <div class="slider">
-          <div class="slider-head"><label for="s-cost">Cost of effort λ</label><output id="o-cost" for="s-cost"></output></div>
+          <div class="slider-head"><label for="s-cost">Cost of effort λ</label><output id="o-cost" for="s-cost" aria-hidden="true"></output></div>
           <input type="range" id="s-cost" min="0.2" max="3" step="0.05">
         </div>
         <div class="slider">
-          <div class="slider-head"><label for="s-drift">Drift a</label><output id="o-drift" for="s-drift"></output></div>
+          <div class="slider-head"><label for="s-drift">Drift a</label><output id="o-drift" for="s-drift" aria-hidden="true"></output></div>
           <input type="range" id="s-drift" min="0" max="0.5" step="0.01">
         </div>
         <div class="slider">
-          <div class="slider-head"><label for="s-mult">Delivery multiple m</label><output id="o-mult" for="s-mult"></output></div>
+          <div class="slider-head"><label for="s-mult">Delivery multiple m</label><output id="o-mult" for="s-mult" aria-hidden="true"></output></div>
           <input type="range" id="s-mult" min="0" max="8" step="0.1">
         </div>
         <div class="slider">
-          <div class="slider-head"><label for="s-noise">Noise</label><output id="o-noise" for="s-noise"></output></div>
+          <div class="slider-head"><label for="s-noise">Noise</label><output id="o-noise" for="s-noise" aria-hidden="true"></output></div>
           <input type="range" id="s-noise" min="0" max="5" step="0.1">
         </div>
         <div class="slider">
-          <div class="slider-head"><label for="s-ops">Operators</label><output id="o-ops" for="s-ops"></output></div>
+          <div class="slider-head"><label for="s-ops">Operators</label><output id="o-ops" for="s-ops" aria-hidden="true"></output></div>
           <input type="range" id="s-ops" min="3" max="12" step="1">
         </div>
         <div class="seed-row">
@@ -108,7 +108,7 @@
   <p class="numbers" id="charger-numbers"></p>
 
   <div class="slider wide">
-    <div class="slider-head"><label for="s-cmult">Delivery multiple m</label><output id="o-cmult" for="s-cmult"></output></div>
+    <div class="slider-head"><label for="s-cmult">Delivery multiple m</label><output id="o-cmult" for="s-cmult" aria-hidden="true"></output></div>
     <input type="range" id="s-cmult" min="2" max="14" step="0.1">
   </div>
   <p id="charger-readout" class="readout" aria-live="polite"></p>

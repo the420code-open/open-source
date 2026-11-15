@@ -1,0 +1,24 @@
+reference b1-random-3D-m3-s0-more  4000000-4000099   ok    113 s
+reference b1-random-3D-m3-s0-more  4000300-4000399   ok    113 s
+reference b1-random-3D-m3-s0-more  4000100-4000199   ok    114 s
+reference b1-random-3D-m3-s0-more  4000200-4000299   ok    114 s
+reference b1-random-3D-m3-s0-more  4000500-4000599   ok    221 s
+reference b1-random-3D-m3-s0-more  4000400-4000499   ok    222 s
+reference D1                       2000000-2000099   ok    278 s
+reference D1e                      2000000-2000099   ok    282 s
+reference b1-random-3D-m3-s0-more  4000600-4000699   ok    339 s
+reference b1-random-3D-m3-s0-more  4000700-4000799   ok    410 s
+reference b1-random-3D-m3-s0-more  4000800-4000899   ok    462 s
+second    D1e                      2100000-2100099   ok    543 s
+reference b1-random-3D-m3-s0-more  4000900-4000999   ok    591 s
+second    b1-random-3D-m3-s0-more  4100200-4100299   ok    621 s
+second    b1-random-3D-m3-s0-more  4100300-4100399   ok    627 s
+second    b1-random-3D-m3-s0-more  4100100-4100199   ok    630 s
+second    b1-random-3D-m3-s0-more  4100000-4100099   ok    633 s
+second    b1-random-3D-m3-s0-more  4100400-4100499   ok    686 s
+second    b1-random-3D-m3-s0-more  4100500-4100599   ok    689 s
+second    b1-random-3D-m3-s0-more  4100600-4100699   ok    738 s
+second    b1-random-3D-m3-s0-more  4100700-4100799   ok    762 s
+second    b1-random-3D-m3-s0-more  4100800-4100899   ok    797 s
+second    b1-random-3D-m3-s0-more  4100900-4100999   ok    827 s
+done: 23 runs, 0 failed, 827 s

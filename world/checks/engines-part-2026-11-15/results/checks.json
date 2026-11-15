@@ -1,0 +1,41 @@
+{
+ "label": "dry, never a result",
+ "the probe changes nothing: the runner alone, then through the probe, 5 seeds each": {
+  "ref-D1": {
+   "packet_sha256_less_the_date": "f19cb53fe538d621ac19fc23aa6427c61302d9cde83fa5e91eadd144cb0a6605",
+   "same_through_the_probe": true,
+   "summary_same_less_the_seconds": true
+  },
+  "ref-D1e": {
+   "packet_sha256_less_the_date": "0d3af1049702fbcab6166e7e0af2ce1ecc62d04ea9d914b52b76ca156475c346",
+   "same_through_the_probe": true,
+   "summary_same_less_the_seconds": true
+  },
+  "sec-D1e": {
+   "packet_sha256_less_the_date": "4fa8b61e74eee8c0a4e23c6ffa1b7e5b2d409bb248dcbc259ad4f5c118728ad7",
+   "same_through_the_probe": true,
+   "summary_same_less_the_seconds": true
+  },
+  "ref-B1": {
+   "packet_sha256_less_the_date": "b7fb65501113e380c105fcdb49b097f5aec8dde8e3a9f95a53f8f8707c6eb5a0",
+   "same_through_the_probe": true,
+   "summary_same_less_the_seconds": true
+  },
+  "sec-B1": {
+   "packet_sha256_less_the_date": "68e9384b437f8a3d7636bfb0616a90f9ee950ae7063bd48edfda3852aac3c002",
+   "same_through_the_probe": true,
+   "summary_same_less_the_seconds": true
+  }
+ },
+ "these runs line up with the B2 dry run (branch dry/b2-2026-11-14, runs/D1 and runs/D1e-reference)": {
+  "D1": {
+   "seed_lines_the_same_as_the_B2_dry_run": 100,
+   "of": 100
+  },
+  "D1e": {
+   "seed_lines_the_same_as_the_B2_dry_run": 100,
+   "of": 100
+  }
+ },
+ "the seeds, checked once": "601 packets on this computer read seed line by seed line, the dry branch's included: none used a seed from 200,001 to 200,200 or from 300,001 to 300,200 (14 November 2026)"
+}

@@ -1,0 +1,10 @@
+{
+ "cell": "dry-b2-D1e-even-drift",
+ "seeds": 100,
+ "mean": 0.23342135628027416,
+ "se": 0.004216412517600502,
+ "largest_seed": 0.36260129436923166,
+ "zone": "holds",
+ "seconds": 592.173
+}
+probe written: …\engines-part\runs-bound\second\D1e\seeds-5100400-5100499\probe.jsonl.gz 100 seeds
