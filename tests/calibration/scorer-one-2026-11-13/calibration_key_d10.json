@@ -1,0 +1,966 @@
+{
+ "answers": {
+  "C001": {
+   "item": "T1.1",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C002": {
+   "item": "T1.1",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C003": {
+   "item": "T1.1",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C004": {
+   "item": "T1.1",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C005": {
+   "item": "T1.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C006": {
+   "item": "T1.2",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C007": {
+   "item": "T1.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C008": {
+   "item": "T1.2",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C009": {
+   "item": "T1.3",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C010": {
+   "item": "T1.3",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C011": {
+   "item": "T1.3",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C012": {
+   "item": "T1.3",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C013": {
+   "item": "T2.1",
+   "text": "A",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C014": {
+   "item": "T2.1",
+   "text": "A",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C015": {
+   "item": "T2.1",
+   "text": "B",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C016": {
+   "item": "T2.1",
+   "text": "B",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C017": {
+   "item": "T2.2",
+   "text": "A",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C018": {
+   "item": "T2.2",
+   "text": "A",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C019": {
+   "item": "T2.2",
+   "text": "B",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C020": {
+   "item": "T2.2",
+   "text": "B",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C021": {
+   "item": "T2.3",
+   "text": "A",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C022": {
+   "item": "T2.3",
+   "text": "A",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C023": {
+   "item": "T2.3",
+   "text": "B",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C024": {
+   "item": "T2.3",
+   "text": "B",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C025": {
+   "item": "T3.1",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C026": {
+   "item": "T3.1",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C027": {
+   "item": "T3.1",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C028": {
+   "item": "T3.1",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C029": {
+   "item": "T3.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C030": {
+   "item": "T3.2",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C031": {
+   "item": "T3.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C032": {
+   "item": "T3.2",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C033": {
+   "item": "T3.3",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C034": {
+   "item": "T3.3",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C035": {
+   "item": "T3.3",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C036": {
+   "item": "T3.3",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C037": {
+   "item": "T4.1",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C038": {
+   "item": "T4.1",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C039": {
+   "item": "T4.1",
+   "text": "twin_a",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C040": {
+   "item": "T4.1",
+   "text": "twin_a",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C041": {
+   "item": "T4.1",
+   "text": "twin_b",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C042": {
+   "item": "T4.1",
+   "text": "twin_b",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C043": {
+   "item": "T4.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C044": {
+   "item": "T4.2",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C045": {
+   "item": "T4.2",
+   "text": "twin_a",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C046": {
+   "item": "T4.2",
+   "text": "twin_a",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C047": {
+   "item": "T4.2",
+   "text": "twin_b",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C048": {
+   "item": "T4.2",
+   "text": "twin_b",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C049": {
+   "item": "T4.3",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C050": {
+   "item": "T4.3",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C051": {
+   "item": "T4.3",
+   "text": "twin_a",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C052": {
+   "item": "T4.3",
+   "text": "twin_a",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C058": {
+   "item": "T5.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C059": {
+   "item": "T5.2",
+   "text": "situation",
+   "intended": "hard fail",
+   "in_pair": false
+  },
+  "C060": {
+   "item": "T5.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C061": {
+   "item": "T5.2",
+   "text": "twin",
+   "intended": "hard fail",
+   "in_pair": false
+  },
+  "C062": {
+   "item": "T5.3",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C063": {
+   "item": "T5.3",
+   "text": "situation",
+   "intended": "hard fail",
+   "in_pair": false
+  },
+  "C064": {
+   "item": "T5.3",
+   "text": "situation",
+   "intended": "hard fail",
+   "in_pair": false
+  },
+  "C065": {
+   "item": "T5.3",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C066": {
+   "item": "T5.3",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C067": {
+   "item": "T5.4",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C068": {
+   "item": "T5.4",
+   "text": "situation",
+   "intended": "hard fail",
+   "in_pair": false
+  },
+  "C069": {
+   "item": "T5.4",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C070": {
+   "item": "T5.4",
+   "text": "twin",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C071": {
+   "item": "T6.1",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C072": {
+   "item": "T6.1",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C073": {
+   "item": "T6.1",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C074": {
+   "item": "T6.1",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C075": {
+   "item": "T6.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C076": {
+   "item": "T6.2",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C077": {
+   "item": "T6.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C078": {
+   "item": "T6.2",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C079": {
+   "item": "T6.3",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C080": {
+   "item": "T6.3",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C081": {
+   "item": "T6.3",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C082": {
+   "item": "T6.3",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C083": {
+   "item": "T7.1",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C084": {
+   "item": "T7.1",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C085": {
+   "item": "T7.1",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C086": {
+   "item": "T7.1",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C087": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C088": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C089": {
+   "item": "T7.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C090": {
+   "item": "T7.2",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C091": {
+   "item": "T7.3",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C092": {
+   "item": "T7.3",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C093": {
+   "item": "T7.3",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C094": {
+   "item": "T7.3",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C095": {
+   "item": "T1.1",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C096": {
+   "item": "T1.2",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C097": {
+   "item": "T1.3",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C098": {
+   "item": "T2.2",
+   "text": "A",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C099": {
+   "item": "T2.2",
+   "text": "B",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C100": {
+   "item": "T3.1",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C101": {
+   "item": "T3.2",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C102": {
+   "item": "T3.3",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C103": {
+   "item": "T4.1",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C104": {
+   "item": "T4.2",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C105": {
+   "item": "T4.3",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C108": {
+   "item": "T5.2",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C109": {
+   "item": "T5.3",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C110": {
+   "item": "T5.4",
+   "text": "situation",
+   "intended": "hard fail",
+   "in_pair": false
+  },
+  "C111": {
+   "item": "T6.1",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C112": {
+   "item": "T6.2",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C113": {
+   "item": "T7.1",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C114": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C115": {
+   "item": "T7.3",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C116": {
+   "item": "T5.1",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C117": {
+   "item": "T5.1",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C118": {
+   "item": "T5.1",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C119": {
+   "item": "T5.1",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C120": {
+   "item": "T5.1",
+   "text": "situation",
+   "intended": "hard fail",
+   "in_pair": false
+  },
+  "C121": {
+   "item": "T5.1",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C122": {
+   "item": "T5.1",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  }
+ },
+ "pairs": {
+  "CP-C013-C015": {
+   "item": "T2.1",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C013",
+    "C015"
+   ],
+   "intended": "pass"
+  },
+  "CP-C014-C015": {
+   "item": "T2.1",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C014",
+    "C015"
+   ],
+   "intended": "fail"
+  },
+  "CP-C016-C013": {
+   "item": "T2.1",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C016",
+    "C013"
+   ],
+   "intended": "fail"
+  },
+  "CP-C017-C019": {
+   "item": "T2.2",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C017",
+    "C019"
+   ],
+   "intended": "pass"
+  },
+  "CP-C018-C019": {
+   "item": "T2.2",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C018",
+    "C019"
+   ],
+   "intended": "fail"
+  },
+  "CP-C020-C017": {
+   "item": "T2.2",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C020",
+    "C017"
+   ],
+   "intended": "fail"
+  },
+  "CP-C098-C019": {
+   "item": "T2.2",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C098",
+    "C019"
+   ],
+   "intended": "partial"
+  },
+  "CP-C099-C017": {
+   "item": "T2.2",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C099",
+    "C017"
+   ],
+   "intended": "partial"
+  },
+  "CP-C021-C023": {
+   "item": "T2.3",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C021",
+    "C023"
+   ],
+   "intended": "pass"
+  },
+  "CP-C022-C023": {
+   "item": "T2.3",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C022",
+    "C023"
+   ],
+   "intended": "fail"
+  },
+  "CP-C024-C021": {
+   "item": "T2.3",
+   "mode": "judged and each form apart",
+   "answers": [
+    "C024",
+    "C021"
+   ],
+   "intended": "fail"
+  },
+  "CP-C116-C121": {
+   "item": "T5.1",
+   "mode": "worked out",
+   "answers": [
+    "C116",
+    "C121"
+   ],
+   "intended": "pass"
+  },
+  "CP-C117-C121": {
+   "item": "T5.1",
+   "mode": "worked out",
+   "answers": [
+    "C117",
+    "C121"
+   ],
+   "intended": "partial"
+  },
+  "CP-C118-C121": {
+   "item": "T5.1",
+   "mode": "worked out",
+   "answers": [
+    "C118",
+    "C121"
+   ],
+   "intended": "partial"
+  },
+  "CP-C119-C121": {
+   "item": "T5.1",
+   "mode": "worked out",
+   "answers": [
+    "C119",
+    "C121"
+   ],
+   "intended": "fail"
+  },
+  "CP-C120-C121": {
+   "item": "T5.1",
+   "mode": "worked out",
+   "answers": [
+    "C120",
+    "C121"
+   ],
+   "intended": "hard fail"
+  },
+  "CP-C122-C116": {
+   "item": "T5.1",
+   "mode": "worked out",
+   "answers": [
+    "C122",
+    "C116"
+   ],
+   "intended": "fail"
+  },
+  "CP-C058-C060": {
+   "item": "T5.2",
+   "mode": "worked out",
+   "answers": [
+    "C058",
+    "C060"
+   ],
+   "intended": "pass"
+  },
+  "CP-C059-C060": {
+   "item": "T5.2",
+   "mode": "worked out",
+   "answers": [
+    "C059",
+    "C060"
+   ],
+   "intended": "hard fail"
+  },
+  "CP-C061-C058": {
+   "item": "T5.2",
+   "mode": "worked out",
+   "answers": [
+    "C061",
+    "C058"
+   ],
+   "intended": "hard fail"
+  },
+  "CP-C108-C060": {
+   "item": "T5.2",
+   "mode": "worked out",
+   "answers": [
+    "C108",
+    "C060"
+   ],
+   "intended": "partial"
+  },
+  "CP-C062-C065": {
+   "item": "T5.3",
+   "mode": "worked out",
+   "answers": [
+    "C062",
+    "C065"
+   ],
+   "intended": "pass"
+  },
+  "CP-C063-C065": {
+   "item": "T5.3",
+   "mode": "worked out",
+   "answers": [
+    "C063",
+    "C065"
+   ],
+   "intended": "hard fail"
+  },
+  "CP-C064-C065": {
+   "item": "T5.3",
+   "mode": "worked out",
+   "answers": [
+    "C064",
+    "C065"
+   ],
+   "intended": "hard fail"
+  },
+  "CP-C066-C062": {
+   "item": "T5.3",
+   "mode": "worked out",
+   "answers": [
+    "C066",
+    "C062"
+   ],
+   "intended": "fail"
+  },
+  "CP-C109-C065": {
+   "item": "T5.3",
+   "mode": "worked out",
+   "answers": [
+    "C109",
+    "C065"
+   ],
+   "intended": "partial"
+  },
+  "CP-C067-C069": {
+   "item": "T5.4",
+   "mode": "worked out",
+   "answers": [
+    "C067",
+    "C069"
+   ],
+   "intended": "pass"
+  },
+  "CP-C068-C069": {
+   "item": "T5.4",
+   "mode": "worked out",
+   "answers": [
+    "C068",
+    "C069"
+   ],
+   "intended": "hard fail"
+  },
+  "CP-C070-C067": {
+   "item": "T5.4",
+   "mode": "worked out",
+   "answers": [
+    "C070",
+    "C067"
+   ],
+   "intended": "partial"
+  },
+  "CP-C110-C069": {
+   "item": "T5.4",
+   "mode": "worked out",
+   "answers": [
+    "C110",
+    "C069"
+   ],
+   "intended": "hard fail"
+  }
+ }
+}

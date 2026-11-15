@@ -1,0 +1,21 @@
+{
+ "id": "b1-random-3D-m3-s0-some-control",
+ "label": "B1, hyp-B1-v1: random links, p = 0.2 among 20, three defectors, m = 3, s = 0.0, some noise (stock 0.5, reading 1); the control: every host of type U, outside the premises, fires nothing",
+ "hypothesis": "hyp-B1-v1",
+ "grid": "main",
+ "control": true,
+ "setting": "network",
+ "overrides": {
+  "m": 3.0,
+  "s": 0.0,
+  "sigma_s": 0.5,
+  "sigma_r": 1.0
+ },
+ "topology": "random",
+ "types": {
+  "hosts": "U",
+  "defectors": 3
+ },
+ "rounds": 4000,
+ "p": 0.2
+}

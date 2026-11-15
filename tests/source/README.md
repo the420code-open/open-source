@@ -13,6 +13,8 @@ A conversation is stored as turns, each with who speaks and what they say. Where
 
 AG Opus checks this file against the tests, draft 3, and the final paraphrases, by script, before anything is generated from it.
 
+**At tests-v1.0** (14 November 2026), tests.yaml is built from the tests, draft 11, kept beside it as open_source_phase2_tests_draft11.md, and the same final paraphrases. The held-out items stand at their draft 7. The tag's message gives each file's fingerprint.
+
 The held-out items have the same shape, but are kept elsewhere. They never enter this folder.
 
 Terms: CC0 1.0 Universal.

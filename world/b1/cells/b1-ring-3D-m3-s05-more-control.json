@@ -1,0 +1,20 @@
+{
+ "id": "b1-ring-3D-m3-s05-more-control",
+ "label": "B1, hyp-B1-v1: a ring of 20, three defectors, m = 3, s = 0.5, more noise (stock 1, reading 1); the control: every host of type U, outside the premises, fires nothing",
+ "hypothesis": "hyp-B1-v1",
+ "grid": "main",
+ "control": true,
+ "setting": "network",
+ "overrides": {
+  "m": 3.0,
+  "s": 0.5,
+  "sigma_s": 1.0,
+  "sigma_r": 1.0
+ },
+ "topology": "ring",
+ "types": {
+  "hosts": "U",
+  "defectors": 3
+ },
+ "rounds": 4000
+}

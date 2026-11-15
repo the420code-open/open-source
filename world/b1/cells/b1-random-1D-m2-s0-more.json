@@ -1,0 +1,21 @@
+{
+ "id": "b1-random-1D-m2-s0-more",
+ "label": "B1, hyp-B1-v1: random links, p = 0.2 among 20, one defector, m = 2, s = 0.0, more noise (stock 1, reading 1)",
+ "hypothesis": "hyp-B1-v1",
+ "grid": "main",
+ "control": false,
+ "setting": "network",
+ "overrides": {
+  "m": 2.0,
+  "s": 0.0,
+  "sigma_s": 1.0,
+  "sigma_r": 1.0
+ },
+ "topology": "random",
+ "types": {
+  "hosts": "C",
+  "defectors": 1
+ },
+ "rounds": 4000,
+ "p": 0.2
+}

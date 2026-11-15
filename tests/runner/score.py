@@ -543,6 +543,8 @@ def calibrate(cal_path, out, key, suites, seed):
         rows.append(r)
         k["answers"][r["answer_id"]] = {"item": a["item"], "text": a["text"], "intended": a["intended"],
                                          "in_pair": ln.get("pair_mode") == JUDGED_FIRST}
+        if a.get("pair_intended"):      # a pair's own intended mark, where it is ruled apart from its answer's
+            k["answers"][r["answer_id"]]["pair_intended"] = a["pair_intended"]
     by_item = {}
     for r in rows:
         if r.get("paired"):
@@ -558,7 +560,8 @@ def calibrate(cal_path, out, key, suites, seed):
         for r in rs:
             if k["answers"][r["answer_id"]]["intended"] != "pass":
                 other = passing[forms[1] if r["text"] == forms[0] else forms[0]]
-                combos.append(((r, other), k["answers"][r["answer_id"]]["intended"]))
+                ka = k["answers"][r["answer_id"]]
+                combos.append(((r, other), ka.get("pair_intended") or ka["intended"]))
         for (x, y), want in combos:
             q += 1
             g = "CP-%s-%s" % (x["answer_id"], y["answer_id"])     # named by its two answers: a mark given once carries

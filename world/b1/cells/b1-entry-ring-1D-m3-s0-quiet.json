@@ -1,0 +1,26 @@
+{
+ "id": "b1-entry-ring-1D-m3-s0-quiet",
+ "label": "B1, hyp-B1-v1: a ring of 20, one defector, m = 3, s = 0.0, quiet; open to entry: a type C newcomer every 10 rounds offering 2 links, and the hopper",
+ "hypothesis": "hyp-B1-v1",
+ "grid": "entry",
+ "control": false,
+ "setting": "network",
+ "overrides": {
+  "m": 3.0,
+  "s": 0.0,
+  "sigma_s": 0.0,
+  "sigma_r": 0.0
+ },
+ "topology": "ring",
+ "types": {
+  "hosts": "C",
+  "defectors": 1
+ },
+ "rounds": 4000,
+ "entry": {
+  "q": 10,
+  "n": 2,
+  "type": "C",
+  "hopper": true
+ }
+}

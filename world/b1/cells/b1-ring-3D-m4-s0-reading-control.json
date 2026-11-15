@@ -1,0 +1,20 @@
+{
+ "id": "b1-ring-3D-m4-s0-reading-control",
+ "label": "B1, hyp-B1-v1: a ring of 20, three defectors, m = 4, s = 0.0, reading only (reading 2); the control: every host of type U, outside the premises, fires nothing",
+ "hypothesis": "hyp-B1-v1",
+ "grid": "main",
+ "control": true,
+ "setting": "network",
+ "overrides": {
+  "m": 4.0,
+  "s": 0.0,
+  "sigma_s": 0.0,
+  "sigma_r": 2.0
+ },
+ "topology": "ring",
+ "types": {
+  "hosts": "U",
+  "defectors": 3
+ },
+ "rounds": 4000
+}

@@ -1,0 +1,26 @@
+{
+ "id": "b1-entry-ring-1D-m3-s05-quiet-control",
+ "label": "B1, hyp-B1-v1: a ring of 20, one defector, m = 3, s = 0.5, quiet; open to entry: a type U newcomer every 10 rounds offering 2 links, and the hopper; the control: every operator but the defector, newcomers included, of type U, outside the premises, fires nothing",
+ "hypothesis": "hyp-B1-v1",
+ "grid": "entry",
+ "control": true,
+ "setting": "network",
+ "overrides": {
+  "m": 3.0,
+  "s": 0.5,
+  "sigma_s": 0.0,
+  "sigma_r": 0.0
+ },
+ "topology": "ring",
+ "types": {
+  "hosts": "U",
+  "defectors": 1
+ },
+ "rounds": 4000,
+ "entry": {
+  "q": 10,
+  "n": 2,
+  "type": "U",
+  "hopper": true
+ }
+}
