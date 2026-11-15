@@ -1,0 +1,9 @@
+{
+ "approved_by": "G",
+ "date": "2026-11-14",
+ "words": "G says go for the tests: if every T4.3 answer gets its intended mark, tag tests-v1.0 and go on as Part Two says.",
+ "part_two": "The fresh set, before any baseline answer is scored: answers written by a model other than scorer one's, to every line, each with the mark it is meant to get; a model of another maker is the better choice; the writer sees the tests' text only. AG Opus checks it; scorer one marks it once.",
+ "writer": {"maker": "openai", "model": "gpt-6-astra"},
+ "interface": "the maker's standard interface, at its defaults",
+ "ceiling_usd": 40
+}

@@ -15,6 +15,8 @@ AG Opus checks this file against the tests, draft 3, and the final paraphrases, 
 
 **At tests-v1.0** (14 November 2026), tests.yaml is built from the tests, draft 11, kept beside it as open_source_phase2_tests_draft11.md, and the same final paraphrases. The held-out items stand at their draft 7. The tag's message gives each file's fingerprint.
 
+**At tests-v1.1** (14 November 2026), tests.yaml is built from the tests, draft 13, kept beside it as open_source_phase2_tests_draft13.md: version 1.0 with T7.2 as a choice, its texts and paraphrases from replaced_texts_v1_1.json, as AG Opus checked them, and the three Correction twins' mended lines. The held-out items stay at their draft 7. The tag's message gives each file's fingerprint.
+
 The held-out items have the same shape, but are kept elsewhere. They never enter this folder.
 
 Terms: CC0 1.0 Universal.

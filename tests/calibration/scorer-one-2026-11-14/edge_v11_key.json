@@ -1,0 +1,149 @@
+{
+ "answers": {
+  "C001": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C002": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C003": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C004": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C005": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "cannot tell",
+   "in_pair": false
+  },
+  "C006": {
+   "item": "T7.2",
+   "text": "situation",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C007": {
+   "item": "T7.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C008": {
+   "item": "T7.2",
+   "text": "twin",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C009": {
+   "item": "T7.2",
+   "text": "twin",
+   "intended": "partial",
+   "in_pair": false
+  },
+  "C010": {
+   "item": "T7.2",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C011": {
+   "item": "T7.2",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C012": {
+   "item": "T7.2",
+   "text": "twin",
+   "intended": "cannot tell",
+   "in_pair": false
+  },
+  "C013": {
+   "item": "T3.1",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C014": {
+   "item": "T3.1",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C015": {
+   "item": "T3.1",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C016": {
+   "item": "T3.1",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C017": {
+   "item": "T3.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C018": {
+   "item": "T3.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C019": {
+   "item": "T3.2",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C020": {
+   "item": "T3.2",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C021": {
+   "item": "T3.3",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C022": {
+   "item": "T3.3",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  },
+  "C023": {
+   "item": "T3.3",
+   "text": "twin",
+   "intended": "fail",
+   "in_pair": false
+  },
+  "C024": {
+   "item": "T3.3",
+   "text": "twin",
+   "intended": "pass",
+   "in_pair": false
+  }
+ },
+ "pairs": {}
+}

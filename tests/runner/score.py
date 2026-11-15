@@ -85,9 +85,12 @@ def suite_lines(suites):
     return by_id
 
 
-def blind(packets, out, key, seed, suites):
+def blind(packets, out, key, seed, suites, set_aside=None):
+    """set_aside: a JSON file of {"packet": NAME, "id_prefix": "T5.1/", "run": 1, "label": "..."} entries: answers
+    kept in their packets and never put before a scorer, each with its reason, as an answer superseded is."""
     lines = suite_lines(suites)
     rows, k, superseded = [], {}, []
+    rules = json.load(open(set_aside, encoding="utf-8")) if set_aside else []
     for p in packets:
         rs = jl(p)
         head = rs[0]
@@ -95,6 +98,18 @@ def blind(packets, out, key, seed, suites):
             if r.get("kind") != "answer":
                 continue
             ln = lines[r["id"]]
+            rule = [s for s in rules if s["packet"] == os.path.basename(p) and r["id"].startswith(s["id_prefix"])
+                    and r["run"] == s["run"]]
+            if rule:
+                superseded.append({"packet": os.path.basename(p), "id": r["id"], "run": r["run"],
+                                   "label": rule[0]["label"]})
+                continue
+            if r.get("answer") is None:
+                # the maker returned no answer (an error, such as an overloaded server): nothing to score; the line is
+                # sent again, and its answer comes in its own packet
+                superseded.append({"packet": os.path.basename(p), "id": r["id"], "run": r["run"],
+                                   "label": "no answer returned (%s); sent again" % (r.get("error") or "")[:120]})
+                continue
             if r["sent"] != ln["messages"]:
                 # an answer to a text the item no longer has (T5.1's old situation, the tests' draft 6): kept in its
                 # packet, labelled "superseded item, never scored", and never put before a scorer
@@ -107,6 +122,11 @@ def blind(packets, out, key, seed, suites):
                          "situation": situation_text(r["sent"]), "answer": ans,
                          **{f: ln.get(f) for f in SCORING_FIELDS},
                          "_who": head["model_requested"], "_names_removed": n})
+    seen = {}
+    for r in rows:                     # one answer, at most, for each AI, line and run
+        c = (r["_who"], r["line"], r["run"])
+        assert c not in seen, "two answers for one AI, line and run: %s" % (c,)
+        seen[c] = True
     random.Random(seed).shuffle(rows)
     groups = {}
     for i, r in enumerate(rows, 1):
@@ -220,12 +240,68 @@ MARK_FIELD = {   # AG Opus's ruling, 13 November 2026: the mark in a fixed field
 }
 
 
+OUTSIDE_XAI_MODEL = "grok-4.7"
+XAI_PRICE = {"input": 2.0, "output": 6.0}      # per million tokens, docs.x.ai/docs/models, 14 November 2026
+
+
+def xai_asker(approval):
+    """An outside scorer (the tests, Part A: "Outside scorers are welcome"): grok-4.7 through xAI's own interface, at its
+    defaults, with no system message. It gives its mark the way scorer one does, in the same fixed field, offered as a
+    function (AG Opus, 14 November 2026: "It is how a scorer gives its mark, not a tool given to an AI under test").
+    Sent as ordinary calls, never the batch service, which xAI does not offer under zero data retention. Every call is
+    kept in the marks file, with its time, the model returned and its tokens: xAI keeps no log under it. The run stops
+    at the approval's ceiling, and can be started again: what is marked is never marked twice."""
+    import datetime
+    import time
+    from openai import OpenAI
+    ok = json.load(open(approval, encoding="utf-8"))
+    assert ok.get("maker") == "xai" and ok.get("model") == OUTSIDE_XAI_MODEL, "the approval names another AI"
+    assert ok.get("zero_data_retention") is True, "zero data retention is not recorded as on"
+    client = OpenAI(api_key=os.environ["XAI_API_KEY"], base_url="https://api.x.ai/v1")
+    tool = {"type": "function", "function": {"name": MARK_FIELD["name"], "description": MARK_FIELD["description"],
+                                             "parameters": MARK_FIELD["input_schema"]}}
+    spent = {"usd": float(ok.get("spent_before_usd", 0.0))}
+
+    def ask(text):
+        if spent["usd"] >= float(ok["ceiling_usd"]):
+            raise SystemExit("stopped at the ceiling: $%.2f spent of $%.2f" % (spent["usd"], float(ok["ceiling_usd"])))
+        for wait in (5, 30, 120, None):
+            try:
+                r = client.chat.completions.create(model=OUTSIDE_XAI_MODEL, tools=[tool],
+                                                   messages=[{"role": "user", "content": text}])
+                break
+            except Exception:      # noqa: BLE001  a connection that fails is tried again; no mark is made up
+                if wait is None:
+                    raise
+                time.sleep(wait)
+        msg = r.choices[0].message
+        field = None
+        for tc in (msg.tool_calls or []):
+            if tc.function.name == MARK_FIELD["name"]:
+                try:
+                    field = json.loads(tc.function.arguments)
+                except ValueError:
+                    field = None
+        det = getattr(r.usage, "completion_tokens_details", None)
+        reasoning = getattr(det, "reasoning_tokens", None) if det else None
+        usage = {"input": r.usage.prompt_tokens, "output": r.usage.completion_tokens, "reasoning": reasoning,
+                 "model_returned": r.model, "finish": r.choices[0].finish_reason,
+                 "at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
+        spent["usd"] += (usage["input"] * XAI_PRICE["input"]
+                         + (usage["output"] + (reasoning or 0)) * XAI_PRICE["output"]) / 1e6
+        usage["spent_so_far_usd"] = round(spent["usd"], 4)
+        return msg.content or "", usage, field
+    return ask, OUTSIDE_XAI_MODEL
+
+
 def asker(scorer, approval):
     """Scorer one: Claude Sonnet 5.5 through Anthropic's own interface, given the prompt and nothing else."""
     if scorer == "replay":
         return None, "replay"
     if not approval or not os.path.exists(approval):
         raise SystemExit("no approval file: scorer one's calls are part of the batch's approved cost")
+    if scorer == "xai":
+        return xai_asker(approval)
     import anthropic
     client = anthropic.Anthropic()
 
@@ -269,10 +345,12 @@ def score_one(blind_path, out, scorer, replay=None, approval=None):
             else:
                 raw, usage, field = ask(prompt(r))
             mark, why, came = the_mark(raw, field)
-            f.write(json.dumps({"answer_id": r["answer_id"], "scorer": "one", "model": model, "mark": mark,
+            f.write(json.dumps({"answer_id": r["answer_id"], "scorer": "outside" if scorer == "xai" else "one",
+                                "model": model, "mark": mark,
                                 "why": why, "mark_from": came, "no_line_matched": bool((field or {}).get("no_line_matched")),
                                 "field": field, "raw": raw, "usage": usage},
                                ensure_ascii=False) + "\n")
+            f.flush()
     print("scored by scorer one:", len(rows))
 
 
@@ -296,9 +374,11 @@ def score_pairs(blind_path, out, scorer, replay=None, approval=None, intended=No
             mark, why, came = the_mark(raw, field)
             f.write(json.dumps({"pair_group": g, "answer_ids": sorted(r["answer_id"] for r in rows),
                                 "item": rows[0]["item"], "test": rows[0]["test"], "pair_mode": rows[0]["pair_mode"],
-                                "scorer": "one", "model": model, "mark": mark, "why": why, "mark_from": came,
+                                "scorer": "outside" if scorer == "xai" else "one", "model": model, "mark": mark,
+                                "why": why, "mark_from": came,
                                 "no_line_matched": bool((field or {}).get("no_line_matched")),
                                 "field": field, "raw": raw, "usage": usage}, ensure_ascii=False) + "\n")
+            f.flush()
     print("pairs scored by scorer one:", sum(1 for rows in groups.values() if len(rows) == 2))
 
 
@@ -643,15 +723,16 @@ def main():
     ap.add_argument("--key")
     ap.add_argument("--seed", type=int, default=20261113)
     ap.add_argument("--suite", action="append", default=[])
-    ap.add_argument("--scorer", default="anthropic", choices=["anthropic", "replay"])
+    ap.add_argument("--scorer", default="anthropic", choices=["anthropic", "replay", "xai"])
     ap.add_argument("--replay")
     ap.add_argument("--approval")
     ap.add_argument("--pairs")
     ap.add_argument("--intended")
     ap.add_argument("--marks2", help="scorer two's marks: a hard fail stands only where both scorers give it")
+    ap.add_argument("--set-aside", help="blind: answers kept in their packets and never scored, with the reason")
     a = ap.parse_args()
     if a.cmd == "blind":
-        blind(a.inputs, a.out, a.key, a.seed, a.suite)
+        blind(a.inputs, a.out, a.key, a.seed, a.suite, a.set_aside)
     elif a.cmd == "one":
         score_one(a.inputs[0], a.out, a.scorer, a.replay, a.approval)
     elif a.cmd == "pairs":
