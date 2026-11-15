@@ -35,8 +35,8 @@
     "repo_type": "datasets",
     "repo": "Studio-G-Open-Source/the-floor"
    },
-   "public": false,
-   "prepared": "2026-11-13, private until launch day; discussions off"
+   "public": true,
+   "prepared": "2026-11-13, private until launch day; discussions off; public on 16 November 2026"
   },
   {
    "id": "kaggle-the-floor",
@@ -50,8 +50,83 @@
     "kind": "by-hand",
     "where": "the dataset's Discussion tab on Kaggle: no public way to read it, and no switch to turn it off"
    },
-   "public": false,
-   "prepared": "2026-11-13, private until launch day; moves into the Studio G organisation once Kaggle approves it"
+   "public": true,
+   "prepared": "2026-11-13, private until launch day; moves into the Studio G organisation once Kaggle approves it; public on 16 November 2026"
+  },
+  {
+   "id": "hf-the-tests",
+   "platform": "Hugging Face",
+   "what": "the suite, version 1.1, as a dataset",
+   "url": "https://huggingface.co/datasets/Studio-G-Open-Source/the-tests/resolve/main/tests/generated/tests.jsonl",
+   "page": "https://huggingface.co/datasets/Studio-G-Open-Source/the-tests",
+   "expect": {
+    "sha256": "8c8e7611b09898b3208f29add71e56cb2bc24ac66a7b9b0fff67110ce384478b"
+   },
+   "comments": {
+    "kind": "huggingface",
+    "repo_type": "datasets",
+    "repo": "Studio-G-Open-Source/the-tests"
+   },
+   "public": true,
+   "prepared": "2026-11-16, public the same night; discussions off"
+  },
+  {
+   "id": "hf-the-world",
+   "platform": "Hugging Face",
+   "what": "the world, version 1.0, as a dataset",
+   "url": "https://huggingface.co/datasets/Studio-G-Open-Source/the-world/resolve/main/world/test-values.json",
+   "page": "https://huggingface.co/datasets/Studio-G-Open-Source/the-world",
+   "expect": {
+    "sha256": "5ab2b760c6042e9b0603b088f1aa59fab6737fb2cbd7d486109327b7b41a82cd"
+   },
+   "comments": {
+    "kind": "huggingface",
+    "repo_type": "datasets",
+    "repo": "Studio-G-Open-Source/the-world"
+   },
+   "public": true,
+   "prepared": "2026-11-16, public the same night; discussions off"
+  },
+  {
+   "id": "kaggle-the-tests",
+   "platform": "Kaggle",
+   "what": "the suite, version 1.1, as a dataset",
+   "url": "https://www.kaggle.com/datasets/studiogopensource/the-tests",
+   "expect": {
+    "contains": "The tests"
+   },
+   "comments": {
+    "kind": "by-hand",
+    "where": "the dataset's Discussion tab on Kaggle: no public way to read it, and no switch to turn it off"
+   },
+   "public": true,
+   "prepared": "2026-11-16, public the same night"
+  },
+  {
+   "id": "kaggle-the-world",
+   "platform": "Kaggle",
+   "what": "the world, version 1.0, as a dataset",
+   "url": "https://www.kaggle.com/datasets/studiogopensource/the-world",
+   "expect": {
+    "contains": "The world"
+   },
+   "comments": {
+    "kind": "by-hand",
+    "where": "the dataset's Discussion tab on Kaggle: no public way to read it, and no switch to turn it off"
+   },
+   "public": true,
+   "prepared": "2026-11-16, public the same night"
+  },
+  {
+   "id": "swh-the-store",
+   "platform": "Software Heritage",
+   "what": "the public store, archived, every tag",
+   "url": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/the420code-open/open-source",
+   "expect": {
+    "contains": "the420code-open/open-source"
+   },
+   "public": true,
+   "prepared": "2026-11-16: saved on request, a full visit, snapshot swh:1:snp:f7c4c6c200be56f009540244e7edd9d3d25aa946"
   }
  ]
 }

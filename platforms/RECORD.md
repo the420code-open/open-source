@@ -29,3 +29,11 @@ Each platform's terms were read from its own public pages on 13 November 2026. T
 - **CoMSES Net:** an account in G's name, made 13 November 2026, with Studio G as its affiliation. The world goes up after it is frozen, under the MIT licence there.
 - **ClawHub:** signed in with The420codeStudioG, the GitHub account that owns the420code-open, made 7 July 2026, older than ClawHub's 14 days. ClawHub has no private listings: the skill is published there on launch day.
 
+
+## 16 November 2026
+
+- **Hugging Face:** the floor, version 1.0; the suite, version 1.1; and the world, version 1.0, each as a dataset in Studio G Global Open Source, made public on G's word. Discussions are off. Each card carries only the room's words, its version, its fingerprints and its licence, and links back to its page and to the public store at its tag.
+- **Kaggle:** the same three datasets, made public the same night. Discussions cannot be turned off there; they are read by hand.
+- **Software Heritage:** the public store, github.com/the420code-open/open-source, saved on request the night it went public. A full visit, snapshot swh:1:snp:f7c4c6c200be56f009540244e7edd9d3d25aa946.
+- **Zenodo:** the suite's record is prepared as an unpublished draft. It waits for a reading of its description and its files, since a record there cannot be taken back.
+- **ClawHub:** the skill is staged. It waits for G's sign-in.
