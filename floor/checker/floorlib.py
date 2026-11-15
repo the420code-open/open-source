@@ -1,5 +1,6 @@
 # The floor's shared library: loading the source, normalising text, reading the sources, writing the three forms.
 # Zero-Clause BSD, Studio G. Brief "phase 2, the floor, build" v2.
+import datetime
 import hashlib
 import html
 import io
@@ -54,8 +55,12 @@ def tidy_markup_spaces(text):
 
 
 def html_text(page):
-    """HTML: scripts and styles dropped, tags stripped, entities read, then normalised."""
+    """HTML: scripts and styles dropped, the footer's "Last changed" line dropped, tags stripped, entities read, then
+    normalised. The family's footers give the day the whole site was last published, so that line moves with every
+    publish; it is no part of any page's own text, and kept in, it would make every source look changed."""
     page = re.sub(r"(?is)<(script|style)\b.*?</\1\s*>", " ", page)
+    page = re.sub(r'(?is)<p class="lc">.*?</p>', " ", page)
+    page = re.sub(r'(?is)<time class="lc"[^>]*>.*?</time>', " ", page)
     page = re.sub(r"(?s)<!--.*?-->", " ", page)
     page = re.sub(r"(?s)<[^>]+>", " ", page)
     return tidy_markup_spaces(normalise(html.unescape(page)))
@@ -69,14 +74,32 @@ def pdf_text(data):
         open(p, "wb").write(data)
         out = subprocess.run(["pdftotext", "-enc", "UTF-8", p, "-"], capture_output=True, check=True).stdout.decode("utf-8", "replace")
     out = out.replace("\r\n", "\n").replace("\f", "\n")
-    flat = re.sub(r"\s+", " ", out)
+    # "elsewhere in the same paper" is read with every dash as one hyphen, as everywhere in the comparison
+    flat = normalise(out)
 
     def join(m):
         a, b = m.group(1), m.group(2)
-        hyphenated = re.search(r"(?<![\w-])" + re.escape(a) + r"[-‐‑]" + re.escape(b) + r"(?![\w])", flat)
+        hyphenated = re.search(r"(?<![\w-])" + re.escape(a) + "-" + re.escape(b) + r"(?![\w])", flat)
         return a + "-" + b if hyphenated else a + b
-    out = re.sub(r"(\w+)[-‐‑]\n(\w+)", join, out)
-    return normalise(out)
+    out = re.sub(r"(\w+)[-‐‑­][ \t]*\n[ \t]*(\w+)", join, out)
+    text = normalise(out)
+    # pdftotext (poppler and xpdf both) already joins a word broken at a line's end and drops its hyphen, before
+    # the rule above can see it. So the same rule, from the other side: a word that stands joined, where the same
+    # paper writes it hyphenated elsewhere, takes its hyphen back. Today: social-credit (AP33), NON-NEGOTIABLE (AP38).
+    for a, b in sorted(set(re.findall(r"(?<![\w-])([A-Za-z]{2,})-([A-Za-z]{2,})(?![\w-])", text))):
+        text = re.sub(r"(?<![\w-])" + re.escape(a + b) + r"(?![\w-])", a + "-" + b, text)
+    return text
+
+
+def nearest(line_text, source_text, width=90):
+    """Where a line's opening words stand in its source, for a note a desk can read."""
+    words = line_text.split(" ")
+    for n in (8, 5, 3):
+        probe = " ".join(words[:n])
+        i = source_text.find(probe)
+        if i >= 0:
+            return source_text[i:i + len(line_text) + 20][:width * 3]
+    return None
 
 
 def text_text(data):
@@ -226,6 +249,17 @@ def esc(s):
     return html.escape(s or "", quote=True)
 
 
+MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+          "November", "December")
+
+
+def words(d):
+    """A date for people, in words, as the family's footers write it: 12 November 2026 (AG Opus, 12 November 2026).
+    The machine forms keep the ISO date."""
+    d = datetime.date.fromisoformat(str(d))
+    return "%d %s %d" % (d.day, MONTHS[d.month - 1], d.year)
+
+
 def page_html(floor, fingerprint, json_sha, txt_sha):
     """The page's body, for aiethics.global's own shell (brief Part Two, 1). Plain text only: every line escaped."""
     sources = floor["sources"]
@@ -236,7 +270,7 @@ def page_html(floor, fingerprint, json_sha, txt_sha):
     for l in head:
         out.append("<p>%s</p>" % esc(l["text"]))
     if floor["status"] == "final":
-        out.append('<p class="fl-status">Approved, %s.</p>' % esc(str(floor["date"])))
+        out.append('<p class="fl-status">Approved, %s.</p>' % esc(words(floor["date"])))
     else:
         out.append('<p class="fl-status">Draft. Not yet approved.</p>')
     out.append('<p class="fl-small">Lines with a source are the work’s own. Every other line, headings included, is the desk’s.</p>')
@@ -259,7 +293,7 @@ def page_html(floor, fingerprint, json_sha, txt_sha):
             out.append('<p class="fl-small fl-src"><span class="fl-id">%s</span> Desk wording.%s</p>' % (lid, pend))
     reg = floor["registry"]
     out.append('<div class="fl-foot">')
-    out.append("<p>Version %s. Registry %s, %s.</p>" % (esc(str(floor["version"])), esc(reg["version"]), esc(str(reg["date"]))))
+    out.append("<p>Version %s. Registry %s, %s.</p>" % (esc(str(floor["version"])), esc(reg["version"]), esc(words(reg["date"]))))
     out.append('<p>Fingerprint, the SHA-256 of the source as tagged floor-v%s: <code class="fl-hash">%s</code></p>'
                % (esc(str(floor["version"])), fingerprint))
     out.append('<p>The structured file, <a href="floor.json">floor.json</a>: <code class="fl-hash">%s</code></p>' % json_sha)

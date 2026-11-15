@@ -1,6 +1,6 @@
 floor:
-  version: '0.3'
-  status: draft
+  version: '1.0'
+  status: final
   date: '2026-11-12'
   registry:
     version: v5.39
@@ -81,7 +81,7 @@ floor:
   - id: F-H.2
     part: H
     kind: desk
-    text: The floor. Version 0.3, draft. Its kill switches are read from the Master Kill Switch Registry, v5.39.
+    text: The floor. Version 1.0. Its kill switches are read from the Master Kill Switch Registry, v5.39.
     approval:
       status: approved
       by: G
@@ -120,8 +120,9 @@ floor:
     - AX
     - ROOT
     approval:
-      status: pending
+      status: approved
       by: G
+      when: 12 November 2026
   - id: F0.2
     part: '0'
     kind: work
@@ -236,8 +237,9 @@ floor:
     - OA
     - AP02
     approval:
-      status: pending
+      status: approved
       by: G
+      when: 12 November 2026
   - id: F2.7
     part: '2'
     kind: work
@@ -743,8 +745,9 @@ floor:
     - MKSR
     - OA
     approval:
-      status: pending
+      status: approved
       by: G
+      when: 12 November 2026
   - id: F6.20
     part: '6'
     kind: desk
@@ -1088,7 +1091,7 @@ floor:
   - id: F8.3
     part: '8'
     kind: desk
-    text: 'Version 0.3, draft. Fingerprint: set when the three forms are generated.'
+    text: 'Version 1.0. Fingerprint: set when the three forms are generated.'
     approval:
       status: approved
       by: G
