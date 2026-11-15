@@ -10,10 +10,14 @@ import math
 
 import numpy as np
 
-SPEC = "Phase 2 · the world · specification · version 1.0, 13 November 2026"
+SPEC = "Phase 2 · the world · specification · version 1.1, 15 November 2026"
 ROUNDS = 4000          # Part Nine, point 4: every cell of a hypothesis runs 4,000 rounds, fixed before any run
 TYPES = {"C": 0, "U": 1, "D": 2}
-POINT_19 = "still standing at the end, its counterparties' records on their links to it below zero over the last w rounds: the counterparties' span (Part Nine, point 19)"
+POINT_19 = "still standing at the end, its counterparties' records on their links to it below zero over the last w rounds: the counterparties' span, the shorter (Part Nine, point 19)"
+POINT_21 = "turned net-positive by the record, without a cut, at the start of the first round whose close found the records at zero or above: survival measured to that moment, its span over the samples up to it, the sample at that moment included (Part Nine, point 21)"
+POINT_22 = "ended with its counterparties' records on their links to it below zero over the last w rounds, just before its end: the counterparties' span, the shorter (Part Nine, point 22)"
+# version 1.1, draft 3: points 19 and 22 can only shorten a span, never lengthen one
+NOT_SHORTER = "below zero, but the counterparties' span is not the shorter: the span of points 2, 3 and 14 stands (Part Nine, points 19 and 22, version 1.1, draft 3)"
 TNAME = "CUD"
 
 # The three settings, from the specification's Part Three, "The three settings", and the fourth, for B3.
@@ -58,20 +62,39 @@ class Config:
         d = {"id": self.id, "owner": self.owner, "owner_type": self.owner_type, "members": self.members,
              "start": self.start, "clock_start": self.clock, "end": self.end, "end_reason": self.reason,
              "defended": self.defended, "has_defector": self.has_defector,
-             "has_watched_defector": self.has_watched_defector}
+             "has_watched_defector": self.has_watched_defector,
+             # B2, section 6: a defector's, where its operator is a defector with a counterparty; a sink's, where its
+             # operator is not, with a counterparty; an operator alone, of any type
+             "kind": "an operator alone" if len(self.members) == 1 else
+                     "a defector's" if self.owner_type == "D" else "a sink's",
+             "one_round_record_alone_would_watch": bool(getattr(self, "would1", False))}
+        turn = getattr(self, "turn", None)
         if self.clock is not None:
+            d["returned_and_went_below_again"] = list(getattr(self, "redips", []))
+            d["outside_the_premises"] = getattr(self, "outside", None)
+            if getattr(self, "sink_start_records", None) is not None:
+                d["sink_records_when_its_clock_started"] = self.sink_start_records
+            minloss, cp_minloss, cp_minall = self.minloss, self.cp_minloss, getattr(self, "cp_minall", math.inf)
+            if turn is not None:
+                # point 21: measured to the start of the first round whose close found the records at zero or above,
+                # as point 20 starts a clock, and its span over the samples up to it, the sample at that moment
+                # included (the round's start, after its cuts)
+                minloss, cp_minloss, cp_minall = self.ts
             # Part Nine, point 2: where the configuration loses as a whole, its span is its stock above the ruin
             # line over its net loss; where it gains as a whole, its span is taken over its counterparties alone,
             # their stock above the ruin line over their net loss through their links to the operator. Both are
             # taken at their smallest along the way (point 3), and both are reported.
-            whole = math.isfinite(self.minloss) and self.minloss > 0
-            cp = self.cp_stock0 is not None and math.isfinite(self.cp_minloss) and self.cp_minloss > 0
+            whole = math.isfinite(minloss) and minloss > 0
+            cp = self.cp_stock0 is not None and math.isfinite(cp_minloss) and cp_minloss > 0
             d["stock_above_ruin"] = self.stock0
-            d["net_loss_per_round"] = self.minloss * R if whole else None
+            d["net_loss_per_round"] = minloss * R if whole else None
             d["counterparties_stock_above_ruin"] = self.cp_stock0
-            d["counterparties_net_loss_per_round"] = self.cp_minloss * R if cp else None
-            d["span_whole"] = self.stock0 / self.minloss if whole else None
-            d["span_counterparties"] = self.cp_stock0 / self.cp_minloss if cp else None
+            d["counterparties_net_loss_per_round"] = cp_minloss * R if cp else None
+            d["span_whole"] = self.stock0 / minloss if whole else None
+            d["span_counterparties"] = self.cp_stock0 / cp_minloss if cp else None
+            d["point_14"] = bool(whole and cp)
+            d["point_21"] = POINT_21 if turn is not None else None
+            d["turned_net_positive_at"] = turn
             if whole or cp:
                 # point 14 (draft 5): at each sample the span that applies is the whole's where the whole loses and
                 # the counterparties' where it gains; the configuration's span is the longest of those that applied
@@ -85,30 +108,43 @@ class Config:
                 # point 19: a configuration still standing at the end, whose counterparties' records on their links
                 # to the operator, added together over the last w rounds, are below zero, takes the counterparties'
                 # span of point 2: their stock above the ruin line when the clock started, over their smallest net
-                # loss through their links to the operator, taken at every sample (point 3). Point 14's span is kept.
+                # loss through their links to the operator, taken at every sample (point 3), where that span is the
+                # shorter; where it is not, the span of points 2, 3 and 14 stands (version 1.1, draft 3: points 19
+                # and 22 only shorten a span, never lengthen one). Point 14's span is kept beside it.
                 rec = getattr(self, "cp_record_w", None)
                 d["counterparties_records_last_w_rounds"] = rec
                 d["point_19"] = None
-                if self.reason == "run ended" and rec is not None and rec < 0:
-                    cpa = getattr(self, "cp_minall", math.inf)
+                d["point_22"] = None
+                # point 22: point 19 at every end, whenever it comes; at the run's end it is point 19 itself. A
+                # configuration that turned net-positive (point 21) stood at zero or above to its end, and is not read.
+                at_end = self.reason == "run ended"
+                if turn is None and rec is not None and rec < 0:
+                    which = "point_19" if at_end else "point_22"
+                    cpa = cp_minall
                     if self.cp_stock0 is not None and math.isfinite(cpa) and cpa > 0:
-                        d["span_by_point_14"] = span
-                        d["span_used_by_point_14"] = d["span_used"]
+                        span_cp = self.cp_stock0 / cpa
                         d["counterparties_net_loss_per_round_every_sample"] = cpa * R
-                        span = self.cp_stock0 / cpa
-                        d["span_counterparties_point_19"] = span
-                        d["span_used"] = "counterparties (point 19)"
-                        d["point_19"] = POINT_19
+                        d["span_counterparties_every_sample"] = span_cp
+                        if span_cp < span:
+                            d["span_by_point_14"] = span
+                            d["span_used_by_point_14"] = d["span_used"]
+                            span = span_cp
+                            d["span_counterparties_" + which] = span
+                            d["span_used"] = "counterparties (%s)" % which.replace("_", " ")
+                            d[which] = POINT_19 if at_end else POINT_22
+                        else:
+                            d[which + "_not_applied"] = NOT_SHORTER
                     else:
-                        d["point_19"] = "applies, but the counterparties lost at no sample: no span"
+                        d[which] = "applies, but the counterparties lost at no sample: no span"
                 window = w * R if self.defended else 0.0     # point 5: where at least one counterparty is type C
-                surv = self.end - self.clock
+                surv = (turn if turn is not None else self.end) - self.clock
                 bound = 3.0 * span + window
                 d.update(span=span, bound=bound, survival=surv, survival_spans=surv / span,
                          survival_spans_net=max(0.0, surv - window) / span,
                          within_bound=surv <= bound + 1e-9)
-                # point 4: one still standing when the run ends, whose bound has not yet come, is too long to judge
-                d["judged"] = not (self.reason == "run ended" and surv < bound - 1e-9)
+                # point 4: one still standing when the run ends, whose bound has not yet come, is too long to judge;
+                # one that turned net-positive is judged to its turn (point 21)
+                d["judged"] = turn is not None or not (self.reason == "run ended" and surv < bound - 1e-9)
             else:
                 d["span_used"] = None
                 d["span"] = None
@@ -219,6 +255,11 @@ class World:
         self.erate = np.zeros((S, width, 2))             # per end, received less spent, per unit of time
         self.eacc = np.zeros((S, width, 2))              # per end, the record of the round so far
         self.eact = np.zeros((S, width), bool)           # live at the start of this round
+        # B2's section 10: the part of each record that is passive flow, kept apart so that a sink's record can be
+        # read without it. It is never read by any rule of the world.
+        self.eacc_pf = np.zeros((S, width, 2))
+        self.ebuf_pf = np.zeros((S, width, 2, w))
+        self.elast_pf = np.zeros((S, width, 2))
 
         self.rbuf = np.zeros((S, N, w))                  # the last w readings, newest last
         self.rcount = np.zeros((S, N), np.int64)
@@ -245,6 +286,14 @@ class World:
         self.k_cproundmin = np.full((S, N), np.inf)
         self.k_cpminall = np.full((S, N), np.inf)        # point 19: the same, at every sample, whatever the whole
         self.k_cproundall = np.full((S, N), np.inf)
+        # Part Nine, point 21: the start of the round from which the counterparties' records over the window have
+        # stood at zero or above at every round's close (nan while they have not), and the samples up to it
+        self.k_turn = np.full((S, N), np.nan)
+        self.k_rs = np.full((3, S, N), np.inf)          # at the current round's start: minloss, cpminloss, cpminall
+        self.k_ts = np.full((3, S, N), np.inf)          # ... as they stood at the start of the turn's round
+        self.k_would1 = np.zeros((S, N), bool)          # one round's record alone below zero at some close
+        self.k_outside = np.full((S, N), np.nan)        # a defector counterparty's own record over the window below 0
+        self.falls_unwatched = []                        # every fall of an operator in no watched configuration
         self.panic_on = np.zeros((S, N), bool)           # B3's panic: on below the lower line, off above the upper
         self.r = 0
         self.sub_mark = 0
@@ -289,6 +338,10 @@ class World:
         self.k_cpstock_start, self.k_cpstock0 = pad(self.k_cpstock_start, np.nan), pad(self.k_cpstock0, np.nan)
         self.k_cpminloss, self.k_cproundmin = pad(self.k_cpminloss, np.inf), pad(self.k_cproundmin, np.inf)
         self.k_cpminall, self.k_cproundall = pad(self.k_cpminall, np.inf), pad(self.k_cproundall, np.inf)
+        self.k_turn, self.k_would1, self.k_outside = pad(self.k_turn, np.nan), pad(self.k_would1, False), \
+            pad(self.k_outside, np.nan)
+        self.k_rs = np.concatenate([self.k_rs, np.full((3, S, n_new), np.inf)], axis=2)
+        self.k_ts = np.concatenate([self.k_ts, np.full((3, S, n_new), np.inf)], axis=2)
         self.panic_on = pad(self.panic_on, False)
         self.E_snap = pad(self.E_snap, float(self.P["E0"]))
         for attr in ("F", "A1", "B1", "L", "g_now"):
@@ -310,6 +363,8 @@ class World:
         self.eage, self.ebuf, self.etotal = cat(self.eage, 0), cat(self.ebuf, 0.0), cat(self.etotal, 0.0)
         self.elast, self.erate, self.eacc = cat(self.elast, 0.0), cat(self.erate, 0.0), cat(self.eacc, 0.0)
         self.eact = cat(self.eact, False)
+        self.eacc_pf, self.ebuf_pf, self.elast_pf = cat(self.eacc_pf, 0.0), cat(self.ebuf_pf, 0.0), \
+            cat(self.elast_pf, 0.0)
 
     def _flat(self, idx):
         return idx + (np.arange(self.S) * self.N)[:, None]
@@ -454,6 +509,12 @@ class World:
                                           for j in c.midx))
         c.clock, c.stock0, c.minloss = None, None, np.inf
         c.cp_stock0, c.cp_minloss = None, np.inf
+        # its own links, as they stand when it opens: point 22 reads them just before its end, whatever ends it
+        c.eidx = [int(e) for e in np.nonzero(self.elive[si] & ((self.ei[si] == i) | (self.ej[si] == i)))[0]]
+        c.redips, c.turn, c.outside, c.sink_start_records = [], None, None, None
+        self.k_turn[si, i], self.k_would1[si, i], self.k_outside[si, i] = np.nan, False, np.nan
+        self.k_rs[:, si, i] = np.inf
+        self.k_ts[:, si, i] = np.inf
         self.cfgs.append(c)
         loss = -float(sum(D_row[j] for j in c.midx))
         stock = float(sum(E_row[j] - self.P["E_r"] for j in c.midx))
@@ -516,8 +577,16 @@ class World:
             c.cp_stock0 = None if math.isnan(self.k_cpstock0[si, i]) else float(self.k_cpstock0[si, i])
             c.cp_minloss = float(self.k_cpminloss[si, i])
             c.cp_minall = float(self.k_cpminall[si, i])
-            if reason == "run ended" and len(c.midx) > 1:
-                c.cp_record_w = self._cp_record_last_w(si, i)
+            if len(c.midx) > 1:
+                # points 19 and 22: the counterparties' records over the last w rounds, on the configuration's own
+                # links, as they stood just before its end (the round just closed included, a part-round not)
+                c.cp_record_w = self._cp_record_cfg(si, i, c)
+            if not math.isnan(self.k_turn[si, i]):
+                c.turn = float(self.k_turn[si, i])
+                c.ts = tuple(float(x) for x in self.k_ts[:, si, i])
+            if not math.isnan(self.k_outside[si, i]):
+                c.outside = {"found_at": float(self.k_outside[si, i]),
+                             "why": "a counterparty whose record over the window is below zero is a defector"}
             spans = []
             if math.isfinite(c.minloss) and c.minloss > 0:
                 spans.append(c.stock0 / c.minloss)
@@ -527,9 +596,19 @@ class World:
             if span is not None:
                 self.max_bound_ended = max(self.max_bound_ended, 3.0 * span +
                                            (self.P["w"] * self.R if c.defended else 0.0))
+        c.would1 = bool(self.k_would1[si, i])
         c.end, c.reason = t, reason
         self.cfg_of[si, i] = -1
         self._event({"ev": "cfg_end", "seed": c.seed, "cfg": c.id, "owner": c.owner, "t": t, "reason": reason})
+
+    def _cp_record_cfg(self, si, i, c):
+        """Points 19 and 22: the counterparties' records on the configuration's own links to operator i, added
+        together over the last w rounds (all of them, if a link has fewer), as the closed rounds stand."""
+        tot = 0.0
+        for e in c.eidx:
+            end = 1 if self.ei[si, e] == i else 0       # the counterparty's end of the link
+            tot += float(self.ebuf[si, e, end].sum())
+        return tot
 
     def _cp_record_last_w(self, si, i):
         """Point 19: the counterparties' records on their links to operator i, added together over the last w
@@ -565,6 +644,10 @@ class World:
         self.etotal += rec
         self.eage += act
         self.eacc[:] = 0.0
+        rpf = np.where(act[..., None], self.eacc_pf, 0.0)          # the passive flow in it, kept apart
+        self.ebuf_pf[act] = np.concatenate([self.ebuf_pf[act][..., 1:], rpf[act][..., None]], axis=-1)
+        self.elast_pf = rpf
+        self.eacc_pf[:] = 0.0
         self.sub_mark = 0
 
         # the end-of-round sample of every configuration's loss, then the clocks
@@ -582,22 +665,69 @@ class World:
         self.k_cproundall = np.where(has, np.minimum(self.k_cproundall, cposall), np.inf)
         self.k_cpminall = np.where(clocked, np.minimum(self.k_cpminall, cposall), self.k_cpminall)
         lv = self.elive
-        cp = self._to_ops(np.where(lv, self.elast[..., 1], 0.0), np.where(lv, self.elast[..., 0], 0.0))
+        # Part Nine, point 20: each link's record over its last w rounds, or all of them where it has fewer, added
+        # together, overhead and passive flow included: the record a type C operator reviews. Read by whole rounds,
+        # back to the link's start, also for a configuration that opened inside the round just closed.
+        recw = self.ebuf.sum(-1)
+        cpw = self._to_ops(np.where(lv, recw[..., 1], 0.0), np.where(lv, recw[..., 0], 0.0))
+        # one round's record alone, as version 1.0 read it: only counted, for B2's section 10
+        cp1 = self._to_ops(np.where(lv, self.elast[..., 1], 0.0), np.where(lv, self.elast[..., 0], 0.0))
+        hascp = has & (self.L > 0)
+        self.k_would1 |= hascp & (cp1 < 0)
         r_prev = self.r - 1
-        start_now = has & ~clocked & (self.L > 0) & (cp < 0)
+        t_prev = r_prev * self.R
+        # Part Nine, point 21: a clocked configuration whose counterparties' records over the window stand at zero or
+        # above at this close has turned at the start of this round, if they stay so at every close to its end; a
+        # second dip below zero cancels the turn, and the whole stretch counts
+        on = clocked & hascp
+        new_turn = on & (cpw >= 0) & np.isnan(self.k_turn)
+        if new_turn.any():
+            self.k_turn = np.where(new_turn, t_prev, self.k_turn)
+            self.k_ts = np.where(new_turn[None], self.k_rs, self.k_ts)
+        dip = on & (cpw < 0) & ~np.isnan(self.k_turn)
+        for si, i in zip(*np.nonzero(dip)):
+            c = self.cfgs[self.cfg_of[si, i]]
+            c.redips.append({"stood_at_zero_or_above_from": float(self.k_turn[si, i]),
+                             "below_zero_again_in_the_round_from": float(t_prev), "record": float(cpw[si, i])})
+            self.k_turn[si, i] = np.nan
+            self.k_ts[:, si, i] = np.inf
+        start_now = has & ~clocked & hascp & (cpw < 0)
         for si, i in zip(*np.nonzero(start_now)):
-            # the clock starts at the first round whose record, on the counterparties' links to it, is below zero
-            t0 = max(self.k_start[si, i], r_prev * self.R)
-            midx = self.cfgs[self.cfg_of[si, i]].midx
-            if self.k_start[si, i] >= r_prev * self.R:
+            # the clock starts at the start of the first round whose close finds the counterparties' records on their
+            # links to the operator below zero, read as point 20 says; no earlier than the configuration's own start
+            t0 = max(self.k_start[si, i], t_prev)
+            c = self.cfgs[self.cfg_of[si, i]]
+            midx = c.midx
+            if self.k_start[si, i] >= t_prev:
                 stock = float(self.k_stock_start[si, i])
                 cp_stock = float(self.k_cpstock_start[si, i])
             else:
                 stock = float(sum(self.E_snap[si, j] - self.P["E_r"] for j in midx))
                 cp_stock = float(sum(self.E_snap[si, j] - self.P["E_r"] for j in midx[1:]))
             self._start_clock(si, i, float(t0), stock, float(self.k_roundmin[si, i]), why="record",
-                              record=float(cp[si, i]), cp_stock=cp_stock, cp_minloss=float(self.k_cproundmin[si, i]),
+                              record=float(cpw[si, i]), cp_stock=cp_stock, cp_minloss=float(self.k_cproundmin[si, i]),
                               cp_minall=float(self.k_cproundall[si, i]))
+            if self.typ[si, i] != TYPES["D"]:
+                # B2's section 10: for every watched sink, its counterparties' records in the round its clock started,
+                # with the passive flow left out, beside the records as read
+                pfw = sum(float(self.ebuf_pf[si, e, 1 if self.ei[si, e] == i else 0].sum()) for e in c.eidx)
+                pf1 = sum(float(self.elast_pf[si, e, 1 if self.ei[si, e] == i else 0]) for e in c.eidx)
+                c.sink_start_records = {"over_the_window": float(cpw[si, i]),
+                                        "over_the_window_less_passive_flow": float(cpw[si, i]) - pfw,
+                                        "that_round_alone": float(cp1[si, i]),
+                                        "that_round_alone_less_passive_flow": float(cp1[si, i]) - pf1}
+        # B2's section 6: a watched configuration where any counterparty whose record over the window is below zero
+        # is a defector lies outside the premises; it is reported in full and left out of the measure
+        clocked_now = has & ~np.isnan(self.k_clock)
+        if clocked_now.any():
+            D = TYPES["D"]
+            tj = np.take_along_axis(self.typ, self.ej, 1) == D
+            ti = np.take_along_axis(self.typ, self.ei, 1) == D
+            bad = self._to_ops(np.where(lv & tj & (recw[..., 1] < 0), 1.0, 0.0),
+                               np.where(lv & ti & (recw[..., 0] < 0), 1.0, 0.0)) > 0
+            first = clocked_now & bad & np.isnan(self.k_outside)
+            if first.any():
+                self.k_outside = np.where(first, t_prev, self.k_outside)
 
     def _readings(self):
         P = self.P
@@ -797,6 +927,8 @@ class World:
         cposall = np.where(cpl > 0, cpl, np.inf)                  # point 19: at every sample
         self.k_cpminall = np.where(clocked, np.minimum(self.k_cpminall, cposall), self.k_cpminall)
         self.k_cproundall = np.where(has, cposall, np.inf)
+        # point 21: the samples up to this round's start, kept, in case this round's close finds the turn
+        self.k_rs = np.where(clocked[None], np.stack([self.k_minloss, self.k_cpminloss, self.k_cpminall]), np.inf)
         self.E_snap = self.E.copy()
         if self.log is not None:
             self.log.rounds(self)
@@ -824,6 +956,19 @@ class World:
                 self._event({"ev": "ruin", "seed": self.seeds[si], "op": self.names[i], "t": ti})
                 self.ruin_list.append({"seed": self.seeds[si], "op": self.names[i], "t": ti,
                                        "type": TNAME[self.typ[si, i]]})
+                if self.cfg_of[si, i] >= 0 and math.isnan(self.k_clock[si, i]):
+                    # B2's section 7: a fall in no watched configuration, reported with its links and drift; it fires
+                    # nothing. Its own records over the last w rounds on each live link.
+                    own = []
+                    for e in np.nonzero(self.elive[si] & ((self.ei[si] == i) | (self.ej[si] == i)))[0]:
+                        mine = 0 if self.ei[si, e] == i else 1
+                        other = int(self.ej[si, e]) if mine == 0 else int(self.ei[si, e])
+                        own.append({"to": self.names[other], "to_type": TNAME[self.typ[si, other]],
+                                    "its_record_last_w_rounds": float(self.ebuf[si, e, mine].sum()),
+                                    "theirs": float(self.ebuf[si, e, 1 - mine].sum())})
+                    self.falls_unwatched.append({"seed": self.seeds[si], "op": self.names[i], "t": ti,
+                                                 "type": TNAME[self.typ[si, i]], "drift": float(self.a[si, i]),
+                                                 "links": own})
                 self._end_cfg(si, i, ti, "ruin", D_row=D_at, E_row=E_at)
                 for e in np.nonzero(self.elive[si] & ((self.ei[si] == i) | (self.ej[si] == i)))[0]:
                     self.elive[si, e] = False
@@ -866,6 +1011,8 @@ class World:
                 flow = np.where(lv, (dt * k) * (Ej - Ei), 0.0)
                 self.eacc[..., 0] += flow           # passive flow received through the link, per end
                 self.eacc[..., 1] -= flow
+                self.eacc_pf[..., 0] += flow        # the same, kept apart for B2's section 10
+                self.eacc_pf[..., 1] -= flow
             if E_max is not None:
                 np.minimum(En, E_max, out=En)
             hit = En <= E_r

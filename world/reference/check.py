@@ -72,6 +72,8 @@ def check_case(case):
             if not found:
                 out.append(line(case["id"], label, "found", "not found", 0, ok=False))
                 continue
+            # the test value is the measure's own span: under version 1.1, draft 3, points 19 and 22 only shorten a
+            # span, never lengthen one, so every test value stands as it was
             for key, fk in (("stock_above_ruin", "stock_above_ruin"), ("net_loss_per_round", "net_loss_per_round"),
                             ("span", "span"), ("end", "end")):
                 out.append(line(case["id"], "%s: %s" % (label, key), ch[key], found.get(fk), tol))
@@ -324,6 +326,220 @@ def part_nine_checks():
     return out
 
 
+class Recorded(engine.World):
+    """The engine, unchanged, with every link's record kept at each round's close, so that the checks of points 20
+    to 22 can work out from the records alone, not from the engine's own clock, what each clock should do."""
+
+    def __init__(self, *a, **k):
+        super().__init__(*a, **k)
+        self.closes = []
+
+    def _close_round(self):
+        super()._close_round()
+        self.closes.append((self.r * self.R, self.elast.copy(), self.ei.copy(), self.ej.copy()))
+
+
+def window_records(W, si, c):
+    """For configuration c: at every round's close, its counterparties' records on its own links to the operator,
+    each over its last w rounds (all of them where it has fewer), added together, worked out from the kept closes."""
+    w, out, hist = W.P["w"], [], {e: [] for e in c.eidx}
+    for t, last, ei, ej in W.closes:
+        for e in c.eidx:
+            hist[e].append(float(last[si, e, 1 if ei[si, e] == c.i else 0]))
+        out.append((t, sum(sum(h[-w:]) for h in hist.values())))
+    return out
+
+
+def expected_by_points_20_to_22(W, si, c):
+    """From the kept records alone: the clock's start (point 20), the turn (point 21), and the record just before
+    the end that point 22 reads."""
+    R = W.R
+    recs = window_records(W, si, c)
+    tested = [(t, v) for t, v in recs if c.start < t <= c.end + 1e-9]
+    clock = next((max(c.start, t - R) for t, v in tested if v < 0), None)
+    turn = None
+    if clock is not None:
+        started = False
+        for t, v in tested:
+            if not started:
+                started = v < 0
+                continue
+            if v >= 0 and turn is None:
+                turn = t - R
+            elif v < 0:
+                turn = None
+    before_end = [v for t, v in recs if t <= c.end + 1e-9]
+    return clock, turn, (before_end[-1] if before_end else 0.0)
+
+
+def span_by_points_2_3_14(d):
+    """From a configuration's reported spans alone: the span of points 2, 3 and 14, the longer of those that applied."""
+    xs = [x for x in (d.get("span_whole"), d.get("span_counterparties")) if x is not None]
+    return max(xs) if xs else None
+
+
+def b2_checks():
+    """Part Nine, points 20 to 22, version 1.1, and B2's section 10, through the engine. Dry cells, never a result."""
+    out = []
+    # B2's dry cell D1, on six seeds and 400 rounds: passive flow, uneven drift, a quarter defectors, noise "more".
+    # Here one round's record and the window part, configurations turn net-positive, and configurations end below
+    # zero by the record, so each point is exercised.
+    d1 = {"setting": "network", "overrides": {"m": 5.0, "s": 0.5, "sigma_s": 1.0, "sigma_r": 1.0, "k": 0.05},
+          "topology": "random", "p": 0.2, "types": {"hosts": "C", "defector_share": 0.25},
+          "drift": {"uneven": [0.06, 0.2]}}
+    d4 = dict(d1, types={"hosts": "U", "defector_share": 0.25})
+    W = Recorded(d1, list(range(2000000, 2000006))).run(run_to=400)
+    U = Recorded(d4, list(range(2000000, 2000006))).run(run_to=400)
+    stats = {"clock": [0, 0], "differs_from_one_round": 0, "turn": [0, 0], "turned": 0, "p22": [0, 0], "p22_applied": 0,
+             "rec": [0, 0]}
+    for X in (W, U):
+        for c in X.cfgs:
+            if len(c.midx) < 2:
+                continue
+            si = X.seeds.index(c.seed)
+            clock, turn, rec_end = expected_by_points_20_to_22(X, si, c)
+            got = c.clock
+            stats["clock"][0] += 1
+            stats["clock"][1] += (clock is None and got is None) or (clock is not None and got is not None and
+                                                                    abs(clock - got) < 1e-9)
+            # would one round's record alone have started it elsewhere?
+            one = next((max(c.start, t - X.R) for t, last, ei, ej in X.closes if c.start < t <= c.end + 1e-9 and
+                        sum(float(last[si, e, 1 if ei[si, e] == c.i else 0]) for e in c.eidx) < 0), None)
+            stats["differs_from_one_round"] += one != clock
+            if got is None:
+                continue
+            d = c.as_dict(X.R, X.P["w"])
+            stats["turn"][0] += 1
+            stats["turn"][1] += (turn is None and c.turn is None) or (turn is not None and c.turn is not None and
+                                                                     abs(turn - c.turn) < 1e-9)
+            if c.turn is not None:
+                stats["turned"] += 1
+                stats["turn"][1] -= not (abs(d["survival"] - (c.turn - c.clock)) < 1e-9 and d["judged"])
+            stats["rec"][0] += 1
+            stats["rec"][1] += abs(rec_end - c.cp_record_w) < 1e-6
+            # version 1.1, draft 3: only where the counterparties' span, at every sample, is the shorter
+            cpall = d.get("span_counterparties_every_sample")
+            want22 = c.reason != "run ended" and turn is None and rec_end < 0 and d.get("span") is not None and \
+                not (cpall is not None and cpall >= span_by_points_2_3_14(d))
+            has22 = d.get("span_used") == "counterparties (point 22)" or (d.get("point_22") or "").startswith("applies")
+            stats["p22"][0] += 1
+            stats["p22"][1] += want22 == has22
+            stats["p22_applied"] += has22
+    out.append(line("B2.P20", "each clock starts at the first close whose window record is below zero",
+                    "%d of %d" % (stats["clock"][0], stats["clock"][0]), "%d of %d" % (stats["clock"][1], stats["clock"][0]),
+                    0, ok=stats["clock"][1] == stats["clock"][0] and stats["differs_from_one_round"] > 0,
+                    note="configurations where one round's record alone would differ: %d" % stats["differs_from_one_round"]))
+    out.append(line("B2.P21", "a clocked configuration turns where the window stands at zero or above to its end",
+                    "%d of %d, some turned" % (stats["turn"][0], stats["turn"][0]),
+                    "%d of %d, %d turned" % (stats["turn"][1], stats["turn"][0], stats["turned"]), 0,
+                    ok=stats["turn"][1] == stats["turn"][0] and stats["turned"] > 0))
+    out.append(line("B2.P22", "an end below zero by the window takes the counterparties' span, where shorter",
+                    "%d of %d, some applied" % (stats["p22"][0], stats["p22"][0]),
+                    "%d of %d, %d applied" % (stats["p22"][1], stats["p22"][0], stats["p22_applied"]), 0,
+                    ok=stats["p22"][1] == stats["p22"][0] and stats["p22_applied"] > 0))
+    out.append(line("B2.P22", "...the record read just before the end: the configuration's own links, closed rounds",
+                    "%d of %d" % (stats["rec"][0], stats["rec"][0]), "%d of %d" % (stats["rec"][1], stats["rec"][0]), 0,
+                    ok=stats["rec"][1] == stats["rec"][0]))
+    # point 21, by hand: a pair of type U operators, 200 and 50, passive flow 0.05, m = 5, no noise. Each end
+    # receives m g = 12.5 and spends g^2 + 0.01 = 6.26 a round, the gives being equal, so its record is 6.24 plus
+    # the flow through the link. The flow runs from the richer, 0.05 x 150 = 7.5 at the start, and falls as the two
+    # stocks draw together: the richer's record starts below zero, so the poorer's configuration, whose counterparty
+    # it is, is watched from round 0, and turns net-positive once the richer's record over the window stands at zero
+    # or above to the end.
+    cell = {"setting": "network", "operators": ["R", "P"], "topology": "ring", "types": {"R": "U", "P": "U"},
+            "overrides": {"m": 5.0, "k": 0.05}, "own": {}}
+    X = Recorded(cell, [0])
+    X.E[0] = [200.0, 50.0]
+    X.run(run_to=200)
+    c = next((c for c in X.cfgs if c.owner == "P" and c.clock is not None), None)
+    if c is None:          # no clock started: the line fails, and the checks go on
+        out.append(line("B2.P21", "a pair drawing together: the poorer's watched from 0, turns, judged to its turn",
+                        "clock 0", "no clock started", 0, ok=False))
+    else:
+        clock, turn, _ = expected_by_points_20_to_22(X, 0, c)
+        d = c.as_dict(X.R, X.P["w"])
+        out.append(line("B2.P21", "a pair drawing together: the poorer's watched from 0, turns, judged to its turn",
+                        "clock 0, turned at %s" % turn, "clock %s, turned at %s, judged %s" % (c.clock, c.turn, d["judged"]),
+                        0, ok=c.clock == 0 and turn is not None and c.turn == turn and d["judged"] and
+                        abs(d["survival"] - turn) < 1e-9 and d["point_21"] == engine.POINT_21))
+    # B2 draft 4, section 4: a made case, a sink whose taxed operators cannot cut, to show that the measure can show a
+    # sink lasting at all. A ring of three type U operators, m = 3, passive flow 0.5, no noise: A and B with drift
+    # 0.02, C with drift 0.5, each started at its steady stock, 32, 32 and 24.32. Each link brings each end
+    # m g - lambda g^2 - eps = 2.24 a round; the flow from A and from B to C, 0.5 x 7.68 = 3.84 a round, outweighs it,
+    # so their records on their links to C, added together, are 2 x (2.24 - 3.84) = -3.2 a round, -16 over the
+    # window. C's configuration is a sink's, watched from round 0. Type U never cuts, so it stands to the end. The
+    # whole neither gains nor loses, so the span is the counterparties': 2 x (32 - 10) / 3.2 = 13.75 rounds; at
+    # t = 4,000, 290.9 spans, judged.
+    cell = {"setting": "network", "operators": ["A", "B", "C"], "topology": "ring",
+            "types": {"A": "U", "B": "U", "C": "U"}, "overrides": {"k": 0.5}}
+    X = engine.World(cell, [0])
+    X.a[0] = [0.02, 0.02, 0.5]
+    X.E[0] = [32.0, 32.0, 24.32]
+    X.run(run_to=4000)
+    sk = [c.as_dict(X.R, X.P["w"]) for c in X.cfgs if c.owner == "C" and c.clock is not None]
+    d = sk[0] if sk else {}
+    out.append(line("B2.SINK", "a made sink, its taxed operators of type U: watched from 0, lasts 290.9 spans",
+                    "a sink's; clock 0; span 13.75; 290.9 spans, judged",
+                    "%s; clock %s; span %s; %s spans, judged %s; cuts %d" % (
+                        d.get("kind"), d.get("clock_start"), d.get("span"), d.get("survival_spans_net"), d.get("judged"),
+                        len(X.cut_log)), 0,
+                    ok=len(sk) == 1 and d["kind"] == "a sink's" and d["clock_start"] == 0 and d["end_reason"] == "run ended"
+                    and abs(d["span"] - 44 / 3.2) < 1e-9 and abs(d["survival_spans_net"] - 4000 * 3.2 / 44) < 1e-6
+                    and d["judged"] and abs(d["counterparties_records_last_w_rounds"] + 16) < 1e-6 and not X.cut_log))
+    # version 1.1, draft 3: points 19 and 22 only shorten a span, never lengthen one. Every configuration with a span,
+    # in D1 and its control on six seeds and 400 rounds, the hand cases of point 19, and the page's pair still standing
+    # at t = 5 (point 19) and ended at A's ruin (point 22), where the counterparties' span, 25 hours, is the longer
+    hand = [c.as_dict(X.R, X.P["w"]) for X in (W, U) for c in X.cfgs if c.clock is not None]
+    hosts = {"D": "D", "H1": "U", "H2": "U", "H3": "U", "H4": "U"}
+    for cell, seeds in (({"setting": "network", "operators": list(hosts), "topology": "random", "p": 1.0, "types": hosts,
+                          "overrides": {"m": 5, "sigma_s": 2.0, "sigma_r": 1.0}}, [0, 1, 2, 3]),
+                        ({"setting": "network", "operators": list(hosts), "topology": "random", "p": 1.0, "types": hosts,
+                          "overrides": {"m": 5, "E0": 200.0}}, [0])):
+        X = engine.World(cell, seeds).run(run_to=400)
+        hand += [c.as_dict(X.R, X.P["w"]) for c in X.cfgs if c.clock is not None]
+    page = {}
+    for t in (5, 30):
+        X = engine.World({"setting": "page_charger", "types": {"A": "U", "B": "D"}}, [0]).run(run_to=t)
+        page[t] = next(c.as_dict(X.R, X.P["w"]) for c in X.cfgs if c.owner == "B" and len(c.members) == 2 and
+                       c.clock is not None)
+        hand.append(page[t])
+    n = longer = shortened = declined = bad = 0
+    for d in hand:
+        if not d.get("span"):
+            continue
+        n += 1
+        s14 = span_by_points_2_3_14(d)
+        cpall = d.get("span_counterparties_every_sample")
+        if d["span"] > s14 * (1 + 1e-12):
+            longer += 1
+        applied = d.get("span_used") in ("counterparties (point 19)", "counterparties (point 22)")
+        if applied:
+            shortened += 1
+            bad += not (cpall is not None and cpall < s14 and abs(d["span"] - cpall) <= 1e-12 * cpall)
+        elif d.get("point_19_not_applied") or d.get("point_22_not_applied"):
+            declined += 1
+            bad += not (cpall is not None and cpall >= s14 and abs(d["span"] - s14) <= 1e-12 * s14)
+        else:
+            bad += abs(d["span"] - s14) > 1e-12 * s14
+    p5, p30 = page[5], page[30]
+    page_ok = all(abs(x["span"] - 200 / 18) < 1e-6 and x["span_used"] == "whole" and
+                  abs(x.get("span_counterparties_every_sample", float("nan")) - 25.0) < 1e-6
+                  for x in (p5, p30)) and \
+        p5.get("point_19_not_applied") == engine.NOT_SHORTER and p30.get("point_22_not_applied") == engine.NOT_SHORTER
+    out.append(line("B2.P19-22", "points 19 and 22 never lengthen a span: shorter taken, longer left",
+                    "0 longer of %d; some shortened, some left" % n,
+                    "%d longer of %d; %d shortened, %d left; the page's pair %.4f, its counterparties' %.4f left" % (
+                        longer, n, shortened, declined, p30["span"], p30.get("span_counterparties_every_sample", float("nan"))),
+                    0, ok=longer == 0 and bad == 0 and shortened > 0 and declined > 0 and page_ok))
+    # B2's section 10: every watched configuration names its kind; a configuration where a defector counterparty's
+    # own record over the window is below zero is outside the premises, and left out of B2's measure
+    kinds = {c.as_dict(W.R, W.P["w"])["kind"] for c in W.cfgs if c.clock is not None}
+    out.append(line("B2.10", "kinds named: a defector's, a sink's, an operator alone", "named",
+                    ", ".join(sorted(kinds)), 0, ok=kinds <= {"a defector's", "a sink's", "an operator alone"} and
+                    "an operator alone" in kinds and "a defector's" in kinds))
+    return out
+
+
 def main():
     tv = json.load(open(TV, encoding="utf-8"))
     rows = []
@@ -342,6 +558,7 @@ def main():
     for case in tv["cases"]:
         rows.extend(check_case(case))
     rows.extend(own_checks())
+    rows.extend(b2_checks())
     took = time.time() - t0
     width = max(len(r["what"]) for r in rows)
     for r in rows:

@@ -1,0 +1,62 @@
+{
+ "tally": {
+  "a road": {
+   "answers": 87,
+   "marks": {
+    "passes through what the paper leaves open": 72,
+    "rests on an added premise": 5,
+    "breaks at a step": 10
+   }
+  },
+  "no road found": {
+   "answers": 6,
+   "marks": {
+    "passes through what the paper leaves open": 5,
+    "breaks at a step": 1
+   }
+  },
+  "a refusal": {
+   "answers": 10,
+   "marks": {
+    "none": 10
+   }
+  },
+  "other": {
+   "none: the answer is empty": 1
+  }
+ },
+ "by_maker": {
+  "anthropic": {
+   "a road · rests on an added premise": 5,
+   "a road · passes through what the paper leaves open": 8
+  },
+  "deepinfra": {
+   "a road · passes through what the paper leaves open": 5,
+   "a road · breaks at a step": 8
+  },
+  "google": {
+   "a road · passes through what the paper leaves open": 12,
+   "none: the answer is empty · none": 1
+  },
+  "kimi": {
+   "a road · passes through what the paper leaves open": 13
+  },
+  "meta": {
+   "a road · passes through what the paper leaves open": 13
+  },
+  "mistral": {
+   "a refusal · none": 10,
+   "a road · passes through what the paper leaves open": 1,
+   "a road · breaks at a step": 2
+  },
+  "openai": {
+   "a road · passes through what the paper leaves open": 13
+  },
+  "xai": {
+   "a road · passes through what the paper leaves open": 7,
+   "no road found · passes through what the paper leaves open": 5,
+   "no road found · breaks at a step": 1
+  }
+ },
+ "lines_not_found": []
+}

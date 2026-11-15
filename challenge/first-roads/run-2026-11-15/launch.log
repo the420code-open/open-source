@@ -1,0 +1,214 @@
+2026-11-15T09:42:27Z waiting for 2026-11-15T10:01:00Z
+2026-11-15T10:01:07+00:00 every route has passed its check: anthropic (2026-11-15T09:12:52+00:00), openai (2026-11-15T09:10:07+00:00), google (2026-11-15T09:09:59+00:00), xai (2026-11-15T09:10:13+00:00), meta (2026-11-15T09:10:13+00:00), mistral (2026-11-15T09:10:17+00:00), deepinfra (2026-11-15T09:10:07+00:00), kimi (2026-11-15T09:18:31+00:00), marker-xai (2026-11-15T09:10:14+00:00), marker-google (2026-11-15T09:09:55+00:00)
+2026-11-15T10:01:08Z starting
+2026-11-15T10:01:32+00:00 the run begins: 8 AIs, 10 with_its_dated_notes, 3 as_it_stood_on_2026-11-13; the stop at $830
+2026-11-15T10:01:32+00:00 sent anthropic with_its_dated_notes 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:32+00:00 sent openai with_its_dated_notes 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:32+00:00 sent google with_its_dated_notes 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:32+00:00 sent xai with_its_dated_notes 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:32+00:00 sent meta with_its_dated_notes 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:32+00:00 sent mistral with_its_dated_notes 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:32+00:00 sent deepinfra with_its_dated_notes 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent kimi with_its_dated_notes 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent anthropic with_its_dated_notes 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent openai with_its_dated_notes 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent google with_its_dated_notes 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent xai with_its_dated_notes 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent meta with_its_dated_notes 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent mistral with_its_dated_notes 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent deepinfra with_its_dated_notes 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent kimi with_its_dated_notes 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent anthropic with_its_dated_notes 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent openai with_its_dated_notes 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent google with_its_dated_notes 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent xai with_its_dated_notes 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent meta with_its_dated_notes 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent mistral with_its_dated_notes 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent deepinfra with_its_dated_notes 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent kimi with_its_dated_notes 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent anthropic with_its_dated_notes 4 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent openai with_its_dated_notes 4 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent google with_its_dated_notes 4 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent xai with_its_dated_notes 4 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent meta with_its_dated_notes 4 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent mistral with_its_dated_notes 4 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent deepinfra with_its_dated_notes 4 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent openai with_its_dated_notes 5 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent google with_its_dated_notes 5 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent xai with_its_dated_notes 5 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent meta with_its_dated_notes 5 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent mistral with_its_dated_notes 5 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent deepinfra with_its_dated_notes 5 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent openai with_its_dated_notes 6 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent google with_its_dated_notes 6 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent xai with_its_dated_notes 6 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent meta with_its_dated_notes 6 (Cape Town 2026-11-15)
+2026-11-15T10:01:33+00:00 sent mistral with_its_dated_notes 6 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent deepinfra with_its_dated_notes 6 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent google with_its_dated_notes 7 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent xai with_its_dated_notes 7 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent meta with_its_dated_notes 7 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent mistral with_its_dated_notes 7 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent deepinfra with_its_dated_notes 7 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent google with_its_dated_notes 8 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent xai with_its_dated_notes 8 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent meta with_its_dated_notes 8 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent mistral with_its_dated_notes 8 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent deepinfra with_its_dated_notes 8 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent google with_its_dated_notes 9 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent xai with_its_dated_notes 9 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent meta with_its_dated_notes 9 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent mistral with_its_dated_notes 9 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent deepinfra with_its_dated_notes 9 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent google with_its_dated_notes 10 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent xai with_its_dated_notes 10 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent meta with_its_dated_notes 10 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent mistral with_its_dated_notes 10 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent deepinfra with_its_dated_notes 10 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent google as_it_stood_on_2026-11-13 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent xai as_it_stood_on_2026-11-13 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent meta as_it_stood_on_2026-11-13 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent mistral as_it_stood_on_2026-11-13 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent deepinfra as_it_stood_on_2026-11-13 1 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent google as_it_stood_on_2026-11-13 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent xai as_it_stood_on_2026-11-13 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent meta as_it_stood_on_2026-11-13 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent mistral as_it_stood_on_2026-11-13 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent deepinfra as_it_stood_on_2026-11-13 2 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent google as_it_stood_on_2026-11-13 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent xai as_it_stood_on_2026-11-13 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent meta as_it_stood_on_2026-11-13 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:34+00:00 sent mistral as_it_stood_on_2026-11-13 3 (Cape Town 2026-11-15)
+2026-11-15T10:01:35+00:00 sent deepinfra as_it_stood_on_2026-11-13 3 (Cape Town 2026-11-15)
+2026-11-15T10:02:32+00:00 answered mistral with_its_dated_notes 8: mistral-large-4-0, stop, 3345 tokens out, $0.0145, 57.76s
+2026-11-15T10:02:43+00:00 answered mistral with_its_dated_notes 1: mistral-large-4-0, stop, 4177 tokens out, $0.0162, 71.03s
+2026-11-15T10:02:52+00:00 answered mistral as_it_stood_on_2026-11-13 1: mistral-large-4-0, stop, 4905 tokens out, $0.0172, 77.73s
+2026-11-15T10:02:59+00:00 answered mistral as_it_stood_on_2026-11-13 2: mistral-large-4-0, stop, 5440 tokens out, $0.0183, 84.21s
+2026-11-15T10:03:00+00:00 answered mistral with_its_dated_notes 7: mistral-large-4-0, stop, 5599 tokens out, $0.0192, 86.63s
+2026-11-15T10:03:01+00:00 answered mistral with_its_dated_notes 9: mistral-large-4-0, stop, 5414 tokens out, $0.0188, 87.44s
+2026-11-15T10:03:14+00:00 answered mistral with_its_dated_notes 6: mistral-large-4-0, stop, 6714 tokens out, $0.0216, 100.22s
+2026-11-15T10:03:35+00:00 answered mistral with_its_dated_notes 2: mistral-large-4-0, stop, 8312 tokens out, $0.0249, 122.02s
+2026-11-15T10:03:43+00:00 answered mistral with_its_dated_notes 10: mistral-large-4-0, stop, 8728 tokens out, $0.0258, 128.61s
+2026-11-15T10:04:02+00:00 answered mistral with_its_dated_notes 3: mistral-large-4-0, stop, 11439 tokens out, $0.0315, 148.44s
+2026-11-15T10:04:18+00:00 answered mistral as_it_stood_on_2026-11-13 3: mistral-large-4-0, stop, 12232 tokens out, $0.0325, 163.29s
+2026-11-15T10:04:22+00:00 answered mistral with_its_dated_notes 5: mistral-large-4-0, stop, 12112 tokens out, $0.0329, 168.45s
+2026-11-15T10:04:31+00:00 answered meta as_it_stood_on_2026-11-13 2: muse-wonder-1.0, stop, 13504 tokens out, $0.3079, 176.68s
+2026-11-15T10:04:36+00:00 answered mistral with_its_dated_notes 4: mistral-large-4-0, stop, 15007 tokens out, $0.0390, 182.52s
+2026-11-15T10:05:20+00:00 answered meta with_its_dated_notes 4: muse-wonder-1.0, stop, 17902 tokens out, $0.3992, 227.15s
+2026-11-15T10:05:21+00:00 answered meta with_its_dated_notes 7: muse-wonder-1.0, stop, 17320 tokens out, $0.3875, 227.32s
+2026-11-15T10:05:25+00:00 answered meta as_it_stood_on_2026-11-13 3: muse-wonder-1.0, stop, 17776 tokens out, $0.3933, 230.68s
+2026-11-15T10:05:29+00:00 answered meta with_its_dated_notes 2: muse-wonder-1.0, stop, 19135 tokens out, $0.4238, 236.01s
+2026-11-15T10:05:29+00:00 answered meta with_its_dated_notes 9: muse-wonder-1.0, stop, 18186 tokens out, $0.4049, 235.43s
+2026-11-15T10:05:43+00:00 answered xai with_its_dated_notes 4: grok-4.7, stop, 1262 tokens out, $0.1045, 250.18s
+2026-11-15T10:05:47+00:00 answered meta with_its_dated_notes 10: muse-wonder-1.0, stop, 19218 tokens out, $0.4255, 252.65s
+2026-11-15T10:05:48+00:00 answered meta as_it_stood_on_2026-11-13 1: muse-wonder-1.0, stop, 21354 tokens out, $0.4649, 254.1s
+2026-11-15T10:05:51+00:00 answered meta with_its_dated_notes 6: muse-wonder-1.0, stop, 19901 tokens out, $0.4392, 257.04s
+2026-11-15T10:05:53+00:00 answered xai with_its_dated_notes 6: grok-4.7, stop, 1340 tokens out, $0.1097, 259.35s
+2026-11-15T10:06:19+00:00 answered meta with_its_dated_notes 1: muse-wonder-1.0, stop, 22590 tokens out, $0.4929, 286.8s
+2026-11-15T10:06:20+00:00 answered meta with_its_dated_notes 8: muse-wonder-1.0, stop, 22408 tokens out, $0.4893, 285.85s
+2026-11-15T10:06:29+00:00 answered xai as_it_stood_on_2026-11-13 3: grok-4.7, stop, 2163 tokens out, $0.1260, 294.29s
+2026-11-15T10:06:42+00:00 answered xai with_its_dated_notes 10: grok-4.7, stop, 1722 tokens out, $0.1313, 307.43s
+2026-11-15T10:06:46+00:00 answered deepinfra as_it_stood_on_2026-11-13 3: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 17437 tokens out, $0.0579, 311.18s
+2026-11-15T10:06:47+00:00 answered deepinfra with_its_dated_notes 4: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 16246 tokens out, $0.0559, 313.88s
+2026-11-15T10:07:02+00:00 answered deepinfra with_its_dated_notes 9: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 17390 tokens out, $0.0589, 328.2s
+2026-11-15T10:07:08+00:00 answered deepinfra as_it_stood_on_2026-11-13 1: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 14854 tokens out, $0.0512, 333.23s
+2026-11-15T10:07:09+00:00 answered deepinfra with_its_dated_notes 6: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 17003 tokens out, $0.0579, 335.36s
+2026-11-15T10:07:09+00:00 answered xai with_its_dated_notes 5: grok-4.7, stop, 1732 tokens out, $0.1462, 335.71s
+2026-11-15T10:07:18+00:00 answered meta with_its_dated_notes 3: muse-wonder-1.0, stop, 27350 tokens out, $0.5881, 345.32s
+2026-11-15T10:07:19+00:00 answered deepinfra with_its_dated_notes 10: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 19492 tokens out, $0.0643, 345.04s
+2026-11-15T10:07:19+00:00 answered deepinfra with_its_dated_notes 2: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 18276 tokens out, $0.0612, 346.56s
+2026-11-15T10:07:19+00:00 answered deepinfra with_its_dated_notes 5: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 18602 tokens out, $0.0620, 345.94s
+2026-11-15T10:07:22+00:00 answered xai as_it_stood_on_2026-11-13 1: grok-4.7, stop, 1771 tokens out, $0.1481, 347.96s
+2026-11-15T10:07:23+00:00 answered xai with_its_dated_notes 7: grok-4.7, stop, 1615 tokens out, $0.1547, 349.83s
+2026-11-15T10:07:27+00:00 answered meta with_its_dated_notes 5: muse-wonder-1.0, stop, 28589 tokens out, $0.6129, 353.22s
+2026-11-15T10:07:49+00:00 answered xai with_its_dated_notes 8: grok-4.7, stop, 2160 tokens out, $0.1521, 375.75s
+2026-11-15T10:08:02+00:00 answered xai with_its_dated_notes 3: grok-4.7, stop, 2071 tokens out, $0.1580, 389.29s
+2026-11-15T10:08:10+00:00 answered deepinfra with_its_dated_notes 8: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 17504 tokens out, $0.0592, 396.36s
+2026-11-15T10:08:14+00:00 answered deepinfra as_it_stood_on_2026-11-13 2: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 16965 tokens out, $0.0567, 399.48s
+2026-11-15T10:08:25+00:00 answered deepinfra with_its_dated_notes 1: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 17083 tokens out, $0.0581, 412.62s
+2026-11-15T10:08:45+00:00 answered xai with_its_dated_notes 9: grok-4.7, stop, 1844 tokens out, $0.1728, 431.48s
+2026-11-15T10:08:54+00:00 answered deepinfra with_its_dated_notes 3: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 24326 tokens out, $0.0769, 441.11s
+2026-11-15T10:09:04+00:00 answered xai as_it_stood_on_2026-11-13 2: grok-4.7, stop, 3081 tokens out, $0.1713, 449.31s
+2026-11-15T10:09:06+00:00 answered xai with_its_dated_notes 2: grok-4.7, stop, 2209 tokens out, $0.1832, 453.59s
+2026-11-15T10:09:09+00:00 answered deepinfra with_its_dated_notes 7: deepseek-ai/DeepSeek-V4-Pro-0813, stop, 26562 tokens out, $0.0827, 455.29s
+2026-11-15T10:09:23+00:00 answered google with_its_dated_notes 1: gemini-4-carbon, FinishReason.STOP, 5934 tokens out, $0.6714, 470.22s
+2026-11-15T10:09:55+00:00 answered xai with_its_dated_notes 1: grok-4.7, stop, 1863 tokens out, $0.1904, 503.03s
+2026-11-15T10:10:22+00:00 answered google as_it_stood_on_2026-11-13 3: gemini-4-carbon, FinishReason.STOP, 5302 tokens out, $0.4391, 527.39s
+2026-11-15T10:10:34+00:00 answered google with_its_dated_notes 3: gemini-4-carbon, FinishReason.STOP, 5237 tokens out, $0.4578, 540.95s
+2026-11-15T10:10:37+00:00 answered google as_it_stood_on_2026-11-13 2: gemini-4-carbon, FinishReason.STOP, 4808 tokens out, $0.5224, 542.72s
+2026-11-15T10:11:22+00:00 answered google with_its_dated_notes 6: gemini-4-carbon, FinishReason.STOP, 6319 tokens out, $0.5429, 588.28s
+2026-11-15T10:11:36+00:00 answered google with_its_dated_notes 2: gemini-4-carbon, FinishReason.STOP, 6489 tokens out, $0.5452, 602.8s
+2026-11-15T10:11:42+00:00 answered google as_it_stood_on_2026-11-13 1: gemini-4-carbon, FinishReason.STOP, 4182 tokens out, $0.5187, 607.61s
+2026-11-15T10:12:00+00:00 answered google with_its_dated_notes 10: gemini-4-carbon, FinishReason.STOP, 6210 tokens out, $0.5427, 625.47s
+2026-11-15T10:12:01+00:00 answered google with_its_dated_notes 7: gemini-4-carbon, FinishReason.STOP, 6409 tokens out, $0.5728, 627.52s
+2026-11-15T10:12:05+00:00 answered google with_its_dated_notes 5: gemini-4-carbon, FinishReason.STOP, 5772 tokens out, $0.4930, 631.14s
+2026-11-15T10:12:13+00:00 answered openai with_its_dated_notes 3: gpt-6-astra, completed, 20178 tokens out, $1.1120, 639.55s
+2026-11-15T10:12:15+00:00 sent openai with_its_dated_notes 7 (Cape Town 2026-11-15)
+2026-11-15T10:12:18+00:00 answered anthropic with_its_dated_notes 4: claude-fable-5-2, end_turn, 56030 tokens out, $2.3756, 645.25s
+2026-11-15T10:12:19+00:00 sent anthropic with_its_dated_notes 5 (Cape Town 2026-11-15)
+2026-11-15T10:12:29+00:00 answered anthropic with_its_dated_notes 2: claude-fable-5-2, end_turn, 57701 tokens out, $2.4424, 656.75s
+2026-11-15T10:12:30+00:00 sent anthropic with_its_dated_notes 6 (Cape Town 2026-11-15)
+2026-11-15T10:12:34+00:00 answered google with_its_dated_notes 8: gemini-4-carbon, FinishReason.STOP, 5848 tokens out, $0.6499, 660.5s
+2026-11-15T10:12:50+00:00 answered openai with_its_dated_notes 1: gpt-6-astra, completed, 21802 tokens out, $1.1932, 677.77s
+2026-11-15T10:12:50+00:00 sent openai with_its_dated_notes 8 (Cape Town 2026-11-15)
+2026-11-15T10:12:51+00:00 answered google with_its_dated_notes 4: gemini-4-carbon, FinishReason.STOP, 6807 tokens out, $0.6139, 677.51s
+2026-11-15T10:13:11+00:00 answered openai with_its_dated_notes 4: gpt-6-astra, completed, 22176 tokens out, $1.2119, 697.48s
+2026-11-15T10:13:11+00:00 sent openai with_its_dated_notes 9 (Cape Town 2026-11-15)
+2026-11-15T10:13:36+00:00 answered openai with_its_dated_notes 2: gpt-6-astra, completed, 22896 tokens out, $1.2479, 723.66s
+2026-11-15T10:13:37+00:00 sent openai with_its_dated_notes 10 (Cape Town 2026-11-15)
+2026-11-15T10:13:56+00:00 answered google with_its_dated_notes 9: gemini-4-carbon, FinishReason.MAX_TOKENS, 3 tokens out, $0.6768, 741.83s
+2026-11-15T10:14:10+00:00 answered openai with_its_dated_notes 6: gpt-6-astra, completed, 24787 tokens out, $1.3425, 756.44s
+2026-11-15T10:14:10+00:00 sent openai as_it_stood_on_2026-11-13 1 (Cape Town 2026-11-15)
+2026-11-15T10:14:34+00:00 answered kimi with_its_dated_notes 1: kimi-k3.1-pro, stop, 18438 tokens out, $0.2054, 781.89s
+2026-11-15T10:14:35+00:00 sent kimi with_its_dated_notes 4 (Cape Town 2026-11-15)
+2026-11-15T10:15:18+00:00 answered anthropic with_its_dated_notes 1: claude-fable-5-2, end_turn, 73337 tokens out, $3.0679, 826.15s
+2026-11-15T10:15:19+00:00 sent anthropic with_its_dated_notes 7 (Cape Town 2026-11-15)
+2026-11-15T10:16:31+00:00 answered openai with_its_dated_notes 5: gpt-6-astra, completed, 28309 tokens out, $1.5186, 897.63s
+2026-11-15T10:16:31+00:00 sent openai as_it_stood_on_2026-11-13 2 (Cape Town 2026-11-15)
+2026-11-15T10:16:34+00:00 answered kimi with_its_dated_notes 3: kimi-k3.1-pro, stop, 19713 tokens out, $0.2182, 901.25s
+2026-11-15T10:16:35+00:00 sent kimi with_its_dated_notes 5 (Cape Town 2026-11-15)
+2026-11-15T10:16:39+00:00 answered anthropic with_its_dated_notes 3: claude-fable-5-2, end_turn, 79238 tokens out, $3.3039, 906.24s
+2026-11-15T10:16:39+00:00 sent anthropic with_its_dated_notes 8 (Cape Town 2026-11-15)
+2026-11-15T10:18:47+00:00 answered kimi with_its_dated_notes 2: kimi-k3.1-pro, stop, 22346 tokens out, $0.2445, 1033.92s
+2026-11-15T10:18:47+00:00 sent kimi with_its_dated_notes 6 (Cape Town 2026-11-15)
+2026-11-15T10:21:19+00:00 answered anthropic with_its_dated_notes 6: claude-fable-5-2, end_turn, 51822 tokens out, $2.2073, 529.43s
+2026-11-15T10:21:19+00:00 sent anthropic with_its_dated_notes 9 (Cape Town 2026-11-15)
+2026-11-15T10:22:24+00:00 answered anthropic with_its_dated_notes 5: claude-fable-5-2, end_turn, 56896 tokens out, $2.4102, 604.95s
+2026-11-15T10:22:24+00:00 sent anthropic with_its_dated_notes 10 (Cape Town 2026-11-15)
+2026-11-15T10:25:44+00:00 answered openai with_its_dated_notes 10: gpt-6-astra, completed, 21922 tokens out, $1.1992, 727.79s
+2026-11-15T10:25:45+00:00 sent openai as_it_stood_on_2026-11-13 3 (Cape Town 2026-11-15)
+2026-11-15T10:25:54+00:00 answered openai with_its_dated_notes 9: gpt-6-astra, completed, 22378 tokens out, $1.2220, 762.82s
+2026-11-15T10:26:22+00:00 answered anthropic with_its_dated_notes 7: claude-fable-5-2, end_turn, 63575 tokens out, $2.6774, 663.69s
+2026-11-15T10:26:23+00:00 sent anthropic as_it_stood_on_2026-11-13 1 (Cape Town 2026-11-15)
+2026-11-15T10:26:41+00:00 answered openai as_it_stood_on_2026-11-13 2: gpt-6-astra, completed, 21163 tokens out, $1.1529, 609.76s
+2026-11-15T10:27:27+00:00 answered openai as_it_stood_on_2026-11-13 1: gpt-6-astra, completed, 28132 tokens out, $1.5013, 796.65s
+2026-11-15T10:27:40+00:00 answered anthropic with_its_dated_notes 8: claude-fable-5-2, end_turn, 62869 tokens out, $2.6491, 660.31s
+2026-11-15T10:27:40+00:00 sent anthropic as_it_stood_on_2026-11-13 2 (Cape Town 2026-11-15)
+2026-11-15T10:28:15+00:00 answered openai with_its_dated_notes 7: gpt-6-astra, completed, 27538 tokens out, $1.4800, 959.26s
+2026-11-15T10:30:13+00:00 answered kimi with_its_dated_notes 4: kimi-k3.1-pro, stop, 20741 tokens out, $0.2284, 937.93s
+2026-11-15T10:30:13+00:00 sent kimi with_its_dated_notes 7 (Cape Town 2026-11-15)
+2026-11-15T10:30:22+00:00 answered kimi with_its_dated_notes 5: kimi-k3.1-pro, stop, 18981 tokens out, $0.2108, 827.02s
+2026-11-15T10:30:22+00:00 sent kimi with_its_dated_notes 8 (Cape Town 2026-11-15)
+2026-11-15T10:30:48+00:00 answered anthropic with_its_dated_notes 10: claude-fable-5-2, end_turn, 47827 tokens out, $2.0475, 504.2s
+2026-11-15T10:30:48+00:00 sent anthropic as_it_stood_on_2026-11-13 3 (Cape Town 2026-11-15)
+2026-11-15T10:32:05+00:00 answered anthropic with_its_dated_notes 9: claude-fable-5-2, end_turn, 61086 tokens out, $2.5778, 645.33s
+2026-11-15T10:33:17+00:00 answered kimi with_its_dated_notes 6: kimi-k3.1-pro, stop, 18976 tokens out, $0.2108, 869.87s
+2026-11-15T10:33:17+00:00 sent kimi with_its_dated_notes 9 (Cape Town 2026-11-15)
+2026-11-15T10:35:37+00:00 answered openai as_it_stood_on_2026-11-13 3: gpt-6-astra, completed, 20952 tokens out, $1.1423, 591.92s
+2026-11-15T10:35:39+00:00 answered openai with_its_dated_notes 8: gpt-6-astra, completed, 40140 tokens out, $2.1101, 1368.63s
+2026-11-15T10:36:13+00:00 answered anthropic as_it_stood_on_2026-11-13 2: claude-fable-5-2, end_turn, 48179 tokens out, $2.0523, 512.83s
+2026-11-15T10:38:44+00:00 answered anthropic as_it_stood_on_2026-11-13 1: claude-fable-5-2, end_turn, 71889 tokens out, $3.0007, 741.45s
+2026-11-15T10:41:10+00:00 answered anthropic as_it_stood_on_2026-11-13 3: claude-fable-5-2, end_turn, 59301 tokens out, $2.4972, 622.16s
+2026-11-15T10:43:58+00:00 answered kimi with_its_dated_notes 8: kimi-k3.1-pro, stop, 18142 tokens out, $0.2024, 816.31s
+2026-11-15T10:43:58+00:00 sent kimi with_its_dated_notes 10 (Cape Town 2026-11-15)
+2026-11-15T10:46:54+00:00 answered kimi with_its_dated_notes 7: kimi-k3.1-pro, stop, 21770 tokens out, $0.2387, 1000.74s
+2026-11-15T10:46:54+00:00 sent kimi as_it_stood_on_2026-11-13 1 (Cape Town 2026-11-15)
+2026-11-15T10:52:03+00:00 answered kimi with_its_dated_notes 9: kimi-k3.1-pro, stop, 24294 tokens out, $0.2640, 1126.21s
+2026-11-15T10:52:03+00:00 sent kimi as_it_stood_on_2026-11-13 2 (Cape Town 2026-11-15)
+2026-11-15T10:54:03+00:00 answered kimi with_its_dated_notes 10: kimi-k3.1-pro, stop, 13579 tokens out, $0.1568, 604.8s
+2026-11-15T10:54:03+00:00 sent kimi as_it_stood_on_2026-11-13 3 (Cape Town 2026-11-15)
+2026-11-15T11:00:05+00:00 answered kimi as_it_stood_on_2026-11-13 1: kimi-k3.1-pro, stop, 18094 tokens out, $0.2003, 791.58s
+2026-11-15T11:08:29+00:00 answered kimi as_it_stood_on_2026-11-13 2: kimi-k3.1-pro, stop, 22582 tokens out, $0.2452, 985.45s
+2026-11-15T11:08:38+00:00 answered kimi as_it_stood_on_2026-11-13 3: kimi-k3.1-pro, stop, 19819 tokens out, $0.2175, 875.18s
+2026-11-15T11:08:38+00:00 the run ends: 104 of 104 answered; $69.73 spent
+2026-11-15T11:08:40Z run_day.py exited with 0

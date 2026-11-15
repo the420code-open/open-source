@@ -1,0 +1,11 @@
+{
+ "cell": "dry-b2-D5",
+ "seeds": 100,
+ "mean": 270.6445057438536,
+ "se": 38.48385648297317,
+ "largest_seed": 3699.9710619193042,
+ "zone": "a defector lasts",
+ "control": "control: fires nothing",
+ "seconds": 2425.631
+}
+probe written: …/b2-dry3/runs\second\D5\probe.jsonl.gz 100 seeds

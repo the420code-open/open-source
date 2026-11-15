@@ -1,0 +1,65 @@
+{
+ "B2_every_configuration_whose_clock_started": {
+  "reference": {
+   "seeds_measured": 100,
+   "seeds_left_out": 0,
+   "seeds_without": 0,
+   "mean": 0.3357453037733212,
+   "se": 0.006866684512655067,
+   "largest_seed": 0.5222455286962572
+  },
+  "second_engine": {
+   "seeds_measured": 100,
+   "seeds_left_out": 0,
+   "seeds_without": 0,
+   "mean": 0.3632927893820653,
+   "se": 0.007577395072734611,
+   "largest_seed": 0.5980962598072028
+  },
+  "difference": 0.027547485608744093,
+  "combined_se": 0.01022586291149259,
+  "apart_in_combined_se": 2.6939032771292255
+ },
+ "B1_a_defector_in_it": {
+  "reference": {
+   "seeds_measured": 100,
+   "seeds_left_out": 0,
+   "seeds_without": 0,
+   "mean": 0.29596501516254947,
+   "se": 0.006326914783705494,
+   "largest_seed": 0.45848599887146196
+  },
+  "second_engine": {
+   "seeds_measured": 100,
+   "seeds_left_out": 0,
+   "seeds_without": 0,
+   "mean": 0.2998035739491961,
+   "se": 0.005617273404264313,
+   "largest_seed": 0.5007971261947108
+  },
+  "difference": 0.0038385587866466286,
+  "combined_se": 0.00846070985074694,
+  "apart_in_combined_se": 0.4536922852055667
+ },
+ "watched_a_seed": {
+  "reference": {
+   "defector": 8.1,
+   "sink": 0.0,
+   "alone": 5.9
+  },
+  "second_engine": {
+   "defector": 7.92,
+   "sink": 0.0,
+   "alone": 6.39
+  }
+ },
+ "seconds": {
+  "reference_engine": 91.02172541618347,
+  "second_engine": 645.856
+ },
+ "defectors_ruined": {
+  "reference": 499,
+  "second_engine": 500,
+  "of": 500
+ }
+}

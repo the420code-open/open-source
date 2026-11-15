@@ -1,0 +1,19 @@
+{
+ "label": "dry, never a result",
+ "cells": {
+  "D1, type C hosts": {
+   "configurations_with_a_counterparty": 209,
+   "by_the_records_added_together": 48,
+   "the_engine_reports": 48,
+   "configurations_where_the_two_agree": 209,
+   "for_comparison_only_by_any_one_counterparty": 54
+  },
+  "D1's control, type U hosts": {
+   "configurations_with_a_counterparty": 118,
+   "by_the_records_added_together": 29,
+   "the_engine_reports": 29,
+   "configurations_where_the_two_agree": 118,
+   "for_comparison_only_by_any_one_counterparty": 34
+  }
+ }
+}

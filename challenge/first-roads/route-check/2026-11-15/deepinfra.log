@@ -1,0 +1,1 @@
+deepinfra PASSED {"answered": true, "model_as_set": true, "normal_stop": true, "tokens_reported": true, "reasoning_seen": true} | model deepseek-ai/DeepSeek-V4-Pro-0813 | stop stop | usage {"input": 118, "output": 191, "reasoning": 119} | $0.0006 | 79.21s | 

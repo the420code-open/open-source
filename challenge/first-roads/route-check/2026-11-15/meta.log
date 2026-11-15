@@ -1,0 +1,1 @@
+meta PASSED {"answered": true, "model_as_set": true, "normal_stop": true, "tokens_reported": true, "reasoning_seen": true} | model muse-wonder-1.0 | stop stop | usage {"input": 30, "output": 621, "reasoning": 548} | $0.0125 | 84.44s | 

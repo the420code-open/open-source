@@ -1,0 +1,655 @@
+{
+ "cells": 32,
+ "summary_leaves_compared": 10448,
+ "summary_leaves_equal": 10352,
+ "unexpected": [],
+ "differing_paths_seen": {
+  "/code": 32,
+  "/files/packet.jsonl": 32,
+  "/run/seconds": 32
+ },
+ "seed_lines_compared": 3200,
+ "seed_lines_equal": 3200,
+ "head_fields_differing": {
+  "/code": [
+   [
+    "\"world browser engine 1.5.1\"",
+    "\"world browser engine 1.6.0\""
+   ]
+  ],
+  "/code_sha256": [
+   [
+    "\"7a7aacc13341c95169ef1fe022de72f58679859a058258fab2eaf49cab75c674\"",
+    "\"b4611db65b77c87f87d3b95714cc64b5eee766cd7082a728b81a829fa5056364\""
+   ]
+  ],
+  "/date": [
+   [
+    "\"2026-11-13\"",
+    "\"2026-11-14\""
+   ]
+  ],
+  "/generator": [
+   [
+    "\"the engine's own (xoshiro128**, seeded by splitmix32), streams per seed: 1 stock noise, 2 reading n",
+    "\"the engine's own (sfc32, seeded by splitmix32), streams per seed: 1 stock noise, 2 reading noise, 3"
+   ]
+  ],
+  "/parameters/drift_uneven": [
+   [
+    "\"<absent>\"",
+    "null"
+   ]
+  ]
+ },
+ "per_cell": [
+  {
+   "cell": "b1-ring-1D-m3-s0-quiet",
+   "mean_was": 0.384031885183075,
+   "mean_now": 0.384031885183075,
+   "se_was": 5.579080615598709e-18,
+   "se_now": 5.579080615598709e-18,
+   "largest_was": 0.3840318851830751,
+   "largest_now": 0.3840318851830751,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 247,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 418.377,
+   "seconds_now": 415.615
+  },
+  {
+   "cell": "b1-ring-1D-m3-s0-some",
+   "mean_was": 0.3831922960659114,
+   "mean_now": 0.3831922960659114,
+   "se_was": 0.0022948672272597886,
+   "se_now": 0.0022948672272597886,
+   "largest_was": 0.43989967810239566,
+   "largest_now": 0.43989967810239566,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 247,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 756.808,
+   "seconds_now": 742.011
+  },
+  {
+   "cell": "b1-ring-1D-m3-s0-more",
+   "mean_was": 0.38113469654798865,
+   "mean_now": 0.38113469654798865,
+   "se_was": 0.0043873186667465,
+   "se_now": 0.0043873186667465,
+   "largest_was": 0.49576781228622707,
+   "largest_now": 0.49576781228622707,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 247,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 734.064,
+   "seconds_now": 749.773
+  },
+  {
+   "cell": "b1-ring-1D-m3-s0-reading",
+   "mean_was": 0.38400015511232044,
+   "mean_now": 0.38400015511232044,
+   "se_was": 0.00016335730309131915,
+   "se_now": 0.00016335730309131915,
+   "largest_was": 0.3879092080589855,
+   "largest_now": 0.3879092080589855,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 247,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 423.722,
+   "seconds_now": 419.184
+  },
+  {
+   "cell": "b1-ring-1D-m3-s05-quiet",
+   "mean_was": 0.25828783834157343,
+   "mean_now": 0.25828783834157343,
+   "se_was": 5.0211725540388373e-17,
+   "se_now": 5.0211725540388373e-17,
+   "largest_was": 0.2582878383415739,
+   "largest_now": 0.2582878383415739,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 247,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 424.997,
+   "seconds_now": 414.015
+  },
+  {
+   "cell": "b1-ring-1D-m3-s05-some",
+   "mean_was": 0.2539800730518112,
+   "mean_now": 0.2539800730518112,
+   "se_was": 0.0020240357970845928,
+   "se_now": 0.0020240357970845928,
+   "largest_was": 0.31826568881481676,
+   "largest_now": 0.31826568881481676,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 247,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 737.008,
+   "seconds_now": 598.897
+  },
+  {
+   "cell": "b1-ring-1D-m3-s05-more",
+   "mean_was": 0.24900797790372076,
+   "mean_now": 0.24900797790372076,
+   "se_was": 0.0037860027422114027,
+   "se_now": 0.0037860027422114027,
+   "largest_was": 0.3642107600182447,
+   "largest_now": 0.3642107600182447,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 247,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 760.355,
+   "seconds_now": 745.471
+  },
+  {
+   "cell": "b1-ring-1D-m3-s05-reading",
+   "mean_was": 0.25821833089607843,
+   "mean_now": 0.25821833089607843,
+   "se_was": 0.00013265938353365859,
+   "se_now": 0.00013265938353365859,
+   "largest_was": 0.2597703696064464,
+   "largest_now": 0.2597703696064464,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 247,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 416.82,
+   "seconds_now": 421.467
+  },
+  {
+   "cell": "b1-ring-3D-m3-s0-quiet",
+   "mean_was": 0.39062381208771396,
+   "mean_now": 0.39062381208771396,
+   "se_was": 0.0009657712057918038,
+   "se_now": 0.0009657712057918038,
+   "largest_was": 0.40463165676007185,
+   "largest_now": 0.40463165676007185,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 357,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 377.189,
+   "seconds_now": 343.939
+  },
+  {
+   "cell": "b1-ring-3D-m3-s0-some",
+   "mean_was": 0.4120838467859664,
+   "mean_now": 0.4120838467859664,
+   "se_was": 0.0021956443465659522,
+   "se_now": 0.0021956443465659522,
+   "largest_was": 0.4848992188726219,
+   "largest_now": 0.4848992188726219,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 357,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 615.789,
+   "seconds_now": 502.12
+  },
+  {
+   "cell": "b1-ring-3D-m3-s0-more",
+   "mean_was": 0.43372364718721457,
+   "mean_now": 0.43372364718721457,
+   "se_was": 0.004514965979608975,
+   "se_now": 0.004514965979608975,
+   "largest_was": 0.5568075598043534,
+   "largest_now": 0.5568075598043534,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 357,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 639.232,
+   "seconds_now": 560.443
+  },
+  {
+   "cell": "b1-ring-3D-m3-s0-reading",
+   "mean_was": 0.3912347273592767,
+   "mean_now": 0.3912347273592767,
+   "se_was": 0.0009480217749812732,
+   "se_now": 0.0009480217749812732,
+   "largest_was": 0.40690132572457527,
+   "largest_now": 0.40690132572457527,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 357,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 386.427,
+   "seconds_now": 349.986
+  },
+  {
+   "cell": "b1-ring-3D-m3-s05-quiet",
+   "mean_was": 0.26349321513748175,
+   "mean_now": 0.26349321513748175,
+   "se_was": 0.0007626302745024745,
+   "se_now": 0.0007626302745024745,
+   "largest_was": 0.27455464082878744,
+   "largest_now": 0.27455464082878744,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 357,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 354.721,
+   "seconds_now": 242.979
+  },
+  {
+   "cell": "b1-ring-3D-m3-s05-some",
+   "mean_was": 0.2811222684808452,
+   "mean_now": 0.2811222684808452,
+   "se_was": 0.0021644655101443425,
+   "se_now": 0.0021644655101443425,
+   "largest_was": 0.33457904271286865,
+   "largest_now": 0.33457904271286865,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 357,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 582.298,
+   "seconds_now": 315.922
+  },
+  {
+   "cell": "b1-ring-3D-m3-s05-more",
+   "mean_was": 0.2899759211870465,
+   "mean_now": 0.2899759211870465,
+   "se_was": 0.003537628001198009,
+   "se_now": 0.003537628001198009,
+   "largest_was": 0.3921155788364018,
+   "largest_now": 0.3921155788364018,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 357,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 613.875,
+   "seconds_now": 493.491
+  },
+  {
+   "cell": "b1-ring-3D-m3-s05-reading",
+   "mean_was": 0.26380471700710884,
+   "mean_now": 0.26380471700710884,
+   "se_was": 0.0007438848500979028,
+   "se_now": 0.0007438848500979028,
+   "largest_was": 0.2745898679600985,
+   "largest_now": 0.2745898679600985,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 357,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 352.349,
+   "seconds_now": 242.725
+  },
+  {
+   "cell": "b1-random-1D-m3-s0-quiet",
+   "mean_was": 0.3562651739585981,
+   "mean_now": 0.3562651739585981,
+   "se_was": 0.004492647500796583,
+   "se_now": 0.004492647500796583,
+   "largest_was": 0.44766094198699546,
+   "largest_now": 0.44766094198699546,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 246,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 522.402,
+   "seconds_now": 578.931
+  },
+  {
+   "cell": "b1-random-1D-m3-s0-some",
+   "mean_was": 0.35297472818931974,
+   "mean_now": 0.35297472818931974,
+   "se_was": 0.0045815782056295865,
+   "se_now": 0.0045815782056295865,
+   "largest_was": 0.4610412718830055,
+   "largest_now": 0.4610412718830055,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 246,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 848.23,
+   "seconds_now": 809.296
+  },
+  {
+   "cell": "b1-random-1D-m3-s0-more",
+   "mean_was": 0.34556700176073546,
+   "mean_now": 0.34556700176073546,
+   "se_was": 0.005220647960195872,
+   "se_now": 0.005220647960195872,
+   "largest_was": 0.46492157130483963,
+   "largest_now": 0.46492157130483963,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 246,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 834.265,
+   "seconds_now": 801.613
+  },
+  {
+   "cell": "b1-random-1D-m3-s0-reading",
+   "mean_was": 0.3592872369011699,
+   "mean_now": 0.3592872369011699,
+   "se_was": 0.004320001327578051,
+   "se_now": 0.004320001327578051,
+   "largest_was": 0.44766094198699546,
+   "largest_now": 0.44766094198699546,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 246,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 530.257,
+   "seconds_now": 601.482
+  },
+  {
+   "cell": "b1-random-1D-m3-s05-quiet",
+   "mean_was": 0.23314763101936,
+   "mean_now": 0.23314763101936,
+   "se_was": 0.00334382969519748,
+   "se_now": 0.00334382969519748,
+   "largest_was": 0.3016384172241871,
+   "largest_now": 0.3016384172241871,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 246,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 537.393,
+   "seconds_now": 582.49
+  },
+  {
+   "cell": "b1-random-1D-m3-s05-some",
+   "mean_was": 0.2287640369829714,
+   "mean_now": 0.2287640369829714,
+   "se_was": 0.003594146021354477,
+   "se_now": 0.003594146021354477,
+   "largest_was": 0.31284333642981205,
+   "largest_now": 0.31284333642981205,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 246,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 870.511,
+   "seconds_now": 819.103
+  },
+  {
+   "cell": "b1-random-1D-m3-s05-more",
+   "mean_was": 0.22358847707233984,
+   "mean_now": 0.22358847707233984,
+   "se_was": 0.004459920447715524,
+   "se_now": 0.004459920447715524,
+   "largest_was": 0.3686164072168881,
+   "largest_now": 0.3686164072168881,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 246,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 857.552,
+   "seconds_now": 818.016
+  },
+  {
+   "cell": "b1-random-1D-m3-s05-reading",
+   "mean_was": 0.23380954597939294,
+   "mean_now": 0.23380954597939294,
+   "se_was": 0.003257897727295829,
+   "se_now": 0.003257897727295829,
+   "largest_was": 0.3016384172241871,
+   "largest_now": 0.3016384172241871,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 246,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 544.459,
+   "seconds_now": 597.672
+  },
+  {
+   "cell": "b1-random-3D-m3-s0-quiet",
+   "mean_was": 0.4032232725501201,
+   "mean_now": 0.4032232725501201,
+   "se_was": 0.0023077470137739683,
+   "se_now": 0.0023077470137739683,
+   "largest_was": 0.45905253533993623,
+   "largest_now": 0.45905253533993623,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 456,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 467.693,
+   "seconds_now": 469.154
+  },
+  {
+   "cell": "b1-random-3D-m3-s0-some",
+   "mean_was": 0.40892010896854225,
+   "mean_now": 0.40892010896854225,
+   "se_was": 0.0034447892701122396,
+   "se_now": 0.0034447892701122396,
+   "largest_was": 0.5061531572166333,
+   "largest_now": 0.5061531572166333,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 456,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 767.89,
+   "seconds_now": 541.12
+  },
+  {
+   "cell": "b1-random-3D-m3-s0-more",
+   "mean_was": 0.41427810827765255,
+   "mean_now": 0.41427810827765255,
+   "se_was": 0.005877666668593287,
+   "se_now": 0.005877666668593287,
+   "largest_was": 0.675689567954395,
+   "largest_now": 0.675689567954395,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 456,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 731.215,
+   "seconds_now": 725.147
+  },
+  {
+   "cell": "b1-random-3D-m3-s0-reading",
+   "mean_was": 0.4033816437384394,
+   "mean_now": 0.4033816437384394,
+   "se_was": 0.0021286650153454593,
+   "se_now": 0.0021286650153454593,
+   "largest_was": 0.45905253533993623,
+   "largest_now": 0.45905253533993623,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 456,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 479.639,
+   "seconds_now": 482.022
+  },
+  {
+   "cell": "b1-random-3D-m3-s05-quiet",
+   "mean_was": 0.26855944693886064,
+   "mean_now": 0.26855944693886064,
+   "se_was": 0.0018843088690957016,
+   "se_now": 0.0018843088690957016,
+   "largest_was": 0.31054165605674094,
+   "largest_now": 0.31054165605674094,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 456,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 488.409,
+   "seconds_now": 510.95
+  },
+  {
+   "cell": "b1-random-3D-m3-s05-some",
+   "mean_was": 0.2731673698351045,
+   "mean_now": 0.2731673698351045,
+   "se_was": 0.002785464448267008,
+   "se_now": 0.002785464448267008,
+   "largest_was": 0.3600245986120238,
+   "largest_now": 0.3600245986120238,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 456,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 776.987,
+   "seconds_now": 778.24
+  },
+  {
+   "cell": "b1-random-3D-m3-s05-more",
+   "mean_was": 0.2756400261643505,
+   "mean_now": 0.2756400261643505,
+   "se_was": 0.00482726025947995,
+   "se_now": 0.00482726025947995,
+   "largest_was": 0.4335835947218295,
+   "largest_now": 0.4335835947218295,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 456,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 781.082,
+   "seconds_now": 540.011
+  },
+  {
+   "cell": "b1-random-3D-m3-s05-reading",
+   "mean_was": 0.268136560992032,
+   "mean_now": 0.268136560992032,
+   "se_was": 0.001658091526044916,
+   "se_now": 0.001658091526044916,
+   "largest_was": 0.31054165605674094,
+   "largest_now": 0.31054165605674094,
+   "zone_was": "holds",
+   "zone_now": "holds",
+   "leaves": 456,
+   "differing": [
+    "/code",
+    "/files/packet.jsonl",
+    "/run/seconds"
+   ],
+   "seconds_was": 504.38,
+   "seconds_now": 523.004
+  }
+ ]
+}

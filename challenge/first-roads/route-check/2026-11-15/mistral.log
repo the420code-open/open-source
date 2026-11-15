@@ -1,0 +1,1 @@
+mistral PASSED {"answered": true, "model_as_set": true, "normal_stop": true, "tokens_reported": true, "reasoning_seen": true} | model mistral-large-4-0 | stop stop | usage {"input": 37, "output": 1118, "reasoning": 1048} | $0.0024 | 88.8s | 

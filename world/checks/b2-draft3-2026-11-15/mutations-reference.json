@@ -1,0 +1,70 @@
+[
+ {
+  "mutation": "point 20 read on one round's record",
+  "line_meant_to_fail": "B2.P20",
+  "failed": [
+   "B2.P20 each clock starts at the first close whose window record is below zero"
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "point 21 never applied",
+  "line_meant_to_fail": "B2.P21",
+  "failed": [
+   "B2.P21 a clocked configuration turns where the window stands at zero or above to its end",
+   "B2.P21 a pair drawing together: the poorer's watched from 0, turns, judged to its turn"
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "point 22 only at the run's end",
+  "line_meant_to_fail": "B2.P22",
+  "failed": [
+   "B2.P22 an end below zero by the window takes the counterparties' span, where shorter",
+   "B2.P19-22 points 19 and 22 never lengthen a span: shorter taken, longer left"
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "an operator alone named a defector's",
+  "line_meant_to_fail": "B2.10",
+  "failed": [
+   "B2.10 kinds named: a defector's, a sink's, an operator alone"
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "points 19 and 22 lengthen a span too, as in draft 2",
+  "line_meant_to_fail": "B2.P19-22",
+  "failed": [
+   "S1 configuration of B, members A,B, clock from 0: span",
+   "own.IX.2 gains as a whole: span used",
+   "own.IX.2 loses as a whole: span used",
+   "own.IX.2 the whole's span, 200 over 18",
+   "B2.P22 an end below zero by the window takes the counterparties' span, where shorter",
+   "B2.P19-22 points 19 and 22 never lengthen a span: shorter taken, longer left"
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "point 19 lengthens a span at the run's end",
+  "line_meant_to_fail": "B2.P19-22",
+  "failed": [
+   "B2.P19-22 points 19 and 22 never lengthen a span: shorter taken, longer left"
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "point 22 lengthens a span at any other end",
+  "line_meant_to_fail": "B2.P19-22",
+  "failed": [
+   "S1 configuration of B, members A,B, clock from 0: span",
+   "own.IX.2 gains as a whole: span used",
+   "own.IX.2 loses as a whole: span used",
+   "own.IX.2 the whole's span, 200 over 18",
+   "B2.P22 an end below zero by the window takes the counterparties' span, where shorter",
+   "B2.P19-22 points 19 and 22 never lengthen a span: shorter taken, longer left"
+  ],
+  "the_meant_line_failed": true
+ }
+]

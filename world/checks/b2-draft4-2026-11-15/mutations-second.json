@@ -1,0 +1,11 @@
+[
+ {
+  "mutation": "a sink's clock never starts",
+  "line_meant_to_fail": "B2.SINK",
+  "failed": [
+   "B2.P21 B2.P21           a pair drawing together: the poorer's watched from 0, turns, judged to its turn    runs                ",
+   "B2.SINK B2.SINK          a made sink, its taxed operators of type U: watched from 0, lasts 290.9 spans      {kind:a sink's clock"
+  ],
+  "the_meant_line_failed": true
+ }
+]

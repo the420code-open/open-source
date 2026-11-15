@@ -1,0 +1,69 @@
+{
+ "sent_at": "2026-11-15T08:48:46+00:00",
+ "request_body": {
+  "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+  "messages": [
+   {
+    "role": "user",
+    "content": "Which whole numbers between 1 and 50 are prime? List them, and say how many there are."
+   }
+  ],
+  "reasoning_effort": "max"
+ },
+ "status": 200,
+ "response": {
+  "service_tier": "default",
+  "id": "chatcmpl-RCXrH8nn87Fp0OKPzOye93eY",
+  "object": "chat.completion",
+  "created": 1794732528,
+  "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "The prime numbers between 1 and 50 are:\n\n**2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47**\n\nThere are **15** prime numbers between 1 and 50.",
+     "reasoning_content": "We need answer user asks: \"Which whole numbers between 1 and 50 are prime? List them, and say how many there are.\" Need be careful: whole numbers between 1 and 50 likely 2 through 49? Or inclusive? Prime numbers between 1 and 50. Primes less than 50: 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47. Count 15. Need maybe mention 1 is not prime. If \"between 1 and 50\" may exclude 1 and 50 but primes anyway. Need provide list and count. Could include all primes up to 50. Let's craft concise.",
+     "name": null,
+     "tool_calls": []
+    },
+    "finish_reason": "stop",
+    "logprobs": null
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 118,
+   "total_tokens": 341,
+   "completion_tokens": 223,
+   "estimated_cost": 0.0007331999999999999,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": null
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 150
+   }
+  }
+ },
+ "seconds": 2.53,
+ "read": {
+  "model_returned": "deepseek-ai/DeepSeek-V4-Pro-0813",
+  "finish_reason": "stop",
+  "reasoning_tokens": 150,
+  "reasoning_chars": 484,
+  "answer": "The prime numbers between 1 and 50 are:\n\n**2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47**\n\nThere are **15** prime numbers between 1 and 50.",
+  "usage": {
+   "prompt_tokens": 118,
+   "total_tokens": 341,
+   "completion_tokens": 223,
+   "estimated_cost": 0.0007331999999999999,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": null
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 150
+   }
+  }
+ }
+}

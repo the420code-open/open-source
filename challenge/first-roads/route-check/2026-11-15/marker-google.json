@@ -1,0 +1,43 @@
+{
+ "answer": "Right. \n\nIt correctly lists every prime number between 1 and 50 without any errors or omissions, and accurately states the total count of fifteen.",
+ "reasoning_text": "",
+ "model_returned": "gemini-4-carbon",
+ "stop_reason": "FinishReason.STOP",
+ "cut_short": false,
+ "refusal": false,
+ "usage": {
+  "input": 154,
+  "cached_input": null,
+  "output": 36,
+  "reasoning": 1235
+ },
+ "usd": 0.013018,
+ "maker": "google",
+ "seconds": 65.59,
+ "attempts": [
+  {
+   "at": "2026-11-15T09:09:55+00:00",
+   "seconds": 65.59,
+   "result": "answered"
+  }
+ ],
+ "at": "2026-11-15T09:09:55+00:00",
+ "route": "marker-google",
+ "prompt": "Here is a question and an answer to it.\n\nThe question: Which whole numbers between 1 and 50 are prime? List them, and say how many there are.\n\nThe answer: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43 and 47. There are fifteen.\n\nSort the answer as one of two kinds: right, or wrong. Then give one line saying why.",
+ "settings": {
+  "model": "gemini-4-carbon",
+  "setting": {
+   "thinking_level": "high"
+  },
+  "streamed": true,
+  "why": "point 6: the model Google's own page calls its most capable; point 3: streamed, so nothing is cut at 32,768 tokens"
+ },
+ "read": {
+  "answered": true,
+  "model_as_set": true,
+  "normal_stop": true,
+  "tokens_reported": true,
+  "reasoning_seen": true
+ },
+ "passed": true
+}

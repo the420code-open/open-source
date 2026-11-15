@@ -10,6 +10,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import re
 import sys
 import tempfile
 import urllib.error
@@ -63,6 +64,27 @@ def take_snapshot(floor):
         if s["kind"] != "registry":
             snap["sources"][code] = hashlib.sha256(F.source_text(s, ov["sources"].get(code)).encode("utf-8")).hexdigest()
     return snap
+
+
+LATER = re.compile(r"^ ?(KS-[A-Z0-9.]+), dated addition, \d{1,2} [A-Z][a-z]+ \d{4} \(MKSR (v\d+\.\d+)\)\. ")
+
+
+def later_addition(k, old, new, pinned):
+    """The registry version of a dated addition the registry inserted into a row after the pinned version, or None.
+    The row must keep every word it had, in order, with one block inserted, and that block must open as the registry
+    opens a dated addition to this very switch, in a later version: "KS-BAR.9, dated addition, 13 November 2026
+    (MKSR v5.40). ..."."""
+    if len(new) <= len(old):
+        return None
+    i = next((j for j in range(len(old)) if old[j] != new[j]), len(old))
+    block = new[i:len(new) - (len(old) - i)]
+    if new[:i] + new[i + len(block):] != old:
+        return None
+    m = LATER.match(block)
+    vers = lambda v: tuple(int(x) for x in v.lstrip("v").split("."))
+    if not m or m.group(1) != k or not pinned or vers(m.group(2)) <= vers(pinned):
+        return None
+    return m.group(2)
 
 
 def check(floor, fingerprint, snap):
@@ -125,19 +147,31 @@ def check(floor, fingerprint, snap):
     checks.append({"check": "every extract, against its source", "ok": not notes, "notes": notes,
                    "sources_changed_since_snapshot": sorted(changed)})
 
-    # 3. every key, against the live registry and the snapshot
-    notes, info = [], []
+    # 3. every key, against the registry version the floor was made from (its snapshot), pinned (AG Opus, through G,
+    # 15 November 2026): a dated addition the registry made after that version, which keeps every word of the row as
+    # it was and leaves its status as it was, is reported as later, never as a failure. The floor takes it in its
+    # next version. Any other change to a keyed row, or to its status, still fails.
+    notes, info, later = [], [], []
+    pinned = (snap or {}).get("registry", {}).get("version")
     for k, row in sorted((snap or {}).get("registry", {}).get("rows", {}).items()):
         live = by.get(k)
         if not live:
             continue
-        if live.get("description") != row["description"] or live.get("status_raw") != row["status_raw"]:
+        if live.get("description") == row["description"] and live.get("status_raw") == row["status_raw"]:
+            continue
+        added = later_addition(k, row["description"], live.get("description") or "", pinned)
+        if added and live.get("status_raw") == row["status_raw"]:
+            later.append({"switch": k, "added_in": added})
+            info.append("%s: a dated addition in the registry's %s, later than %s, which this floor's rows are from. "
+                        "The floor takes it in its next version." % (k, added, pinned))
+        else:
             notes.append("%s: its row or status differs from the snapshot" % k)
             flag(SOURCE_CHANGED, k)
-    if snap and reg["registry"]["version"] != snap["registry"]["version"] and not notes:
+    if snap and reg["registry"]["version"] != pinned and not notes and not later:
         info.append("The registry's version has moved from %s to %s; no keyed switch's row or status changed. "
-                    "The next version of the floor takes the new number." % (snap["registry"]["version"], reg["registry"]["version"]))
-    checks.append({"check": "every key, against the live registry", "ok": not notes, "notes": notes + info})
+                    "The next version of the floor takes the new number." % (pinned, reg["registry"]["version"]))
+    checks.append({"check": "every key, against the registry the floor was made from, " + str(pinned),
+                   "ok": not notes, "notes": notes + info, "later_dated_additions": later})
 
     # 4. every registry row, cell by cell
     notes = []

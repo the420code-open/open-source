@@ -1,9 +1,72 @@
 {
  "approved_by": "G",
- "date": "2026-11-14",
- "words": "G, 14 November 2026, in chat, to the question \"Which caps for the challenge run and the known road's arm?\": \"$60 and $20\".",
- "run": {"what": "eight AIs, three answers each, at each maker's highest standard setting for reasoning, with the outside marks (plan, sections 5, 6 and 8)", "cap_usd": 60, "priced_central_usd": 12.65, "priced_high_usd": 34.03},
- "known_road": {"what": "one more answer from each of the eight, with the paper as it stood on 13 November 2026, and its outside marks (plan, section 7)", "decided": "yes, by its cap", "cap_usd": 20, "priced_central_usd": 3.98, "priced_high_usd": 10.85},
- "price": "The challenge's first roads - the price - for G and AG Opus.md, 14 November 2026",
- "note": "A cap is a stop, not a spend. The run stops at it."
+ "date": "2026-11-15",
+ "words": "G, 15 November 2026, in chat: \"i dont want money to stop anything - if the total costs exceeds USD1000 - stop - otherwise, please lets build the best possible thing - this is more important to me than anything\".",
+ "plan": "draft 6, challenge-plan-v3: ten answers from each AI, and three on the paper as it stood on 13 November 2026 for the known roads, at the settings of settings.json (AG Opus's answers to the seven points, 15 November 2026).",
+ "cap_usd_total": 1000,
+ "cap_how": "G's maximum is $1,000, what G has, not a spend. So everything spent since the morning of 15 November 2026 stays inside it: what was already spent is taken off, and the challenge, the run, its marks and the known roads' arm together, stops at $830.07. Nothing stops below it for cost. The run stops before any call that could take the challenge past it.",
+ "priced": {
+  "price": "The challenge, draft 6 - priced with the seven settings - for G and AG Opus.md, 15 November 2026",
+  "run_with_marks_usd": {
+   "central": 45.36,
+   "high": 159.64,
+   "far_edge": 340.57
+  },
+  "known_roads_with_marks_usd": {
+   "central": 13.14,
+   "high": 46.14,
+   "far_edge": 98.11
+  },
+  "both_usd": {
+   "central": 58.5,
+   "high": 205.78,
+   "far_edge": 438.68
+  }
+ },
+ "note": "A cap is a stop, not a spend.",
+ "approvals": [
+  {
+   "date": "2026-11-14",
+   "words": "G, 14 November 2026, in chat, to the question \"Which caps for the challenge run and the known road's arm?\": \"$60 and $20\".",
+   "for": "drafts 4 and 5: three answers from each AI, and one for the known road",
+   "run_cap_usd": 60,
+   "known_road_cap_usd": 20,
+   "superseded_by": "the approval of 15 November 2026, for draft 6"
+  },
+  {
+   "date": "2026-11-15",
+   "words": "G, 15 November 2026, in chat, to the question \"Which caps for the challenge run and the known roads' arm?\": \"$205 and $61\".",
+   "for": "draft 6, priced before the seven settings were answered",
+   "run_cap_usd": 205,
+   "known_roads_cap_usd": 61,
+   "superseded_by": "G's word later that morning: one stop at $1,000 in total"
+  },
+  {
+   "date": "2026-11-15",
+   "words": "G, 15 November 2026, in chat: \"i dont want money to stop anything - if the total costs exceeds USD1000 - stop - otherwise, please lets build the best possible thing - this is more important to me than anything\".",
+   "for": "draft 6, at the settings of settings.json",
+   "cap_usd_total": 1000
+  },
+  {
+   "date": "2026-11-15",
+   "words": "G, 15 November 2026, in chat: \"we dont have to spend USD1000 - i am just saying that is how much i have - that is my maximum\".",
+   "for": "the same: $1,000 is the maximum, not a spend",
+   "challenge_stop_usd": 830.07
+  }
+ ],
+ "words_clarified": "G, 15 November 2026, in chat: \"we dont have to spend USD1000 - i am just saying that is how much i have - that is my maximum\".",
+ "already_spent_today_usd": {
+  "the floor run, sent and collected, 15 November 2026": 102.74,
+  "scorer one's marking of the floor run, 15 November 2026 (ledger, with calls cut off at their largest)": 67.1,
+  "the route checks and the DeepSeek settings check, 15 November 2026": 0.09
+ },
+ "challenge_stop_usd": 830.07,
+ "run_day": {
+  "day": "2026-11-15",
+  "start_cape_town": "12:01",
+  "start_utc": "2026-11-15T10:01:00Z",
+  "words": "G, 15 November 2026, in chat, to the question \"Start the challenge run at 12:01 today, or keep 00:01 tomorrow?\": \"Run at 12:01 today\".",
+  "before": "AG Opus, through G, 15 November 2026: \"If every route passes, the run takes 16 November, from 00:01 Cape Town time, with its known roads' arm the same day.\"",
+  "why_it_holds": "The plan asks that every AI be asked on one day, Cape Town time. From 12:01 the day has about twelve hours; an answer not whole by midnight would be on another day, and the record would say so."
+ }
 }

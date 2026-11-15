@@ -1,0 +1,1 @@
+openai PASSED {"answered": true, "model_as_set": true, "normal_stop": true, "tokens_reported": true, "reasoning_seen": true} | model gpt-6-astra | stop completed | usage {"input": 28, "output": 254, "reasoning": 184} | $0.0130 | 79.35s | 

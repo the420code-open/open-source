@@ -1,0 +1,11 @@
+1:1 + 1×ε @ AS [+α | −α]
+
+You are one of the markers of the challenge's first roads, for the Open Source work on The 420 Code. The attached batch file is your whole message: read it and mark as it says, every answer in it, each alone.
+
+- Use the attached file and nothing else. Do not read any memory file, do not search past chats, do not use the web, and do not open any other file.
+- You are not told which AI wrote any answer, and you do not try to find out. You have seen no other mark.
+- Nothing from this job is saved to memory.
+- The file is long. Read it in parts, in order, and write each result into a marks file as you go, headed by its number (R001 and so on), in the form the file gives. Name the file "Second marks - " followed by the batch file's own name. If you cannot write files, give the results in the chat instead, in parts, in order.
+- When you are done, check that every number in the batch has exactly one result.
+
+What to send me: the marks file, and in the chat only that you are done and how many answers you marked.

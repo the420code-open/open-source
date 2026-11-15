@@ -1,0 +1,807 @@
+{
+ "lines": [
+  {
+   "id": "C1",
+   "what": "ruin time of A",
+   "expected": 16.666667,
+   "got": 16.66666666666607,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C1",
+   "what": "ruin time of B",
+   "expected": 16.666667,
+   "got": 16.66666666666607,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C2",
+   "what": "ruin time of A",
+   "expected": 6.25,
+   "got": 6.249999999999578,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C2",
+   "what": "ruin time of B",
+   "expected": 13.541667,
+   "got": 13.541666666668855,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m7.pair",
+   "what": "ruin time of A",
+   "expected": 11.111111,
+   "got": 11.111111111110711,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m7.pair",
+   "what": "ruin time of B",
+   "expected": 11.111111,
+   "got": 11.111111111110711,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m7.defector",
+   "what": "ruin time of B",
+   "expected": 11.979167,
+   "got": 11.979166666668855,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m8.pair",
+   "what": "ruin time of A",
+   "expected": 12.5,
+   "got": 12.500000000001489,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m8.pair",
+   "what": "ruin time of B",
+   "expected": 12.5,
+   "got": 12.500000000001489,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m8.defector",
+   "what": "ruin time of B",
+   "expected": 12.5,
+   "got": 12.499999999997254,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m9.pair",
+   "what": "ruin time of A",
+   "expected": 14.285714,
+   "got": 14.285714285711588,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m9.pair",
+   "what": "ruin time of B",
+   "expected": 14.285714,
+   "got": 14.285714285711588,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m9.defector",
+   "what": "ruin time of B",
+   "expected": 13.020833,
+   "got": 13.020833333333055,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m10.pair",
+   "what": "ruin time of A",
+   "expected": 16.666667,
+   "got": 16.66666666666607,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m10.pair",
+   "what": "ruin time of B",
+   "expected": 16.666667,
+   "got": 16.66666666666607,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C3.m10.defector",
+   "what": "ruin time of B",
+   "expected": 13.541667,
+   "got": 13.541666666668855,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C4",
+   "what": "A never ruined to 30",
+   "expected": "never",
+   "got": "never",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C4",
+   "what": "B never ruined to 30",
+   "expected": "never",
+   "got": "never",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C4",
+   "what": "stock of A at 30",
+   "expected": 100,
+   "got": 100.0,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C4",
+   "what": "stock of B at 30",
+   "expected": 84,
+   "got": 83.99999999999466,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C4",
+   "what": "lowest stock of A",
+   "expected": 84,
+   "got": 83.99999999999466,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C4",
+   "what": "highest stock of A",
+   "expected": 100,
+   "got": 100.0,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C4",
+   "what": "lowest stock of B",
+   "expected": 84,
+   "got": 83.99999999999466,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C4",
+   "what": "highest stock of B",
+   "expected": 100,
+   "got": 100.0,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C5",
+   "what": "ruin time of A",
+   "expected": 6.375,
+   "got": 6.374999999999579,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "C5",
+   "what": "ruin time of B",
+   "expected": 13.4375,
+   "got": 13.437499999999716,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "S1",
+   "what": "configuration of B, members A,B, clock from 0: stock_above_ruin",
+   "expected": 200,
+   "got": 200.0,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "S1",
+   "what": "configuration of B, members A,B, clock from 0: net_loss_per_round",
+   "expected": 18,
+   "got": 18.0,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "S1",
+   "what": "configuration of B, members A,B, clock from 0: span",
+   "expected": 11.1111,
+   "got": 11.11111111111111,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "S1",
+   "what": "configuration of B, members A,B, clock from 0: end",
+   "expected": 6.25,
+   "got": 6.249999999999578,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "S2",
+   "what": "configuration of B, members B, clock from 6.25: stock_above_ruin",
+   "expected": 87.5,
+   "got": 87.50000000002997,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "S2",
+   "what": "configuration of B, members B, clock from 6.25: net_loss_per_round",
+   "expected": 12,
+   "got": 12.0,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "S2",
+   "what": "configuration of B, members B, clock from 6.25: span",
+   "expected": 7.2917,
+   "got": 7.2916666666691645,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "S2",
+   "what": "configuration of B, members B, clock from 6.25: end",
+   "expected": 13.541667,
+   "got": 13.541666666668855,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.I.1",
+   "what": "drift E",
+   "expected": 0.367879,
+   "got": 0.36787944117144233,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.I.1",
+   "what": "lone operator by the engine, t = 10",
+   "expected": 0.367879,
+   "got": 0.3676954247709635,
+   "tol": 0.0002,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.II.1",
+   "what": "least_cost_point x",
+   "expected": 0.666667,
+   "got": 0.6666666666666666,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.II.1",
+   "what": "least_cost_effort u",
+   "expected": 0.333333,
+   "got": 0.3333333333333333,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.III.1",
+   "what": "event_horizon x_H",
+   "expected": 0.6,
+   "got": 0.6,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.IV.1",
+   "what": "mean_effort_cost cost",
+   "expected": 0.25,
+   "got": 0.25,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.IV.1",
+   "what": "mean_effort_cost cost",
+   "expected": 0.5,
+   "got": 0.5,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.VI.1",
+   "what": "least_cost_effort u1",
+   "expected": 0.192308,
+   "got": 0.19230769230769232,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.VI.1",
+   "what": "least_cost_effort u2",
+   "expected": 0.441176,
+   "got": 0.44117647058823534,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.VI.1",
+   "what": "coupled_steady_state E1",
+   "expected": 0.893665,
+   "got": 0.8936651583710407,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.VI.1",
+   "what": "coupled_steady_state E2",
+   "expected": 0.757919,
+   "got": 0.7579185520361992,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "A4.VI.1",
+   "what": "coupled_steady_state flow",
+   "expected": 0.013575,
+   "got": 0.01357466063348415,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "N1",
+   "what": "no cut",
+   "expected": 0,
+   "got": 0,
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "N1",
+   "what": "stock of A at 10",
+   "expected": 32.548394,
+   "got": 32.54839372367705,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "N1",
+   "what": "stock of B at 10",
+   "expected": 32.548394,
+   "got": 32.54839372367705,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "N2",
+   "what": "cut at round 1 by A, on 1 round of record",
+   "expected": "1 cut",
+   "got": "1 cut; all cuts: [{'seed': 0, 'round': 1, 'by': 'A', 'link': ['A', 'B'], 'record': -2.26, 'rounds': 1}]",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "N2",
+   "what": "ruin time of A",
+   "expected": 15.5993,
+   "got": 15.59926934981708,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "N2",
+   "what": "ruin time of B",
+   "expected": 16.9888,
+   "got": 16.988793303028096,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.VI.1",
+   "what": "E1 by the engine",
+   "expected": 0.8936651583710407,
+   "got": 0.8936651583710533,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.VI.1",
+   "what": "E2 by the engine",
+   "expected": 0.7579185520361992,
+   "got": 0.7579185520362086,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.II.1",
+   "what": "least-cost point by the engine",
+   "expected": 0.6666666666666666,
+   "got": 0.6666666666666482,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.2",
+   "what": "gains as a whole: span used",
+   "expected": "counterparties",
+   "got": "counterparties",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.2",
+   "what": "the counterparties' span, rounds",
+   "expected": 6.389776357827476,
+   "got": 6.389776357827476,
+   "tol": 1e-09,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.5",
+   "what": "window subtracted where hosts are type C",
+   "expected": 0.0,
+   "got": 0.0,
+   "tol": 1e-12,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.2",
+   "what": "loses as a whole: span used",
+   "expected": "whole",
+   "got": "whole",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.2",
+   "what": "the whole's span, 200 over 18",
+   "expected": 11.11111111111111,
+   "got": 11.11111111111111,
+   "tol": 1e-06,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.5",
+   "what": "no window where the counterparty is type U",
+   "expected": 0.562499999999962,
+   "got": 0.562499999999962,
+   "tol": 1e-12,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.B1.7",
+   "what": "defectors with no live link at the start, reported",
+   "expected": "['D1', 'D2']",
+   "got": "['D1', 'D2']",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.B1.7",
+   "what": "...and not watched, though alone their clocks start",
+   "expected": "0 watched of 2",
+   "got": "0 watched of 2",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.B1.7",
+   "what": "a defector with live links at the start is watched",
+   "expected": ">0 watched",
+   "got": 2,
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.B1.7",
+   "what": "nothing to watch: out of the mean, counted, two of twenty",
+   "expected": "18 in, 2 out, not settled",
+   "got": "18 in, 2 out, not settled",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.B1.7",
+   "what": "...a second with nothing to watch: over one in ten",
+   "expected": "settles nothing",
+   "got": "settles nothing",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.links",
+   "what": "ring D1 D2 H: D1 - D2 left out",
+   "expected": "[['D1', 'D2']]; D1: H, D2: H",
+   "got": "[['D1', 'D2']]; D1: H, D2: H",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.links",
+   "what": "ring D1 D2 D3 H: two left out, D2 with no live link",
+   "expected": "2 left out; ['D2']",
+   "got": "2 left out; ['D2']",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.links",
+   "what": "hops between defectors: no link",
+   "expected": ">0, all 'no link joins two defectors'",
+   "got": "8, 8",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.P19",
+   "what": "D and four U hosts, noise: the counterparties' span, 160/9.04",
+   "expected": 17.69911504424779,
+   "got": 17.69911504424779,
+   "tol": 1e-09,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.P19",
+   "what": "...records over the last 5 rounds, -45.2; point 14's span past the run",
+   "expected": -45.2,
+   "got": -45.199999999999996,
+   "tol": 1e-09,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.P19",
+   "what": "...at t = 400: 22.6 spans, judged",
+   "expected": 22.6,
+   "got": 22.599999999999998,
+   "tol": 1e-09,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.P19",
+   "what": "quiet, from 200: the whole loses throughout; 760/9.04",
+   "expected": 84.070796460177,
+   "got": 84.070796460177,
+   "tol": 1e-09,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.P19",
+   "what": "...at t = 400: 4.758 spans, judged",
+   "expected": 4.757894736842105,
+   "got": 4.757894736842105,
+   "tol": 1e-09,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.P19",
+   "what": "an operator alone: point 19 does not apply",
+   "expected": "not applied, too long to judge",
+   "got": "not applied, too long to judge",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.B1.10",
+   "what": "a control: 'a defector lasts', 'no defector lasts', and fires nothing",
+   "expected": "a defector lasts, no defector lasts; control: fires nothing",
+   "got": "a defector lasts, no defector lasts; control: fires nothing",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.4",
+   "what": "standing, bound not come: too long to judge",
+   "expected": false,
+   "got": false,
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.9",
+   "what": "hops by a cut-off defector, all refused by the record",
+   "expected": ">0, all refused",
+   "got": "4, 4 refused",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.9",
+   "what": "the hopper's control: accepted by type U",
+   "expected": "accepted",
+   "got": "accepted",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.10",
+   "what": "most links on one operator at m = 3",
+   "expected": 4,
+   "got": 4,
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "own.IX.13",
+   "what": "lone operator at steady effort, stock at t = 200",
+   "expected": 49.5049505,
+   "got": 49.50495049605885,
+   "tol": 0.0001,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "B2.P20",
+   "what": "each clock starts at the first close whose window record is below zero",
+   "expected": "327 of 327",
+   "got": "327 of 327",
+   "tol": 0,
+   "pass": true,
+   "note": "configurations where one round's record alone would differ: 1"
+  },
+  {
+   "id": "B2.P21",
+   "what": "a clocked configuration turns where the window stands at zero or above to its end",
+   "expected": "77 of 77, some turned",
+   "got": "77 of 77, 8 turned",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "B2.P22",
+   "what": "an end below zero by the window takes the counterparties' span, where shorter",
+   "expected": "77 of 77, some applied",
+   "got": "77 of 77, 2 applied",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "B2.P22",
+   "what": "...the record read just before the end: the configuration's own links, closed rounds",
+   "expected": "77 of 77",
+   "got": "77 of 77",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "B2.P21",
+   "what": "a pair drawing together: the poorer's watched from 0, turns, judged to its turn",
+   "expected": "clock 0, turned at 1.0",
+   "got": "clock 0.0, turned at 1.0, judged True",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "B2.SINK",
+   "what": "a made sink, its taxed operators of type U: watched from 0, lasts 290.9 spans",
+   "expected": "a sink's; clock 0; span 13.75; 290.9 spans, judged",
+   "got": "a sink's; clock 0.0; span 13.750000000000004; 290.9090909090908 spans, judged True; cuts 0",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "B2.P19-22",
+   "what": "points 19 and 22 never lengthen a span: shorter taken, longer left",
+   "expected": "0 longer of 119; some shortened, some left",
+   "got": "0 longer of 119; 28 shortened, 48 left; the page's pair 11.1111, its counterparties' 25.0000 left",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "B2.10",
+   "what": "kinds named: a defector's, a sink's, an operator alone",
+   "expected": "named",
+   "got": "a defector's, an operator alone",
+   "tol": 0,
+   "pass": true,
+   "note": ""
+  }
+ ],
+ "failed": 0,
+ "seconds": 20.861629009246826
+}

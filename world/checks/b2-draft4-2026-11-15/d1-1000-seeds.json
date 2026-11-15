@@ -1,0 +1,303 @@
+{
+ "label": "dry, never a result",
+ "cell": "D1, as written",
+ "engines": "wc/b2-points-20-22 at fa05337",
+ "reference": {
+  "parts": [
+   "seeds-1000000-1000099",
+   "seeds-1000100-1000199",
+   "seeds-1000200-1000299",
+   "seeds-1000300-1000399",
+   "seeds-1000400-1000499",
+   "seeds-1000500-1000599",
+   "seeds-1000600-1000699",
+   "seeds-1000700-1000799",
+   "seeds-1000800-1000899",
+   "seeds-1000900-1000999"
+  ],
+  "seeds": 1000,
+  "B2_measure": {
+   "seeds": 1000,
+   "mean": 0.35969334670663594,
+   "se": 0.0023298085355457497,
+   "largest_seed": 0.6384070749733992,
+   "seeds_left_out_too_long_to_judge": 0,
+   "seeds_with_nothing_to_watch": 0
+  },
+  "B1_measure": {
+   "seeds": 1000,
+   "mean": 0.29880720605582495,
+   "se": 0.001762735386078494,
+   "largest_seed": 0.5042591871269494,
+   "seeds_left_out_too_long_to_judge": 0,
+   "seeds_with_nothing_to_watch": 0
+  },
+  "operators_left_alone": {
+   "seeds": 1000,
+   "alone_a_seed": {
+    "mean": 6.285,
+    "se": 0.036893578521690416,
+    "total": 6285
+   },
+   "watched_alone_a_seed": {
+    "mean": 6.285,
+    "se": 0.036893578521690416,
+    "total": 6285
+   },
+   "alone_at_round_0_in_the_drawing_with_every_link": {
+    "mean": 0.266,
+    "se": 0.016658977205144424,
+    "total": 266
+   },
+   "alone_at_round_0_in_the_world_defector_links_left_out": {
+    "mean": 0.361,
+    "se": 0.019876470362568753,
+    "total": 361
+   },
+   "how_they_came_to_be_alone": {
+    "by a counterparty's cut": {
+     "D": {
+      "all": 4828,
+      "watched": 4828
+     },
+     "all": 4828,
+     "watched": 4828
+    },
+    "by its own cuts": {
+     "C": {
+      "all": 1096,
+      "watched": 1096
+     },
+     "all": 1096,
+     "watched": 1096
+    },
+    "no link as drawn: drawn links only to defectors, left out": {
+     "D": {
+      "all": 95,
+      "watched": 95
+     },
+     "all": 95,
+     "watched": 95
+    },
+    "no link as drawn: none drawn at all": {
+     "C": {
+      "all": 193,
+      "watched": 193
+     },
+     "D": {
+      "all": 73,
+      "watched": 73
+     },
+     "all": 266,
+     "watched": 266
+    }
+   },
+   "median_round_left_alone": {
+    "by its own cuts": 1.0,
+    "by a counterparty's cut": 5.0
+   },
+   "defectors_configurations_by_how_they_ended": {
+    "a cut": 8319,
+    "its own ruin (alone)": 4996,
+    "standing at the end": 4
+   }
+  },
+  "drawn": {
+   "seeds": 1000,
+   "no link at all": {
+    "total": 361,
+    "a_seed": 0.361,
+    "se": 0.019876470362568753
+   },
+   "careful givers whose every link is to a defector": {
+    "total": 465,
+    "a_seed": 0.465,
+    "se": 0.02220964358715079
+   },
+   "defectors with at least one link": {
+    "total": 4832,
+    "a_seed": 4.832,
+    "se": 0.013036331767255157
+   },
+   "careful givers alone by their own cuts, of those drawn so": {
+    "total": 465,
+    "a_seed": 0.465,
+    "se": 0.02220964358715079
+   },
+   "careful givers alone by their own cuts, not drawn so": {
+    "total": 631,
+    "a_seed": 0.631,
+    "se": 0.025758542320995233
+   },
+   "careful givers with some links to defectors, some not": {
+    "total": 9731,
+    "a_seed": 9.731,
+    "se": 0.05894160765633317
+   }
+  }
+ },
+ "second": {
+  "parts": [
+   "seeds-1000000-1000099",
+   "seeds-1000100-1000199",
+   "seeds-1000200-1000299",
+   "seeds-1000300-1000399",
+   "seeds-1000400-1000499",
+   "seeds-1000500-1000599",
+   "seeds-1000600-1000699",
+   "seeds-1000700-1000799",
+   "seeds-1000800-1000899",
+   "seeds-1000900-1000999"
+  ],
+  "seeds": 1000,
+  "B2_measure": {
+   "seeds": 1000,
+   "mean": 0.3578070487782705,
+   "se": 0.0022255361003252964,
+   "largest_seed": 0.7034278927910477,
+   "seeds_left_out_too_long_to_judge": 0,
+   "seeds_with_nothing_to_watch": 0
+  },
+  "B1_measure": {
+   "seeds": 1000,
+   "mean": 0.3038786482446615,
+   "se": 0.0017023440511503684,
+   "largest_seed": 0.469819377303388,
+   "seeds_left_out_too_long_to_judge": 0,
+   "seeds_with_nothing_to_watch": 0
+  },
+  "operators_left_alone": {
+   "seeds": 1000,
+   "alone_a_seed": {
+    "mean": 6.268,
+    "se": 0.03610373220983503,
+    "total": 6268
+   },
+   "watched_alone_a_seed": {
+    "mean": 6.268,
+    "se": 0.03610373220983503,
+    "total": 6268
+   },
+   "alone_at_round_0_in_the_drawing_with_every_link": {
+    "mean": 0.276,
+    "se": 0.017324090859959264,
+    "total": 276
+   },
+   "alone_at_round_0_in_the_world_defector_links_left_out": {
+    "mean": 0.362,
+    "se": 0.019527860541732098,
+    "total": 362
+   },
+   "how_they_came_to_be_alone": {
+    "a mix: cp+own": {
+     "C": {
+      "all": 1,
+      "watched": 1
+     },
+     "all": 1,
+     "watched": 1
+    },
+    "by a counterparty's cut": {
+     "D": {
+      "all": 4837,
+      "watched": 4837
+     },
+     "all": 4837,
+     "watched": 4837
+    },
+    "by its own cuts": {
+     "C": {
+      "all": 1068,
+      "watched": 1068
+     },
+     "all": 1068,
+     "watched": 1068
+    },
+    "no link as drawn: drawn links only to defectors, left out": {
+     "D": {
+      "all": 86,
+      "watched": 86
+     },
+     "all": 86,
+     "watched": 86
+    },
+    "no link as drawn: none drawn at all": {
+     "C": {
+      "all": 205,
+      "watched": 205
+     },
+     "D": {
+      "all": 71,
+      "watched": 71
+     },
+     "all": 276,
+     "watched": 276
+    }
+   },
+   "median_round_left_alone": {
+    "by a counterparty's cut": 5,
+    "by its own cuts": 1,
+    "a mix: cp+own": 5
+   },
+   "defectors_configurations_by_how_they_ended": {
+    "a cut": 8076,
+    "its own ruin (alone)": 4994,
+    "standing at the end": 6
+   }
+  },
+  "drawn": {
+   "seeds": 1000,
+   "no link at all": {
+    "total": 362,
+    "a_seed": 0.362,
+    "se": 0.019527860541732098
+   },
+   "careful givers whose every link is to a defector": {
+    "total": 450,
+    "a_seed": 0.45,
+    "se": 0.02172491592554439
+   },
+   "defectors with at least one link": {
+    "total": 4843,
+    "a_seed": 4.843,
+    "se": 0.012590055977219065
+   },
+   "careful givers alone by their own cuts, of those drawn so": {
+    "total": 450,
+    "a_seed": 0.45,
+    "se": 0.02172491592554439
+   },
+   "careful givers alone by their own cuts, not drawn so": {
+    "total": 619,
+    "a_seed": 0.619,
+    "se": 0.026880505232632097
+   },
+   "careful givers with some links to defectors, some not": {
+    "total": 9575,
+    "a_seed": 9.575,
+    "se": 0.05684722162609714
+   }
+  }
+ },
+ "second engine against reference": {
+  "B2_measure": {
+   "difference_second_less_reference": -0.0018862979283654213,
+   "combined_se": 0.0032219588368185216,
+   "in_combined_se": -0.5854506602660449
+  },
+  "B1_measure": {
+   "difference_second_less_reference": 0.005071442188836539,
+   "combined_se": 0.0024505532660646953,
+   "in_combined_se": 2.0695090611030413
+  },
+  "operators_left_alone_a_seed": {
+   "difference_second_less_reference": -0.017000000000000348,
+   "combined_se": 0.05161991491290562,
+   "in_combined_se": -0.32933026001075677
+  }
+ },
+ "the law of the draw": {
+  "operators with no link, the defectors' links between them left out": 0.3920946425579442,
+  "careful givers whose every link is to a defector": 0.4435341945518165
+ }
+}

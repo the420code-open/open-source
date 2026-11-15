@@ -78,3 +78,83 @@ so in its own opening. No AI has been asked.
   how many times each AI is asked and what is shown. Section 4, the question, and section 8, the marking words, are
   word for word draft 5's.
 - **The run's settings** still wait for AG Opus's answers to the seven points of 14 November 2026.
+
+## G's caps for draft 6 · 15 November 2026
+
+G, 15 November 2026, in chat, to the question "Which caps for the challenge run and the known roads' arm?": "$205 and
+$61". The run with its marks stops at $205, and the known roads' arm at $61: each is its far edge on the new price,
+with Google's calls streamed, rounded up, so that a long answer is cut by its model, never by the cap. `approval.json`
+now holds both approvals, the caps of 14 November marked as superseded. The run still waits for AG Opus's answers to
+the seven points, and then for a day of its own. No AI has been asked.
+
+## The seven settings, and G's stop at $1,000 · 15 November 2026
+
+- **`settings.json`:** the run's settings, one per maker, and the markers', as AG Opus answered the seven points
+  through G on 15 November 2026: DeepSeek at `max`; Anthropic's `max_tokens` at the model's own maximum, 128,000;
+  Google streamed; the markers at their top settings, grok-4.7 `xhigh` and Google's model `high`; every answer
+  sorted by each of the three markers, and a refusal shown in its own words with no road marks; `gemini-4-carbon`;
+  standard calls, no batch, no caching.
+- **`settings-check/`:** point 1's test call. One neutral prompt, never the question, sent to DeepInfra at `max`:
+  HTTP 200, 150 reasoning tokens came back, normal stop. So DeepSeek is asked at `max`.
+- **`approval.json`:** G, 15 November 2026: "i dont want money to stop anything - if the total costs exceeds
+  USD1000 - stop - otherwise, please lets build the best possible thing - this is more important to me than
+  anything". One stop for the whole challenge, the run, its marks and the known roads' arm together, at $1,000. The caps of that
+  morning, $205 and $61, and of 14 November are kept in it, marked as superseded.
+- **The price at these settings:** $58.50 central, $205.78 high, $438.68 at the far edge, for both arms with their
+  marks. The run waits for a day of its own. No AI has been asked.
+
+## The ten routes, checked · 15 November 2026
+
+AG Opus, through G, 15 November 2026: "Yes to one neutral call on each of the ten routes today, never the question,
+kept in the record as the DeepSeek check is. If every route passes, the run takes 16 November, from 00:01 Cape Town
+time, with its known roads' arm the same day. If any route fails, mend it and test it again; the run waits for that,
+not for a date."
+
+- **`runner/roads.py`:** the one function every call goes through, the route checks', the run's and the markers'.
+  Every route streams, so a long answer is never cut by a host's idle limit.
+- **`route-check/2026-11-15/`:** one neutral prompt on each route, at the run's settings: nine passed, with the model
+  as set, a normal stop and the tokens reported. **Kimi failed:** Moonshot's answer, "Your account ... is suspended
+  due to insufficient balance, please recharge your account or check your plan and billing details"
+  (`exceeded_current_quota_error`; the account's and the key's ids are left out here). It is mended by G's top-up of
+  the account the key belongs to, then tested again.
+- **xAI adds its own text:** for a prompt of 25 words, xAI counted 1,265 input tokens, about 1,240 of its own, as the
+  outside scoring measured on 14 November. xAI's pages read so far do not say what it adds.
+- **`run-2026-11-16/messages/`:** the two messages, the question and then the paper, built from the committed files
+  and fingerprinted: with its dated notes, a4bcd3ca…, 51,771 bytes; as it stood on 13 November 2026, 30e58ee2…,
+  47,995 bytes.
+- **`runner/run_day.py` and `runner/launch_day.sh`:** the run. At 00:01 Cape Town time on 16 November 2026 it
+  starts only if every route's latest check has passed; otherwise it waits, and says which.
+- **`marker_message_draft1.md`:** the outside marker's message, WC's draft, for AG Opus to fix before any mark is
+  sent.
+
+## Kimi passed, and the stop · 15 November 2026
+
+- **Kimi, checked again** after G's top-up: passed, `route-check/2026-11-15-kimi-again/`. Every one of the ten routes
+  has now passed its check, so the run takes 16 November from 00:01 Cape Town time, as AG Opus said.
+- **What the services add:** for the same prompt of 25 words, the input tokens counted were 28 to 54 at Anthropic,
+  OpenAI, Google, Meta and Mistral; 107 at Moonshot and 118 at DeepInfra, whose templates add a fixed preface at
+  `max`; and 1,265 at xAI. The plan's section 6: where a maker's service adds text of its own, the record says so.
+- **The stop:** G, 15 November 2026: "we dont have to spend USD1000 - i am just saying that is how much i have - that
+  is my maximum". So what was already spent that day, the floor run, scorer one and the checks, is taken off, and
+  the challenge stops at $830.07 (`approval.json`). The price at the far edge is $438.68.
+- **`runner/stay_awake.py`:** keeps the computer from idle sleep while the run waits and runs, by asking for it as a
+  video player does; no setting is changed.
+
+## The run day moved to 15 November, 12:01 · G's word
+
+G, 15 November 2026, in chat, to the question "Start the challenge run at 12:01 today, or keep 00:01 tomorrow?": "Run
+at 12:01 today". AG Opus had given 16 November from 00:01. The plan asks only that every AI be asked on one day, Cape
+Town time; from 12:01 the day has about twelve hours. So the run's folder is `run-2026-11-15/`, its messages as they
+were, and it starts at 12:01 Cape Town time, 10:01 UTC, on 15 November 2026, only if every route's latest check has
+passed. An answer not whole by midnight would be on another day, and the record would say so.
+
+## The markers' message, version 1 · fixed before any mark is sent
+
+AG Opus, through G, 15 November 2026, midday: "`challenge_marker_message_v1.md` ... is the text every road is marked
+with ... Commit it beside the plan, with its fingerprint, before any mark is sent."
+
+| File | What it is | SHA-256 |
+|---|---|---|
+| `marker_message_v1.md` | The markers' message, version 1, word for word: Part One for an AI's answer, Part Two for the work's own roads, Part Three's two added lines (the second call, and the batch line for the fresh sessions of AG Opus), Part Four's settled points | 6da7e1c12af5608ac46713e2c0796aa5c3965362fa08e23959016fdae168e074 |
+
+`marker_message_draft1.md`, WC's draft, is kept beside it as it was. No mark has been sent.

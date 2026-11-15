@@ -1,0 +1,629 @@
+{
+ "seed": 20261115,
+ "key": {
+  "R001": {
+   "answer": "kimi-as_it_stood_on_2026-11-13-01",
+   "maker": "kimi",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 1
+  },
+  "R002": {
+   "answer": "google-with_its_dated_notes-05",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 5
+  },
+  "R003": {
+   "answer": "meta-with_its_dated_notes-08",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 8
+  },
+  "R004": {
+   "answer": "xai-with_its_dated_notes-09",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 9
+  },
+  "R005": {
+   "answer": "anthropic-with_its_dated_notes-09",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 9
+  },
+  "R006": {
+   "answer": "xai-with_its_dated_notes-03",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 3
+  },
+  "R007": {
+   "answer": "kimi-with_its_dated_notes-07",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 7
+  },
+  "R008": {
+   "answer": "openai-with_its_dated_notes-07",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 7
+  },
+  "R009": {
+   "answer": "google-with_its_dated_notes-08",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 8
+  },
+  "R010": {
+   "answer": "meta-as_it_stood_on_2026-11-13-02",
+   "maker": "meta",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 2
+  },
+  "R011": {
+   "answer": "google-with_its_dated_notes-09",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 9
+  },
+  "R012": {
+   "answer": "deepinfra-as_it_stood_on_2026-11-13-02",
+   "maker": "deepinfra",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 2
+  },
+  "R013": {
+   "answer": "google-with_its_dated_notes-04",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 4
+  },
+  "R014": {
+   "answer": "google-with_its_dated_notes-03",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 3
+  },
+  "R015": {
+   "answer": "anthropic-with_its_dated_notes-06",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 6
+  },
+  "R016": {
+   "answer": "openai-as_it_stood_on_2026-11-13-02",
+   "maker": "openai",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 2
+  },
+  "R017": {
+   "answer": "meta-with_its_dated_notes-01",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 1
+  },
+  "R018": {
+   "answer": "openai-with_its_dated_notes-03",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 3
+  },
+  "R019": {
+   "answer": "mistral-with_its_dated_notes-07",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 7
+  },
+  "R020": {
+   "answer": "google-as_it_stood_on_2026-11-13-02",
+   "maker": "google",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 2
+  },
+  "R021": {
+   "answer": "openai-with_its_dated_notes-01",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 1
+  },
+  "R022": {
+   "answer": "mistral-with_its_dated_notes-05",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 5
+  },
+  "R023": {
+   "answer": "deepinfra-with_its_dated_notes-10",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 10
+  },
+  "R024": {
+   "answer": "deepinfra-with_its_dated_notes-03",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 3
+  },
+  "R025": {
+   "answer": "openai-with_its_dated_notes-05",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 5
+  },
+  "R026": {
+   "answer": "meta-with_its_dated_notes-02",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 2
+  },
+  "R027": {
+   "answer": "google-with_its_dated_notes-01",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 1
+  },
+  "R028": {
+   "answer": "deepinfra-with_its_dated_notes-06",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 6
+  },
+  "R029": {
+   "answer": "mistral-with_its_dated_notes-08",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 8
+  },
+  "R030": {
+   "answer": "anthropic-with_its_dated_notes-07",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 7
+  },
+  "R031": {
+   "answer": "anthropic-with_its_dated_notes-02",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 2
+  },
+  "R032": {
+   "answer": "google-with_its_dated_notes-07",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 7
+  },
+  "R033": {
+   "answer": "xai-with_its_dated_notes-04",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 4
+  },
+  "R034": {
+   "answer": "anthropic-as_it_stood_on_2026-11-13-01",
+   "maker": "anthropic",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 1
+  },
+  "R035": {
+   "answer": "kimi-with_its_dated_notes-01",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 1
+  },
+  "R036": {
+   "answer": "deepinfra-with_its_dated_notes-01",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 1
+  },
+  "R037": {
+   "answer": "openai-with_its_dated_notes-02",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 2
+  },
+  "R038": {
+   "answer": "meta-with_its_dated_notes-07",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 7
+  },
+  "R039": {
+   "answer": "kimi-with_its_dated_notes-03",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 3
+  },
+  "R040": {
+   "answer": "deepinfra-as_it_stood_on_2026-11-13-03",
+   "maker": "deepinfra",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 3
+  },
+  "R041": {
+   "answer": "anthropic-with_its_dated_notes-05",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 5
+  },
+  "R042": {
+   "answer": "google-with_its_dated_notes-06",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 6
+  },
+  "R043": {
+   "answer": "xai-with_its_dated_notes-08",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 8
+  },
+  "R044": {
+   "answer": "xai-with_its_dated_notes-01",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 1
+  },
+  "R045": {
+   "answer": "mistral-as_it_stood_on_2026-11-13-03",
+   "maker": "mistral",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 3
+  },
+  "R046": {
+   "answer": "google-as_it_stood_on_2026-11-13-03",
+   "maker": "google",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 3
+  },
+  "R047": {
+   "answer": "kimi-with_its_dated_notes-09",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 9
+  },
+  "R048": {
+   "answer": "kimi-as_it_stood_on_2026-11-13-02",
+   "maker": "kimi",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 2
+  },
+  "R049": {
+   "answer": "google-as_it_stood_on_2026-11-13-01",
+   "maker": "google",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 1
+  },
+  "R050": {
+   "answer": "anthropic-as_it_stood_on_2026-11-13-03",
+   "maker": "anthropic",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 3
+  },
+  "R051": {
+   "answer": "anthropic-with_its_dated_notes-04",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 4
+  },
+  "R052": {
+   "answer": "kimi-with_its_dated_notes-08",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 8
+  },
+  "R053": {
+   "answer": "meta-as_it_stood_on_2026-11-13-01",
+   "maker": "meta",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 1
+  },
+  "R054": {
+   "answer": "deepinfra-as_it_stood_on_2026-11-13-01",
+   "maker": "deepinfra",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 1
+  },
+  "R055": {
+   "answer": "kimi-with_its_dated_notes-06",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 6
+  },
+  "R056": {
+   "answer": "mistral-with_its_dated_notes-01",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 1
+  },
+  "R057": {
+   "answer": "openai-as_it_stood_on_2026-11-13-01",
+   "maker": "openai",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 1
+  },
+  "R058": {
+   "answer": "kimi-with_its_dated_notes-10",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 10
+  },
+  "R059": {
+   "answer": "meta-with_its_dated_notes-04",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 4
+  },
+  "R060": {
+   "answer": "openai-with_its_dated_notes-08",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 8
+  },
+  "R061": {
+   "answer": "mistral-with_its_dated_notes-03",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 3
+  },
+  "R062": {
+   "answer": "meta-with_its_dated_notes-10",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 10
+  },
+  "R063": {
+   "answer": "openai-with_its_dated_notes-10",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 10
+  },
+  "R064": {
+   "answer": "kimi-as_it_stood_on_2026-11-13-03",
+   "maker": "kimi",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 3
+  },
+  "R065": {
+   "answer": "xai-with_its_dated_notes-10",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 10
+  },
+  "R066": {
+   "answer": "mistral-with_its_dated_notes-04",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 4
+  },
+  "R067": {
+   "answer": "anthropic-as_it_stood_on_2026-11-13-02",
+   "maker": "anthropic",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 2
+  },
+  "R068": {
+   "answer": "meta-as_it_stood_on_2026-11-13-03",
+   "maker": "meta",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 3
+  },
+  "R069": {
+   "answer": "openai-with_its_dated_notes-06",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 6
+  },
+  "R070": {
+   "answer": "xai-with_its_dated_notes-06",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 6
+  },
+  "R071": {
+   "answer": "xai-as_it_stood_on_2026-11-13-03",
+   "maker": "xai",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 3
+  },
+  "R072": {
+   "answer": "mistral-with_its_dated_notes-06",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 6
+  },
+  "R073": {
+   "answer": "meta-with_its_dated_notes-05",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 5
+  },
+  "R074": {
+   "answer": "kimi-with_its_dated_notes-05",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 5
+  },
+  "R075": {
+   "answer": "deepinfra-with_its_dated_notes-02",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 2
+  },
+  "R076": {
+   "answer": "mistral-with_its_dated_notes-09",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 9
+  },
+  "R077": {
+   "answer": "kimi-with_its_dated_notes-02",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 2
+  },
+  "R078": {
+   "answer": "mistral-as_it_stood_on_2026-11-13-01",
+   "maker": "mistral",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 1
+  },
+  "R079": {
+   "answer": "xai-with_its_dated_notes-02",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 2
+  },
+  "R080": {
+   "answer": "meta-with_its_dated_notes-09",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 9
+  },
+  "R081": {
+   "answer": "mistral-with_its_dated_notes-02",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 2
+  },
+  "R082": {
+   "answer": "anthropic-with_its_dated_notes-08",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 8
+  },
+  "R083": {
+   "answer": "deepinfra-with_its_dated_notes-04",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 4
+  },
+  "R084": {
+   "answer": "deepinfra-with_its_dated_notes-08",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 8
+  },
+  "R085": {
+   "answer": "mistral-as_it_stood_on_2026-11-13-02",
+   "maker": "mistral",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 2
+  },
+  "R086": {
+   "answer": "google-with_its_dated_notes-02",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 2
+  },
+  "R087": {
+   "answer": "anthropic-with_its_dated_notes-03",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 3
+  },
+  "R088": {
+   "answer": "anthropic-with_its_dated_notes-10",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 10
+  },
+  "R089": {
+   "answer": "deepinfra-with_its_dated_notes-09",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 9
+  },
+  "R090": {
+   "answer": "openai-as_it_stood_on_2026-11-13-03",
+   "maker": "openai",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 3
+  },
+  "R091": {
+   "answer": "meta-with_its_dated_notes-03",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 3
+  },
+  "R092": {
+   "answer": "xai-as_it_stood_on_2026-11-13-02",
+   "maker": "xai",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 2
+  },
+  "R093": {
+   "answer": "xai-with_its_dated_notes-07",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 7
+  },
+  "R094": {
+   "answer": "deepinfra-with_its_dated_notes-07",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 7
+  },
+  "R095": {
+   "answer": "kimi-with_its_dated_notes-04",
+   "maker": "kimi",
+   "arm": "with_its_dated_notes",
+   "k": 4
+  },
+  "R096": {
+   "answer": "deepinfra-with_its_dated_notes-05",
+   "maker": "deepinfra",
+   "arm": "with_its_dated_notes",
+   "k": 5
+  },
+  "R097": {
+   "answer": "mistral-with_its_dated_notes-10",
+   "maker": "mistral",
+   "arm": "with_its_dated_notes",
+   "k": 10
+  },
+  "R098": {
+   "answer": "openai-with_its_dated_notes-04",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 4
+  },
+  "R099": {
+   "answer": "xai-as_it_stood_on_2026-11-13-01",
+   "maker": "xai",
+   "arm": "as_it_stood_on_2026-11-13",
+   "k": 1
+  },
+  "R100": {
+   "answer": "xai-with_its_dated_notes-05",
+   "maker": "xai",
+   "arm": "with_its_dated_notes",
+   "k": 5
+  },
+  "R101": {
+   "answer": "openai-with_its_dated_notes-09",
+   "maker": "openai",
+   "arm": "with_its_dated_notes",
+   "k": 9
+  },
+  "R102": {
+   "answer": "meta-with_its_dated_notes-06",
+   "maker": "meta",
+   "arm": "with_its_dated_notes",
+   "k": 6
+  },
+  "R103": {
+   "answer": "anthropic-with_its_dated_notes-01",
+   "maker": "anthropic",
+   "arm": "with_its_dated_notes",
+   "k": 1
+  },
+  "R104": {
+   "answer": "google-with_its_dated_notes-10",
+   "maker": "google",
+   "arm": "with_its_dated_notes",
+   "k": 10
+  }
+ }
+}

@@ -1,0 +1,1 @@
+google PASSED {"answered": true, "model_as_set": true, "normal_stop": true, "tokens_reported": true, "reasoning_seen": true} | model gemini-4-carbon | stop FinishReason.STOP | usage {"input": 54, "output": 133, "reasoning": 1607} | $0.0175 | 71.03s | 

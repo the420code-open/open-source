@@ -1,0 +1,37 @@
+{
+ "answer": "",
+ "reasoning_text": "",
+ "model_returned": "gemini-4-carbon",
+ "stop_reason": "FinishReason.MAX_TOKENS",
+ "cut_short": true,
+ "refusal": false,
+ "usage": {
+  "input": 10722,
+  "cached_input": 8668,
+  "output": 3,
+  "reasoning": 65533
+ },
+ "usd": 0.676804,
+ "maker": "google",
+ "seconds": 741.83,
+ "attempts": [
+  {
+   "at": "2026-11-15T10:13:56+00:00",
+   "seconds": 741.83,
+   "result": "answered"
+  }
+ ],
+ "at": "2026-11-15T10:13:56+00:00",
+ "arm": "with_its_dated_notes",
+ "k": 9,
+ "message_sha256": "a4bcd3ca96007a6ec01e31888133a3fb0cc96ec54174972d0d3a936312ba28e9",
+ "cape_town_day_sent": "2026-11-15",
+ "settings": {
+  "model": "gemini-4-carbon",
+  "setting": {
+   "thinking_level": "high"
+  },
+  "streamed": true,
+  "why": "point 6: the model Google's own page calls its most capable; point 3: streamed, so nothing is cut at 32,768 tokens"
+ }
+}

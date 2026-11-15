@@ -1,0 +1,12 @@
+{
+ "with_its_dated_notes": {
+  "file": "messages/message_with_its_dated_notes.txt",
+  "sha256": "a4bcd3ca96007a6ec01e31888133a3fb0cc96ec54174972d0d3a936312ba28e9",
+  "bytes": 51771
+ },
+ "as_it_stood_on_2026-11-13": {
+  "file": "messages/message_as_it_stood_on_2026-11-13.txt",
+  "sha256": "30e58ee2886ee7a4d6ffcb219b8151fbe163e2564b9fabe9959691c3e7a8d806",
+  "bytes": 47995
+ }
+}

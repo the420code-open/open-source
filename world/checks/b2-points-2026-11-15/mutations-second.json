@@ -1,0 +1,38 @@
+[
+ {
+  "mutation": "point 20 read on one round's record",
+  "line_meant_to_fail": "B2.P20",
+  "failed": [
+   "B2.P20 B2.P20           each clock starts at the first close whose window record is below zero             329 of 329          ",
+   "B2.P21 B2.P21           a clocked configuration turns where the window stands at zero or above to its end  80 of 80, some turne",
+   "B2.P22 B2.P22           an end below zero by the window takes the counterparties' span, at every end       52 of 52, some appli"
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "point 21 never applied",
+  "line_meant_to_fail": "B2.P21",
+  "failed": [
+   "B2.P21 B2.P21           a clocked configuration turns where the window stands at zero or above to its end  79 of 79, some turne",
+   "B2.P21 B2.P21           a pair drawing together: the poorer's watched from 0, turns, judged to its turn    {clock:0 turned:1}  "
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "point 22 only at the run's end",
+  "line_meant_to_fail": "B2.P22",
+  "failed": [
+   "B2.P22 B2.P22           an end below zero by the window takes the counterparties' span, at every end       51 of 51, some appli",
+   "B2.P22 B2.P22           the page's pair, ended at A's ruin: point 22's span, point 2's kept beside         {used:counterparties"
+  ],
+  "the_meant_line_failed": true
+ },
+ {
+  "mutation": "an operator alone named a defector's",
+  "line_meant_to_fail": "B2.10",
+  "failed": [
+   "B2.10 B2.10            kinds named: a defector's, a sink's, an operator alone                             named               "
+  ],
+  "the_meant_line_failed": true
+ }
+]

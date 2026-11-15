@@ -2,14 +2,14 @@
  "version": "1.0",
  "status": "final",
  "fingerprint": "b0bcfcf3be852b6ec90f09a8ae5faa809cfa4886ef6a7f41498dd029038503e5",
- "date": "2026-11-12",
+ "date": "2026-11-15",
  "passed": true,
  "page_line": null,
  "page_lines": [],
  "named": [],
  "registry": {
   "floor_reads": "v5.39",
-  "live": "v5.39"
+  "live": "v5.40"
  },
  "root_changed": false,
  "checks": [
@@ -23,12 +23,28 @@
    "check": "every extract, against its source",
    "ok": true,
    "notes": [],
-   "sources_changed_since_snapshot": []
+   "sources_changed_since_snapshot": [
+    "AP31",
+    "AP32"
+   ]
   },
   {
-   "check": "every key, against the live registry",
+   "check": "every key, against the registry the floor was made from, v5.39",
    "ok": true,
-   "notes": []
+   "notes": [
+    "KS-BAR.9: a dated addition in the registry's v5.40, later than v5.39, which this floor's rows are from. The floor takes it in its next version.",
+    "KS-COUP.1: a dated addition in the registry's v5.40, later than v5.39, which this floor's rows are from. The floor takes it in its next version."
+   ],
+   "later_dated_additions": [
+    {
+     "switch": "KS-BAR.9",
+     "added_in": "v5.40"
+    },
+    {
+     "switch": "KS-COUP.1",
+     "added_in": "v5.40"
+    }
+   ]
   },
   {
    "check": "every registry row, cell by cell",
@@ -48,5 +64,5 @@
    "notes": []
   }
  ],
- "last_passed": "2026-11-12"
+ "last_passed": "2026-11-15"
 }

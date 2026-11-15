@@ -1,0 +1,44 @@
+{
+ "maker": "kimi",
+ "answer": null,
+ "error": "RateLimitError: {'message': 'Your account [the account's id] <[the key's id]> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}",
+ "attempts": [
+  {
+   "at": "2026-11-15T09:10:06+00:00",
+   "seconds": 77.24,
+   "status": 429,
+   "result": "RateLimitError: {'message': 'Your account [the account's id] <[the key's id]> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}"
+  },
+  {
+   "at": "2026-11-15T09:10:26+00:00",
+   "seconds": 0.4,
+   "status": 429,
+   "result": "RateLimitError: {'message': 'Your account [the account's id] <[the key's id]> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}"
+  },
+  {
+   "at": "2026-11-15T09:10:44+00:00",
+   "seconds": 0.38,
+   "status": 429,
+   "result": "RateLimitError: {'message': 'Your account [the account's id] <[the key's id]> is suspended due to insufficient balance, please recharge your account or check your plan and billing details', 'type': 'exceeded_current_quota_error'}"
+  }
+ ],
+ "at": "2026-11-15T09:11:17+00:00",
+ "usd": 0.0,
+ "route": "kimi",
+ "prompt": "Which whole numbers between 1 and 50 are prime? List them, and say how many there are.",
+ "settings": {
+  "model": "kimi-k3.1-pro",
+  "setting": {
+   "reasoning_effort": "max"
+  },
+  "note": "its default, sent explicitly"
+ },
+ "read": {
+  "answered": false,
+  "model_as_set": false,
+  "normal_stop": false,
+  "tokens_reported": false,
+  "reasoning_seen": false
+ },
+ "passed": false
+}

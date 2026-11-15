@@ -1,0 +1,25 @@
+{
+ "id": "dry-b2-D6",
+ "label": "Dry run for B2, 15 November 2026, near the line. Outside every hypothesis's grid (m = 3.5). Never reported as a result. D6: the ring of 20, five defectors, m = 3.5, s = 0, uneven drift between 0.06 and 0.27 with the seed, passive flow off, more noise (stock 1, reading 1); every other operator of type C. At m = 3.5 an operator with one link and a drift of 0.27 settles at about 11.3, near the ruin line.",
+ "grid": "dry, outside every grid",
+ "control": false,
+ "setting": "network",
+ "overrides": {
+  "m": 3.5,
+  "s": 0.0,
+  "sigma_s": 1.0,
+  "sigma_r": 1.0
+ },
+ "topology": "ring",
+ "types": {
+  "hosts": "C",
+  "defector_share": 0.25
+ },
+ "drift": {
+  "uneven": [
+   0.06,
+   0.27
+  ]
+ },
+ "rounds": 4000
+}

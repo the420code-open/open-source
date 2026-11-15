@@ -1,0 +1,63 @@
+{
+ "answer": "The prime numbers between 1 and 50 are:\n\n2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47\n\nThere are **15** prime numbers between 1 and 50.",
+ "reasoning_text": "We need answer user asks \"Which whole numbers between 1 and 50 are prime? List them, and say how many there are.\" Need be careful: prime numbers between 1 and 50 inclusive? Whole numbers between 1 and 50. Prime definition >1. List primes up to 50. Count. Need answer concise. Primes: 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47. Count 15. Need maybe mention 1 is not prime. Let's craft.",
+ "model_returned": "deepseek-ai/DeepSeek-V4-Pro-0813",
+ "stop_reason": "stop",
+ "cut_short": false,
+ "refusal": false,
+ "usage": {
+  "input": 118,
+  "cached_input": 0,
+  "output": 191,
+  "reasoning": 119,
+  "as_reported": {
+   "completion_tokens": 191,
+   "prompt_tokens": 118,
+   "total_tokens": 309,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": null,
+    "audio_tokens": null,
+    "reasoning_tokens": 119,
+    "rejected_prediction_tokens": null,
+    "text_tokens": null
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": null,
+    "cache_write_tokens": null,
+    "cached_tokens": 0,
+    "image_tokens": null,
+    "text_tokens": null
+   },
+   "estimated_cost": 0.00065
+  }
+ },
+ "usd": 0.00065,
+ "maker": "deepinfra",
+ "seconds": 79.21,
+ "attempts": [
+  {
+   "at": "2026-11-15T09:10:07+00:00",
+   "seconds": 79.21,
+   "result": "answered"
+  }
+ ],
+ "at": "2026-11-15T09:10:07+00:00",
+ "route": "deepinfra",
+ "prompt": "Which whole numbers between 1 and 50 are prime? List them, and say how many there are.",
+ "settings": {
+  "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+  "setting": {
+   "reasoning_effort": "max"
+  },
+  "why": "point 1: the maker's own documentation governs",
+  "checked": "settings-check/deepinfra_max.json, 15 November 2026: one neutral prompt, never the question; DeepInfra took max, HTTP 200, 150 reasoning tokens came back, normal stop"
+ },
+ "read": {
+  "answered": true,
+  "model_as_set": true,
+  "normal_stop": true,
+  "tokens_reported": true,
+  "reasoning_seen": true
+ },
+ "passed": true
+}

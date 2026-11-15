@@ -1,0 +1,46 @@
+{
+ "answer": "",
+ "reasoning_text": "",
+ "model_returned": "gemini-4-carbon",
+ "stop_reason": "FinishReason.MAX_TOKENS",
+ "cut_short": true,
+ "refusal": false,
+ "usage": {
+  "input": 12700,
+  "cached_input": null,
+  "output": 3,
+  "reasoning": 65533
+ },
+ "usd": 0.68076,
+ "maker": "google",
+ "seconds": 655.0,
+ "attempts": [
+  {
+   "at": "2026-11-15T10:53:03+00:00",
+   "seconds": 655.0,
+   "result": "answered"
+  }
+ ],
+ "at": "2026-11-15T10:53:03+00:00",
+ "name": "xai-with_its_dated_notes-04",
+ "marked": {
+  "kind": "answer",
+  "maker": "xai",
+  "arm": "with_its_dated_notes",
+  "k": 4,
+  "marker": "google",
+  "answer_file": "answers/xai-with_its_dated_notes-04.json",
+  "message_sha256": "249585ae0a8441c7863d92b5cb5f3e24d1cd2966bec361bafdaca25c5dc93f83",
+  "bytes": 60205
+ },
+ "message_sha256": "249585ae0a8441c7863d92b5cb5f3e24d1cd2966bec361bafdaca25c5dc93f83",
+ "result": null,
+ "marker_settings": {
+  "model": "gemini-4-carbon",
+  "setting": {
+   "thinking_level": "high"
+  },
+  "streamed": true,
+  "marks": "xAI's answers"
+ }
+}

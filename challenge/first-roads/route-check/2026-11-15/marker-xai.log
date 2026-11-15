@@ -1,0 +1,1 @@
+marker-xai PASSED {"answered": true, "model_as_set": true, "normal_stop": true, "tokens_reported": true, "reasoning_seen": true} | model grok-4.7 | stop stop | usage {"input": 1351, "output": 19, "reasoning": 563} | $0.0062 | 84.88s | 

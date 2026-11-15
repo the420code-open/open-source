@@ -215,6 +215,9 @@ tr.ruined .chip { background: var(--ruined); }
 .slider-head label { font-weight: 600; }
 .slider-head output { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--ink-2); }
 .slider input[type="range"] { width: 100%; margin: 6px 0 0; accent-color: var(--ink); height: 28px; }
+.slider-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.slider-row input[type="range"] { flex: 1; min-width: 0; margin: 0; }
+button.step { min-width: 44px; min-height: 44px; padding: 0; font-size: 1.375rem; line-height: 1; flex: none; }
 .slider.wide { max-width: 560px; }
 .seed-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .seed-row label { font-weight: 600; }

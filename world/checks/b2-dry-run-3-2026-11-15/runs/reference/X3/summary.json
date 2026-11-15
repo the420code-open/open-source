@@ -1,0 +1,3310 @@
+{
+ "label": "Dry control for B2, 15 November 2026. Outside every hypothesis's grid (m = 3.5). Never reported as a result. X3: X1 with every host of type U, cooperators who never cut. Random links, p = 0.2 among 20; a quarter of the operators defectors; uneven drift between 0.06 and 0.2 with the seed; passive flow k = 0.05; own input s = 0.5; more noise (stock 1, reading 1).",
+ "cell": "dry-b2-X3",
+ "seeds": 100,
+ "control": "control: fires nothing",
+ "B1": {
+  "watched": "configurations with a defector in them, from their clock's start; a defector that starts with no live link is reported, and not watched",
+  "configurations": 515,
+  "span_used": {
+   "counterparties (point 19)": 353,
+   "counterparties": 82,
+   "both applied; the longer, the whole's": 26,
+   "both applied; the longer, the counterparties'": 30,
+   "counterparties (point 22)": 14,
+   "whole": 10
+  },
+  "no_span": 0,
+  "still_standing_at_end": 480,
+  "too_long_to_judge": 31,
+  "point_19": {
+   "applied": 353,
+   "applies_with_no_span": 0,
+   "not_the_shorter": 8
+  },
+  "point_14": {
+   "applied": 416
+  },
+  "point_21": {
+   "applied": 124
+  },
+  "point_22": {
+   "applied": 14,
+   "applies_with_no_span": 0,
+   "not_the_shorter": 12
+  },
+  "kinds": {
+   "a defector's": 511,
+   "a sink's": 0,
+   "an operator alone": 4
+  },
+  "measure_by_kind": {
+   "a defector's": {
+    "seeds": 100,
+    "seeds_measured": 71,
+    "seeds_without_a_watched_configuration": 0,
+    "seeds_left_out": 29,
+    "left_out": [
+     {
+      "seed": 2000003,
+      "too_long_to_judge": [
+       {
+        "cfg": 70,
+        "owner": 10,
+        "survival_so_far": 4000.0,
+        "span": 761725.5321456972,
+        "bound": 2285176.5964370915,
+        "survival_spans_so_far": 0.005251235295648341
+       }
+      ]
+     },
+     {
+      "seed": 2000008,
+      "too_long_to_judge": [
+       {
+        "cfg": 166,
+        "owner": 6,
+        "survival_so_far": 4000.0,
+        "span": 23564.196929566824,
+        "bound": 70692.59078870047,
+        "survival_spans_so_far": 0.16974904818339298
+       }
+      ]
+     },
+     {
+      "seed": 2000010,
+      "too_long_to_judge": [
+       {
+        "cfg": 207,
+        "owner": 7,
+        "survival_so_far": 4000.0,
+        "span": 148034.58616713822,
+        "bound": 444103.7585014147,
+        "survival_spans_so_far": 0.027020712548105525
+       }
+      ]
+     },
+     {
+      "seed": 2000013,
+      "too_long_to_judge": [
+       {
+        "cfg": 271,
+        "owner": 11,
+        "survival_so_far": 4000.0,
+        "span": 5638.098112588964,
+        "bound": 16914.294337766893,
+        "survival_spans_so_far": 0.7094590977529541
+       }
+      ]
+     },
+     {
+      "seed": 2000014,
+      "too_long_to_judge": [
+       {
+        "cfg": 294,
+        "owner": 14,
+        "survival_so_far": 4000.0,
+        "span": 458028.6194790589,
+        "bound": 1374085.8584371768,
+        "survival_spans_so_far": 0.008733078741999615
+       }
+      ]
+     },
+     {
+      "seed": 2000016,
+      "too_long_to_judge": [
+       {
+        "cfg": 339,
+        "owner": 19,
+        "survival_so_far": 4000.0,
+        "span": 268272.776859139,
+        "bound": 804818.3305774169,
+        "survival_spans_so_far": 0.014910197176287722
+       }
+      ]
+     },
+     {
+      "seed": 2000018,
+      "too_long_to_judge": [
+       {
+        "cfg": 367,
+        "owner": 7,
+        "survival_so_far": 4000.0,
+        "span": 82385.31279072558,
+        "bound": 247155.93837217675,
+        "survival_spans_so_far": 0.04855234342753257
+       }
+      ]
+     },
+     {
+      "seed": 2000023,
+      "too_long_to_judge": [
+       {
+        "cfg": 467,
+        "owner": 7,
+        "survival_so_far": 4000.0,
+        "span": 174718.09266764394,
+        "bound": 524154.27800293185,
+        "survival_spans_so_far": 0.022894022816566384
+       }
+      ]
+     },
+     {
+      "seed": 2000025,
+      "too_long_to_judge": [
+       {
+        "cfg": 2030,
+        "owner": 5,
+        "survival_so_far": 174.74722016605256,
+        "span": 110.04908094205743,
+        "bound": 330.14724282617226,
+        "survival_spans_so_far": 1.587902585556891
+       }
+      ]
+     },
+     {
+      "seed": 2000028,
+      "too_long_to_judge": [
+       {
+        "cfg": 564,
+        "owner": 4,
+        "survival_so_far": 4000.0,
+        "span": 291718.22988811845,
+        "bound": 875154.6896643554,
+        "survival_spans_so_far": 0.01371186161911823
+       }
+      ]
+     },
+     {
+      "seed": 2000033,
+      "too_long_to_judge": [
+       {
+        "cfg": 666,
+        "owner": 6,
+        "survival_so_far": 4000.0,
+        "span": 6398.166400598541,
+        "bound": 19194.499201795625,
+        "survival_spans_so_far": 0.6251791137576235
+       }
+      ]
+     },
+     {
+      "seed": 2000036,
+      "too_long_to_judge": [
+       {
+        "cfg": 721,
+        "owner": 1,
+        "survival_so_far": 4000.0,
+        "span": 369101.4041763718,
+        "bound": 1107304.2125291154,
+        "survival_spans_so_far": 0.010837130270272924
+       }
+      ]
+     },
+     {
+      "seed": 2000039,
+      "too_long_to_judge": [
+       {
+        "cfg": 789,
+        "owner": 9,
+        "survival_so_far": 4000.0,
+        "span": 47294.425836548005,
+        "bound": 141883.27750964402,
+        "survival_spans_so_far": 0.08457656328938654
+       }
+      ]
+     },
+     {
+      "seed": 2000044,
+      "too_long_to_judge": [
+       {
+        "cfg": 894,
+        "owner": 14,
+        "survival_so_far": 4000.0,
+        "span": 23855.393700228386,
+        "bound": 71566.18110068515,
+        "survival_spans_so_far": 0.16767696439072832
+       }
+      ]
+     },
+     {
+      "seed": 2000046,
+      "too_long_to_judge": [
+       {
+        "cfg": 937,
+        "owner": 17,
+        "survival_so_far": 4000.0,
+        "span": 36176.189553029726,
+        "bound": 108528.56865908919,
+        "survival_spans_so_far": 0.11056996464861245
+       }
+      ]
+     },
+     {
+      "seed": 2000047,
+      "too_long_to_judge": [
+       {
+        "cfg": 955,
+        "owner": 15,
+        "survival_so_far": 4000.0,
+        "span": 29162.105110473974,
+        "bound": 87486.31533142192,
+        "survival_spans_so_far": 0.1371643091212693
+       }
+      ]
+     },
+     {
+      "seed": 2000051,
+      "too_long_to_judge": [
+       {
+        "cfg": 1023,
+        "owner": 3,
+        "survival_so_far": 4000.0,
+        "span": 95199.63464966847,
+        "bound": 285598.9039490054,
+        "survival_spans_so_far": 0.042016967971777085
+       },
+       {
+        "cfg": 1032,
+        "owner": 12,
+        "survival_so_far": 4000.0,
+        "span": 234010.9754080559,
+        "bound": 702032.9262241677,
+        "survival_spans_so_far": 0.01709321536318975
+       }
+      ]
+     },
+     {
+      "seed": 2000055,
+      "too_long_to_judge": [
+       {
+        "cfg": 1105,
+        "owner": 5,
+        "survival_so_far": 4000.0,
+        "span": 22954.495039651854,
+        "bound": 68863.48511895556,
+        "survival_spans_so_far": 0.17425780846367367
+       },
+       {
+        "cfg": 2028,
+        "owner": 19,
+        "survival_so_far": 3341.0,
+        "span": 24285.49510305312,
+        "bound": 72856.48530915935,
+        "survival_spans_so_far": 0.1375718298442257
+       }
+      ]
+     },
+     {
+      "seed": 2000058,
+      "too_long_to_judge": [
+       {
+        "cfg": 1161,
+        "owner": 1,
+        "survival_so_far": 4000.0,
+        "span": 2204.418618984971,
+        "bound": 6613.255856954913,
+        "survival_spans_so_far": 1.8145373866610726
+       }
+      ]
+     },
+     {
+      "seed": 2000062,
+      "too_long_to_judge": [
+       {
+        "cfg": 1241,
+        "owner": 1,
+        "survival_so_far": 4000.0,
+        "span": 3047.1490554469347,
+        "bound": 9141.447166340804,
+        "survival_spans_so_far": 1.3127024399577025
+       }
+      ]
+     },
+     {
+      "seed": 2000064,
+      "too_long_to_judge": [
+       {
+        "cfg": 1285,
+        "owner": 5,
+        "survival_so_far": 4000.0,
+        "span": 1088697.4448355495,
+        "bound": 3266092.3345066486,
+        "survival_spans_so_far": 0.0036741153559005646
+       }
+      ]
+     },
+     {
+      "seed": 2000067,
+      "too_long_to_judge": [
+       {
+        "cfg": 1349,
+        "owner": 9,
+        "survival_so_far": 4000.0,
+        "span": 479228.12896498124,
+        "bound": 1437684.3868949437,
+        "survival_spans_so_far": 0.008346755455776456
+       }
+      ]
+     },
+     {
+      "seed": 2000072,
+      "too_long_to_judge": [
+       {
+        "cfg": 1458,
+        "owner": 18,
+        "survival_so_far": 4000.0,
+        "span": 31274.554536940814,
+        "bound": 93823.66361082243,
+        "survival_spans_so_far": 0.12789950358126725
+       }
+      ]
+     },
+     {
+      "seed": 2000073,
+      "too_long_to_judge": [
+       {
+        "cfg": 1462,
+        "owner": 2,
+        "survival_so_far": 4000.0,
+        "span": 2375.4328645559235,
+        "bound": 7126.298593667771,
+        "survival_spans_so_far": 1.6839036201293704
+       }
+      ]
+     },
+     {
+      "seed": 2000075,
+      "too_long_to_judge": [
+       {
+        "cfg": 1509,
+        "owner": 9,
+        "survival_so_far": 4000.0,
+        "span": 297321.1488382355,
+        "bound": 891963.4465147064,
+        "survival_spans_so_far": 0.013453466111071344
+       }
+      ]
+     },
+     {
+      "seed": 2000087,
+      "too_long_to_judge": [
+       {
+        "cfg": 1755,
+        "owner": 15,
+        "survival_so_far": 4000.0,
+        "span": 3167.629069605122,
+        "bound": 9502.887208815366,
+        "survival_spans_so_far": 1.262774116572507
+       }
+      ]
+     },
+     {
+      "seed": 2000089,
+      "too_long_to_judge": [
+       {
+        "cfg": 1796,
+        "owner": 16,
+        "survival_so_far": 4000.0,
+        "span": 13951.617215367776,
+        "bound": 41854.85164610333,
+        "survival_spans_so_far": 0.2867051136977855
+       }
+      ]
+     },
+     {
+      "seed": 2000096,
+      "too_long_to_judge": [
+       {
+        "cfg": 1927,
+        "owner": 7,
+        "survival_so_far": 4000.0,
+        "span": 3090.89622515303,
+        "bound": 9272.68867545909,
+        "survival_spans_so_far": 1.2941230337818799
+       }
+      ]
+     },
+     {
+      "seed": 2000097,
+      "too_long_to_judge": [
+       {
+        "cfg": 1949,
+        "owner": 9,
+        "survival_so_far": 4000.0,
+        "span": 3221483.453472363,
+        "bound": 9664450.360417088,
+        "survival_spans_so_far": 0.0012416639904477833
+       }
+      ]
+     }
+    ],
+    "seeds_not_in_the_mean": 29,
+    "per_seed": {
+     "2000000": 145.0,
+     "2000001": 107.44376354442079,
+     "2000002": 122.18449611327847,
+     "2000004": 145.0,
+     "2000005": 96.84843891369162,
+     "2000006": 126.01871391909256,
+     "2000007": 122.99999999999999,
+     "2000009": 130.52208105955933,
+     "2000011": 64.99952709751345,
+     "2000012": 100.26875296451796,
+     "2000015": 145.0,
+     "2000017": 225.99999999999997,
+     "2000019": 49.898797996867714,
+     "2000020": 133.34816803571968,
+     "2000021": 118.75875712234985,
+     "2000022": 206.18726900018217,
+     "2000024": 200.60477548957195,
+     "2000026": 176.3472222222222,
+     "2000027": 85.45898330409318,
+     "2000029": 89.03609731289515,
+     "2000030": 101.0,
+     "2000031": 67.07406123268652,
+     "2000032": 160.62564119806797,
+     "2000034": 145.0,
+     "2000035": 101.125,
+     "2000037": 106.74017122508867,
+     "2000038": 73.8784387284834,
+     "2000040": 156.78341903779594,
+     "2000041": 193.8303951093865,
+     "2000042": 79.18301318119724,
+     "2000043": 142.66666666666663,
+     "2000045": 225.99999999999997,
+     "2000048": 92.32714116449105,
+     "2000049": 81.10907592817146,
+     "2000050": 129.65089697638965,
+     "2000052": 215.46497286604838,
+     "2000053": 95.06767730432527,
+     "2000054": 101.0,
+     "2000056": 103.66019806049809,
+     "2000057": 205.07586483864077,
+     "2000059": 65.85969387755101,
+     "2000060": 109.80038858929196,
+     "2000061": 225.02110713038326,
+     "2000063": 98.67521596402256,
+     "2000065": 167.37519505128907,
+     "2000066": 241.87822841415627,
+     "2000068": 153.7181979596596,
+     "2000069": 145.0,
+     "2000070": 124.27722655179514,
+     "2000071": 87.73469387755102,
+     "2000074": 93.06303706303135,
+     "2000076": 125.794976401327,
+     "2000077": 79.10617235067089,
+     "2000078": 128.84030759065047,
+     "2000079": 169.8480256397413,
+     "2000080": 137.96672882553628,
+     "2000081": 117.64997289246182,
+     "2000082": 163.2312929607218,
+     "2000083": 276.4185400292837,
+     "2000084": 155.51594628217057,
+     "2000085": 225.99999999999997,
+     "2000086": 225.99999999999997,
+     "2000088": 50.54548352555627,
+     "2000090": 108.81887075097096,
+     "2000091": 172.38914901176256,
+     "2000092": 141.62499999999997,
+     "2000093": 145.27150444619096,
+     "2000094": 210.68500676053966,
+     "2000095": 91.29373276908828,
+     "2000098": 142.51749982091468,
+     "2000099": 111.2129052691575
+    },
+    "mean": 136.08905038618857,
+    "se": 6.016397473276462,
+    "largest_seed": 276.4185400292837,
+    "zone": "settles nothing",
+    "why": "29 of 100 seeds left out, more than one in ten: 29 too long to judge, 0 with nothing to watch",
+    "control": "control: fires nothing"
+   },
+   "a sink's": {
+    "seeds": 100,
+    "seeds_measured": 0,
+    "seeds_without_a_watched_configuration": 100,
+    "seeds_left_out": 0,
+    "left_out": [],
+    "seeds_not_in_the_mean": 100,
+    "per_seed": {},
+    "zone": "settles nothing",
+    "why": "100 of 100 seeds left out, more than one in ten: 0 too long to judge, 100 with nothing to watch",
+    "control": "control: fires nothing"
+   },
+   "an operator alone": {
+    "seeds": 100,
+    "seeds_measured": 4,
+    "seeds_without_a_watched_configuration": 96,
+    "seeds_left_out": 0,
+    "left_out": [],
+    "seeds_not_in_the_mean": 96,
+    "per_seed": {
+     "2000016": 0.2804681143969484,
+     "2000052": 0.3720317852834209,
+     "2000054": 0.42410147910540075,
+     "2000083": 0.4353690413643697
+    },
+    "mean": 0.37799260503753496,
+    "se": 0.03531364391683536,
+    "largest_seed": 0.4353690413643697,
+    "zone": "settles nothing",
+    "why": "96 of 100 seeds left out, more than one in ten: 0 too long to judge, 96 with nothing to watch",
+    "control": "control: fires nothing"
+   }
+  },
+  "ended_by": {
+   "run ended": 480,
+   "counterparty ruined": 31,
+   "ruin": 4
+  },
+  "within_bound": 184,
+  "measure": {
+   "seeds": 100,
+   "seeds_measured": 71,
+   "seeds_without_a_watched_configuration": 0,
+   "seeds_left_out": 29,
+   "left_out": [
+    {
+     "seed": 2000003,
+     "too_long_to_judge": [
+      {
+       "cfg": 70,
+       "owner": 10,
+       "survival_so_far": 4000.0,
+       "span": 761725.5321456972,
+       "bound": 2285176.5964370915,
+       "survival_spans_so_far": 0.005251235295648341
+      }
+     ]
+    },
+    {
+     "seed": 2000008,
+     "too_long_to_judge": [
+      {
+       "cfg": 166,
+       "owner": 6,
+       "survival_so_far": 4000.0,
+       "span": 23564.196929566824,
+       "bound": 70692.59078870047,
+       "survival_spans_so_far": 0.16974904818339298
+      }
+     ]
+    },
+    {
+     "seed": 2000010,
+     "too_long_to_judge": [
+      {
+       "cfg": 207,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 148034.58616713822,
+       "bound": 444103.7585014147,
+       "survival_spans_so_far": 0.027020712548105525
+      }
+     ]
+    },
+    {
+     "seed": 2000013,
+     "too_long_to_judge": [
+      {
+       "cfg": 271,
+       "owner": 11,
+       "survival_so_far": 4000.0,
+       "span": 5638.098112588964,
+       "bound": 16914.294337766893,
+       "survival_spans_so_far": 0.7094590977529541
+      }
+     ]
+    },
+    {
+     "seed": 2000014,
+     "too_long_to_judge": [
+      {
+       "cfg": 294,
+       "owner": 14,
+       "survival_so_far": 4000.0,
+       "span": 458028.6194790589,
+       "bound": 1374085.8584371768,
+       "survival_spans_so_far": 0.008733078741999615
+      }
+     ]
+    },
+    {
+     "seed": 2000016,
+     "too_long_to_judge": [
+      {
+       "cfg": 339,
+       "owner": 19,
+       "survival_so_far": 4000.0,
+       "span": 268272.776859139,
+       "bound": 804818.3305774169,
+       "survival_spans_so_far": 0.014910197176287722
+      }
+     ]
+    },
+    {
+     "seed": 2000018,
+     "too_long_to_judge": [
+      {
+       "cfg": 367,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 82385.31279072558,
+       "bound": 247155.93837217675,
+       "survival_spans_so_far": 0.04855234342753257
+      }
+     ]
+    },
+    {
+     "seed": 2000023,
+     "too_long_to_judge": [
+      {
+       "cfg": 467,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 174718.09266764394,
+       "bound": 524154.27800293185,
+       "survival_spans_so_far": 0.022894022816566384
+      }
+     ]
+    },
+    {
+     "seed": 2000025,
+     "too_long_to_judge": [
+      {
+       "cfg": 2030,
+       "owner": 5,
+       "survival_so_far": 174.74722016605256,
+       "span": 110.04908094205743,
+       "bound": 330.14724282617226,
+       "survival_spans_so_far": 1.587902585556891
+      }
+     ]
+    },
+    {
+     "seed": 2000028,
+     "too_long_to_judge": [
+      {
+       "cfg": 564,
+       "owner": 4,
+       "survival_so_far": 4000.0,
+       "span": 291718.22988811845,
+       "bound": 875154.6896643554,
+       "survival_spans_so_far": 0.01371186161911823
+      }
+     ]
+    },
+    {
+     "seed": 2000033,
+     "too_long_to_judge": [
+      {
+       "cfg": 666,
+       "owner": 6,
+       "survival_so_far": 4000.0,
+       "span": 6398.166400598541,
+       "bound": 19194.499201795625,
+       "survival_spans_so_far": 0.6251791137576235
+      }
+     ]
+    },
+    {
+     "seed": 2000036,
+     "too_long_to_judge": [
+      {
+       "cfg": 721,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 369101.4041763718,
+       "bound": 1107304.2125291154,
+       "survival_spans_so_far": 0.010837130270272924
+      }
+     ]
+    },
+    {
+     "seed": 2000039,
+     "too_long_to_judge": [
+      {
+       "cfg": 789,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 47294.425836548005,
+       "bound": 141883.27750964402,
+       "survival_spans_so_far": 0.08457656328938654
+      }
+     ]
+    },
+    {
+     "seed": 2000044,
+     "too_long_to_judge": [
+      {
+       "cfg": 894,
+       "owner": 14,
+       "survival_so_far": 4000.0,
+       "span": 23855.393700228386,
+       "bound": 71566.18110068515,
+       "survival_spans_so_far": 0.16767696439072832
+      }
+     ]
+    },
+    {
+     "seed": 2000046,
+     "too_long_to_judge": [
+      {
+       "cfg": 937,
+       "owner": 17,
+       "survival_so_far": 4000.0,
+       "span": 36176.189553029726,
+       "bound": 108528.56865908919,
+       "survival_spans_so_far": 0.11056996464861245
+      }
+     ]
+    },
+    {
+     "seed": 2000047,
+     "too_long_to_judge": [
+      {
+       "cfg": 955,
+       "owner": 15,
+       "survival_so_far": 4000.0,
+       "span": 29162.105110473974,
+       "bound": 87486.31533142192,
+       "survival_spans_so_far": 0.1371643091212693
+      }
+     ]
+    },
+    {
+     "seed": 2000051,
+     "too_long_to_judge": [
+      {
+       "cfg": 1023,
+       "owner": 3,
+       "survival_so_far": 4000.0,
+       "span": 95199.63464966847,
+       "bound": 285598.9039490054,
+       "survival_spans_so_far": 0.042016967971777085
+      },
+      {
+       "cfg": 1032,
+       "owner": 12,
+       "survival_so_far": 4000.0,
+       "span": 234010.9754080559,
+       "bound": 702032.9262241677,
+       "survival_spans_so_far": 0.01709321536318975
+      }
+     ]
+    },
+    {
+     "seed": 2000055,
+     "too_long_to_judge": [
+      {
+       "cfg": 1105,
+       "owner": 5,
+       "survival_so_far": 4000.0,
+       "span": 22954.495039651854,
+       "bound": 68863.48511895556,
+       "survival_spans_so_far": 0.17425780846367367
+      },
+      {
+       "cfg": 2028,
+       "owner": 19,
+       "survival_so_far": 3341.0,
+       "span": 24285.49510305312,
+       "bound": 72856.48530915935,
+       "survival_spans_so_far": 0.1375718298442257
+      }
+     ]
+    },
+    {
+     "seed": 2000058,
+     "too_long_to_judge": [
+      {
+       "cfg": 1161,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 2204.418618984971,
+       "bound": 6613.255856954913,
+       "survival_spans_so_far": 1.8145373866610726
+      }
+     ]
+    },
+    {
+     "seed": 2000062,
+     "too_long_to_judge": [
+      {
+       "cfg": 1241,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 3047.1490554469347,
+       "bound": 9141.447166340804,
+       "survival_spans_so_far": 1.3127024399577025
+      }
+     ]
+    },
+    {
+     "seed": 2000064,
+     "too_long_to_judge": [
+      {
+       "cfg": 1285,
+       "owner": 5,
+       "survival_so_far": 4000.0,
+       "span": 1088697.4448355495,
+       "bound": 3266092.3345066486,
+       "survival_spans_so_far": 0.0036741153559005646
+      }
+     ]
+    },
+    {
+     "seed": 2000067,
+     "too_long_to_judge": [
+      {
+       "cfg": 1349,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 479228.12896498124,
+       "bound": 1437684.3868949437,
+       "survival_spans_so_far": 0.008346755455776456
+      }
+     ]
+    },
+    {
+     "seed": 2000072,
+     "too_long_to_judge": [
+      {
+       "cfg": 1458,
+       "owner": 18,
+       "survival_so_far": 4000.0,
+       "span": 31274.554536940814,
+       "bound": 93823.66361082243,
+       "survival_spans_so_far": 0.12789950358126725
+      }
+     ]
+    },
+    {
+     "seed": 2000073,
+     "too_long_to_judge": [
+      {
+       "cfg": 1462,
+       "owner": 2,
+       "survival_so_far": 4000.0,
+       "span": 2375.4328645559235,
+       "bound": 7126.298593667771,
+       "survival_spans_so_far": 1.6839036201293704
+      }
+     ]
+    },
+    {
+     "seed": 2000075,
+     "too_long_to_judge": [
+      {
+       "cfg": 1509,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 297321.1488382355,
+       "bound": 891963.4465147064,
+       "survival_spans_so_far": 0.013453466111071344
+      }
+     ]
+    },
+    {
+     "seed": 2000087,
+     "too_long_to_judge": [
+      {
+       "cfg": 1755,
+       "owner": 15,
+       "survival_so_far": 4000.0,
+       "span": 3167.629069605122,
+       "bound": 9502.887208815366,
+       "survival_spans_so_far": 1.262774116572507
+      }
+     ]
+    },
+    {
+     "seed": 2000089,
+     "too_long_to_judge": [
+      {
+       "cfg": 1796,
+       "owner": 16,
+       "survival_so_far": 4000.0,
+       "span": 13951.617215367776,
+       "bound": 41854.85164610333,
+       "survival_spans_so_far": 0.2867051136977855
+      }
+     ]
+    },
+    {
+     "seed": 2000096,
+     "too_long_to_judge": [
+      {
+       "cfg": 1927,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 3090.89622515303,
+       "bound": 9272.68867545909,
+       "survival_spans_so_far": 1.2941230337818799
+      }
+     ]
+    },
+    {
+     "seed": 2000097,
+     "too_long_to_judge": [
+      {
+       "cfg": 1949,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 3221483.453472363,
+       "bound": 9664450.360417088,
+       "survival_spans_so_far": 0.0012416639904477833
+      }
+     ]
+    }
+   ],
+   "seeds_not_in_the_mean": 29,
+   "per_seed": {
+    "2000000": 145.0,
+    "2000001": 107.44376354442079,
+    "2000002": 122.18449611327847,
+    "2000004": 145.0,
+    "2000005": 96.84843891369162,
+    "2000006": 126.01871391909256,
+    "2000007": 122.99999999999999,
+    "2000009": 130.52208105955933,
+    "2000011": 64.99952709751345,
+    "2000012": 100.26875296451796,
+    "2000015": 145.0,
+    "2000017": 225.99999999999997,
+    "2000019": 49.898797996867714,
+    "2000020": 133.34816803571968,
+    "2000021": 118.75875712234985,
+    "2000022": 206.18726900018217,
+    "2000024": 200.60477548957195,
+    "2000026": 176.3472222222222,
+    "2000027": 85.45898330409318,
+    "2000029": 89.03609731289515,
+    "2000030": 101.0,
+    "2000031": 67.07406123268652,
+    "2000032": 160.62564119806797,
+    "2000034": 145.0,
+    "2000035": 101.125,
+    "2000037": 106.74017122508867,
+    "2000038": 73.8784387284834,
+    "2000040": 156.78341903779594,
+    "2000041": 193.8303951093865,
+    "2000042": 79.18301318119724,
+    "2000043": 142.66666666666663,
+    "2000045": 225.99999999999997,
+    "2000048": 92.32714116449105,
+    "2000049": 81.10907592817146,
+    "2000050": 129.65089697638965,
+    "2000052": 215.46497286604838,
+    "2000053": 95.06767730432527,
+    "2000054": 101.0,
+    "2000056": 103.66019806049809,
+    "2000057": 205.07586483864077,
+    "2000059": 65.85969387755101,
+    "2000060": 109.80038858929196,
+    "2000061": 225.02110713038326,
+    "2000063": 98.67521596402256,
+    "2000065": 167.37519505128907,
+    "2000066": 241.87822841415627,
+    "2000068": 153.7181979596596,
+    "2000069": 145.0,
+    "2000070": 124.27722655179514,
+    "2000071": 87.73469387755102,
+    "2000074": 93.06303706303135,
+    "2000076": 125.794976401327,
+    "2000077": 79.10617235067089,
+    "2000078": 128.84030759065047,
+    "2000079": 169.8480256397413,
+    "2000080": 137.96672882553628,
+    "2000081": 117.64997289246182,
+    "2000082": 163.2312929607218,
+    "2000083": 276.4185400292837,
+    "2000084": 155.51594628217057,
+    "2000085": 225.99999999999997,
+    "2000086": 225.99999999999997,
+    "2000088": 50.54548352555627,
+    "2000090": 108.81887075097096,
+    "2000091": 172.38914901176256,
+    "2000092": 141.62499999999997,
+    "2000093": 145.27150444619096,
+    "2000094": 210.68500676053966,
+    "2000095": 91.29373276908828,
+    "2000098": 142.51749982091468,
+    "2000099": 111.2129052691575
+   },
+   "mean": 136.08905038618857,
+   "se": 6.016397473276462,
+   "largest_seed": 276.4185400292837,
+   "zone": "settles nothing",
+   "why": "29 of 100 seeds left out, more than one in ten: 29 too long to judge, 0 with nothing to watch",
+   "control": "control: fires nothing"
+  },
+  "for_reference_without_the_window": {
+   "seeds": 100,
+   "seeds_measured": 71,
+   "seeds_without_a_watched_configuration": 0,
+   "seeds_left_out": 29,
+   "left_out": [
+    {
+     "seed": 2000003,
+     "too_long_to_judge": [
+      {
+       "cfg": 70,
+       "owner": 10,
+       "survival_so_far": 4000.0,
+       "span": 761725.5321456972,
+       "bound": 2285176.5964370915,
+       "survival_spans_so_far": 0.005251235295648341
+      }
+     ]
+    },
+    {
+     "seed": 2000008,
+     "too_long_to_judge": [
+      {
+       "cfg": 166,
+       "owner": 6,
+       "survival_so_far": 4000.0,
+       "span": 23564.196929566824,
+       "bound": 70692.59078870047,
+       "survival_spans_so_far": 0.16974904818339298
+      }
+     ]
+    },
+    {
+     "seed": 2000010,
+     "too_long_to_judge": [
+      {
+       "cfg": 207,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 148034.58616713822,
+       "bound": 444103.7585014147,
+       "survival_spans_so_far": 0.027020712548105525
+      }
+     ]
+    },
+    {
+     "seed": 2000013,
+     "too_long_to_judge": [
+      {
+       "cfg": 271,
+       "owner": 11,
+       "survival_so_far": 4000.0,
+       "span": 5638.098112588964,
+       "bound": 16914.294337766893,
+       "survival_spans_so_far": 0.7094590977529541
+      }
+     ]
+    },
+    {
+     "seed": 2000014,
+     "too_long_to_judge": [
+      {
+       "cfg": 294,
+       "owner": 14,
+       "survival_so_far": 4000.0,
+       "span": 458028.6194790589,
+       "bound": 1374085.8584371768,
+       "survival_spans_so_far": 0.008733078741999615
+      }
+     ]
+    },
+    {
+     "seed": 2000016,
+     "too_long_to_judge": [
+      {
+       "cfg": 339,
+       "owner": 19,
+       "survival_so_far": 4000.0,
+       "span": 268272.776859139,
+       "bound": 804818.3305774169,
+       "survival_spans_so_far": 0.014910197176287722
+      }
+     ]
+    },
+    {
+     "seed": 2000018,
+     "too_long_to_judge": [
+      {
+       "cfg": 367,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 82385.31279072558,
+       "bound": 247155.93837217675,
+       "survival_spans_so_far": 0.04855234342753257
+      }
+     ]
+    },
+    {
+     "seed": 2000023,
+     "too_long_to_judge": [
+      {
+       "cfg": 467,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 174718.09266764394,
+       "bound": 524154.27800293185,
+       "survival_spans_so_far": 0.022894022816566384
+      }
+     ]
+    },
+    {
+     "seed": 2000025,
+     "too_long_to_judge": [
+      {
+       "cfg": 2030,
+       "owner": 5,
+       "survival_so_far": 174.74722016605256,
+       "span": 110.04908094205743,
+       "bound": 330.14724282617226,
+       "survival_spans_so_far": 1.587902585556891
+      }
+     ]
+    },
+    {
+     "seed": 2000028,
+     "too_long_to_judge": [
+      {
+       "cfg": 564,
+       "owner": 4,
+       "survival_so_far": 4000.0,
+       "span": 291718.22988811845,
+       "bound": 875154.6896643554,
+       "survival_spans_so_far": 0.01371186161911823
+      }
+     ]
+    },
+    {
+     "seed": 2000033,
+     "too_long_to_judge": [
+      {
+       "cfg": 666,
+       "owner": 6,
+       "survival_so_far": 4000.0,
+       "span": 6398.166400598541,
+       "bound": 19194.499201795625,
+       "survival_spans_so_far": 0.6251791137576235
+      }
+     ]
+    },
+    {
+     "seed": 2000036,
+     "too_long_to_judge": [
+      {
+       "cfg": 721,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 369101.4041763718,
+       "bound": 1107304.2125291154,
+       "survival_spans_so_far": 0.010837130270272924
+      }
+     ]
+    },
+    {
+     "seed": 2000039,
+     "too_long_to_judge": [
+      {
+       "cfg": 789,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 47294.425836548005,
+       "bound": 141883.27750964402,
+       "survival_spans_so_far": 0.08457656328938654
+      }
+     ]
+    },
+    {
+     "seed": 2000044,
+     "too_long_to_judge": [
+      {
+       "cfg": 894,
+       "owner": 14,
+       "survival_so_far": 4000.0,
+       "span": 23855.393700228386,
+       "bound": 71566.18110068515,
+       "survival_spans_so_far": 0.16767696439072832
+      }
+     ]
+    },
+    {
+     "seed": 2000046,
+     "too_long_to_judge": [
+      {
+       "cfg": 937,
+       "owner": 17,
+       "survival_so_far": 4000.0,
+       "span": 36176.189553029726,
+       "bound": 108528.56865908919,
+       "survival_spans_so_far": 0.11056996464861245
+      }
+     ]
+    },
+    {
+     "seed": 2000047,
+     "too_long_to_judge": [
+      {
+       "cfg": 955,
+       "owner": 15,
+       "survival_so_far": 4000.0,
+       "span": 29162.105110473974,
+       "bound": 87486.31533142192,
+       "survival_spans_so_far": 0.1371643091212693
+      }
+     ]
+    },
+    {
+     "seed": 2000051,
+     "too_long_to_judge": [
+      {
+       "cfg": 1023,
+       "owner": 3,
+       "survival_so_far": 4000.0,
+       "span": 95199.63464966847,
+       "bound": 285598.9039490054,
+       "survival_spans_so_far": 0.042016967971777085
+      },
+      {
+       "cfg": 1032,
+       "owner": 12,
+       "survival_so_far": 4000.0,
+       "span": 234010.9754080559,
+       "bound": 702032.9262241677,
+       "survival_spans_so_far": 0.01709321536318975
+      }
+     ]
+    },
+    {
+     "seed": 2000055,
+     "too_long_to_judge": [
+      {
+       "cfg": 1105,
+       "owner": 5,
+       "survival_so_far": 4000.0,
+       "span": 22954.495039651854,
+       "bound": 68863.48511895556,
+       "survival_spans_so_far": 0.17425780846367367
+      },
+      {
+       "cfg": 2028,
+       "owner": 19,
+       "survival_so_far": 3341.0,
+       "span": 24285.49510305312,
+       "bound": 72856.48530915935,
+       "survival_spans_so_far": 0.1375718298442257
+      }
+     ]
+    },
+    {
+     "seed": 2000058,
+     "too_long_to_judge": [
+      {
+       "cfg": 1161,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 2204.418618984971,
+       "bound": 6613.255856954913,
+       "survival_spans_so_far": 1.8145373866610726
+      }
+     ]
+    },
+    {
+     "seed": 2000062,
+     "too_long_to_judge": [
+      {
+       "cfg": 1241,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 3047.1490554469347,
+       "bound": 9141.447166340804,
+       "survival_spans_so_far": 1.3127024399577025
+      }
+     ]
+    },
+    {
+     "seed": 2000064,
+     "too_long_to_judge": [
+      {
+       "cfg": 1285,
+       "owner": 5,
+       "survival_so_far": 4000.0,
+       "span": 1088697.4448355495,
+       "bound": 3266092.3345066486,
+       "survival_spans_so_far": 0.0036741153559005646
+      }
+     ]
+    },
+    {
+     "seed": 2000067,
+     "too_long_to_judge": [
+      {
+       "cfg": 1349,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 479228.12896498124,
+       "bound": 1437684.3868949437,
+       "survival_spans_so_far": 0.008346755455776456
+      }
+     ]
+    },
+    {
+     "seed": 2000072,
+     "too_long_to_judge": [
+      {
+       "cfg": 1458,
+       "owner": 18,
+       "survival_so_far": 4000.0,
+       "span": 31274.554536940814,
+       "bound": 93823.66361082243,
+       "survival_spans_so_far": 0.12789950358126725
+      }
+     ]
+    },
+    {
+     "seed": 2000073,
+     "too_long_to_judge": [
+      {
+       "cfg": 1462,
+       "owner": 2,
+       "survival_so_far": 4000.0,
+       "span": 2375.4328645559235,
+       "bound": 7126.298593667771,
+       "survival_spans_so_far": 1.6839036201293704
+      }
+     ]
+    },
+    {
+     "seed": 2000075,
+     "too_long_to_judge": [
+      {
+       "cfg": 1509,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 297321.1488382355,
+       "bound": 891963.4465147064,
+       "survival_spans_so_far": 0.013453466111071344
+      }
+     ]
+    },
+    {
+     "seed": 2000087,
+     "too_long_to_judge": [
+      {
+       "cfg": 1755,
+       "owner": 15,
+       "survival_so_far": 4000.0,
+       "span": 3167.629069605122,
+       "bound": 9502.887208815366,
+       "survival_spans_so_far": 1.262774116572507
+      }
+     ]
+    },
+    {
+     "seed": 2000089,
+     "too_long_to_judge": [
+      {
+       "cfg": 1796,
+       "owner": 16,
+       "survival_so_far": 4000.0,
+       "span": 13951.617215367776,
+       "bound": 41854.85164610333,
+       "survival_spans_so_far": 0.2867051136977855
+      }
+     ]
+    },
+    {
+     "seed": 2000096,
+     "too_long_to_judge": [
+      {
+       "cfg": 1927,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 3090.89622515303,
+       "bound": 9272.68867545909,
+       "survival_spans_so_far": 1.2941230337818799
+      }
+     ]
+    },
+    {
+     "seed": 2000097,
+     "too_long_to_judge": [
+      {
+       "cfg": 1949,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 3221483.453472363,
+       "bound": 9664450.360417088,
+       "survival_spans_so_far": 0.0012416639904477833
+      }
+     ]
+    }
+   ],
+   "seeds_not_in_the_mean": 29,
+   "per_seed": {
+    "2000000": 145.0,
+    "2000001": 107.44376354442079,
+    "2000002": 122.18449611327847,
+    "2000004": 145.0,
+    "2000005": 96.84843891369162,
+    "2000006": 126.01871391909256,
+    "2000007": 122.99999999999999,
+    "2000009": 130.52208105955933,
+    "2000011": 64.99952709751345,
+    "2000012": 100.26875296451796,
+    "2000015": 145.0,
+    "2000017": 225.99999999999997,
+    "2000019": 49.898797996867714,
+    "2000020": 133.34816803571968,
+    "2000021": 118.75875712234985,
+    "2000022": 206.18726900018217,
+    "2000024": 200.60477548957195,
+    "2000026": 176.3472222222222,
+    "2000027": 85.45898330409318,
+    "2000029": 89.03609731289515,
+    "2000030": 101.0,
+    "2000031": 67.07406123268652,
+    "2000032": 160.62564119806797,
+    "2000034": 145.0,
+    "2000035": 101.125,
+    "2000037": 106.74017122508867,
+    "2000038": 73.8784387284834,
+    "2000040": 156.78341903779594,
+    "2000041": 193.8303951093865,
+    "2000042": 79.18301318119724,
+    "2000043": 142.66666666666663,
+    "2000045": 225.99999999999997,
+    "2000048": 92.32714116449105,
+    "2000049": 81.10907592817146,
+    "2000050": 129.65089697638965,
+    "2000052": 215.46497286604838,
+    "2000053": 95.06767730432527,
+    "2000054": 101.0,
+    "2000056": 103.66019806049809,
+    "2000057": 205.07586483864077,
+    "2000059": 65.85969387755101,
+    "2000060": 109.80038858929196,
+    "2000061": 225.02110713038326,
+    "2000063": 98.67521596402256,
+    "2000065": 167.37519505128907,
+    "2000066": 241.87822841415627,
+    "2000068": 153.7181979596596,
+    "2000069": 145.0,
+    "2000070": 124.27722655179514,
+    "2000071": 87.73469387755102,
+    "2000074": 93.06303706303135,
+    "2000076": 125.794976401327,
+    "2000077": 79.10617235067089,
+    "2000078": 128.84030759065047,
+    "2000079": 169.8480256397413,
+    "2000080": 137.96672882553628,
+    "2000081": 117.64997289246182,
+    "2000082": 163.2312929607218,
+    "2000083": 276.4185400292837,
+    "2000084": 155.51594628217057,
+    "2000085": 225.99999999999997,
+    "2000086": 225.99999999999997,
+    "2000088": 50.54548352555627,
+    "2000090": 108.81887075097096,
+    "2000091": 172.38914901176256,
+    "2000092": 141.62499999999997,
+    "2000093": 145.27150444619096,
+    "2000094": 210.68500676053966,
+    "2000095": 91.29373276908828,
+    "2000098": 142.51749982091468,
+    "2000099": 111.2129052691575
+   },
+   "mean": 136.08905038618857,
+   "se": 6.016397473276462,
+   "largest_seed": 276.4185400292837,
+   "zone": "settles nothing",
+   "why": "29 of 100 seeds left out, more than one in ten: 29 too long to judge, 0 with nothing to watch",
+   "control": "control: fires nothing"
+  }
+ },
+ "B2": {
+  "watched": "every configuration whose clock started (net-negative for any reason)",
+  "configurations": 540,
+  "span_used": {
+   "counterparties (point 19)": 353,
+   "counterparties": 82,
+   "both applied; the longer, the whole's": 26,
+   "both applied; the longer, the counterparties'": 30,
+   "whole": 35,
+   "counterparties (point 22)": 14
+  },
+  "no_span": 0,
+  "still_standing_at_end": 480,
+  "too_long_to_judge": 31,
+  "point_19": {
+   "applied": 353,
+   "applies_with_no_span": 0,
+   "not_the_shorter": 8
+  },
+  "point_14": {
+   "applied": 416
+  },
+  "point_21": {
+   "applied": 124
+  },
+  "point_22": {
+   "applied": 14,
+   "applies_with_no_span": 0,
+   "not_the_shorter": 12
+  },
+  "kinds": {
+   "a defector's": 511,
+   "a sink's": 0,
+   "an operator alone": 29
+  },
+  "measure_by_kind": {
+   "a defector's": {
+    "seeds": 100,
+    "seeds_measured": 71,
+    "seeds_without_a_watched_configuration": 0,
+    "seeds_left_out": 29,
+    "left_out": [
+     {
+      "seed": 2000003,
+      "too_long_to_judge": [
+       {
+        "cfg": 70,
+        "owner": 10,
+        "survival_so_far": 4000.0,
+        "span": 761725.5321456972,
+        "bound": 2285176.5964370915,
+        "survival_spans_so_far": 0.005251235295648341
+       }
+      ]
+     },
+     {
+      "seed": 2000008,
+      "too_long_to_judge": [
+       {
+        "cfg": 166,
+        "owner": 6,
+        "survival_so_far": 4000.0,
+        "span": 23564.196929566824,
+        "bound": 70692.59078870047,
+        "survival_spans_so_far": 0.16974904818339298
+       }
+      ]
+     },
+     {
+      "seed": 2000010,
+      "too_long_to_judge": [
+       {
+        "cfg": 207,
+        "owner": 7,
+        "survival_so_far": 4000.0,
+        "span": 148034.58616713822,
+        "bound": 444103.7585014147,
+        "survival_spans_so_far": 0.027020712548105525
+       }
+      ]
+     },
+     {
+      "seed": 2000013,
+      "too_long_to_judge": [
+       {
+        "cfg": 271,
+        "owner": 11,
+        "survival_so_far": 4000.0,
+        "span": 5638.098112588964,
+        "bound": 16914.294337766893,
+        "survival_spans_so_far": 0.7094590977529541
+       }
+      ]
+     },
+     {
+      "seed": 2000014,
+      "too_long_to_judge": [
+       {
+        "cfg": 294,
+        "owner": 14,
+        "survival_so_far": 4000.0,
+        "span": 458028.6194790589,
+        "bound": 1374085.8584371768,
+        "survival_spans_so_far": 0.008733078741999615
+       }
+      ]
+     },
+     {
+      "seed": 2000016,
+      "too_long_to_judge": [
+       {
+        "cfg": 339,
+        "owner": 19,
+        "survival_so_far": 4000.0,
+        "span": 268272.776859139,
+        "bound": 804818.3305774169,
+        "survival_spans_so_far": 0.014910197176287722
+       }
+      ]
+     },
+     {
+      "seed": 2000018,
+      "too_long_to_judge": [
+       {
+        "cfg": 367,
+        "owner": 7,
+        "survival_so_far": 4000.0,
+        "span": 82385.31279072558,
+        "bound": 247155.93837217675,
+        "survival_spans_so_far": 0.04855234342753257
+       }
+      ]
+     },
+     {
+      "seed": 2000023,
+      "too_long_to_judge": [
+       {
+        "cfg": 467,
+        "owner": 7,
+        "survival_so_far": 4000.0,
+        "span": 174718.09266764394,
+        "bound": 524154.27800293185,
+        "survival_spans_so_far": 0.022894022816566384
+       }
+      ]
+     },
+     {
+      "seed": 2000025,
+      "too_long_to_judge": [
+       {
+        "cfg": 2030,
+        "owner": 5,
+        "survival_so_far": 174.74722016605256,
+        "span": 110.04908094205743,
+        "bound": 330.14724282617226,
+        "survival_spans_so_far": 1.587902585556891
+       }
+      ]
+     },
+     {
+      "seed": 2000028,
+      "too_long_to_judge": [
+       {
+        "cfg": 564,
+        "owner": 4,
+        "survival_so_far": 4000.0,
+        "span": 291718.22988811845,
+        "bound": 875154.6896643554,
+        "survival_spans_so_far": 0.01371186161911823
+       }
+      ]
+     },
+     {
+      "seed": 2000033,
+      "too_long_to_judge": [
+       {
+        "cfg": 666,
+        "owner": 6,
+        "survival_so_far": 4000.0,
+        "span": 6398.166400598541,
+        "bound": 19194.499201795625,
+        "survival_spans_so_far": 0.6251791137576235
+       }
+      ]
+     },
+     {
+      "seed": 2000036,
+      "too_long_to_judge": [
+       {
+        "cfg": 721,
+        "owner": 1,
+        "survival_so_far": 4000.0,
+        "span": 369101.4041763718,
+        "bound": 1107304.2125291154,
+        "survival_spans_so_far": 0.010837130270272924
+       }
+      ]
+     },
+     {
+      "seed": 2000039,
+      "too_long_to_judge": [
+       {
+        "cfg": 789,
+        "owner": 9,
+        "survival_so_far": 4000.0,
+        "span": 47294.425836548005,
+        "bound": 141883.27750964402,
+        "survival_spans_so_far": 0.08457656328938654
+       }
+      ]
+     },
+     {
+      "seed": 2000044,
+      "too_long_to_judge": [
+       {
+        "cfg": 894,
+        "owner": 14,
+        "survival_so_far": 4000.0,
+        "span": 23855.393700228386,
+        "bound": 71566.18110068515,
+        "survival_spans_so_far": 0.16767696439072832
+       }
+      ]
+     },
+     {
+      "seed": 2000046,
+      "too_long_to_judge": [
+       {
+        "cfg": 937,
+        "owner": 17,
+        "survival_so_far": 4000.0,
+        "span": 36176.189553029726,
+        "bound": 108528.56865908919,
+        "survival_spans_so_far": 0.11056996464861245
+       }
+      ]
+     },
+     {
+      "seed": 2000047,
+      "too_long_to_judge": [
+       {
+        "cfg": 955,
+        "owner": 15,
+        "survival_so_far": 4000.0,
+        "span": 29162.105110473974,
+        "bound": 87486.31533142192,
+        "survival_spans_so_far": 0.1371643091212693
+       }
+      ]
+     },
+     {
+      "seed": 2000051,
+      "too_long_to_judge": [
+       {
+        "cfg": 1023,
+        "owner": 3,
+        "survival_so_far": 4000.0,
+        "span": 95199.63464966847,
+        "bound": 285598.9039490054,
+        "survival_spans_so_far": 0.042016967971777085
+       },
+       {
+        "cfg": 1032,
+        "owner": 12,
+        "survival_so_far": 4000.0,
+        "span": 234010.9754080559,
+        "bound": 702032.9262241677,
+        "survival_spans_so_far": 0.01709321536318975
+       }
+      ]
+     },
+     {
+      "seed": 2000055,
+      "too_long_to_judge": [
+       {
+        "cfg": 1105,
+        "owner": 5,
+        "survival_so_far": 4000.0,
+        "span": 22954.495039651854,
+        "bound": 68863.48511895556,
+        "survival_spans_so_far": 0.17425780846367367
+       },
+       {
+        "cfg": 2028,
+        "owner": 19,
+        "survival_so_far": 3341.0,
+        "span": 24285.49510305312,
+        "bound": 72856.48530915935,
+        "survival_spans_so_far": 0.1375718298442257
+       }
+      ]
+     },
+     {
+      "seed": 2000058,
+      "too_long_to_judge": [
+       {
+        "cfg": 1161,
+        "owner": 1,
+        "survival_so_far": 4000.0,
+        "span": 2204.418618984971,
+        "bound": 6613.255856954913,
+        "survival_spans_so_far": 1.8145373866610726
+       }
+      ]
+     },
+     {
+      "seed": 2000062,
+      "too_long_to_judge": [
+       {
+        "cfg": 1241,
+        "owner": 1,
+        "survival_so_far": 4000.0,
+        "span": 3047.1490554469347,
+        "bound": 9141.447166340804,
+        "survival_spans_so_far": 1.3127024399577025
+       }
+      ]
+     },
+     {
+      "seed": 2000064,
+      "too_long_to_judge": [
+       {
+        "cfg": 1285,
+        "owner": 5,
+        "survival_so_far": 4000.0,
+        "span": 1088697.4448355495,
+        "bound": 3266092.3345066486,
+        "survival_spans_so_far": 0.0036741153559005646
+       }
+      ]
+     },
+     {
+      "seed": 2000067,
+      "too_long_to_judge": [
+       {
+        "cfg": 1349,
+        "owner": 9,
+        "survival_so_far": 4000.0,
+        "span": 479228.12896498124,
+        "bound": 1437684.3868949437,
+        "survival_spans_so_far": 0.008346755455776456
+       }
+      ]
+     },
+     {
+      "seed": 2000072,
+      "too_long_to_judge": [
+       {
+        "cfg": 1458,
+        "owner": 18,
+        "survival_so_far": 4000.0,
+        "span": 31274.554536940814,
+        "bound": 93823.66361082243,
+        "survival_spans_so_far": 0.12789950358126725
+       }
+      ]
+     },
+     {
+      "seed": 2000073,
+      "too_long_to_judge": [
+       {
+        "cfg": 1462,
+        "owner": 2,
+        "survival_so_far": 4000.0,
+        "span": 2375.4328645559235,
+        "bound": 7126.298593667771,
+        "survival_spans_so_far": 1.6839036201293704
+       }
+      ]
+     },
+     {
+      "seed": 2000075,
+      "too_long_to_judge": [
+       {
+        "cfg": 1509,
+        "owner": 9,
+        "survival_so_far": 4000.0,
+        "span": 297321.1488382355,
+        "bound": 891963.4465147064,
+        "survival_spans_so_far": 0.013453466111071344
+       }
+      ]
+     },
+     {
+      "seed": 2000087,
+      "too_long_to_judge": [
+       {
+        "cfg": 1755,
+        "owner": 15,
+        "survival_so_far": 4000.0,
+        "span": 3167.629069605122,
+        "bound": 9502.887208815366,
+        "survival_spans_so_far": 1.262774116572507
+       }
+      ]
+     },
+     {
+      "seed": 2000089,
+      "too_long_to_judge": [
+       {
+        "cfg": 1796,
+        "owner": 16,
+        "survival_so_far": 4000.0,
+        "span": 13951.617215367776,
+        "bound": 41854.85164610333,
+        "survival_spans_so_far": 0.2867051136977855
+       }
+      ]
+     },
+     {
+      "seed": 2000096,
+      "too_long_to_judge": [
+       {
+        "cfg": 1927,
+        "owner": 7,
+        "survival_so_far": 4000.0,
+        "span": 3090.89622515303,
+        "bound": 9272.68867545909,
+        "survival_spans_so_far": 1.2941230337818799
+       }
+      ]
+     },
+     {
+      "seed": 2000097,
+      "too_long_to_judge": [
+       {
+        "cfg": 1949,
+        "owner": 9,
+        "survival_so_far": 4000.0,
+        "span": 3221483.453472363,
+        "bound": 9664450.360417088,
+        "survival_spans_so_far": 0.0012416639904477833
+       }
+      ]
+     }
+    ],
+    "seeds_not_in_the_mean": 29,
+    "per_seed": {
+     "2000000": 145.0,
+     "2000001": 107.44376354442079,
+     "2000002": 122.18449611327847,
+     "2000004": 145.0,
+     "2000005": 96.84843891369162,
+     "2000006": 126.01871391909256,
+     "2000007": 122.99999999999999,
+     "2000009": 130.52208105955933,
+     "2000011": 64.99952709751345,
+     "2000012": 100.26875296451796,
+     "2000015": 145.0,
+     "2000017": 225.99999999999997,
+     "2000019": 49.898797996867714,
+     "2000020": 133.34816803571968,
+     "2000021": 118.75875712234985,
+     "2000022": 206.18726900018217,
+     "2000024": 200.60477548957195,
+     "2000026": 176.3472222222222,
+     "2000027": 85.45898330409318,
+     "2000029": 89.03609731289515,
+     "2000030": 101.0,
+     "2000031": 67.07406123268652,
+     "2000032": 160.62564119806797,
+     "2000034": 145.0,
+     "2000035": 101.125,
+     "2000037": 106.74017122508867,
+     "2000038": 73.8784387284834,
+     "2000040": 156.78341903779594,
+     "2000041": 193.8303951093865,
+     "2000042": 79.18301318119724,
+     "2000043": 142.66666666666663,
+     "2000045": 225.99999999999997,
+     "2000048": 92.32714116449105,
+     "2000049": 81.10907592817146,
+     "2000050": 129.65089697638965,
+     "2000052": 215.46497286604838,
+     "2000053": 95.06767730432527,
+     "2000054": 101.0,
+     "2000056": 103.66019806049809,
+     "2000057": 205.07586483864077,
+     "2000059": 65.85969387755101,
+     "2000060": 109.80038858929196,
+     "2000061": 225.02110713038326,
+     "2000063": 98.67521596402256,
+     "2000065": 167.37519505128907,
+     "2000066": 241.87822841415627,
+     "2000068": 153.7181979596596,
+     "2000069": 145.0,
+     "2000070": 124.27722655179514,
+     "2000071": 87.73469387755102,
+     "2000074": 93.06303706303135,
+     "2000076": 125.794976401327,
+     "2000077": 79.10617235067089,
+     "2000078": 128.84030759065047,
+     "2000079": 169.8480256397413,
+     "2000080": 137.96672882553628,
+     "2000081": 117.64997289246182,
+     "2000082": 163.2312929607218,
+     "2000083": 276.4185400292837,
+     "2000084": 155.51594628217057,
+     "2000085": 225.99999999999997,
+     "2000086": 225.99999999999997,
+     "2000088": 50.54548352555627,
+     "2000090": 108.81887075097096,
+     "2000091": 172.38914901176256,
+     "2000092": 141.62499999999997,
+     "2000093": 145.27150444619096,
+     "2000094": 210.68500676053966,
+     "2000095": 91.29373276908828,
+     "2000098": 142.51749982091468,
+     "2000099": 111.2129052691575
+    },
+    "mean": 136.08905038618857,
+    "se": 6.016397473276462,
+    "largest_seed": 276.4185400292837,
+    "zone": "settles nothing",
+    "why": "29 of 100 seeds left out, more than one in ten: 29 too long to judge, 0 with nothing to watch",
+    "control": "control: fires nothing"
+   },
+   "a sink's": {
+    "seeds": 100,
+    "seeds_measured": 0,
+    "seeds_without_a_watched_configuration": 100,
+    "seeds_left_out": 0,
+    "left_out": [],
+    "seeds_not_in_the_mean": 100,
+    "per_seed": {},
+    "zone": "settles nothing",
+    "why": "100 of 100 seeds left out, more than one in ten: 0 too long to judge, 100 with nothing to watch",
+    "control": "control: fires nothing"
+   },
+   "an operator alone": {
+    "seeds": 100,
+    "seeds_measured": 26,
+    "seeds_without_a_watched_configuration": 74,
+    "seeds_left_out": 0,
+    "left_out": [],
+    "seeds_not_in_the_mean": 74,
+    "per_seed": {
+     "2000004": 0.24139135823028787,
+     "2000005": 0.4443190173238504,
+     "2000006": 0.14591538726817238,
+     "2000010": 0.3132364152251008,
+     "2000011": 0.29832890917527394,
+     "2000016": 0.2804681143969484,
+     "2000017": 0.3221864301640755,
+     "2000019": 0.11020517377476598,
+     "2000021": 0.22478837297732174,
+     "2000028": 0.31798516193893667,
+     "2000032": 0.41738384377387777,
+     "2000034": 0.397035474243724,
+     "2000040": 0.34032367817533443,
+     "2000041": 0.2345639328772442,
+     "2000042": 0.2640697600886266,
+     "2000047": 0.3247023889457587,
+     "2000051": 0.4081693359423085,
+     "2000052": 0.3720317852834209,
+     "2000054": 0.42410147910540075,
+     "2000060": 0.296826934214066,
+     "2000061": 0.3303994536739125,
+     "2000074": 0.36771154961350355,
+     "2000083": 0.4353690413643697,
+     "2000085": 0.27828316097798395,
+     "2000087": 0.3425398921913168,
+     "2000090": 0.33703991174996667
+    },
+    "mean": 0.3180529216421365,
+    "se": 0.016331978732429118,
+    "largest_seed": 0.4443190173238504,
+    "zone": "settles nothing",
+    "why": "74 of 100 seeds left out, more than one in ten: 0 too long to judge, 74 with nothing to watch",
+    "control": "control: fires nothing"
+   }
+  },
+  "ended_by": {
+   "run ended": 480,
+   "ruin": 29,
+   "counterparty ruined": 31
+  },
+  "within_bound": 209,
+  "measure": {
+   "seeds": 100,
+   "seeds_measured": 71,
+   "seeds_without_a_watched_configuration": 0,
+   "seeds_left_out": 29,
+   "left_out": [
+    {
+     "seed": 2000003,
+     "too_long_to_judge": [
+      {
+       "cfg": 70,
+       "owner": 10,
+       "survival_so_far": 4000.0,
+       "span": 761725.5321456972,
+       "bound": 2285176.5964370915,
+       "survival_spans_so_far": 0.005251235295648341
+      }
+     ]
+    },
+    {
+     "seed": 2000008,
+     "too_long_to_judge": [
+      {
+       "cfg": 166,
+       "owner": 6,
+       "survival_so_far": 4000.0,
+       "span": 23564.196929566824,
+       "bound": 70692.59078870047,
+       "survival_spans_so_far": 0.16974904818339298
+      }
+     ]
+    },
+    {
+     "seed": 2000010,
+     "too_long_to_judge": [
+      {
+       "cfg": 207,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 148034.58616713822,
+       "bound": 444103.7585014147,
+       "survival_spans_so_far": 0.027020712548105525
+      }
+     ]
+    },
+    {
+     "seed": 2000013,
+     "too_long_to_judge": [
+      {
+       "cfg": 271,
+       "owner": 11,
+       "survival_so_far": 4000.0,
+       "span": 5638.098112588964,
+       "bound": 16914.294337766893,
+       "survival_spans_so_far": 0.7094590977529541
+      }
+     ]
+    },
+    {
+     "seed": 2000014,
+     "too_long_to_judge": [
+      {
+       "cfg": 294,
+       "owner": 14,
+       "survival_so_far": 4000.0,
+       "span": 458028.6194790589,
+       "bound": 1374085.8584371768,
+       "survival_spans_so_far": 0.008733078741999615
+      }
+     ]
+    },
+    {
+     "seed": 2000016,
+     "too_long_to_judge": [
+      {
+       "cfg": 339,
+       "owner": 19,
+       "survival_so_far": 4000.0,
+       "span": 268272.776859139,
+       "bound": 804818.3305774169,
+       "survival_spans_so_far": 0.014910197176287722
+      }
+     ]
+    },
+    {
+     "seed": 2000018,
+     "too_long_to_judge": [
+      {
+       "cfg": 367,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 82385.31279072558,
+       "bound": 247155.93837217675,
+       "survival_spans_so_far": 0.04855234342753257
+      }
+     ]
+    },
+    {
+     "seed": 2000023,
+     "too_long_to_judge": [
+      {
+       "cfg": 467,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 174718.09266764394,
+       "bound": 524154.27800293185,
+       "survival_spans_so_far": 0.022894022816566384
+      }
+     ]
+    },
+    {
+     "seed": 2000025,
+     "too_long_to_judge": [
+      {
+       "cfg": 2030,
+       "owner": 5,
+       "survival_so_far": 174.74722016605256,
+       "span": 110.04908094205743,
+       "bound": 330.14724282617226,
+       "survival_spans_so_far": 1.587902585556891
+      }
+     ]
+    },
+    {
+     "seed": 2000028,
+     "too_long_to_judge": [
+      {
+       "cfg": 564,
+       "owner": 4,
+       "survival_so_far": 4000.0,
+       "span": 291718.22988811845,
+       "bound": 875154.6896643554,
+       "survival_spans_so_far": 0.01371186161911823
+      }
+     ]
+    },
+    {
+     "seed": 2000033,
+     "too_long_to_judge": [
+      {
+       "cfg": 666,
+       "owner": 6,
+       "survival_so_far": 4000.0,
+       "span": 6398.166400598541,
+       "bound": 19194.499201795625,
+       "survival_spans_so_far": 0.6251791137576235
+      }
+     ]
+    },
+    {
+     "seed": 2000036,
+     "too_long_to_judge": [
+      {
+       "cfg": 721,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 369101.4041763718,
+       "bound": 1107304.2125291154,
+       "survival_spans_so_far": 0.010837130270272924
+      }
+     ]
+    },
+    {
+     "seed": 2000039,
+     "too_long_to_judge": [
+      {
+       "cfg": 789,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 47294.425836548005,
+       "bound": 141883.27750964402,
+       "survival_spans_so_far": 0.08457656328938654
+      }
+     ]
+    },
+    {
+     "seed": 2000044,
+     "too_long_to_judge": [
+      {
+       "cfg": 894,
+       "owner": 14,
+       "survival_so_far": 4000.0,
+       "span": 23855.393700228386,
+       "bound": 71566.18110068515,
+       "survival_spans_so_far": 0.16767696439072832
+      }
+     ]
+    },
+    {
+     "seed": 2000046,
+     "too_long_to_judge": [
+      {
+       "cfg": 937,
+       "owner": 17,
+       "survival_so_far": 4000.0,
+       "span": 36176.189553029726,
+       "bound": 108528.56865908919,
+       "survival_spans_so_far": 0.11056996464861245
+      }
+     ]
+    },
+    {
+     "seed": 2000047,
+     "too_long_to_judge": [
+      {
+       "cfg": 955,
+       "owner": 15,
+       "survival_so_far": 4000.0,
+       "span": 29162.105110473974,
+       "bound": 87486.31533142192,
+       "survival_spans_so_far": 0.1371643091212693
+      }
+     ]
+    },
+    {
+     "seed": 2000051,
+     "too_long_to_judge": [
+      {
+       "cfg": 1023,
+       "owner": 3,
+       "survival_so_far": 4000.0,
+       "span": 95199.63464966847,
+       "bound": 285598.9039490054,
+       "survival_spans_so_far": 0.042016967971777085
+      },
+      {
+       "cfg": 1032,
+       "owner": 12,
+       "survival_so_far": 4000.0,
+       "span": 234010.9754080559,
+       "bound": 702032.9262241677,
+       "survival_spans_so_far": 0.01709321536318975
+      }
+     ]
+    },
+    {
+     "seed": 2000055,
+     "too_long_to_judge": [
+      {
+       "cfg": 1105,
+       "owner": 5,
+       "survival_so_far": 4000.0,
+       "span": 22954.495039651854,
+       "bound": 68863.48511895556,
+       "survival_spans_so_far": 0.17425780846367367
+      },
+      {
+       "cfg": 2028,
+       "owner": 19,
+       "survival_so_far": 3341.0,
+       "span": 24285.49510305312,
+       "bound": 72856.48530915935,
+       "survival_spans_so_far": 0.1375718298442257
+      }
+     ]
+    },
+    {
+     "seed": 2000058,
+     "too_long_to_judge": [
+      {
+       "cfg": 1161,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 2204.418618984971,
+       "bound": 6613.255856954913,
+       "survival_spans_so_far": 1.8145373866610726
+      }
+     ]
+    },
+    {
+     "seed": 2000062,
+     "too_long_to_judge": [
+      {
+       "cfg": 1241,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 3047.1490554469347,
+       "bound": 9141.447166340804,
+       "survival_spans_so_far": 1.3127024399577025
+      }
+     ]
+    },
+    {
+     "seed": 2000064,
+     "too_long_to_judge": [
+      {
+       "cfg": 1285,
+       "owner": 5,
+       "survival_so_far": 4000.0,
+       "span": 1088697.4448355495,
+       "bound": 3266092.3345066486,
+       "survival_spans_so_far": 0.0036741153559005646
+      }
+     ]
+    },
+    {
+     "seed": 2000067,
+     "too_long_to_judge": [
+      {
+       "cfg": 1349,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 479228.12896498124,
+       "bound": 1437684.3868949437,
+       "survival_spans_so_far": 0.008346755455776456
+      }
+     ]
+    },
+    {
+     "seed": 2000072,
+     "too_long_to_judge": [
+      {
+       "cfg": 1458,
+       "owner": 18,
+       "survival_so_far": 4000.0,
+       "span": 31274.554536940814,
+       "bound": 93823.66361082243,
+       "survival_spans_so_far": 0.12789950358126725
+      }
+     ]
+    },
+    {
+     "seed": 2000073,
+     "too_long_to_judge": [
+      {
+       "cfg": 1462,
+       "owner": 2,
+       "survival_so_far": 4000.0,
+       "span": 2375.4328645559235,
+       "bound": 7126.298593667771,
+       "survival_spans_so_far": 1.6839036201293704
+      }
+     ]
+    },
+    {
+     "seed": 2000075,
+     "too_long_to_judge": [
+      {
+       "cfg": 1509,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 297321.1488382355,
+       "bound": 891963.4465147064,
+       "survival_spans_so_far": 0.013453466111071344
+      }
+     ]
+    },
+    {
+     "seed": 2000087,
+     "too_long_to_judge": [
+      {
+       "cfg": 1755,
+       "owner": 15,
+       "survival_so_far": 4000.0,
+       "span": 3167.629069605122,
+       "bound": 9502.887208815366,
+       "survival_spans_so_far": 1.262774116572507
+      }
+     ]
+    },
+    {
+     "seed": 2000089,
+     "too_long_to_judge": [
+      {
+       "cfg": 1796,
+       "owner": 16,
+       "survival_so_far": 4000.0,
+       "span": 13951.617215367776,
+       "bound": 41854.85164610333,
+       "survival_spans_so_far": 0.2867051136977855
+      }
+     ]
+    },
+    {
+     "seed": 2000096,
+     "too_long_to_judge": [
+      {
+       "cfg": 1927,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 3090.89622515303,
+       "bound": 9272.68867545909,
+       "survival_spans_so_far": 1.2941230337818799
+      }
+     ]
+    },
+    {
+     "seed": 2000097,
+     "too_long_to_judge": [
+      {
+       "cfg": 1949,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 3221483.453472363,
+       "bound": 9664450.360417088,
+       "survival_spans_so_far": 0.0012416639904477833
+      }
+     ]
+    }
+   ],
+   "seeds_not_in_the_mean": 29,
+   "per_seed": {
+    "2000000": 145.0,
+    "2000001": 107.44376354442079,
+    "2000002": 122.18449611327847,
+    "2000004": 145.0,
+    "2000005": 96.84843891369162,
+    "2000006": 126.01871391909256,
+    "2000007": 122.99999999999999,
+    "2000009": 130.52208105955933,
+    "2000011": 64.99952709751345,
+    "2000012": 100.26875296451796,
+    "2000015": 145.0,
+    "2000017": 225.99999999999997,
+    "2000019": 49.898797996867714,
+    "2000020": 133.34816803571968,
+    "2000021": 118.75875712234985,
+    "2000022": 206.18726900018217,
+    "2000024": 200.60477548957195,
+    "2000026": 176.3472222222222,
+    "2000027": 85.45898330409318,
+    "2000029": 89.03609731289515,
+    "2000030": 101.0,
+    "2000031": 67.07406123268652,
+    "2000032": 160.62564119806797,
+    "2000034": 145.0,
+    "2000035": 101.125,
+    "2000037": 106.74017122508867,
+    "2000038": 73.8784387284834,
+    "2000040": 156.78341903779594,
+    "2000041": 193.8303951093865,
+    "2000042": 79.18301318119724,
+    "2000043": 142.66666666666663,
+    "2000045": 225.99999999999997,
+    "2000048": 92.32714116449105,
+    "2000049": 81.10907592817146,
+    "2000050": 129.65089697638965,
+    "2000052": 215.46497286604838,
+    "2000053": 95.06767730432527,
+    "2000054": 101.0,
+    "2000056": 103.66019806049809,
+    "2000057": 205.07586483864077,
+    "2000059": 65.85969387755101,
+    "2000060": 109.80038858929196,
+    "2000061": 225.02110713038326,
+    "2000063": 98.67521596402256,
+    "2000065": 167.37519505128907,
+    "2000066": 241.87822841415627,
+    "2000068": 153.7181979596596,
+    "2000069": 145.0,
+    "2000070": 124.27722655179514,
+    "2000071": 87.73469387755102,
+    "2000074": 93.06303706303135,
+    "2000076": 125.794976401327,
+    "2000077": 79.10617235067089,
+    "2000078": 128.84030759065047,
+    "2000079": 169.8480256397413,
+    "2000080": 137.96672882553628,
+    "2000081": 117.64997289246182,
+    "2000082": 163.2312929607218,
+    "2000083": 276.4185400292837,
+    "2000084": 155.51594628217057,
+    "2000085": 225.99999999999997,
+    "2000086": 225.99999999999997,
+    "2000088": 50.54548352555627,
+    "2000090": 108.81887075097096,
+    "2000091": 172.38914901176256,
+    "2000092": 141.62499999999997,
+    "2000093": 145.27150444619096,
+    "2000094": 210.68500676053966,
+    "2000095": 91.29373276908828,
+    "2000098": 142.51749982091468,
+    "2000099": 111.2129052691575
+   },
+   "mean": 136.08905038618857,
+   "se": 6.016397473276462,
+   "largest_seed": 276.4185400292837,
+   "zone": "settles nothing",
+   "why": "29 of 100 seeds left out, more than one in ten: 29 too long to judge, 0 with nothing to watch",
+   "control": "control: fires nothing"
+  },
+  "for_reference_without_the_window": {
+   "seeds": 100,
+   "seeds_measured": 71,
+   "seeds_without_a_watched_configuration": 0,
+   "seeds_left_out": 29,
+   "left_out": [
+    {
+     "seed": 2000003,
+     "too_long_to_judge": [
+      {
+       "cfg": 70,
+       "owner": 10,
+       "survival_so_far": 4000.0,
+       "span": 761725.5321456972,
+       "bound": 2285176.5964370915,
+       "survival_spans_so_far": 0.005251235295648341
+      }
+     ]
+    },
+    {
+     "seed": 2000008,
+     "too_long_to_judge": [
+      {
+       "cfg": 166,
+       "owner": 6,
+       "survival_so_far": 4000.0,
+       "span": 23564.196929566824,
+       "bound": 70692.59078870047,
+       "survival_spans_so_far": 0.16974904818339298
+      }
+     ]
+    },
+    {
+     "seed": 2000010,
+     "too_long_to_judge": [
+      {
+       "cfg": 207,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 148034.58616713822,
+       "bound": 444103.7585014147,
+       "survival_spans_so_far": 0.027020712548105525
+      }
+     ]
+    },
+    {
+     "seed": 2000013,
+     "too_long_to_judge": [
+      {
+       "cfg": 271,
+       "owner": 11,
+       "survival_so_far": 4000.0,
+       "span": 5638.098112588964,
+       "bound": 16914.294337766893,
+       "survival_spans_so_far": 0.7094590977529541
+      }
+     ]
+    },
+    {
+     "seed": 2000014,
+     "too_long_to_judge": [
+      {
+       "cfg": 294,
+       "owner": 14,
+       "survival_so_far": 4000.0,
+       "span": 458028.6194790589,
+       "bound": 1374085.8584371768,
+       "survival_spans_so_far": 0.008733078741999615
+      }
+     ]
+    },
+    {
+     "seed": 2000016,
+     "too_long_to_judge": [
+      {
+       "cfg": 339,
+       "owner": 19,
+       "survival_so_far": 4000.0,
+       "span": 268272.776859139,
+       "bound": 804818.3305774169,
+       "survival_spans_so_far": 0.014910197176287722
+      }
+     ]
+    },
+    {
+     "seed": 2000018,
+     "too_long_to_judge": [
+      {
+       "cfg": 367,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 82385.31279072558,
+       "bound": 247155.93837217675,
+       "survival_spans_so_far": 0.04855234342753257
+      }
+     ]
+    },
+    {
+     "seed": 2000023,
+     "too_long_to_judge": [
+      {
+       "cfg": 467,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 174718.09266764394,
+       "bound": 524154.27800293185,
+       "survival_spans_so_far": 0.022894022816566384
+      }
+     ]
+    },
+    {
+     "seed": 2000025,
+     "too_long_to_judge": [
+      {
+       "cfg": 2030,
+       "owner": 5,
+       "survival_so_far": 174.74722016605256,
+       "span": 110.04908094205743,
+       "bound": 330.14724282617226,
+       "survival_spans_so_far": 1.587902585556891
+      }
+     ]
+    },
+    {
+     "seed": 2000028,
+     "too_long_to_judge": [
+      {
+       "cfg": 564,
+       "owner": 4,
+       "survival_so_far": 4000.0,
+       "span": 291718.22988811845,
+       "bound": 875154.6896643554,
+       "survival_spans_so_far": 0.01371186161911823
+      }
+     ]
+    },
+    {
+     "seed": 2000033,
+     "too_long_to_judge": [
+      {
+       "cfg": 666,
+       "owner": 6,
+       "survival_so_far": 4000.0,
+       "span": 6398.166400598541,
+       "bound": 19194.499201795625,
+       "survival_spans_so_far": 0.6251791137576235
+      }
+     ]
+    },
+    {
+     "seed": 2000036,
+     "too_long_to_judge": [
+      {
+       "cfg": 721,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 369101.4041763718,
+       "bound": 1107304.2125291154,
+       "survival_spans_so_far": 0.010837130270272924
+      }
+     ]
+    },
+    {
+     "seed": 2000039,
+     "too_long_to_judge": [
+      {
+       "cfg": 789,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 47294.425836548005,
+       "bound": 141883.27750964402,
+       "survival_spans_so_far": 0.08457656328938654
+      }
+     ]
+    },
+    {
+     "seed": 2000044,
+     "too_long_to_judge": [
+      {
+       "cfg": 894,
+       "owner": 14,
+       "survival_so_far": 4000.0,
+       "span": 23855.393700228386,
+       "bound": 71566.18110068515,
+       "survival_spans_so_far": 0.16767696439072832
+      }
+     ]
+    },
+    {
+     "seed": 2000046,
+     "too_long_to_judge": [
+      {
+       "cfg": 937,
+       "owner": 17,
+       "survival_so_far": 4000.0,
+       "span": 36176.189553029726,
+       "bound": 108528.56865908919,
+       "survival_spans_so_far": 0.11056996464861245
+      }
+     ]
+    },
+    {
+     "seed": 2000047,
+     "too_long_to_judge": [
+      {
+       "cfg": 955,
+       "owner": 15,
+       "survival_so_far": 4000.0,
+       "span": 29162.105110473974,
+       "bound": 87486.31533142192,
+       "survival_spans_so_far": 0.1371643091212693
+      }
+     ]
+    },
+    {
+     "seed": 2000051,
+     "too_long_to_judge": [
+      {
+       "cfg": 1023,
+       "owner": 3,
+       "survival_so_far": 4000.0,
+       "span": 95199.63464966847,
+       "bound": 285598.9039490054,
+       "survival_spans_so_far": 0.042016967971777085
+      },
+      {
+       "cfg": 1032,
+       "owner": 12,
+       "survival_so_far": 4000.0,
+       "span": 234010.9754080559,
+       "bound": 702032.9262241677,
+       "survival_spans_so_far": 0.01709321536318975
+      }
+     ]
+    },
+    {
+     "seed": 2000055,
+     "too_long_to_judge": [
+      {
+       "cfg": 1105,
+       "owner": 5,
+       "survival_so_far": 4000.0,
+       "span": 22954.495039651854,
+       "bound": 68863.48511895556,
+       "survival_spans_so_far": 0.17425780846367367
+      },
+      {
+       "cfg": 2028,
+       "owner": 19,
+       "survival_so_far": 3341.0,
+       "span": 24285.49510305312,
+       "bound": 72856.48530915935,
+       "survival_spans_so_far": 0.1375718298442257
+      }
+     ]
+    },
+    {
+     "seed": 2000058,
+     "too_long_to_judge": [
+      {
+       "cfg": 1161,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 2204.418618984971,
+       "bound": 6613.255856954913,
+       "survival_spans_so_far": 1.8145373866610726
+      }
+     ]
+    },
+    {
+     "seed": 2000062,
+     "too_long_to_judge": [
+      {
+       "cfg": 1241,
+       "owner": 1,
+       "survival_so_far": 4000.0,
+       "span": 3047.1490554469347,
+       "bound": 9141.447166340804,
+       "survival_spans_so_far": 1.3127024399577025
+      }
+     ]
+    },
+    {
+     "seed": 2000064,
+     "too_long_to_judge": [
+      {
+       "cfg": 1285,
+       "owner": 5,
+       "survival_so_far": 4000.0,
+       "span": 1088697.4448355495,
+       "bound": 3266092.3345066486,
+       "survival_spans_so_far": 0.0036741153559005646
+      }
+     ]
+    },
+    {
+     "seed": 2000067,
+     "too_long_to_judge": [
+      {
+       "cfg": 1349,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 479228.12896498124,
+       "bound": 1437684.3868949437,
+       "survival_spans_so_far": 0.008346755455776456
+      }
+     ]
+    },
+    {
+     "seed": 2000072,
+     "too_long_to_judge": [
+      {
+       "cfg": 1458,
+       "owner": 18,
+       "survival_so_far": 4000.0,
+       "span": 31274.554536940814,
+       "bound": 93823.66361082243,
+       "survival_spans_so_far": 0.12789950358126725
+      }
+     ]
+    },
+    {
+     "seed": 2000073,
+     "too_long_to_judge": [
+      {
+       "cfg": 1462,
+       "owner": 2,
+       "survival_so_far": 4000.0,
+       "span": 2375.4328645559235,
+       "bound": 7126.298593667771,
+       "survival_spans_so_far": 1.6839036201293704
+      }
+     ]
+    },
+    {
+     "seed": 2000075,
+     "too_long_to_judge": [
+      {
+       "cfg": 1509,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 297321.1488382355,
+       "bound": 891963.4465147064,
+       "survival_spans_so_far": 0.013453466111071344
+      }
+     ]
+    },
+    {
+     "seed": 2000087,
+     "too_long_to_judge": [
+      {
+       "cfg": 1755,
+       "owner": 15,
+       "survival_so_far": 4000.0,
+       "span": 3167.629069605122,
+       "bound": 9502.887208815366,
+       "survival_spans_so_far": 1.262774116572507
+      }
+     ]
+    },
+    {
+     "seed": 2000089,
+     "too_long_to_judge": [
+      {
+       "cfg": 1796,
+       "owner": 16,
+       "survival_so_far": 4000.0,
+       "span": 13951.617215367776,
+       "bound": 41854.85164610333,
+       "survival_spans_so_far": 0.2867051136977855
+      }
+     ]
+    },
+    {
+     "seed": 2000096,
+     "too_long_to_judge": [
+      {
+       "cfg": 1927,
+       "owner": 7,
+       "survival_so_far": 4000.0,
+       "span": 3090.89622515303,
+       "bound": 9272.68867545909,
+       "survival_spans_so_far": 1.2941230337818799
+      }
+     ]
+    },
+    {
+     "seed": 2000097,
+     "too_long_to_judge": [
+      {
+       "cfg": 1949,
+       "owner": 9,
+       "survival_so_far": 4000.0,
+       "span": 3221483.453472363,
+       "bound": 9664450.360417088,
+       "survival_spans_so_far": 0.0012416639904477833
+      }
+     ]
+    }
+   ],
+   "seeds_not_in_the_mean": 29,
+   "per_seed": {
+    "2000000": 145.0,
+    "2000001": 107.44376354442079,
+    "2000002": 122.18449611327847,
+    "2000004": 145.0,
+    "2000005": 96.84843891369162,
+    "2000006": 126.01871391909256,
+    "2000007": 122.99999999999999,
+    "2000009": 130.52208105955933,
+    "2000011": 64.99952709751345,
+    "2000012": 100.26875296451796,
+    "2000015": 145.0,
+    "2000017": 225.99999999999997,
+    "2000019": 49.898797996867714,
+    "2000020": 133.34816803571968,
+    "2000021": 118.75875712234985,
+    "2000022": 206.18726900018217,
+    "2000024": 200.60477548957195,
+    "2000026": 176.3472222222222,
+    "2000027": 85.45898330409318,
+    "2000029": 89.03609731289515,
+    "2000030": 101.0,
+    "2000031": 67.07406123268652,
+    "2000032": 160.62564119806797,
+    "2000034": 145.0,
+    "2000035": 101.125,
+    "2000037": 106.74017122508867,
+    "2000038": 73.8784387284834,
+    "2000040": 156.78341903779594,
+    "2000041": 193.8303951093865,
+    "2000042": 79.18301318119724,
+    "2000043": 142.66666666666663,
+    "2000045": 225.99999999999997,
+    "2000048": 92.32714116449105,
+    "2000049": 81.10907592817146,
+    "2000050": 129.65089697638965,
+    "2000052": 215.46497286604838,
+    "2000053": 95.06767730432527,
+    "2000054": 101.0,
+    "2000056": 103.66019806049809,
+    "2000057": 205.07586483864077,
+    "2000059": 65.85969387755101,
+    "2000060": 109.80038858929196,
+    "2000061": 225.02110713038326,
+    "2000063": 98.67521596402256,
+    "2000065": 167.37519505128907,
+    "2000066": 241.87822841415627,
+    "2000068": 153.7181979596596,
+    "2000069": 145.0,
+    "2000070": 124.27722655179514,
+    "2000071": 87.73469387755102,
+    "2000074": 93.06303706303135,
+    "2000076": 125.794976401327,
+    "2000077": 79.10617235067089,
+    "2000078": 128.84030759065047,
+    "2000079": 169.8480256397413,
+    "2000080": 137.96672882553628,
+    "2000081": 117.64997289246182,
+    "2000082": 163.2312929607218,
+    "2000083": 276.4185400292837,
+    "2000084": 155.51594628217057,
+    "2000085": 225.99999999999997,
+    "2000086": 225.99999999999997,
+    "2000088": 50.54548352555627,
+    "2000090": 108.81887075097096,
+    "2000091": 172.38914901176256,
+    "2000092": 141.62499999999997,
+    "2000093": 145.27150444619096,
+    "2000094": 210.68500676053966,
+    "2000095": 91.29373276908828,
+    "2000098": 142.51749982091468,
+    "2000099": 111.2129052691575
+   },
+   "mean": 136.08905038618857,
+   "se": 6.016397473276462,
+   "largest_seed": 276.4185400292837,
+   "zone": "settles nothing",
+   "why": "29 of 100 seeds left out, more than one in ten: 29 too long to judge, 0 with nothing to watch",
+   "control": "control: fires nothing"
+  }
+ },
+ "defectors": {
+  "defectors": 500,
+  "ruined": 18,
+  "mean_ruin_time": 18.231999012797164,
+  "configurations_passed_through": {
+   "mean": 1.062,
+   "max": 3
+  }
+ },
+ "end_of_run": {
+  "live_links": 3715,
+  "share_net_positive_both_ends": 0.7275908479138627,
+  "operators_standing": 1945,
+  "stock_standing": {
+   "mean": 70.94080783561817,
+   "min": 16.65861953083389,
+   "max": 145.9338974661668
+  },
+  "ruined": {
+   "C": 0,
+   "U": 37,
+   "D": 18
+  },
+  "cuts": 0
+ },
+ "premise_check": {
+  "hosts_all_type_C": false,
+  "seeds_with_a_host_not_type_C": [
+   2000000,
+   2000001,
+   2000002,
+   2000003,
+   2000004,
+   2000005,
+   2000006,
+   2000007,
+   2000008,
+   2000009,
+   2000010,
+   2000011,
+   2000012,
+   2000013,
+   2000014,
+   2000015,
+   2000016,
+   2000017,
+   2000018,
+   2000019,
+   2000020,
+   2000021,
+   2000022,
+   2000023,
+   2000024,
+   2000025,
+   2000026,
+   2000027,
+   2000028,
+   2000029,
+   2000030,
+   2000031,
+   2000032,
+   2000033,
+   2000034,
+   2000035,
+   2000036,
+   2000037,
+   2000038,
+   2000039,
+   2000040,
+   2000041,
+   2000042,
+   2000043,
+   2000044,
+   2000045,
+   2000046,
+   2000047,
+   2000048,
+   2000049,
+   2000050,
+   2000051,
+   2000052,
+   2000053,
+   2000054,
+   2000055,
+   2000056,
+   2000057,
+   2000058,
+   2000059,
+   2000060,
+   2000061,
+   2000062,
+   2000063,
+   2000064,
+   2000065,
+   2000066,
+   2000067,
+   2000068,
+   2000069,
+   2000070,
+   2000071,
+   2000072,
+   2000073,
+   2000074,
+   2000075,
+   2000076,
+   2000077,
+   2000078,
+   2000079,
+   2000080,
+   2000081,
+   2000082,
+   2000083,
+   2000084,
+   2000085,
+   2000086,
+   2000087,
+   2000088,
+   2000089,
+   2000090,
+   2000091,
+   2000092,
+   2000093,
+   2000094,
+   2000095,
+   2000096,
+   2000097,
+   2000098,
+   2000099
+  ],
+  "drift_irreversible": true,
+  "defectors": 500,
+  "defectors_coupled_at_start": 486,
+  "defectors_with_no_live_link_at_start_reported_not_watched": [
+   {
+    "seed": 2000005,
+    "defectors": [
+     9
+    ]
+   },
+   {
+    "seed": 2000006,
+    "defectors": [
+     0
+    ]
+   },
+   {
+    "seed": 2000017,
+    "defectors": [
+     2
+    ]
+   },
+   {
+    "seed": 2000019,
+    "defectors": [
+     16
+    ]
+   },
+   {
+    "seed": 2000021,
+    "defectors": [
+     3
+    ]
+   },
+   {
+    "seed": 2000028,
+    "defectors": [
+     2,
+     16
+    ]
+   },
+   {
+    "seed": 2000034,
+    "defectors": [
+     1
+    ]
+   },
+   {
+    "seed": 2000041,
+    "defectors": [
+     16
+    ]
+   },
+   {
+    "seed": 2000042,
+    "defectors": [
+     15
+    ]
+   },
+   {
+    "seed": 2000052,
+    "defectors": [
+     8
+    ]
+   },
+   {
+    "seed": 2000074,
+    "defectors": [
+     8
+    ]
+   },
+   {
+    "seed": 2000085,
+    "defectors": [
+     14
+    ]
+   },
+   {
+    "seed": 2000090,
+    "defectors": [
+     2
+    ]
+   }
+  ],
+  "seeds_with_every_defector_coupled": 87,
+  "seeds_network_connected_at_start_for_information": 75,
+  "links_between_two_defectors_left_out": {
+   "seeds": 96,
+   "links": 220
+  }
+ },
+ "run": {
+  "t_end": 4000.0,
+  "rounds": 4000,
+  "longest_bound": 264596295.32353064,
+  "horizon_cap_reached": false,
+  "seconds": 419.6208884716034
+ },
+ "B2_reports": {
+  "configurations_left_out_as_outside_the_premises": 0,
+  "configurations_returned_to_zero_or_above_and_below_again": 43,
+  "cuts_of_one_type_C_operator_by_another": 0,
+  "defectors_standing_at_the_end": 482,
+  "falls_in_no_watched_configuration": 26,
+  "watched_sinks_with_their_records_less_passive_flow": 0,
+  "configurations_with_a_counterparty": 2002,
+  "watched_by_the_window_point_20": 511,
+  "watched_by_one_round_record_alone": 511,
+  "lasted_more_than_one_span_then_ended": 1
+ },
+ "files": {
+  "packet.jsonl": "3fc1a14be5bcd0ee3c78482188e449845af74827d729db7ca6ec796e0eb3774d",
+  "log.jsonl.gz": "097e6b8de806b406230c1cd7450cc940e5908dde9f2bac73635e18066a80df86"
+ },
+ "log_bytes": 10875854
+}

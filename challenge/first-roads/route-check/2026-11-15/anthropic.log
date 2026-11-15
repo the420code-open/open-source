@@ -1,0 +1,1 @@
+anthropic PASSED {"answered": true, "model_as_set": true, "normal_stop": true, "tokens_reported": true, "reasoning_seen": false} | model claude-fable-5-2 | stop end_turn | usage {"input": 37, "output": 328, "reasoning": null} | $0.0134 | 245.77s | 

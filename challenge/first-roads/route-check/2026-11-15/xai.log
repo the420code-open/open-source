@@ -1,0 +1,1 @@
+xai PASSED {"answered": true, "model_as_set": true, "normal_stop": true, "tokens_reported": true, "reasoning_seen": true} | model grok-4.7 | stop stop | usage {"input": 1265, "output": 63, "reasoning": 446} | $0.0056 | 82.73s | 

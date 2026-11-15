@@ -1,0 +1,239 @@
+{
+ "label": "dry, never a result",
+ "cells": {
+  "D1": {
+   "reference": {
+    "points_applied/22": [
+     794,
+     51
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     743
+    ]
+   },
+   "second": {
+    "points_applied/22": [
+     791,
+     59
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     732
+    ]
+   }
+  },
+  "D2": {
+   "reference": {
+    "points_applied/22": [
+     483,
+     189
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     294
+    ]
+   },
+   "second": {
+    "points_applied/22": [
+     490,
+     212
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     278
+    ]
+   }
+  },
+  "D4": {
+   "reference": {
+    "points_applied/19": [
+     343,
+     335
+    ],
+    "points_applied/22": [
+     29,
+     6
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     8
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     23
+    ]
+   },
+   "second": {
+    "points_applied/19": [
+     364,
+     352
+    ],
+    "points_applied/22": [
+     36,
+     7
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     12
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     29
+    ]
+   }
+  },
+  "X1": {
+   "reference": {
+    "points_applied/22": [
+     850,
+     175
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     675
+    ]
+   },
+   "second": {
+    "points_applied/22": [
+     828,
+     228
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     600
+    ]
+   }
+  },
+  "D5": {
+   "reference": {
+    "lasted_more_than_one_span_then_ended": [
+     64,
+     65
+    ],
+    "points_applied/22": [
+     439,
+     164
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     275
+    ],
+    "reports/lasted_more_than_one_span_then_ended": [
+     64,
+     65
+    ]
+   },
+   "second": {
+    "points_applied/22": [
+     502,
+     199
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     303
+    ]
+   }
+  },
+  "X3": {
+   "reference": {
+    "points_applied/19": [
+     361,
+     353
+    ],
+    "points_applied/22": [
+     26,
+     14
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     8
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     12
+    ]
+   },
+   "second": {
+    "points_applied/19": [
+     385,
+     376
+    ],
+    "points_applied/22": [
+     38,
+     28
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     9
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     10
+    ]
+   }
+  },
+  "D6": {
+   "reference": {
+    "points_applied/22": [
+     477,
+     118
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     359
+    ]
+   },
+   "second": {
+    "points_applied/22": [
+     483,
+     99
+    ],
+    "points_left_not_the_shorter/19": [
+     null,
+     0
+    ],
+    "points_left_not_the_shorter/22": [
+     null,
+     384
+    ]
+   }
+  }
+ }
+}

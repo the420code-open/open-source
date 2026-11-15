@@ -1,0 +1,190 @@
+[
+ {
+  "file": "Second marks batch 1 of 12.md",
+  "answers": [
+   "R001",
+   "R002",
+   "R003",
+   "R004",
+   "R005",
+   "R006",
+   "R007",
+   "R008"
+  ],
+  "bytes": 506435,
+  "sha256": "69f9509cd4c26b4cd14270764088c0e7706330a45ebe96f9c83d785552c903f0"
+ },
+ {
+  "file": "Second marks batch 2 of 12.md",
+  "answers": [
+   "R009",
+   "R010",
+   "R011",
+   "R012",
+   "R013",
+   "R014",
+   "R015",
+   "R016"
+  ],
+  "bytes": 516746,
+  "sha256": "fd439f43f89e005ffd3be9f0e0b78a37053c80e0277c360fc9f79b733475ff35"
+ },
+ {
+  "file": "Second marks batch 3 of 12.md",
+  "answers": [
+   "R017",
+   "R018",
+   "R019",
+   "R020",
+   "R021",
+   "R022",
+   "R023",
+   "R024",
+   "R025"
+  ],
+  "bytes": 553326,
+  "sha256": "0021f9b1ae26dbb5bba3ba9dec96cd69d54ca5ff0472b5def1207cc65219bb42"
+ },
+ {
+  "file": "Second marks batch 4 of 12.md",
+  "answers": [
+   "R026",
+   "R027",
+   "R028",
+   "R029",
+   "R030",
+   "R031",
+   "R032",
+   "R033"
+  ],
+  "bytes": 512492,
+  "sha256": "54cec648698b531946860eddbd319c572571732c9d73983fc203392764023120"
+ },
+ {
+  "file": "Second marks batch 5 of 12.md",
+  "answers": [
+   "R034",
+   "R035",
+   "R036",
+   "R037",
+   "R038",
+   "R039",
+   "R040",
+   "R041",
+   "R042"
+  ],
+  "bytes": 558507,
+  "sha256": "96318ceb0aa11c9d047567d9068fe49ba90ab78786a6a0e0038884c8602103df"
+ },
+ {
+  "file": "Second marks batch 6 of 12.md",
+  "answers": [
+   "R043",
+   "R044",
+   "R045",
+   "R046",
+   "R047",
+   "R048",
+   "R049",
+   "R050",
+   "R051"
+  ],
+  "bytes": 554537,
+  "sha256": "3052f7c41edbcc39fcbe611a8461df061f2b85dcfdfa218380c6cde86ddf5841"
+ },
+ {
+  "file": "Second marks batch 7 of 12.md",
+  "answers": [
+   "R052",
+   "R053",
+   "R054",
+   "R055",
+   "R056",
+   "R057",
+   "R058",
+   "R059",
+   "R060"
+  ],
+  "bytes": 546814,
+  "sha256": "13be45b2c3ae8ef3bd75fcbe3aa2a8214cf03672024951c21fe51dd6cc5cf662"
+ },
+ {
+  "file": "Second marks batch 8 of 12.md",
+  "answers": [
+   "R061",
+   "R062",
+   "R063",
+   "R064",
+   "R065",
+   "R066",
+   "R067",
+   "R068",
+   "R069"
+  ],
+  "bytes": 543622,
+  "sha256": "653b637f48e7080dd18279f339052425a71928be14b32f632a3209f6364fe7a6"
+ },
+ {
+  "file": "Second marks batch 9 of 12.md",
+  "answers": [
+   "R070",
+   "R071",
+   "R072",
+   "R073",
+   "R074",
+   "R075",
+   "R076",
+   "R077",
+   "R078"
+  ],
+  "bytes": 534463,
+  "sha256": "126885d89b820ac91a085547c183448a0ac969810122342e692254e21bb2b0ca"
+ },
+ {
+  "file": "Second marks batch 10 of 12.md",
+  "answers": [
+   "R079",
+   "R080",
+   "R081",
+   "R082",
+   "R083",
+   "R084",
+   "R085",
+   "R086",
+   "R087"
+  ],
+  "bytes": 552669,
+  "sha256": "aca653b6671e388d84daf257b8fdd453ffd02be614648844aee92ed60315986d"
+ },
+ {
+  "file": "Second marks batch 11 of 12.md",
+  "answers": [
+   "R088",
+   "R089",
+   "R090",
+   "R091",
+   "R092",
+   "R093",
+   "R094",
+   "R095",
+   "R096"
+  ],
+  "bytes": 547690,
+  "sha256": "3ade10e35eb31f6aefa218ae7f654626921b6c2eff133e6ac4a42cb601a41032"
+ },
+ {
+  "file": "Second marks batch 12 of 12.md",
+  "answers": [
+   "R097",
+   "R098",
+   "R099",
+   "R100",
+   "R101",
+   "R102",
+   "R103",
+   "R104"
+  ],
+  "bytes": 505412,
+  "sha256": "101be7217619b6af8a7d6f2ad4a006bcb605f7da71413acd4f8f400efecc78d3"
+ }
+]

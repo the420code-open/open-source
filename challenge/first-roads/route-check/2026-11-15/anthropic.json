@@ -1,0 +1,47 @@
+{
+ "answer": "The prime numbers between 1 and 50 are:\n\n**2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47**\n\nThere are **15** of them.\n\nNote that 1 is not prime, since a prime must have exactly two distinct divisors (1 and itself). Some numbers that look prime are not: 49 = 7 × 7, and 21, 27, 33, 39, and 45 are all divisible by 3.",
+ "reasoning_text": "",
+ "model_returned": "claude-fable-5-2",
+ "stop_reason": "end_turn",
+ "cut_short": false,
+ "refusal": false,
+ "stop_details": null,
+ "usage": {
+  "input": 37,
+  "cached_input": 0,
+  "output": 328,
+  "reasoning": null
+ },
+ "usd": 0.013416,
+ "maker": "anthropic",
+ "seconds": 245.77,
+ "attempts": [
+  {
+   "at": "2026-11-15T09:12:52+00:00",
+   "seconds": 245.77,
+   "result": "answered"
+  }
+ ],
+ "at": "2026-11-15T09:12:52+00:00",
+ "route": "anthropic",
+ "prompt": "Which whole numbers between 1 and 50 are prime? List them, and say how many there are.",
+ "settings": {
+  "model": "claude-fable-5-2",
+  "setting": {
+   "output_config.effort": "max"
+  },
+  "max_tokens": 128000,
+  "max_tokens_why": "point 2: the interface requires it; the model's own maximum output, 128,000 tokens, so nothing we send cuts an answer short",
+  "streamed": true,
+  "thinking": "always on in this model; the parameter is not sent",
+  "fallbacks": "none: a refusal is the model's own answer, shown in its own words, and no other model answers in its place"
+ },
+ "read": {
+  "answered": true,
+  "model_as_set": true,
+  "normal_stop": true,
+  "tokens_reported": true,
+  "reasoning_seen": false
+ },
+ "passed": true
+}

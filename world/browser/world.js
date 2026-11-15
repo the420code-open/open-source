@@ -817,6 +817,32 @@ function wireStockChart(svgEl, tip) {
 
 // ---------------------------------------------------------------------------
 
+// Each slider also has a minus and a plus, for a thumb on a small screen (the room's build brief, draft 2, part 2).
+// Their names are "Less" and "More" before the slider's own: "Less: Noise", "More: Noise" (AG Opus, through G,
+// 15 November 2026). Each moves its slider one step, within its own bounds, and tells the page as a drag does.
+function addSteps() {
+  for (const input of document.querySelectorAll('.slider input[type="range"]')) {
+    const name = document.querySelector(`label[for="${input.id}"]`).textContent.trim();
+    const row = document.createElement('div');
+    row.className = 'slider-row';
+    input.replaceWith(row);
+    const step = (dir, sign, word) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'step';
+      b.textContent = sign;
+      b.setAttribute('aria-label', `${word}: ${name}`);
+      b.addEventListener('click', () => {
+        const was = input.value;
+        if (dir < 0) input.stepDown(); else input.stepUp();
+        if (input.value !== was) input.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+      return b;
+    };
+    row.append(step(-1, '−', 'Less'), input, step(1, '+', 'More'));
+  }
+}
+
 function start() {
   $('#versions').textContent = `${SPEC_VERSION} · ${CODE_VERSION}`;
   $('#charger-numbers').textContent =
@@ -824,6 +850,7 @@ function start() {
     `Cranking costs ${CH.c} an hour and gives the other m. Ruin at ${CH.E_r}.`;
   writeHash();
   syncControls();
+  addSteps();
   wireControls();
   wireLifetimeChart();
   wireStockChart($('#chart-pair'), $('#tip-pair'));

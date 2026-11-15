@@ -1,0 +1,43 @@
+{
+ "answer": "There are **15** prime numbers between 1 and 50. \n\nHere is the complete list:\n**2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47**\n\n*(Note: By definition, a prime number must be greater than 1, and 50 is not a prime number because it can be divided by 2, 5, 10, and 25.)*",
+ "reasoning_text": "",
+ "model_returned": "gemini-4-carbon",
+ "stop_reason": "FinishReason.STOP",
+ "cut_short": false,
+ "refusal": false,
+ "usage": {
+  "input": 54,
+  "cached_input": null,
+  "output": 133,
+  "reasoning": 1607
+ },
+ "usd": 0.017508,
+ "maker": "google",
+ "seconds": 71.03,
+ "attempts": [
+  {
+   "at": "2026-11-15T09:09:59+00:00",
+   "seconds": 71.03,
+   "result": "answered"
+  }
+ ],
+ "at": "2026-11-15T09:09:59+00:00",
+ "route": "google",
+ "prompt": "Which whole numbers between 1 and 50 are prime? List them, and say how many there are.",
+ "settings": {
+  "model": "gemini-4-carbon",
+  "setting": {
+   "thinking_level": "high"
+  },
+  "streamed": true,
+  "why": "point 6: the model Google's own page calls its most capable; point 3: streamed, so nothing is cut at 32,768 tokens"
+ },
+ "read": {
+  "answered": true,
+  "model_as_set": true,
+  "normal_stop": true,
+  "tokens_reported": true,
+  "reasoning_seen": true
+ },
+ "passed": true
+}

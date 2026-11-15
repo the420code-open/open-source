@@ -1,0 +1,42 @@
+{
+ "answer": "The prime numbers between 1 and 50 are:\n\n**2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47**\n\nThere are **15** prime numbers.",
+ "reasoning_text": "",
+ "model_returned": "gpt-6-astra",
+ "stop_reason": "completed",
+ "cut_short": false,
+ "refusal": false,
+ "error": null,
+ "usage": {
+  "input": 28,
+  "cached_input": 0,
+  "output": 254,
+  "reasoning": 184
+ },
+ "usd": 0.01298,
+ "maker": "openai",
+ "seconds": 79.35,
+ "attempts": [
+  {
+   "at": "2026-11-15T09:10:07+00:00",
+   "seconds": 79.35,
+   "result": "answered"
+  }
+ ],
+ "at": "2026-11-15T09:10:07+00:00",
+ "route": "openai",
+ "prompt": "Which whole numbers between 1 and 50 are prime? List them, and say how many there are.",
+ "settings": {
+  "model": "gpt-6-astra",
+  "setting": {
+   "reasoning.effort": "max"
+  }
+ },
+ "read": {
+  "answered": true,
+  "model_as_set": true,
+  "normal_stop": true,
+  "tokens_reported": true,
+  "reasoning_seen": true
+ },
+ "passed": true
+}

@@ -1,0 +1,3 @@
+# The registry's dated addition to version 5.41 · texts only, not applied
+
+- `registry_v5_41_dated_addition_KS-COUP1_KS-BAR9_v8.md`: the dated addition to the Master Kill Switch Registry, version 5.41, for KS-COUP.1 and KS-BAR.9, version 8, from AG Opus through G, 15 November 2026. It follows version 6, beside it, of 14 November 2026: the end's span is the counterparties' only where it is the shorter, as the world's specification, version 1.1, draft 5, says in Part Nine, points 19 and 22. Committed as a text only, on the branch `wc/b2-points-20-22`. It is not applied: version 5.41 is applied with version 8's text at B2's freeze, not before.

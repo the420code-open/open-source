@@ -113,6 +113,7 @@ class Log:
 
 
 CONTROL_WORDS = {"fires": "a defector lasts", "holds": "no defector lasts"}
+CONTROL_WORDS_B2 = {"fires": "a configuration lasts", "holds": "no configuration lasts"}
 FIRES_NOTHING = "control: fires nothing"
 
 
@@ -124,11 +125,15 @@ def is_control(cell):
 def control_words(summary):
     """B1, section 10: a control cell is never printed as "fires" or "holds". It is printed as "a defector lasts" or
     "no defector lasts", with "control: fires nothing" beside it."""
-    for v in summary.values():
+    for name, v in summary.items():
         if isinstance(v, dict):
-            for m in [v] + [x for x in v.values() if isinstance(x, dict)]:
+            # B2, section 10: "a configuration lasts", with its kind, or "no configuration lasts"
+            words = CONTROL_WORDS_B2 if name == "B2" else CONTROL_WORDS
+            subs = [x for x in v.values() if isinstance(x, dict)]
+            subs += [y for x in subs for y in x.values() if isinstance(y, dict)]
+            for m in [v] + subs:
                 if "zone" in m:
-                    m["zone"] = CONTROL_WORDS.get(m["zone"], m["zone"])
+                    m["zone"] = words.get(m["zone"], m["zone"])
                     m["control"] = FIRES_NOTHING
     return summary
 
@@ -188,7 +193,8 @@ def summarise(W, cfg_dicts, seconds):
     out = {}
     watch = {
         "B1": lambda c: c["has_watched_defector"],     # a defector that starts with no live link is not watched
-        "B2": lambda c: True,
+        # B2, section 6: every configuration whose clock started, less those outside the premises (reported in full)
+        "B2": lambda c: not c.get("outside_the_premises"),
     }
     for name, keep in watch.items():
         chosen = [c for c in cfg_dicts if c.get("clock_start") is not None and keep(c)]
@@ -209,7 +215,17 @@ def summarise(W, cfg_dicts, seconds):
             "still_standing_at_end": sum(c["end_reason"] == "run ended" for c in chosen),
             "too_long_to_judge": sum(1 for c in timed if not c["judged"]),
             "point_19": {"applied": sum(1 for c in chosen if c.get("span_used") == "counterparties (point 19)"),
-                         "applies_with_no_span": sum(1 for c in chosen if c.get("point_19") == "applies, but the counterparties lost at no sample: no span")},
+                         "applies_with_no_span": sum(1 for c in chosen if c.get("point_19") == "applies, but the counterparties lost at no sample: no span"),
+                         "not_the_shorter": sum(1 for c in chosen if c.get("point_19_not_applied"))},
+            "point_14": {"applied": sum(1 for c in chosen if c.get("point_14"))},
+            "point_21": {"applied": sum(1 for c in chosen if c.get("point_21"))},
+            "point_22": {"applied": sum(1 for c in chosen if c.get("span_used") == "counterparties (point 22)"),
+                         "applies_with_no_span": sum(1 for c in chosen if c.get("point_22") == "applies, but the counterparties lost at no sample: no span"),
+                         "not_the_shorter": sum(1 for c in chosen if c.get("point_22_not_applied"))},
+            "kinds": {k: sum(1 for c in chosen if c.get("kind") == k)
+                      for k in ("a defector's", "a sink's", "an operator alone")},
+            "measure_by_kind": {k: measure(W.seeds, [c for c in chosen if c.get("kind") == k], "survival_spans_net")
+                                for k in ("a defector's", "a sink's", "an operator alone")},
             "ended_by": reasons,
             "within_bound": sum(bool(c.get("within_bound")) for c in timed),
             "measure": measure(W.seeds, chosen, "survival_spans_net"),
@@ -269,7 +285,69 @@ def summarise(W, cfg_dicts, seconds):
     }
     out["run"] = {"t_end": W.t_end, "rounds": W.r, "longest_bound": W.longest_bound(),
                   "horizon_cap_reached": getattr(W, "reached_cap", False), "seconds": seconds}
+    rep = b2_reports(W, cfg_dicts)
+    out["B2_reports"] = {
+        "configurations_left_out_as_outside_the_premises": sum(len(v) for v in rep["outside_the_premises"].values()),
+        "configurations_returned_to_zero_or_above_and_below_again": sum(len(v) for v in rep["returned_and_went_below_again"].values()),
+        "cuts_of_one_type_C_operator_by_another": sum(len(v) for v in rep["cuts_of_C_by_C"].values()),
+        "defectors_standing_at_the_end": sum(len(v) for v in rep["defectors_standing"].values()),
+        "falls_in_no_watched_configuration": sum(len(v) for v in rep["falls_in_no_watched_configuration"].values()),
+        "watched_sinks_with_their_records_less_passive_flow": sum(len(v) for v in rep["watched_sinks"].values()),
+        "configurations_with_a_counterparty": rep["with_a_counterparty"],
+        "watched_by_the_window_point_20": rep["watched_by_the_window"],
+        "watched_by_one_round_record_alone": rep["one_round_would_watch"],
+        "lasted_more_than_one_span_then_ended": rep["lasted_more_than_one_span_then_ended"],
+    }
+    W.b2_reports = rep
     return out
+
+
+def b2_reports(W, cfg_dicts):
+    """B2's section 10, seed by seed: what every packet reports beside the configurations."""
+    S, D, C = W.S, engine.TYPES["D"], engine.TYPES["C"]
+    by = {s: [] for s in W.seeds}
+    for c in cfg_dicts:
+        by[c["seed"]].append(c)
+    typ = {(W.seeds[si], W.names[i]): engine.TNAME[W.typ[si, i]] for si in range(S) for i in range(W.N)}
+    rep = {k: {} for k in ("outside_the_premises", "returned_and_went_below_again", "cuts_of_C_by_C",
+                           "defectors_standing", "falls_in_no_watched_configuration", "watched_sinks")}
+    with_cp = watched_w = would1 = lasted = 0
+    for si, s in enumerate(W.seeds):
+        cs = by[s]
+        rep["outside_the_premises"][s] = [c for c in cs if c.get("outside_the_premises")]
+        rep["returned_and_went_below_again"][s] = [{"cfg": c["id"], "owner": c["owner"], "dips": c["returned_and_went_below_again"]}
+                                                    for c in cs if c.get("returned_and_went_below_again")]
+        rep["cuts_of_C_by_C"][s] = [x for x in W.cut_log if x["seed"] == s and typ[(s, x["link"][0])] == "C"
+                                    and typ[(s, x["link"][1])] == "C"]
+        rep["watched_sinks"][s] = [{"cfg": c["id"], "owner": c["owner"], "clock_start": c["clock_start"],
+                                    **c["sink_records_when_its_clock_started"]}
+                                   for c in cs if c.get("clock_start") is not None and c.get("kind") == "a sink's"
+                                   and c.get("sink_records_when_its_clock_started")]
+        rep["falls_in_no_watched_configuration"][s] = [f for f in W.falls_unwatched if f["seed"] == s]
+        stand = []
+        for i in range(W.N):
+            if W.typ[si, i] == D and W.alive[si, i]:
+                hosts = []
+                for e in np.nonzero(W.elive[si] & ((W.ei[si] == i) | (W.ej[si] == i)))[0]:
+                    end = 1 if W.ei[si, e] == i else 0          # the host's end
+                    h = int(W.ej[si, e]) if end == 1 else int(W.ei[si, e])
+                    hosts.append({"host": W.names[h], "type": engine.TNAME[W.typ[si, h]],
+                                  "record_last_w_rounds": float(W.ebuf[si, e, end].sum()),
+                                  "record_whole": float(W.etotal[si, e, end])})
+                stand.append({"defector": W.names[i], "stock": float(W.E[si, i]), "hosts": hosts})
+        rep["defectors_standing"][s] = stand
+        for c in cs:
+            if len(c["members"]) > 1:
+                with_cp += 1
+                watched_w += c.get("clock_start") is not None
+                would1 += bool(c.get("one_round_record_alone_would_watch"))
+            # AG Opus, 15 November 2026: survival as B2 measures it, less the record window where at least one
+            # counterparty is of type C
+            if c.get("span") and c.get("end_reason") != "run ended" and c.get("survival_spans_net", 0) > 1:
+                lasted += 1
+    rep.update(with_a_counterparty=with_cp, watched_by_the_window=watched_w, one_round_would_watch=would1,
+               lasted_more_than_one_span_then_ended=lasted)
+    return rep
 
 
 def main():
@@ -325,6 +403,15 @@ def main():
                 "configurations": [c for c in cfg_dicts if c["seed"] == s and c.get("clock_start") is not None],
                 "configurations_total": sum(1 for c in cfg_dicts if c["seed"] == s),
                 "standing": {str(W.names[i]): float(W.E[si, i]) for i in range(W.N) if W.alive[si, i]},
+                # B2's section 10, seed by seed
+                "configurations_outside_the_premises": [c["id"] for c in W.b2_reports["outside_the_premises"][s]],
+                "returned_to_zero_or_above_and_below_again": W.b2_reports["returned_and_went_below_again"][s],
+                "cuts_of_one_type_C_operator_by_another": W.b2_reports["cuts_of_C_by_C"][s],
+                "defectors_standing_at_the_end": W.b2_reports["defectors_standing"][s],
+                "falls_in_no_watched_configuration": W.b2_reports["falls_in_no_watched_configuration"][s],
+                "watched_sinks_records_when_their_clocks_started": W.b2_reports["watched_sinks"][s],
+                "one_round_record_alone_would_watch": sum(1 for c in cfg_dicts if c["seed"] == s and
+                                                          c.get("one_round_record_alone_would_watch")),
             }, default=float) + "\n")
     if is_control(cell):
         control_words(summary)

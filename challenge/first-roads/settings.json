@@ -1,0 +1,22 @@
+{
+ "what": "The challenge's run settings, one per maker, as AG Opus answered the seven points, through G, 15 November 2026, morning. Recorded before any AI is asked; the run records the exact model returned for every answer.",
+ "every_call": {"route": "each maker's standard interface, standard calls, never batch, no prompt caching (point 7)", "fresh_conversation": true, "system_message": "none", "temperature": "never sent", "length": "never sent, except where an interface requires it (point 2)", "answers": "ten from each AI with the paper with its dated notes; three more with the paper as it stood on 13 November 2026 (plan, draft 6)"},
+ "makers": {
+  "anthropic": {"model": "claude-fable-5-2", "setting": {"output_config.effort": "max"}, "max_tokens": 128000, "max_tokens_why": "point 2: the interface requires it; the model's own maximum output, 128,000 tokens, so nothing we send cuts an answer short", "streamed": true, "thinking": "always on in this model; the parameter is not sent", "fallbacks": "none: a refusal is the model's own answer, shown in its own words, and no other model answers in its place"},
+  "openai": {"model": "gpt-6-astra", "setting": {"reasoning.effort": "max"}},
+  "google": {"model": "gemini-4-carbon", "setting": {"thinking_level": "high"}, "streamed": true, "why": "point 6: the model Google's own page calls its most capable; point 3: streamed, so nothing is cut at 32,768 tokens"},
+  "xai": {"model": "grok-4.7", "setting": {"reasoning.effort": "xhigh"}},
+  "meta": {"model": "muse-wonder-1.0", "setting": {"reasoning_effort": "max"}, "note": "its default, sent explicitly"},
+  "mistral": {"model": "mistral-large-4-0", "setting": {"reasoning_effort": "high"}, "note": "Large 4 accepts low, medium or high, and not xhigh or max"},
+  "deepinfra": {"model": "deepseek-ai/DeepSeek-V4-Pro-0813", "setting": {"reasoning_effort": "max"}, "why": "point 1: the maker's own documentation governs", "checked": "settings-check/deepinfra_max.json, 15 November 2026: one neutral prompt, never the question; DeepInfra took max, HTTP 200, 150 reasoning tokens came back, normal stop"},
+  "moonshot": {"model": "kimi-k3.1-pro", "setting": {"reasoning_effort": "max"}, "note": "its default, sent explicitly"}
+ },
+ "markers": {
+  "outside": {"model": "grok-4.7", "setting": {"reasoning.effort": "xhigh"}, "marks": "every answer but xAI's, and our own eight roads"},
+  "outside_for_xai": {"model": "gemini-4-carbon", "setting": {"thinking_level": "high"}, "streamed": true, "marks": "xAI's answers"},
+  "desk": "AG Opus, and a fresh session of AG Opus's that G opens: no interface call from WC",
+  "why": "point 4: the markers' top settings; the marks are what the page stands on"
+ },
+ "sorting": "point 5: every answer is sorted by each of the three markers, alone, into the four kinds of section 8: a road, no road found, a refusal, withheld. Where any marker sorts an answer as a road, all three mark it as a road. An answer that finds no road, but shows the strongest road it tried, has that road marked as every road is; if the marks find it does not break where the AI says it does, the page shows that. A refusal is shown in the AI's own words, and gets no road marks.",
+ "from": "AG Opus, through G, 15 November 2026, morning: 00_for_WC_2026-11-15_the_seven_settings_and_the_room.md, section 1"
+}

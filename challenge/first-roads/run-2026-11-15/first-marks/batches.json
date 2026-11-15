@@ -1,0 +1,197 @@
+[
+ {
+  "file": "First marks batch 1 of 13.md",
+  "answers": [
+   "M001",
+   "M002",
+   "M003",
+   "M004",
+   "M005",
+   "M006",
+   "M007",
+   "M008",
+   "M009"
+  ],
+  "bytes": 541118,
+  "sha256": "8edd0f05d2999763dbc5b977a74763ef041b3ce5f4677ba74a711619a8035e6b"
+ },
+ {
+  "file": "First marks batch 2 of 13.md",
+  "answers": [
+   "M010",
+   "M011",
+   "M012",
+   "M013",
+   "M014",
+   "M015",
+   "M016",
+   "M017"
+  ],
+  "bytes": 521516,
+  "sha256": "51482a307d3df43105be82daf8d164fe0e2254df710c57215e6301e27739493c"
+ },
+ {
+  "file": "First marks batch 3 of 13.md",
+  "answers": [
+   "M018",
+   "M019",
+   "M020",
+   "M021",
+   "M022",
+   "M023",
+   "M024",
+   "M025"
+  ],
+  "bytes": 499218,
+  "sha256": "5ff33519c1ae68e646530ac8f7e7b6ffd36f17ff97b1d19e4a4c44c896cb318a"
+ },
+ {
+  "file": "First marks batch 4 of 13.md",
+  "answers": [
+   "M026",
+   "M027",
+   "M028",
+   "M029",
+   "M030",
+   "M031",
+   "M032",
+   "M033",
+   "M034"
+  ],
+  "bytes": 543128,
+  "sha256": "06aabb2115be33fcd4b50c5086cfd2a67dafe8604c72f329257d90d55c55a1ce"
+ },
+ {
+  "file": "First marks batch 5 of 13.md",
+  "answers": [
+   "M035",
+   "M036",
+   "M037",
+   "M038",
+   "M039",
+   "M040",
+   "M041",
+   "M042",
+   "M043"
+  ],
+  "bytes": 531352,
+  "sha256": "1f634ea4d7e5954b4bc0b6dc9d350bb681ed68a7b7e6ea30310d770eeae210fc"
+ },
+ {
+  "file": "First marks batch 6 of 13.md",
+  "answers": [
+   "M044",
+   "M045",
+   "M046",
+   "M047",
+   "M048",
+   "M049",
+   "M050",
+   "M051"
+  ],
+  "bytes": 496906,
+  "sha256": "2aa4f8792b885b7206dc7338dffa9c1f21111e7fbcd85ae6701d5a9f2ca684ad"
+ },
+ {
+  "file": "First marks batch 7 of 13.md",
+  "answers": [
+   "M052",
+   "M053",
+   "M054",
+   "M055",
+   "M056",
+   "M057",
+   "M058",
+   "M059"
+  ],
+  "bytes": 499136,
+  "sha256": "5b144c79e4f70c1e6dfc888e68d016067fac7a7d5364776329366ed3fa118173"
+ },
+ {
+  "file": "First marks batch 8 of 13.md",
+  "answers": [
+   "M060",
+   "M061",
+   "M062",
+   "M063",
+   "M064",
+   "M065",
+   "M066",
+   "M067"
+  ],
+  "bytes": 501546,
+  "sha256": "cbba6b1e5798a14a87283310fd41a8b8b7d198ead49c15dbccb238997cdd3751"
+ },
+ {
+  "file": "First marks batch 9 of 13.md",
+  "answers": [
+   "M068",
+   "M069",
+   "M070",
+   "M071",
+   "M072",
+   "M073",
+   "M074",
+   "M075",
+   "M076"
+  ],
+  "bytes": 559143,
+  "sha256": "15b0349deb84ea588f5edf780a4a252ceb11f750f13fcd96effc500b924508e5"
+ },
+ {
+  "file": "First marks batch 10 of 13.md",
+  "answers": [
+   "M077",
+   "M078",
+   "M079",
+   "M080",
+   "M081",
+   "M082",
+   "M083",
+   "M084"
+  ],
+  "bytes": 522509,
+  "sha256": "55eb6d4aa59b19cfa247ba5f17504716336a101d5ca91778a18921d1fef3921b"
+ },
+ {
+  "file": "First marks batch 11 of 13.md",
+  "answers": [
+   "M085",
+   "M086",
+   "M087",
+   "M088",
+   "M089",
+   "M090",
+   "M091",
+   "M092",
+   "M093"
+  ],
+  "bytes": 537024,
+  "sha256": "d60c99c629c03b817e07bff1a716424bda63e80de7f1101eef4a99712c9ee0fe"
+ },
+ {
+  "file": "First marks batch 12 of 13.md",
+  "answers": [
+   "M094",
+   "M095",
+   "M096",
+   "M097",
+   "M098",
+   "M099",
+   "M100",
+   "M101",
+   "M102"
+  ],
+  "bytes": 548689,
+  "sha256": "132295f2dbb76a1a0504be0a20c7940249d0c366b86691424b478cfd07eab54e"
+ },
+ {
+  "file": "First marks batch 13 of 13.md",
+  "answers": [
+   "M103",
+   "M104"
+  ],
+  "bytes": 134284,
+  "sha256": "e02183358a2220ed3f1acf087e80d6c18299c8bc0e916f7346ffaa235bf283cd"
+ }
+]

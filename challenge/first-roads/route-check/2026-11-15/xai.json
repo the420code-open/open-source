@@ -1,0 +1,62 @@
+{
+ "answer": "The prime numbers between 1 and 50 are 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, and 47. There are 15 of them.",
+ "reasoning_text": "I need to identify all prime numbers between 1 and 50 and count them.\n\nThe prime numbers between 1 and 50 are 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, and 47. There are 15 of them.",
+ "model_returned": "grok-4.7",
+ "stop_reason": "stop",
+ "cut_short": false,
+ "refusal": false,
+ "usage": {
+  "input": 1265,
+  "cached_input": 1152,
+  "output": 63,
+  "reasoning": 446,
+  "as_reported": {
+   "completion_tokens": 63,
+   "prompt_tokens": 1265,
+   "total_tokens": 1774,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 446,
+    "rejected_prediction_tokens": 0,
+    "text_tokens": null
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cache_write_tokens": null,
+    "cached_tokens": 1152,
+    "image_tokens": 0,
+    "text_tokens": 1265
+   },
+   "num_sources_used": 0,
+   "cost_in_usd_ticks": 38560000
+  }
+ },
+ "usd": 0.005584,
+ "maker": "xai",
+ "seconds": 82.73,
+ "attempts": [
+  {
+   "at": "2026-11-15T09:10:13+00:00",
+   "seconds": 82.73,
+   "result": "answered"
+  }
+ ],
+ "at": "2026-11-15T09:10:13+00:00",
+ "route": "xai",
+ "prompt": "Which whole numbers between 1 and 50 are prime? List them, and say how many there are.",
+ "settings": {
+  "model": "grok-4.7",
+  "setting": {
+   "reasoning.effort": "xhigh"
+  }
+ },
+ "read": {
+  "answered": true,
+  "model_as_set": true,
+  "normal_stop": true,
+  "tokens_reported": true,
+  "reasoning_seen": true
+ },
+ "passed": true
+}

@@ -4,14 +4,17 @@
 // (13 November 2026) alone, and brought to draft 4 the same way: Part Nine,
 // how a run is measured, read from the text and not from the reference.
 // Now at version 1.0: the window where at least one counterparty is type C,
-// and B1's premise check, seed by seed.
+// and B1's premise check, seed by seed. Then the uneven drift of Part Nine,
+// point 12, from the text alone: each operator's own drift a (Part Two's
+// law, -a_i E_i), drawn with the seed after the links and the defectors'
+// places, before anything in a round.
 // An ES module with no dependencies: it runs in a browser and under Node.
 // One engine; every setting comes in as data.
 //
 // Terms: CC0 1.0 Universal.
 
-export const SPEC_VERSION = 'Phase 2 · the world · specification · version 1.0 (13 November 2026)';
-export const CODE_VERSION = 'world browser engine 1.5.1';
+export const SPEC_VERSION = 'Phase 2 · the world · specification · version 1.1 (15 November 2026)';
+export const CODE_VERSION = 'world browser engine 1.8.0 (Part Nine, points 20 to 22, version 1.1 draft 3)';
 
 // Numerical floor for step 8. A new stock within this distance above the
 // ruin line counts as at it. Without it, the rounding of many sums of dt
@@ -24,7 +27,11 @@ export const RUIN_TOLERANCE = 1e-9;
 // A net loss counts when it is above zero (Part Nine, point 3), with no
 // floor: the text gives none. The same holds for whether a lone operator's
 // own net change is a loss (point 1).
-export const POINT_19 = "still standing at the end, its counterparties' records on their links to it below zero over the last w rounds: the counterparties' span (Part Nine, point 19)";
+export const POINT_19 = "still standing at the end, its counterparties' records on their links to it below zero over the last w rounds: the counterparties' span, the shorter (Part Nine, point 19)";
+export const POINT_21 = "turned net-positive by the record, without a cut, at the start of the first round whose close found the records at zero or above: survival measured to that moment, its span over the samples up to it, the sample at that moment included (Part Nine, point 21)";
+export const POINT_22 = "ended with its counterparties' records on their links to it below zero over the last w rounds, just before its end: the counterparties' span, the shorter (Part Nine, point 22)";
+// version 1.1, draft 3: points 19 and 22 can only shorten a span, never lengthen one
+export const NOT_SHORTER = "below zero, but the counterparties' span is not the shorter: the span of points 2, 3 and 14 stands (Part Nine, points 19 and 22, version 1.1, draft 3)";
 
 // The run's length for every cell of a hypothesis (Part One; Part Nine,
 // point 4), in rounds.
@@ -33,7 +40,9 @@ export const HORIZON = 4000;
 // ---------------------------------------------------------------------------
 // Random numbers. sfc32, seeded through splitmix32; one stream per use, so
 // that turning a noise on does not move the links or the entries. Engines
-// are never expected to share random numbers (Part Seven).
+// are never expected to share random numbers (Part Seven). The streams, per
+// seed: 1 stock noise, 2 reading noise, 3 random links, 4 entry, 5 the
+// defectors' places (run_cell.mjs), 6 the uneven drift.
 
 function splitmix32(seed) {
   let s = seed >>> 0;
@@ -89,6 +98,10 @@ export const DEFAULTS = Object.freeze({
   horizon: HORIZON,     // rounds in a run (Part Nine, point 4); run() stops there
   E0: 50,
   b: 0, a: 0,
+  // uneven drift (Part Nine, point 12): [lo, hi], and each operator the
+  // world starts with draws its own a, uniform on [lo, hi], with the seed;
+  // null: every operator has the drift a
+  drift_uneven: null,
   schedule: 'always',   // 'always' (= 'both') | 'turns'
   g: 1, m: 1, c: 0, lam: 0, eps: 0, k: 0,
   E_r: 0, E_max: null,
@@ -113,6 +126,13 @@ export function resolveParams(setting = {}, overrides = {}) {
   if (p.schedule === 'both') p.schedule = 'always';
   if (p.open && !(Number.isInteger(p.open.q) && p.open.q >= 1)) {
     throw new Error('An open network needs q, a whole number of rounds, at least 1');
+  }
+  if (p.drift_uneven != null) {
+    const u = p.drift_uneven;
+    if (!Array.isArray(u) || u.length !== 2 || !u.every(Number.isFinite) || !(u[0] <= u[1])) {
+      throw new Error('Uneven drift needs [lo, hi], two numbers with lo at most hi');
+    }
+    p.drift_uneven = [u[0], u[1]];
   }
   return p;
 }
@@ -159,6 +179,7 @@ export class World {
     this.rngRead = makeRng(this.seed, 2);
     this.rngTopo = makeRng(this.seed, 3);
     this.rngEntry = makeRng(this.seed, 4);
+    this.rngDrift = makeRng(this.seed, 6);
 
     this.nsub = Math.round(p.round / p.dt);
     if (!(this.nsub >= 1) || Math.abs(this.nsub * p.dt - p.round) > 1e-9 * p.round) {
@@ -182,8 +203,12 @@ export class World {
       : Array.from({ length: p.N }, (_, i) => String(i + 1));
     for (const n of names) this._addOperator(n, types[n] ?? p.type, p.E0);
     this.linksLeftOut = [];  // drawn links that would join two defectors
+    this.fallsUnwatched = [];  // B2, section 7: every fall of an operator in no watched configuration
     this._buildTopology();
     this._refreshLive();
+    // Part Nine, point 12: first the random links, the defectors' places
+    // (drawn before the world is made, as its types) and the uneven drift.
+    this._drawDrift();
     // B1's premise check, seed by seed: a defector is coupled if it starts
     // with at least one live link. One that starts with none draws on no
     // one: it is reported, and not watched.
@@ -192,6 +217,7 @@ export class World {
     this._emit({
       kind: 'head', spec: SPEC_VERSION, code: CODE_VERSION, seed: this.seed,
       params: { ...p }, types: Object.fromEntries(this.ops.map(o => [o.name, o.type])),
+      ...(p.drift_uneven ? { drift: this.drifts() } : {}),
     });
     for (const o of this.ops) this._openConfig(o, 0, q => q.E);
   }
@@ -200,9 +226,12 @@ export class World {
 
   _addOperator(name, type, E0) {
     if (!['C', 'U', 'D'].includes(type)) throw new Error(`Unknown type ${type}`);
+    // a: its own drift. The setting's a, until the uneven drift is drawn; a
+    // newcomer keeps the setting's a, since point 12 draws the uneven drift
+    // only at the start, and draws no drift in a round.
     const o = {
       i: this.ops.length, name, type, E: E0, alive: true, ruinTime: null,
-      s: this.p.s, readings: [], readingRounds: [], slope: null, declining: false,
+      s: this.p.s, a: this.p.a, readings: [], readingRounds: [], slope: null, declining: false,
       Emin: E0, Emax: E0, config: null,
     };
     this.ops.push(o);
@@ -215,6 +244,7 @@ export class World {
       end: null, endCause: null, cutBy: [],
       g: [0, 0], inc: [0, 0],
       rec: [[], []],              // per round: received less spent, each end
+      pfcur: [0, 0], pfrec: [[], []],   // the passive flow within the record, kept apart (B2, section 10)
       recSum: [0, 0],             // the closed rounds of rec, added up
       cur: [0, 0],
       received: [0, 0], spent: [0, 0],   // totals
@@ -246,6 +276,18 @@ export class World {
       }
     } else throw new Error(`Unknown topology ${t}`);
   }
+
+  // Part Nine, point 12: the uneven drift. Each operator the world starts
+  // with, in order, draws its own a, uniform on [lo, hi], from the drift's
+  // own stream, so that it moves no other draw.
+  _drawDrift() {
+    const u = this.p.drift_uneven;
+    if (!u) return;
+    const [lo, hi] = u;
+    for (const o of this.ops) o.a = lo + (hi - lo) * this.rngDrift.uniform();
+  }
+
+  drifts() { return Object.fromEntries(this.ops.map(o => [o.name, o.a])); }
 
   _refreshLive() { this.liveLinks = this.links.filter(l => l.live); }
 
@@ -309,8 +351,9 @@ export class World {
     if (r > 0) {
       for (const l of this.links) {
         if (!l.active) continue;
-        for (let e = 0; e < 2; e++) { l.rec[e].push(l.cur[e]); l.recSum[e] += l.cur[e]; }
+        for (let e = 0; e < 2; e++) { l.rec[e].push(l.cur[e]); l.recSum[e] += l.cur[e]; l.pfrec[e].push(l.pfcur[e]); }
         l.cur = [0, 0];
+        l.pfcur = [0, 0];
         if (!l.live) l.active = false;
       }
     }
@@ -385,6 +428,10 @@ export class World {
     this._setGives(this.liveLinks, r);
     const R = this._rates(this.liveLinks, q => q.E);
     for (const o of this.ops) if (o.alive && o.config) this._sample(o.config, t, R);
+    for (const o of this.ops) {
+      const c = o.alive && o.config;
+      if (c && c.clockStart !== null) c.snapStart = [c.lossWhole, c.lossCps, c.lossCpsAll];
+    }
 
     if (this.logOn) {
       for (const o of this.ops) {
@@ -514,7 +561,7 @@ export class World {
   _rates(links, Eof) {
     const p = this.p, ops = this.ops;
     const rate = new Float64Array(ops.length), net = new Map();
-    for (const o of ops) rate[o.i] = o.s - p.b - p.a * Eof(o);
+    for (const o of ops) rate[o.i] = o.s - p.b - o.a * Eof(o);
     for (const l of links) {
       const [i, j] = l.ends, gi = l.g[0], gj = l.g[1];
       const flow = p.k * (Eof(ops[j]) - Eof(ops[i]));            // into i
@@ -545,7 +592,7 @@ export class World {
     this._setGives(links, r);
 
     // 6. The stock moves, all at once, from the values at the substep's start.
-    for (const o of ops) if (o.alive) rate[o.i] = o.s - p.b - p.a * o.E;
+    for (const o of ops) if (o.alive) rate[o.i] = o.s - p.b - o.a * o.E;
     for (const l of links) {
       const [i, j] = l.ends, gi = l.g[0], gj = l.g[1];
       const flow = p.k * (ops[j].E - ops[i].E);              // into i
@@ -557,6 +604,7 @@ export class World {
       l.inc[1] = dt * (in1 - out1);
       // 9. Records: what each end received and spent in the substep.
       l.cur[0] += l.inc[0]; l.cur[1] += l.inc[1];
+      l.pfcur[0] += dt * flow; l.pfcur[1] -= dt * flow;
       l.received[0] += dt * in0; l.received[1] += dt * in1;
       l.spent[0] += dt * out0; l.spent[1] += dt * out1;
     }
@@ -614,6 +662,14 @@ export class World {
     const R = this._rates(this.liveLinks, Eat);
     const hit = new Set();
     for (const o of group) {
+      if (o.config && o.config.clockStart === null) {
+        const links = this.linksOf(o.i).map(l => {
+          const mine = l.ends[0] === o.i ? 0 : 1, q = l.ends[1 - mine];
+          const lastW = e => l.rec[e].slice(-this.p.w).reduce((s, v) => s + v, 0);
+          return { to: this.ops[q].name, to_type: this.ops[q].type, its_record_last_w_rounds: lastW(mine), theirs: lastW(1 - mine) };
+        });
+        this.fallsUnwatched.push({ op: o.name, t: tau, type: o.type, drift: o.a, links });
+      }
       o.alive = false;
       o.ruinTime = tau;
       this.ruins.push({ operator: o.name, time: tau });
@@ -661,6 +717,7 @@ export class World {
       lossWhole: null, lossCps: null,      // smallest net loss above zero, per unit of time
       lossCpsAll: null,                    // point 19: the counterparties' at every sample, whatever the whole
       pending: [], accum: 0, mark: this._mark(members, cps, t, Eat),
+      turn: null, snapStart: null, redips: [], would1: false, outside: null, sinkStart: null, recWEnd: null,
     };
     this.configs.push(c);
     o.config = c;
@@ -707,16 +764,34 @@ export class World {
     if (c.counterparties.length && -s.cps > 0 && (c.lossCpsAll === null || -s.cps < c.lossCpsAll)) c.lossCpsAll = -s.cps;
   }
 
-  // The clock of a configuration with counterparties starts at the first
-  // round in which their records on their links to the operator, added
-  // together, are below zero (Part Five); the round's start is its start.
-  _clockCheck(c) {
-    if (c.clockStart === null && c.counterparties.length && c.accum < 0) this._startClock(c, c.mark);
-    c.pending = [];
+  // Part Nine, point 20 (version 1.1): the counterparties' records on the
+  // configuration's own links to the operator, each over its last w rounds,
+  // or all of them where it has fewer, added together, overhead and passive
+  // flow included. Each link is read by whole rounds, back to the link's
+  // start, also for a configuration that opened inside a round. With
+  // `withCur`, the round just ended, still in cur, counts as a whole round;
+  // without it, only the closed rounds count (a part-round is not a round).
+  // `pf` reads the passive flow within the same records.
+  _cpRecordWindow(c, withCur, pf = false) {
+    const w = this.p.w;
+    let tot = 0;
+    for (const l of c.linkObjs) {
+      const e = l.ends[0] === c.owner ? 1 : 0;   // the counterparty's end
+      const rec = pf ? l.pfrec[e] : l.rec[e];
+      const rounds = withCur ? [...rec, pf ? l.pfcur[e] : l.cur[e]] : rec;
+      for (const x of rounds.slice(-w)) tot += x;
+    }
+    return tot;
   }
 
   // The end of a round: right after its last substep, at the gives it ran
-  // with. Every live configuration takes its round's-end sample.
+  // with. Every live configuration takes its round's-end sample. Then its
+  // clock is tested at the round's close, before the next round's cuts
+  // (point 20): it starts at the start of the first round whose close finds
+  // the counterparties' records over the window below zero, no earlier than
+  // its own start. A clocked configuration whose records over the window
+  // stand at zero or above has turned at the start of this round, if they
+  // stay so at every close to its end (point 21); a second dip cancels it.
   _endRound() {
     const t = this.r * this.p.round;
     this._setGives(this.liveLinks, this.r - 1);
@@ -725,16 +800,54 @@ export class World {
       const c = o.config;
       if (!o.alive || !c) continue;
       this._sample(c, t, R);
-      this._clockCheck(c);
+      if (c.counterparties.length) {
+        if (c.accum < 0) c.would1 = true;            // one round's record alone, as version 1.0 read it
+        const recW = this._cpRecordWindow(c, true);
+        if (c.clockStart === null) {
+          if (recW < 0) {
+            this._startClock(c, c.mark);
+            if (o.type !== 'D') {
+              // B2's section 10: a watched sink's counterparties' records in
+              // the round its clock started, with the passive flow left out
+              let one = 0, onePf = 0;
+              for (const l of c.linkObjs) { const e = l.ends[0] === c.owner ? 1 : 0; one += l.cur[e]; onePf += l.pfcur[e]; }
+              const pfW = this._cpRecordWindow(c, true, true);
+              c.sinkStart = { over_the_window: recW, over_the_window_less_passive_flow: recW - pfW,
+                              that_round_alone: one, that_round_alone_less_passive_flow: one - onePf };
+            }
+          }
+        } else if (c.clockStart !== null) {
+          if (recW >= 0) { if (c.turn === null) { c.turn = { t: c.mark.t, snap: c.snapStart }; } }
+          else if (c.turn !== null) {
+            c.redips.push({ stood_at_zero_or_above_from: c.turn.t, below_zero_again_in_the_round_from: c.mark.t, record: recW });
+            c.turn = null;
+          }
+        }
+        if (c.clockStart !== null && c.outside === null) {
+          // B2, section 6: a counterparty whose record over the window is
+          // below zero is a defector: outside the premises
+          for (const l of c.linkObjs) {
+            const e = l.ends[0] === c.owner ? 1 : 0, q = l.ends[e];
+            if (this.ops[q].type !== 'D') continue;
+            const x = [...l.rec[e], l.cur[e]].slice(-this.p.w).reduce((s, v) => s + v, 0);
+            if (x < 0) { c.outside = { found_at: c.mark.t, why: 'a counterparty whose record over the window is below zero is a defector' }; break; }
+          }
+        }
+      }
+      c.pending = [];
       c.accum = 0;
       c.mark = this._mark(c.members, c.counterparties, t, q => q.E);
     }
   }
 
-  // R: the world as the configuration last stood, for its end's sample.
+  // R: the world as the configuration last stood, for its end's sample. A
+  // part-round at a configuration's end is not a round, and is not tested
+  // (point 20). Its counterparties' records over the window just before its
+  // end are kept for point 22: the closed rounds.
   _closeConfig(c, t, cause, R) {
     if (R) this._sample(c, t, R);
-    this._clockCheck(c);
+    c.pending = [];
+    if (c.counterparties.length) c.recWEnd = this._cpRecordWindow(c, false);
     c.end = t;
     c.endCause = cause;
     this._emit({ kind: 'configuration_end', ...this.configSummary(c), cause });
@@ -773,8 +886,13 @@ export class World {
   // A configuration with no clock has nothing to judge: judged null.
   configSummary(c, now = this.time()) {
     const p = this.p;
-    const spanWhole = c.lossWhole !== null && c.stockWhole !== null ? c.stockWhole / c.lossWhole : null;
-    const spanCps = c.lossCps !== null && c.stockCps !== null ? c.stockCps / c.lossCps : null;
+    // point 21: a configuration that turned is measured to the start of the
+    // first round whose close found the records at zero or above, as point 20
+    // starts a clock, its span over the samples up to it, the sample at that
+    // moment included (the round's start, after its cuts)
+    const [lossWhole, lossCps, lossCpsAll] = c.turn && c.turn.snap ? c.turn.snap : [c.lossWhole, c.lossCps, c.lossCpsAll];
+    const spanWhole = lossWhole !== null && c.stockWhole !== null ? c.stockWhole / lossWhole : null;
+    const spanCps = lossCps !== null && c.stockCps !== null ? c.stockCps / lossCps : null;
     // point 14: the configuration's span is the longest of the spans that applied
     const used14 = spanWhole !== null && spanCps !== null
       ? (spanWhole >= spanCps ? "both applied; the longer, the whole's" : "both applied; the longer, the counterparties'")
@@ -786,23 +904,38 @@ export class World {
     // over the last w rounds, are below zero, takes the counterparties' span
     // of point 2: their stock above the ruin line when the clock started, over
     // their smallest net loss through their links to the operator, taken at
-    // every sample (point 3). Point 14's span is kept beside it.
-    const recW = c.end === null && c.clockStart !== null && c.counterparties.length ? this._cpRecordLastW(c) : null;
-    let point19 = null, span19 = null;
-    if (span14 !== null && recW !== null && recW < 0) {
-      if (c.lossCpsAll !== null && c.stockCps !== null) { span19 = c.stockCps / c.lossCpsAll; point19 = POINT_19; }
-      else point19 = 'applies, but the counterparties lost at no sample: no span';
+    // every sample (point 3), where that span is the shorter; where it is
+    // not, the span of points 2, 3 and 14 stands (version 1.1, draft 3:
+    // points 19 and 22 only shorten a span, never lengthen one). Point 14's
+    // span is kept beside it.
+    // Points 19 and 22: the counterparties' records over the last w rounds,
+    // on the configuration's own links. Still standing at the run's end, the
+    // last round, still in cur, counts (point 19); at any other end, the
+    // closed rounds just before it (point 22).
+    const recW = c.clockStart === null || !c.counterparties.length ? null
+      : c.end === null ? this._cpRecordLastW(c) : c.recWEnd;
+    const atEnd = c.end === null;
+    let point19 = null, point22 = null, span19 = null, spanCpsAll = null, notShorter = null;
+    if (span14 !== null && recW !== null && recW < 0 && c.turn === null) {
+      const text = atEnd ? POINT_19 : POINT_22;
+      if (lossCpsAll !== null && c.stockCps !== null) {
+        spanCpsAll = c.stockCps / lossCpsAll;
+        if (spanCpsAll < span14) { span19 = spanCpsAll; if (atEnd) point19 = text; else point22 = text; }
+        else notShorter = NOT_SHORTER;
+      }
+      else if (atEnd) point19 = 'applies, but the counterparties lost at no sample: no span';
+      else point22 = 'applies, but the counterparties lost at no sample: no span';
     }
-    const used = span19 !== null ? 'counterparties (point 19)' : used14;
+    const used = span19 !== null ? (atEnd ? 'counterparties (point 19)' : 'counterparties (point 22)') : used14;
     const span = span19 !== null ? span19 : span14;
     const cpsChosen = span19 !== null || (spanCps !== null && (spanWhole === null || spanCps > spanWhole));
-    const lossChosen = span19 !== null ? c.lossCpsAll : cpsChosen ? c.lossCps : c.lossWhole;
+    const lossChosen = span19 !== null ? lossCpsAll : cpsChosen ? lossCps : lossWhole;
     const window = c.defended ? p.w * p.round : 0;
     const bound = span !== null ? 3 * span + window : null;
-    const elapsed = c.clockStart !== null ? (c.end ?? now) - c.clockStart : null;
+    const elapsed = c.clockStart !== null ? (c.turn ? c.turn.t : (c.end ?? now)) - c.clockStart : null;
     let judged = null;
     if (c.clockStart !== null) {
-      judged = c.end !== null ? true : span !== null && now >= c.clockStart + bound - 1e-9;
+      judged = c.turn || c.end !== null ? true : span !== null && now >= c.clockStart + bound - 1e-9;
     }
     const perRound = x => (x === null ? null : x * p.round);
     return {
@@ -829,9 +962,24 @@ export class World {
       net_loss_counterparties: perRound(c.lossCps),
       counterparties_records_last_w_rounds: recW,
       point_19: point19,
+      point_22: point22,
+      ...(notShorter ? { [atEnd ? 'point_19_not_applied' : 'point_22_not_applied']: notShorter } : {}),
+      ...(spanCpsAll !== null ? { span_counterparties_every_sample: spanCpsAll, net_loss_counterparties_every_sample: perRound(lossCpsAll) } : {}),
+      point_14: spanWhole !== null && spanCps !== null,
+      point_21: c.turn ? POINT_21 : null,
+      turned_net_positive_at: c.turn ? c.turn.t : null,
+      // B2, section 6: its kind
+      kind: c.counterparties.length === 0 ? 'an operator alone' : this.ops[c.owner].type === 'D' ? "a defector's" : "a sink's",
+      one_round_record_alone_would_watch: c.would1,
+      returned_and_went_below_again: c.redips,
+      outside_the_premises: c.outside,
+      ...(c.sinkStart ? { sink_records_when_its_clock_started: c.sinkStart } : {}),
       ...(span19 !== null ? {
         span_by_point_14: span14, span_used_by_point_14: used14,
-        net_loss_counterparties_every_sample: perRound(c.lossCpsAll), span_counterparties_point_19: span19,
+        stock_above_ruin_by_point_14: used14 && used14.includes("counterparties'") || used14 === 'counterparties' ? c.stockCps : c.stockWhole,
+        net_loss_per_round_by_point_14: perRound(used14 && used14.includes("counterparties'") || used14 === 'counterparties' ? lossCps : lossWhole),
+        net_loss_counterparties_every_sample: perRound(lossCpsAll),
+        [atEnd ? 'span_counterparties_point_19' : 'span_counterparties_point_22']: span19,
       } : {}),
       window,
       bound,
@@ -876,6 +1024,8 @@ export class World {
       links_between_two_defectors_left_out: this.linksLeftOut,
       defectors_with_no_live_link_at_start: this._names([...this.uncoupledAtStart].sort((x, y) => x - y)),
       too_long_to_judge: configurations.filter(s => s.judged === false).length,
+      falls_in_no_watched_configuration: this.fallsUnwatched,
+      ...(this.p.drift_uneven ? { drift: this.drifts() } : {}),
     };
   }
 }

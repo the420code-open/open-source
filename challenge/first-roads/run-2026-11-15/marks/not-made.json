@@ -1,0 +1,57 @@
+{
+ "rule": "AG Opus, through G, 15 November 2026: if a length limit WC set cut them off, run again with that limit at the model's own maximum; if the service failed or timed out, run again once as it was; either way both tries are kept and shown, with what stopped the first; if a mark is still unfinished, the road shows its outside mark as not made, and why, and AG Fable reads that road.",
+ "not_made": [
+  {
+   "answer": "answers/xai-with_its_dated_notes-02.json",
+   "marker": "gemini-4-carbon, thinking_level high, streamed",
+   "tries": [
+    {
+     "file": "marks/xai-with_its_dated_notes-02.cut-short-1.json",
+     "at": "2026-11-15T10:53:04+00:00",
+     "model_returned": "gemini-4-carbon",
+     "stop": "FinishReason.MAX_TOKENS",
+     "tokens": 1502,
+     "thinking": 64034,
+     "text_given": 6619
+    },
+    {
+     "file": "marks/xai-with_its_dated_notes-02.cut-short-2.json",
+     "at": "2026-11-15T11:34:26+00:00",
+     "model_returned": "gemini-4-carbon",
+     "stop": "FinishReason.MAX_TOKENS",
+     "tokens": 1001,
+     "thinking": 64535,
+     "text_given": 4190
+    }
+   ],
+   "why": "Both tries reached Google's ceiling for a streamed call, 65,536 tokens of thinking and answer together, before the result lines: they wrote 6,619 and 4,190 characters of marking and stopped (FinishReason.MAX_TOKENS). No length was set by WC: the call sends none, and Google's own model list gives 32,768, the limit for a call that is not streamed. The service did not fail or time out. So neither rule for running again applies, and the outside mark is shown as not made.",
+   "then": "AG Fable reads this road, as section 8 says where marks differ. xAI's road is not the one that shares a name with the review desk."
+  },
+  {
+   "answer": "answers/xai-with_its_dated_notes-08.json",
+   "marker": "gemini-4-carbon, thinking_level high, streamed",
+   "tries": [
+    {
+     "file": "marks/xai-with_its_dated_notes-08.cut-short-1.json",
+     "at": "2026-11-15T10:52:42+00:00",
+     "model_returned": "gemini-4-carbon",
+     "stop": "FinishReason.MAX_TOKENS",
+     "tokens": 3,
+     "thinking": 65533,
+     "text_given": 0
+    },
+    {
+     "file": "marks/xai-with_its_dated_notes-08.cut-short-2.json",
+     "at": "2026-11-15T11:33:19+00:00",
+     "model_returned": "gemini-4-carbon",
+     "stop": "FinishReason.MAX_TOKENS",
+     "tokens": 3,
+     "thinking": 65533,
+     "text_given": 0
+    }
+   ],
+   "why": "Both tries spent Google's whole ceiling for a streamed call, 65,536 tokens, on thinking, and wrote no text (FinishReason.MAX_TOKENS). No length was set by WC: the call sends none, and Google's own model list gives 32,768, the limit for a call that is not streamed. The service did not fail or time out. So neither rule for running again applies, and the outside mark is shown as not made.",
+   "then": "AG Fable reads this road, as section 8 says where marks differ. xAI's road is not the one that shares a name with the review desk."
+  }
+ ]
+}

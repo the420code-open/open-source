@@ -1,0 +1,8 @@
+scan_seeds.py, run on 15 November 2026 before D1's thousand seeds were sent: every packet under …
+(113 packets read; 1,210 run folders named for seeds under 1,000,000 not read). Seeds from 1,000,000 up already used:
+
+reference 3100 [(2000000, 2000099), (3000000, 3000999), (4000000, 4000999), (5000000, 5000999)]
+second 3100 [(2100000, 2100099), (3100000, 3100999), (4100000, 4100999), (5100000, 5100999)]
+
+The drawing alone, built and not run, also used 5,000,000 to 5,019,999 (reference) and 5,100,000 to 5,119,999
+(second), with no packet. So the next thousand unused in each engine, from 1,000,000 up: 1,000,000 to 1,000,999.
