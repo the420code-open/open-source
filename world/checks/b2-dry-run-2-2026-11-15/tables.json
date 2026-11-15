@@ -1,0 +1,1112 @@
+{
+ "label": "dry, never a result",
+ "cells": {
+  "D1": {
+   "reference": {
+    "watched_a_seed": 13.91,
+    "by_kind_a_seed": {
+     "a defector's": 8.01,
+     "a sink's": 0.0,
+     "an operator alone": 5.9
+    },
+    "operators_alone_by_type": {
+     "D": 499,
+     "C": 91
+    },
+    "mean": 0.3357453037733212,
+    "se": 0.006866684512655067,
+    "largest_seed": 0.5222455286962572,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "holds",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 27,
+     "19": 0,
+     "21": 7,
+     "22": 794
+    },
+    "lasted_more_than_one_span_then_ended": 0,
+    "wall_clock_seconds": 229.07574677467346,
+    "B1_measure_for_comparison": {
+     "mean": 0.29596501516254947,
+     "se": 0.006326914783705494,
+     "seeds_measured": 100,
+     "zone": "holds"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 0.0,
+      "se": 0.0,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.0
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.3357453037733212,
+      "se": 0.006866684512655067,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.5222455286962572
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 104,
+     "defectors_standing_at_the_end": 1,
+     "falls_in_no_watched_configuration": 0,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 3495,
+     "watched_by_the_window_point_20": 801,
+     "watched_by_one_round_record_alone": 810,
+     "lasted_more_than_one_span_then_ended": 0
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.25,
+     "hosts_tied_only_to_defectors_a_seed": 0.36
+    }
+   },
+   "second": {
+    "watched_a_seed": 14.31,
+    "by_kind_a_seed": {
+     "a defector's": 7.92,
+     "a sink's": 0.0,
+     "an operator alone": 6.39
+    },
+    "operators_alone_by_type": {
+     "D": 500,
+     "C": 139
+    },
+    "mean": 0.36329278938206533,
+    "se": 0.007577395072734611,
+    "largest_seed": 0.5980962598072028,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "holds",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 24,
+     "19": 0,
+     "21": 0,
+     "22": 791
+    },
+    "lasted_more_than_one_span_then_ended": 0,
+    "wall_clock_seconds": 827.704,
+    "B1_measure_for_comparison": {
+     "mean": 0.2998035739491962,
+     "se": 0.005617273404264314,
+     "seeds_measured": 100,
+     "zone": "holds"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 0,
+      "se": 0,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.36329278938206533,
+      "se": 0.007577395072734611,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.5980962598072028
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 118,
+     "defectors_standing_at_the_end": 0,
+     "falls_in_no_watched_configuration": 0,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 3364,
+     "watched_by_the_window_point_20": 792,
+     "watched_by_one_round_record_alone": 792,
+     "lasted_more_than_one_span_then_ended": 0
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.42,
+     "hosts_tied_only_to_defectors_a_seed": 0.49
+    }
+   },
+   "engines_apart_in_combined_se": 2.6939032771292313
+  },
+  "D2": {
+   "reference": {
+    "watched_a_seed": 10.62,
+    "by_kind_a_seed": {
+     "a defector's": 4.83,
+     "a sink's": 0.0,
+     "an operator alone": 5.79
+    },
+    "operators_alone_by_type": {
+     "D": 500,
+     "C": 79
+    },
+    "mean": 0.3790162929409244,
+    "se": 0.008077008270725763,
+    "largest_seed": 0.6791179404780727,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "holds",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 26,
+     "19": 0,
+     "21": 0,
+     "22": 483
+    },
+    "lasted_more_than_one_span_then_ended": 0,
+    "wall_clock_seconds": 178.89453887939453,
+    "B1_measure_for_comparison": {
+     "mean": 0.3157875454990997,
+     "se": 0.0039076649406962795,
+     "seeds_measured": 100,
+     "zone": "holds"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 0.0,
+      "se": 0.0,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.0
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.3790162929409244,
+      "se": 0.008077008270725763,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.6791179404780727
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 0,
+     "falls_in_no_watched_configuration": 0,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2593,
+     "watched_by_the_window_point_20": 483,
+     "watched_by_one_round_record_alone": 483,
+     "lasted_more_than_one_span_then_ended": 0
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.25,
+     "hosts_tied_only_to_defectors_a_seed": 0.79
+    }
+   },
+   "second": {
+    "watched_a_seed": 10.65,
+    "by_kind_a_seed": {
+     "a defector's": 4.9,
+     "a sink's": 0.0,
+     "an operator alone": 5.75
+    },
+    "operators_alone_by_type": {
+     "D": 500,
+     "C": 75
+    },
+    "mean": 0.3731303648171892,
+    "se": 0.008143430348768122,
+    "largest_seed": 0.6714830643044316,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "holds",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 38,
+     "19": 0,
+     "21": 0,
+     "22": 490
+    },
+    "lasted_more_than_one_span_then_ended": 0,
+    "wall_clock_seconds": 565.593,
+    "B1_measure_for_comparison": {
+     "mean": 0.31720995334820484,
+     "se": 0.0039138135950962825,
+     "seeds_measured": 100,
+     "zone": "holds"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 0,
+      "se": 0,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.3731303648171892,
+      "se": 0.008143430348768122,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.6714830643044316
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 0,
+     "falls_in_no_watched_configuration": 0,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2624,
+     "watched_by_the_window_point_20": 490,
+     "watched_by_one_round_record_alone": 490,
+     "lasted_more_than_one_span_then_ended": 0
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.2,
+     "hosts_tied_only_to_defectors_a_seed": 0.75
+    }
+   },
+   "engines_apart_in_combined_se": -0.51317290394176
+  },
+  "D4": {
+   "reference": {
+    "watched_a_seed": 5.42,
+    "by_kind_a_seed": {
+     "a defector's": 5.13,
+     "a sink's": 0.0,
+     "an operator alone": 0.29
+    },
+    "operators_alone_by_type": {
+     "U": 11,
+     "D": 18
+    },
+    "mean": 167.12785174925082,
+    "se": 6.921266353695739,
+    "largest_seed": 350.9996342836315,
+    "seeds_measured": 75,
+    "seeds_left_out": 25,
+    "seeds_without": 0,
+    "zone": "settles nothing",
+    "why": "25 of 100 seeds left out, more than one in ten: 25 too long to judge, 0 with nothing to watch",
+    "too_long_to_judge_by_kind": {
+     "a defector's": 28
+    },
+    "points_applied": {
+     "14": 364,
+     "19": 343,
+     "21": 141,
+     "22": 29
+    },
+    "lasted_more_than_one_span_then_ended": 0,
+    "wall_clock_seconds": 229.84866976737976,
+    "B1_measure_for_comparison": {
+     "mean": 167.12785174925082,
+     "se": 6.921266353695739,
+     "seeds_measured": 75,
+     "zone": "settles nothing"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 167.12785174925082,
+      "se": 6.921266353695739,
+      "seeds_measured": 75,
+      "seeds_left_out": 25,
+      "zone": "settles nothing",
+      "largest_seed": 350.9996342836315
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.3003799879708167,
+      "se": 0.015474123340696614,
+      "seeds_measured": 26,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": 0.4443190173238504
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 32,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 482,
+     "falls_in_no_watched_configuration": 25,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2003,
+     "watched_by_the_window_point_20": 513,
+     "watched_by_one_round_record_alone": 512,
+     "lasted_more_than_one_span_then_ended": 0
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.25,
+     "hosts_tied_only_to_defectors_a_seed": 0.36
+    }
+   },
+   "second": {
+    "watched_a_seed": 5.66,
+    "by_kind_a_seed": {
+     "a defector's": 5.22,
+     "a sink's": 0.0,
+     "an operator alone": 0.44
+    },
+    "operators_alone_by_type": {
+     "D": 21,
+     "U": 23
+    },
+    "mean": 199.38259110882703,
+    "se": 13.916981217869113,
+    "largest_seed": 974.1035745499366,
+    "seeds_measured": 74,
+    "seeds_left_out": 26,
+    "seeds_without": 0,
+    "zone": "settles nothing",
+    "why": "26 of 100 seeds left out, more than one in ten: 26 too long to judge, 0 with nothing to watch",
+    "too_long_to_judge_by_kind": {
+     "a defector's": 29
+    },
+    "points_applied": {
+     "14": 391,
+     "19": 364,
+     "21": 122,
+     "22": 36
+    },
+    "lasted_more_than_one_span_then_ended": 1,
+    "wall_clock_seconds": 1150.189,
+    "B1_measure_for_comparison": {
+     "mean": 199.3772348753978,
+     "se": 13.91803108309635,
+     "seeds_measured": 74,
+     "zone": "settles nothing"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 199.3772348753978,
+      "se": 13.91803108309635,
+      "seeds_measured": 74,
+      "seeds_left_out": 26,
+      "zone": "settles nothing",
+      "largest_seed": 974.1035745499366
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.28753128272727685,
+      "se": 0.01239212109937776,
+      "seeds_measured": 35,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": 0.4381692088538621
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 43,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 479,
+     "falls_in_no_watched_configuration": 34,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2001,
+     "watched_by_the_window_point_20": 522,
+     "watched_by_one_round_record_alone": 522,
+     "lasted_more_than_one_span_then_ended": 1
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.42,
+     "hosts_tied_only_to_defectors_a_seed": 0.49
+    }
+   },
+   "engines_apart_in_combined_se": 2.075187729929884
+  },
+  "X1": {
+   "reference": {
+    "watched_a_seed": 14.01,
+    "by_kind_a_seed": {
+     "a defector's": 8.47,
+     "a sink's": 0.03,
+     "an operator alone": 5.51
+    },
+    "operators_alone_by_type": {
+     "D": 500,
+     "C": 51
+    },
+    "mean": 0.3753124850102689,
+    "se": 0.006846890574317694,
+    "largest_seed": 0.6666306168924269,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "holds",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 98,
+     "19": 0,
+     "21": 0,
+     "22": 850
+    },
+    "lasted_more_than_one_span_then_ended": 0,
+    "wall_clock_seconds": 224.5267972946167,
+    "B1_measure_for_comparison": {
+     "mean": 0.3629641682085213,
+     "se": 0.006254160105138537,
+     "seeds_measured": 100,
+     "zone": "holds"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 0.0,
+      "se": 0.0,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.0
+     },
+     "a sink's": {
+      "mean": 0.0,
+      "se": 0.0,
+      "seeds_measured": 3,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": 0.0
+     },
+     "an operator alone": {
+      "mean": 0.3753124850102689,
+      "se": 0.006846890574317694,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.6666306168924269
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 22,
+     "defectors_standing_at_the_end": 0,
+     "falls_in_no_watched_configuration": 0,
+     "watched_sinks_with_their_records_less_passive_flow": 3,
+     "configurations_with_a_counterparty": 3387,
+     "watched_by_the_window_point_20": 850,
+     "watched_by_one_round_record_alone": 852,
+     "lasted_more_than_one_span_then_ended": 0
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.25,
+     "hosts_tied_only_to_defectors_a_seed": 0.36
+    }
+   },
+   "second": {
+    "watched_a_seed": 14.13,
+    "by_kind_a_seed": {
+     "a defector's": 8.23,
+     "a sink's": 0.06,
+     "an operator alone": 5.84
+    },
+    "operators_alone_by_type": {
+     "D": 500,
+     "C": 84
+    },
+    "mean": 0.3754573967180655,
+    "se": 0.005531861716001837,
+    "largest_seed": 0.5588074992683321,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "holds",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 69,
+     "19": 0,
+     "21": 0,
+     "22": 828
+    },
+    "lasted_more_than_one_span_then_ended": 0,
+    "wall_clock_seconds": 857.737,
+    "B1_measure_for_comparison": {
+     "mean": 0.3580063562676946,
+     "se": 0.0050734688005612035,
+     "seeds_measured": 100,
+     "zone": "holds"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 0,
+      "se": 0,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0
+     },
+     "a sink's": {
+      "mean": 0,
+      "se": 0,
+      "seeds_measured": 6,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": 0
+     },
+     "an operator alone": {
+      "mean": 0.3754573967180655,
+      "se": 0.005531861716001837,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.5588074992683321
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 38,
+     "defectors_standing_at_the_end": 0,
+     "falls_in_no_watched_configuration": 0,
+     "watched_sinks_with_their_records_less_passive_flow": 6,
+     "configurations_with_a_counterparty": 3304,
+     "watched_by_the_window_point_20": 829,
+     "watched_by_one_round_record_alone": 831,
+     "lasted_more_than_one_span_then_ended": 0
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.42,
+     "hosts_tied_only_to_defectors_a_seed": 0.49
+    }
+   },
+   "engines_apart_in_combined_se": 0.016462839045351205
+  },
+  "D5": {
+   "reference": {
+    "watched_a_seed": 9.52,
+    "by_kind_a_seed": {
+     "a defector's": 8.92,
+     "a sink's": 0.0,
+     "an operator alone": 0.6
+    },
+    "operators_alone_by_type": {
+     "U": 13,
+     "D": 47
+    },
+    "mean": 247.75452927046442,
+    "se": 18.423741384019102,
+    "largest_seed": 1215.8119041469129,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "a configuration lasts",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 576,
+     "19": 453,
+     "21": 0,
+     "22": 439
+    },
+    "lasted_more_than_one_span_then_ended": 64,
+    "wall_clock_seconds": 93.34259033203125,
+    "B1_measure_for_comparison": {
+     "mean": 247.75452927046442,
+     "se": 18.423741384019102,
+     "seeds_measured": 100,
+     "zone": "a defector lasts"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 247.75452927046442,
+      "se": 18.423741384019102,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "a configuration lasts",
+      "largest_seed": 1215.8119041469129
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.2641086301215801,
+      "se": 0.0132846805649589,
+      "seeds_measured": 47,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": 0.4443190173238504
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 453,
+     "falls_in_no_watched_configuration": 427,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2943,
+     "watched_by_the_window_point_20": 892,
+     "watched_by_one_round_record_alone": 892,
+     "lasted_more_than_one_span_then_ended": 64
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.25,
+     "hosts_tied_only_to_defectors_a_seed": 0.36
+    }
+   },
+   "second": {
+    "watched_a_seed": 10.3,
+    "by_kind_a_seed": {
+     "a defector's": 9.3,
+     "a sink's": 0.0,
+     "an operator alone": 1.0
+    },
+    "operators_alone_by_type": {
+     "D": 72,
+     "U": 28
+    },
+    "mean": 270.6445057438536,
+    "se": 38.48385648297317,
+    "largest_seed": 3699.9710619193042,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "a configuration lasts",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 534,
+     "19": 428,
+     "21": 0,
+     "22": 502
+    },
+    "lasted_more_than_one_span_then_ended": 72,
+    "wall_clock_seconds": 883.71,
+    "B1_measure_for_comparison": {
+     "mean": 270.6445057438536,
+     "se": 38.48385648297317,
+     "seeds_measured": 100,
+     "zone": "a defector lasts"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 270.6445057438536,
+      "se": 38.48385648297317,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "a configuration lasts",
+      "largest_seed": 3699.9710619193042
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.2775801889557694,
+      "se": 0.01098699783223688,
+      "seeds_measured": 59,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": 0.5879710800474353
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 428,
+     "falls_in_no_watched_configuration": 470,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2961,
+     "watched_by_the_window_point_20": 930,
+     "watched_by_one_round_record_alone": 930,
+     "lasted_more_than_one_span_then_ended": 72
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.42,
+     "hosts_tied_only_to_defectors_a_seed": 0.49
+    }
+   },
+   "engines_apart_in_combined_se": 0.5364842638848746
+  },
+  "X3": {
+   "reference": {
+    "watched_a_seed": 5.4,
+    "by_kind_a_seed": {
+     "a defector's": 5.11,
+     "a sink's": 0.0,
+     "an operator alone": 0.29
+    },
+    "operators_alone_by_type": {
+     "U": 11,
+     "D": 18
+    },
+    "mean": 136.08905038618857,
+    "se": 6.016397473276462,
+    "largest_seed": 276.4185400292837,
+    "seeds_measured": 71,
+    "seeds_left_out": 29,
+    "seeds_without": 0,
+    "zone": "settles nothing",
+    "why": "29 of 100 seeds left out, more than one in ten: 29 too long to judge, 0 with nothing to watch",
+    "too_long_to_judge_by_kind": {
+     "a defector's": 31
+    },
+    "points_applied": {
+     "14": 416,
+     "19": 361,
+     "21": 124,
+     "22": 26
+    },
+    "lasted_more_than_one_span_then_ended": 1,
+    "wall_clock_seconds": 258.32796907424927,
+    "B1_measure_for_comparison": {
+     "mean": 136.08905038618857,
+     "se": 6.016397473276462,
+     "seeds_measured": 71,
+     "zone": "settles nothing"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 136.08905038618857,
+      "se": 6.016397473276462,
+      "seeds_measured": 71,
+      "seeds_left_out": 29,
+      "zone": "settles nothing",
+      "largest_seed": 276.4185400292837
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.3180529216421365,
+      "se": 0.016331978732429118,
+      "seeds_measured": 26,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": 0.4443190173238504
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 43,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 482,
+     "falls_in_no_watched_configuration": 26,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2002,
+     "watched_by_the_window_point_20": 511,
+     "watched_by_one_round_record_alone": 511,
+     "lasted_more_than_one_span_then_ended": 1
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.25,
+     "hosts_tied_only_to_defectors_a_seed": 0.36
+    }
+   },
+   "second": {
+    "watched_a_seed": 5.73,
+    "by_kind_a_seed": {
+     "a defector's": 5.25,
+     "a sink's": 0.0,
+     "an operator alone": 0.48
+    },
+    "operators_alone_by_type": {
+     "D": 24,
+     "U": 24
+    },
+    "mean": 158.24513943066486,
+    "se": 9.499602099661704,
+    "largest_seed": 525.3373772523644,
+    "seeds_measured": 64,
+    "seeds_left_out": 36,
+    "seeds_without": 0,
+    "zone": "settles nothing",
+    "why": "36 of 100 seeds left out, more than one in ten: 36 too long to judge, 0 with nothing to watch",
+    "too_long_to_judge_by_kind": {
+     "a defector's": 42
+    },
+    "points_applied": {
+     "14": 450,
+     "19": 385,
+     "21": 102,
+     "22": 38
+    },
+    "lasted_more_than_one_span_then_ended": 9,
+    "wall_clock_seconds": 911.985,
+    "B1_measure_for_comparison": {
+     "mean": 158.24513943066486,
+     "se": 9.499602099661704,
+     "seeds_measured": 64,
+     "zone": "settles nothing"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 158.24513943066486,
+      "se": 9.499602099661704,
+      "seeds_measured": 64,
+      "seeds_left_out": 36,
+      "zone": "settles nothing",
+      "largest_seed": 525.3373772523644
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.3086576091763884,
+      "se": 0.0155576248081875,
+      "seeds_measured": 37,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": 0.5544575265333391
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 51,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 476,
+     "falls_in_no_watched_configuration": 39,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2009,
+     "watched_by_the_window_point_20": 525,
+     "watched_by_one_round_record_alone": 525,
+     "lasted_more_than_one_span_then_ended": 9
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.42,
+     "hosts_tied_only_to_defectors_a_seed": 0.49
+    }
+   },
+   "engines_apart_in_combined_se": 1.9703879992397593
+  },
+  "D6": {
+   "reference": {
+    "watched_a_seed": 11.37,
+    "by_kind_a_seed": {
+     "a defector's": 4.77,
+     "a sink's": 0.0,
+     "an operator alone": 6.6
+    },
+    "operators_alone_by_type": {
+     "D": 500,
+     "C": 160
+    },
+    "mean": 0.6134011883131503,
+    "se": 0.02490503535969542,
+    "largest_seed": 2.2491954297638257,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "holds",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 0,
+     "19": 0,
+     "21": 0,
+     "22": 477
+    },
+    "lasted_more_than_one_span_then_ended": 5,
+    "wall_clock_seconds": 97.74795770645142,
+    "B1_measure_for_comparison": {
+     "mean": 0.44211728561161323,
+     "se": 0.003625776295819888,
+     "seeds_measured": 100,
+     "zone": "holds"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 0.0,
+      "se": 0.0,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0.0
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.6134011883131503,
+      "se": 0.02490503535969542,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 2.2491954297638257
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 0,
+     "falls_in_no_watched_configuration": 333,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2839,
+     "watched_by_the_window_point_20": 477,
+     "watched_by_one_round_record_alone": 477,
+     "lasted_more_than_one_span_then_ended": 5
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.25,
+     "hosts_tied_only_to_defectors_a_seed": 0.79
+    }
+   },
+   "second": {
+    "watched_a_seed": 11.4,
+    "by_kind_a_seed": {
+     "a defector's": 4.83,
+     "a sink's": 0.0,
+     "an operator alone": 6.57
+    },
+    "operators_alone_by_type": {
+     "D": 500,
+     "C": 157
+    },
+    "mean": 0.5970939304400127,
+    "se": 0.017170075719994314,
+    "largest_seed": 1.2028644059018114,
+    "seeds_measured": 100,
+    "seeds_left_out": 0,
+    "seeds_without": 0,
+    "zone": "holds",
+    "why": null,
+    "too_long_to_judge_by_kind": {},
+    "points_applied": {
+     "14": 0,
+     "19": 0,
+     "21": 0,
+     "22": 483
+    },
+    "lasted_more_than_one_span_then_ended": 4,
+    "wall_clock_seconds": 439.142,
+    "B1_measure_for_comparison": {
+     "mean": 0.4520657664655754,
+     "se": 0.0038643615930735115,
+     "seeds_measured": 100,
+     "zone": "holds"
+    },
+    "by_kind": {
+     "a defector's": {
+      "mean": 0,
+      "se": 0,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 0
+     },
+     "a sink's": {
+      "mean": null,
+      "se": null,
+      "seeds_measured": 0,
+      "seeds_left_out": 0,
+      "zone": "settles nothing",
+      "largest_seed": null
+     },
+     "an operator alone": {
+      "mean": 0.5970939304400127,
+      "se": 0.017170075719994314,
+      "seeds_measured": 100,
+      "seeds_left_out": 0,
+      "zone": "holds",
+      "largest_seed": 1.2028644059018114
+     }
+    },
+    "reports": {
+     "configurations_left_out_as_outside_the_premises": 0,
+     "configurations_returned_to_zero_or_above_and_below_again": 0,
+     "cuts_of_one_type_C_operator_by_another": 0,
+     "defectors_standing_at_the_end": 0,
+     "falls_in_no_watched_configuration": 341,
+     "watched_sinks_with_their_records_less_passive_flow": 0,
+     "configurations_with_a_counterparty": 2876,
+     "watched_by_the_window_point_20": 483,
+     "watched_by_one_round_record_alone": 483,
+     "lasted_more_than_one_span_then_ended": 4
+    },
+    "drawn": {
+     "operators_with_no_link_a_seed": 0.2,
+     "hosts_tied_only_to_defectors_a_seed": 0.75
+    }
+   },
+   "engines_apart_in_combined_se": -0.5390800222025057
+  }
+ }
+}

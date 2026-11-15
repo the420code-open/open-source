@@ -55,3 +55,26 @@ has been asked.
   lines, as before. The formula and the note checked by eye on the page.
 - **Kimi:** G topped up Studio G's Kimi account with $10 on 14 November 2026, so Moonshot AI's model is asked on the
   run day, as section 5 says.
+
+## Draft 6, committed beside draft 5 · challenge-plan-v3
+
+Committed on 15 November 2026, before any AI is asked. G said yes that morning: cost does not limit the search. Draft 6
+asks each AI ten times, not three, and three times, not once, on the paper as it stood on 13 November 2026, each in a
+fresh conversation. Nothing else changes: the question, the papers, the settings and the marking words are as in
+draft 5. Drafts 4 and 5, and `challenge-plan-v1` and `challenge-plan-v2`, stay as they are. Draft 6 governs, and says
+so in its own opening. No AI has been asked.
+
+| File | What it is | SHA-256 |
+|---|---|---|
+| `plan_draft6.md` | The plan, draft 6, word for word (AG Opus, 14 and 15 November 2026) | 00801978cdd98c82c8025da62c784800663f914606065b270d38f91bb411bfda |
+| `question_v2.txt` | The question, unchanged from draft 5 | 7bc69b3de782f41fa2c297221bff3deb1b22340460d643498edca14ea65b75d3 |
+| `question_for_the_known_road_v2.txt` | The question for the known roads, unchanged | 88b5571a7bdc3147874a67fea0d0fdd64ae2459ab9219d74356e97aa92fb1d32 |
+| `AP32_The_Correction_with_its_dated_notes_of_2026-11-14.txt` | The paper the AIs get, unchanged | 8f55400408495b0b68558468526be1ccd3e670b6c64bf5093e190cfd3eff8344 |
+| `AP32_The_Correction_as_it_stood_on_2026-11-13.txt` | The paper for the known roads, unchanged | 8f083031ac404a9a4647454ed9b9e79a5f0818e3e9a49ff1141702dee48c97c1 |
+| `marking_words.md` | The marking words: draft 6's section 8, the same as draft 5's, as they stand | 39b21e5d4c868fb6a67d83df6ac49647b20732ae89f3f28042faa27f07063939 |
+| `approval.json` | G's approval of 14 November 2026, unchanged. Its caps, $60 and $20, were set for three answers and one; they do not cover draft 6. The run waits for G's new caps on the new price. | 621877f761195052267ed1653fdf9a319e033b16365523d94cb9e7255a1f66a8 |
+
+- **Draft 6 against draft 5:** the changed lines are the opening's new paragraph, and sections 6, 7, 9, 10, 11 and 12, on
+  how many times each AI is asked and what is shown. Section 4, the question, and section 8, the marking words, are
+  word for word draft 5's.
+- **The run's settings** still wait for AG Opus's answers to the seven points of 14 November 2026.

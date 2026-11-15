@@ -1,0 +1,10 @@
+{
+ "cell": "dry-b2-D2",
+ "seeds": 100,
+ "mean": 0.31720995334820484,
+ "se": 0.0039138135950962825,
+ "largest_seed": 0.4448612534468337,
+ "zone": "holds",
+ "seconds": 565.593
+}
+probe written: …/b2-dry2/runs\second\D2\probe.jsonl.gz 100 seeds

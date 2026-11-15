@@ -1,0 +1,13 @@
+{
+ "id": "dry-b2-D1",
+ "label": "Dry run for B2, 14 November 2026. Outside every hypothesis's grid (m = 5). Never reported as a result. D1: random links, p = 0.2 among 20; a quarter of the operators defectors; uneven drift, each operator's a drawn between 0.06 and 0.2 with the seed; passive flow k = 0.05; own input s = 0.5; more noise (stock 1, reading 1); every other operator of type C.",
+ "grid": "dry, outside every grid",
+ "control": false,
+ "setting": "network",
+ "overrides": {"m": 5.0, "s": 0.5, "sigma_s": 1.0, "sigma_r": 1.0, "k": 0.05},
+ "topology": "random",
+ "p": 0.2,
+ "types": {"hosts": "C", "defector_share": 0.25},
+ "drift": {"uneven": [0.06, 0.2]},
+ "rounds": 4000
+}
