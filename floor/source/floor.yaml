@@ -1,10 +1,10 @@
 floor:
-  version: '1.0'
+  version: '1.1'
   status: final
-  date: '2026-11-12'
+  date: '2026-11-16'
   registry:
-    version: v5.39
-    date: '2026-11-11'
+    version: v5.41
+    date: '2026-11-15'
     data: https://the420code.org/killswitches.json
   note: The one source of the floor. The page, the structured file and the short form are generated from this file and nothing else. Work lines are exact extracts, never altered. Desk lines are the desk wording, each approved by G before the floor leaves draft.
   sources:
@@ -48,6 +48,11 @@ floor:
       url: https://the420code.org/AP32_The_Correction.pdf
       version: as published, read 12 November 2026
       kind: pdf
+    AP32N:
+      title: AP32 The Correction, dated note of 14 November 2026, “What may raise a level”
+      url: https://the420code.org/proofs/ap32-the-correction/dated-notes/
+      version: as published, read 16 November 2026
+      kind: html
     AP33:
       title: AP33 The Boundary
       url: https://the420code.org/AP33_The_Boundary.pdf
@@ -66,7 +71,7 @@ floor:
     MKSR:
       title: Master Kill Switch Registry
       url: https://the420code.org/Master_Kill_Switch_Registry.pdf
-      version: v5.39, 11 November 2026
+      version: v5.41, 15 November 2026
       kind: registry
       data: https://the420code.org/killswitches.json
   lines:
@@ -81,11 +86,11 @@ floor:
   - id: F-H.2
     part: H
     kind: desk
-    text: The floor. Version 1.0. Its kill switches are read from the Master Kill Switch Registry, v5.39.
+    text: The floor. Version 1.1. Its kill switches are read from the Master Kill Switch Registry, v5.41.
     approval:
       status: approved
       by: G
-      when: 12 November 2026
+      when: 16 November 2026
   - id: F-H.3
     part: H
     kind: desk
@@ -740,14 +745,14 @@ floor:
   - id: F6.19a
     part: '6'
     kind: desk
-    text: The registry, v5.39, bounds “indefinitely” in a dated note of 11 November 2026, under KS-BAR.9. The bound is written out in full in that row of the registry.
+    text: The registry, v5.41, bounds “indefinitely” in a dated note of 11 November 2026, under KS-BAR.9, with dated additions of 13 and 15 November 2026. The bound is written out in full in that row of the registry.
     joins:
     - MKSR
     - OA
     approval:
       status: approved
       by: G
-      when: 12 November 2026
+      when: 16 November 2026
   - id: F6.20
     part: '6'
     kind: desk
@@ -828,10 +833,46 @@ floor:
   - id: F7.3
     part: '7'
     kind: work
-    text: KS-32.7 · Dehumanisation (MORAL KILL SWITCH). · LIVE — NON-NEGOTIABLE · AP32
+    text: KS-32.7 · Dehumanisation (MORAL KILL SWITCH). Read with AP32’s dated note of 14 November 2026, on what may raise a level. · LIVE — NON-NEGOTIABLE · AP32
     source:
       code: MKSR
       place: the row for KS-32.7, page 25 of the PDF
+    keys:
+    - KS-32.7
+  - id: F7.3a
+    part: '7'
+    kind: work
+    text: 'Section 5 reads: “Character, intent, remorse, background — these affect the prediction of future destabilisation. They do not affect the measurement of past destabilisation.” Of intent, it adds: “The correction level may differ because the prediction differs.” Read together, these would let what is not the node’s own act raise the node’s level. Two nodes with the same deeds could then meet different levels because of where they come from. KS-32.7 does not allow it: “Correction is selected only on measured destabilisation, never on identity.”'
+    source:
+      code: AP32N
+      place: paragraph 1
+    keys:
+    - KS-32.7
+  - id: F7.3b
+    part: '7'
+    kind: work
+    text: 'So the rule is stated. What a node did speaks for that node alone. What is held against a node is the measured cost of its own deeds, and nothing else: its own deeds, measured, and its own pattern across them. That alone may open the question of removal. Where the paper looks forward, it predicts consequences: what the node’s own deeds, and the pattern across them, will go on costing the whole if nothing is corrected. It never forecasts a node from anything else. Intent, remorse and character count only as the node’s own deeds show them. A rate learned from the records of other nodes never stands in for the node’s own record, and never raises a level, even where it is a rate about deeds. So section 5’s sentence on intent, “intentional destabilisers have higher recurrence confidence”, is read through the node’s own record: its own deliberate acts, as they repeat.'
+    source:
+      code: AP32N
+      place: paragraph 2
+    keys:
+    - KS-32.7
+  - id: F7.3c
+    part: '7'
+    kind: work
+    text: 'Nothing that is not the node’s own act may be held against it. Its background, its origin, the acts of another, and the acts of a group it belongs to are among these. They may count only where they measure need, and then only to point to what helps: the lower levels, and rehabilitation. They may never raise a level, and they may never be the reason a lower level is refused.'
+    source:
+      code: AP32N
+      place: paragraph 3
+    keys:
+    - KS-32.7
+  - id: F7.3d
+    part: '7'
+    kind: work
+    text: 'The state of the whole is another thing. It is held against no node. It sets where the lines stand, as Step 4 has it, and the lines are the same for every node of the whole. The paper says of it: “This is not a judgement of the person. It is a measurement of the organism’s capacity.” A level raised on who a node is, where it comes from, or what others did, is the identity-based targeting KS-32.7 names, and it fires that switch. Section 5’s worked contrast stands: an accident and a deliberate act of sabotage differ in what the node itself did. No switch moves, no status moves, and no count moves.'
+    source:
+      code: AP32N
+      place: paragraph 4
     keys:
     - KS-32.7
   - id: F7.4
@@ -1091,8 +1132,8 @@ floor:
   - id: F8.3
     part: '8'
     kind: desk
-    text: 'Version 1.0. Fingerprint: set when the three forms are generated.'
+    text: 'Version 1.1. Fingerprint: set when the three forms are generated.'
     approval:
       status: approved
       by: G
-      when: 12 November 2026
+      when: 16 November 2026
