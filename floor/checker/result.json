@@ -2,21 +2,36 @@
  "version": "1.0",
  "status": "final",
  "fingerprint": "b0bcfcf3be852b6ec90f09a8ae5faa809cfa4886ef6a7f41498dd029038503e5",
- "date": "2026-11-15",
- "passed": true,
- "page_line": null,
- "page_lines": [],
- "named": [],
+ "date": "2026-11-16",
+ "passed": false,
+ "page_line": "A source has changed since this version was read. A new version follows.",
+ "page_lines": [
+  {
+   "line": "A source has changed since this version was read. A new version follows.",
+   "named": [
+    "F7.3",
+    "KS-32.7",
+    "KS-BAR.9"
+   ]
+  }
+ ],
+ "named": [
+  "F7.3",
+  "KS-32.7",
+  "KS-BAR.9"
+ ],
  "registry": {
   "floor_reads": "v5.39",
-  "live": "v5.40"
+  "live": "v5.41"
  },
  "root_changed": false,
  "checks": [
   {
    "check": "the source's own rules",
-   "ok": true,
-   "notes": [],
+   "ok": false,
+   "notes": [
+    "status is final, but a check fails"
+   ],
    "pending_desk_lines": []
   },
   {
@@ -30,16 +45,13 @@
   },
   {
    "check": "every key, against the registry the floor was made from, v5.39",
-   "ok": true,
+   "ok": false,
    "notes": [
-    "KS-BAR.9: a dated addition in the registry's v5.40, later than v5.39, which this floor's rows are from. The floor takes it in its next version.",
+    "KS-32.7: its row or status differs from the snapshot",
+    "KS-BAR.9: its row or status differs from the snapshot",
     "KS-COUP.1: a dated addition in the registry's v5.40, later than v5.39, which this floor's rows are from. The floor takes it in its next version."
    ],
    "later_dated_additions": [
-    {
-     "switch": "KS-BAR.9",
-     "added_in": "v5.40"
-    },
     {
      "switch": "KS-COUP.1",
      "added_in": "v5.40"
@@ -48,8 +60,10 @@
   },
   {
    "check": "every registry row, cell by cell",
-   "ok": true,
-   "notes": []
+   "ok": false,
+   "notes": [
+    "F7.3: the row for KS-32.7 differs in description"
+   ]
   },
   {
    "check": "the root",
