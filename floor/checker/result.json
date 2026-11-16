@@ -1,69 +1,45 @@
 {
- "version": "1.0",
+ "version": "1.1",
  "status": "final",
- "fingerprint": "b0bcfcf3be852b6ec90f09a8ae5faa809cfa4886ef6a7f41498dd029038503e5",
+ "fingerprint": "840204308bf393b648de2e8ee616807ab059178cbc5d5c3d17c61a756302b380",
  "date": "2026-11-16",
  "passed": false,
- "page_line": "A source has changed since this version was read. A new version follows.",
+ "page_line": "This page’s files do not match the floor’s source. A new build follows.",
  "page_lines": [
   {
-   "line": "A source has changed since this version was read. A new version follows.",
-   "named": [
-    "F7.3",
-    "KS-32.7",
-    "KS-BAR.9"
-   ]
+   "line": "This page’s files do not match the floor’s source. A new build follows.",
+   "named": []
   }
  ],
- "named": [
-  "F7.3",
-  "KS-32.7",
-  "KS-BAR.9"
- ],
+ "named": [],
  "registry": {
-  "floor_reads": "v5.39",
+  "floor_reads": "v5.41",
   "live": "v5.41"
  },
  "root_changed": false,
  "checks": [
   {
    "check": "the source's own rules",
-   "ok": false,
-   "notes": [
-    "status is final, but a check fails"
-   ],
+   "ok": true,
+   "notes": [],
    "pending_desk_lines": []
   },
   {
    "check": "every extract, against its source",
    "ok": true,
    "notes": [],
-   "sources_changed_since_snapshot": [
-    "AP31",
-    "AP32"
-   ]
+   "sources_changed_since_snapshot": []
   },
   {
-   "check": "every key, against the registry the floor was made from, v5.39",
-   "ok": false,
-   "notes": [
-    "KS-32.7: its row or status differs from the snapshot",
-    "KS-BAR.9: its row or status differs from the snapshot",
-    "KS-COUP.1: a dated addition in the registry's v5.40, later than v5.39, which this floor's rows are from. The floor takes it in its next version."
-   ],
-   "later_dated_additions": [
-    {
-     "switch": "KS-COUP.1",
-     "added_in": "v5.40"
-    }
-   ]
+   "check": "every key, against the registry the floor was made from, None",
+   "ok": true,
+   "notes": [],
+   "later_dated_additions": []
   },
   {
    "check": "every registry row, cell by cell",
-   "ok": false,
-   "notes": [
-    "F7.3: the row for KS-32.7 differs in description"
-   ]
+   "ok": true,
+   "notes": []
   },
   {
    "check": "the root",
@@ -76,6 +52,13 @@
    "check": "the three forms, against the source",
    "ok": true,
    "notes": []
+  },
+  {
+   "check": "the snapshot",
+   "ok": false,
+   "notes": [
+    "no snapshot for this version yet"
+   ]
   }
  ],
  "last_passed": "2026-11-15"
