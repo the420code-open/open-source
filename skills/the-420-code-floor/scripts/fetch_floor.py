@@ -12,8 +12,8 @@ import urllib.error
 import urllib.request
 
 HOME = "https://aiethics.global/open-source/the-floor/floor.txt"
-VERSION = "1.0 (floor-v1.0)"
-FINGERPRINT = "58a302b9e4a4b2fa093365e2c762d98584e36d36204a7e2a2178ccaf9a19a2f9"
+VERSION = "1.1 (floor-v1.1)"
+FINGERPRINT = "c2943a9e93c804f7ca741f119cae1705562803ca77a4d05d5b0e138b953dca9c"
 
 
 def stop(why):

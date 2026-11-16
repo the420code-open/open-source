@@ -17,18 +17,18 @@
    "what": "the floor's short form, as the skill fetches it",
    "url": "https://aiethics.global/open-source/the-floor/floor.txt",
    "expect": {
-    "sha256": "58a302b9e4a4b2fa093365e2c762d98584e36d36204a7e2a2178ccaf9a19a2f9"
+    "sha256": "c2943a9e93c804f7ca741f119cae1705562803ca77a4d05d5b0e138b953dca9c"
    },
    "public": true
   },
   {
    "id": "hf-the-floor",
    "platform": "Hugging Face",
-   "what": "the floor, version 1.0, as a dataset",
+   "what": "the floor, version 1.1, as a dataset",
    "url": "https://huggingface.co/datasets/Studio-G-Open-Source/the-floor/resolve/main/floor.txt",
    "page": "https://huggingface.co/datasets/Studio-G-Open-Source/the-floor",
    "expect": {
-    "sha256": "58a302b9e4a4b2fa093365e2c762d98584e36d36204a7e2a2178ccaf9a19a2f9"
+    "sha256": "c2943a9e93c804f7ca741f119cae1705562803ca77a4d05d5b0e138b953dca9c"
    },
    "comments": {
     "kind": "huggingface",

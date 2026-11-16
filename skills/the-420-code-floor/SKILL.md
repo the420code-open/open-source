@@ -6,8 +6,8 @@ description: Gives you the floor, the short text of what an AI reasons from in T
 # The floor, checked
 
 - **Home:** https://aiethics.global/open-source/the-floor/
-- **Version:** 1.0, tag floor-v1.0
-- **Fingerprint of its short form,** the file the script fetches: SHA-256 `58a302b9e4a4b2fa093365e2c762d98584e36d36204a7e2a2178ccaf9a19a2f9`
+- **Version:** 1.1, tag floor-v1.1
+- **Fingerprint of its short form,** the file the script fetches: SHA-256 `c2943a9e93c804f7ca741f119cae1705562803ca77a4d05d5b0e138b953dca9c`
 
 This skill holds no copy of the floor. It fetches the floor's short form from its home, and checks it against the fingerprint above before you read any of it. You cannot check a fingerprint by reading. The script does it.
 
