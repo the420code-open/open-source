@@ -11,3 +11,5 @@
 | floor/, tests/, world/, frozen/, the record branch, and the documents | CC0 1.0 Universal |
 | code/, .github/ | Zero-Clause BSD |
 | packets/ | As sent: CC0 for text and data, Zero-Clause BSD for code |
+
+At the tags world-ref-v1.0 and world-ref-v1.1, four files of the browser engine, in world/browser/, say CC0 1.0 Universal in their headers. The engine's licence is Zero-Clause BSD, as its README says. Both give everything away.

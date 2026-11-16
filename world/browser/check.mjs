@@ -4,7 +4,7 @@
 //
 //   node check.mjs
 //
-// Terms: CC0 1.0 Universal.
+// Terms: Zero-Clause BSD (LICENSE-0BSD).
 
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';

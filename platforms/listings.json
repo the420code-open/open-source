@@ -127,6 +127,18 @@
    },
    "public": true,
    "prepared": "2026-11-16: saved on request, a full visit, snapshot swh:1:snp:f7c4c6c200be56f009540244e7edd9d3d25aa946"
+  },
+  {
+   "id": "zenodo-the-tests",
+   "platform": "Zenodo",
+   "what": "the suite, version 1.1, as tagged tests-v1.1",
+   "url": "https://zenodo.org/records/24265376/files/tests-v1.1_the_suite.zip",
+   "page": "https://doi.org/10.5281/zenodo.24265376",
+   "expect": {
+    "sha256": "8d5ac14bc400717003befd00b651aa63e78ecaf265dc20e3ed578a81c71973d6"
+   },
+   "public": true,
+   "prepared": "2026-11-16, published on G's word through AG Opus (note 04)"
   }
  ]
 }

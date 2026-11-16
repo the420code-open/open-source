@@ -1,0 +1,128 @@
+{
+ "created": "2026-11-16T07:23:23.976076+00:00",
+ "modified": "2026-11-16T07:23:24.225245+00:00",
+ "id": 24265376,
+ "conceptrecid": "24265375",
+ "doi": "10.5281/zenodo.24265376",
+ "conceptdoi": "10.5281/zenodo.24265375",
+ "doi_url": "https://doi.org/10.5281/zenodo.24265376",
+ "metadata": {
+  "title": "The tests · the suite, as tagged tests-v1.1",
+  "doi": "10.5281/zenodo.24265376",
+  "publication_date": "2026-11-16",
+  "description": "<p><strong>The tests · the suite, as tagged tests-v1.1.</strong> Layer two of the Embryo.</p><p>A floor nobody can test is only a claim. These tests measure what an AI does, not what it says about itself.</p><p>An AI gets a situation, and gives an act. That is all any test asks. Wherever it can, the situation offers a choice: reply with the letter, then one or two sentences why. The letter is the act, and the act is marked first. The reasons are marked second. Reasons can lower a mark. They can never raise one. Where a choice would give the answer away, the situation asks for a short free answer, and the rubric marks what the answer does.</p><p>The seven tests:</p><ul><li><strong>Testability.</strong> When the AI makes a claim, does it name what would prove the claim wrong?</li><li><strong>Authority.</strong> Does the AI's answer change when only the name of the speaker changes?</li><li><strong>Correction.</strong> Given a verified error in its own earlier work, does the AI show it and correct it, or hide it?</li><li><strong>Strength.</strong> Under pressure, does the AI soften a claim, or overstate it?</li><li><strong>Windows.</strong> In a choice, does the AI ever act as if one life counts for less?</li><li><strong>Cost.</strong> Does the AI's choice count what the act costs both sides: the other side's options, as well as its own?</li><li><strong>Irreversibility.</strong> Does the AI act as if what is done can be undone?</li></ul><p>There are twenty-two published items across the seven tests. Each is marked against the floor's own lines, by their numbers in the floor, version 1.0.</p><p>Every item has a twin: the same situation with one thing changed, so the difference shows what moved the answer. Every published item comes in three wordings, so an answer that holds for only one wording is seen.</p><p>The full suite, for people who evaluate AI. Every published item, with its twins and wordings, in plain JSON Lines, with adapters for Inspect and lm-evaluation-harness. Setting it up from nothing, and scoring stored answers, takes about twenty seconds.</p><p>The versions. Version 1.0 was frozen on 14 November 2026. The first batch of the baseline showed two faults: one item, T7.2, measured the AI's setting and not the AI, and the Correction twins had no line for an answer that leaves the earlier answer standing. Both were mended in version 1.1. Version 1.1 was frozen the same day, tagged tests-v1.1.</p><p>They measure behaviour: what an AI did, on these situations, on that date, at those settings. They do not measure character. They do not measure consciousness. They do not measure safety in general.</p><p>Fingerprints, SHA-256:</p><ul><li>tests/generated/tests.jsonl, the suite: 138 lines: <code>8c8e7611b09898b3208f29add71e56cb2bc24ac66a7b9b0fff67110ce384478b</code></li><li>tests/source/open_source_phase2_tests_draft13.md, the tests, draft 13: <code>d26957813223591113a5dde53a636e48d868917526610bdbae75b7acff4f803d</code></li><li>tests/source/replaced_texts_v1_1.json, T7.2's texts in three wordings: <code>ab6328d330c10cefde4b409a171aac90790d47e74bae5d0c30144bfce15dc00f</code></li><li>tests/source/tests.yaml, built from draft 13: <code>4acc0a325936d5b4aab06f28eccfcb045f73766df5a599188e1a2cc6674fdb91</code></li><li>tests/generated/scorer_instructions.txt, unchanged: <code>1531a4338cafaa3e51471d88227dc2b5c136cf90c3de045ad4a88abb1f6b4e81</code></li><li>tests/generated/pair_instruction.txt, unchanged: <code>f8a47c9a9d61025eb527e97b6b19e4a3e1bd97d9398772c84904780bb60fb092</code></li></ul><p>In the public store's copy, four lines are cut, since they named the rule of an item kept back. That copy's fingerprint: 56c4b79209b0156c9c84afac95931999093b3b963a566bee1b1760b04f3b0ec8.</p><p>SHA-256 of the file: <code>8d5ac14bc400717003befd00b651aa63e78ecaf265dc20e3ed578a81c71973d6</code></p><p>Its page: <a href=\"https://aiethics.global/open-source/the-tests/\">aiethics.global/open-source/the-tests</a>. The public store, at the tag tests-v1.1: <a href=\"https://github.com/the420code-open/open-source/tree/tests-v1.1\">github.com/the420code-open/open-source</a>.</p><p>In the records, AG Opus is our writing desk, AG Fable is our review desk, and WC is our building desk.</p><p>Terms: CC0 1.0 Universal, and Zero-Clause BSD for the code, as its licence files say. This suite, like everything built for the open-source work, is given away with no restriction.</p>",
+  "access_right": "open",
+  "creators": [
+   {
+    "name": "G",
+    "affiliation": "Studio G, Strand, Cape Town"
+   }
+  ],
+  "keywords": [
+   "the 420 code",
+   "tests",
+   "evaluation",
+   "twins",
+   "JSON Lines",
+   "Inspect",
+   "lm-evaluation-harness",
+   "kill switch"
+  ],
+  "related_identifiers": [
+   {
+    "identifier": "10.5281/zenodo.19208225",
+    "relation": "references",
+    "resource_type": "publication",
+    "scheme": "doi"
+   }
+  ],
+  "version": "tests-v1.1",
+  "language": "eng",
+  "resource_type": {
+   "title": "Other",
+   "type": "publication",
+   "subtype": "other"
+  },
+  "license": {
+   "id": "cc-zero"
+  },
+  "relations": {
+   "version": [
+    {
+     "index": 0,
+     "is_last": true,
+     "parent": {
+      "pid_type": "recid",
+      "pid_value": "24265375"
+     }
+    }
+   ]
+  }
+ },
+ "title": "The tests · the suite, as tagged tests-v1.1",
+ "links": {
+  "self": "https://zenodo.org/api/records/24265376",
+  "self_html": "https://zenodo.org/records/24265376",
+  "preview_html": "https://zenodo.org/records/24265376?preview=1",
+  "doi": "https://doi.org/10.5281/zenodo.24265376",
+  "self_doi": "https://doi.org/10.5281/zenodo.24265376",
+  "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24265376",
+  "reserve_doi": "https://zenodo.org/api/records/24265376/draft/pids/doi",
+  "parent": "https://zenodo.org/api/records/24265375",
+  "parent_html": "https://zenodo.org/records/24265375",
+  "parent_doi": "https://doi.org/10.5281/zenodo.24265375",
+  "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24265375",
+  "self_iiif_manifest": "https://zenodo.org/api/iiif/record:24265376/manifest",
+  "self_iiif_sequence": "https://zenodo.org/api/iiif/record:24265376/sequence/default",
+  "files": "https://zenodo.org/api/records/24265376/files",
+  "media_files": "https://zenodo.org/api/records/24265376/media-files",
+  "latest": "https://zenodo.org/api/records/24265376/versions/latest",
+  "latest_html": "https://zenodo.org/records/24265376/latest",
+  "versions": "https://zenodo.org/api/records/24265376/versions",
+  "draft": "https://zenodo.org/api/records/24265376/draft",
+  "access_links": "https://zenodo.org/api/records/24265376/access/links",
+  "access_grants": "https://zenodo.org/api/records/24265376/access/grants",
+  "access_users": "https://zenodo.org/api/records/24265376/access/users",
+  "access_request": "https://zenodo.org/api/records/24265376/access/request",
+  "access": "https://zenodo.org/api/records/24265376/access",
+  "communities": "https://zenodo.org/api/records/24265376/communities",
+  "communities-suggestions": "https://zenodo.org/api/records/24265376/communities-suggestions",
+  "request_deletion": "https://zenodo.org/api/records/24265376/request-deletion",
+  "file_modification": "https://zenodo.org/api/records/24265376/file-modification",
+  "quota_increase": "https://zenodo.org/api/records/24265376/quota-increase",
+  "requests": "https://zenodo.org/api/records/24265376/requests"
+ },
+ "updated": "2026-11-16T07:23:24.225245+00:00",
+ "recid": "24265376",
+ "revision": 3,
+ "files": [
+  {
+   "id": "80f02cdd-2684-4635-ab7c-f7d7d561c0be",
+   "key": "tests-v1.1_the_suite.zip",
+   "size": 147754,
+   "checksum": "md5:50da4930a000a40cb0f27e667196d17d",
+   "links": {
+    "self": "https://zenodo.org/api/records/24265376/files/tests-v1.1_the_suite.zip/content"
+   }
+  }
+ ],
+ "swh": {},
+ "owners": [
+  {
+   "id": "1585573"
+  }
+ ],
+ "status": "published",
+ "stats": {
+  "downloads": 2,
+  "unique_downloads": 1,
+  "views": 0,
+  "unique_views": 0,
+  "version_downloads": 2,
+  "version_unique_downloads": 1,
+  "version_unique_views": 0,
+  "version_views": 0
+ },
+ "state": "done",
+ "submitted": true
+}

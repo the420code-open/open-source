@@ -1,7 +1,7 @@
 // world.js · the page. Runs engine.mjs in the browser. Nothing is fetched
 // and nothing is sent anywhere; the settings live in the address, after #.
 //
-// Terms: CC0 1.0 Universal.
+// Terms: Zero-Clause BSD (LICENSE-0BSD).
 
 import { World, resolveParams, SPEC_VERSION, CODE_VERSION } from './engine.mjs';
 

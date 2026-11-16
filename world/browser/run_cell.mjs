@@ -24,7 +24,7 @@
 // the two counted together, the cell settles nothing. Each seed's value is kept, so a second
 // hundred can be pooled with the first (B1's section 9).
 //
-// Terms: CC0 1.0 Universal.
+// Terms: Zero-Clause BSD (LICENSE-0BSD).
 
 import { World, resolveParams, makeRng, SPEC_VERSION, CODE_VERSION } from './engine.mjs';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';

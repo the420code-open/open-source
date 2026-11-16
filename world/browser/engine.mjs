@@ -11,7 +11,7 @@
 // An ES module with no dependencies: it runs in a browser and under Node.
 // One engine; every setting comes in as data.
 //
-// Terms: CC0 1.0 Universal.
+// Terms: Zero-Clause BSD (LICENSE-0BSD).
 
 export const SPEC_VERSION = 'Phase 2 · the world · specification · version 1.1 (15 November 2026)';
 export const CODE_VERSION = 'world browser engine 1.8.0 (Part Nine, points 20 to 22, version 1.1 draft 3)';
