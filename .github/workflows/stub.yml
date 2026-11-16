@@ -1,0 +1,466 @@
+# The stub, for an issue opened on GitHub in this repository (before-launch brief v2, Part Two). Zero-Clause
+# BSD, Studio G. A stub is filed in the holding repository, holding only the link and nothing the person
+# wrote. Its number is the record number. Then "Record number N." here, and the acknowledgement.
+# It reads the issue only as data, through the API, and checks out nothing. All its logic is in this file.
+# While the copier app's key is not set, it does nothing and passes.
+name: stub
+on:
+  issues:
+    types: [opened]
+permissions: {}
+concurrency:
+  group: copier
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions: {}
+    env:
+      KEY_SET: ${{ secrets.COPIER_KEY != '' && secrets.COPIER_CLIENT_ID != '' }}
+    steps:
+      - name: the copier's key is not set yet, so there is nothing to do
+        if: env.KEY_SET != 'true'
+        run: echo "The copier's key is not set yet. Nothing to do, and nothing fails."
+      - name: a token for the holding repository only, with issues write
+        id: holding
+        if: env.KEY_SET == 'true'
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.COPIER_CLIENT_ID }}
+          private-key: ${{ secrets.COPIER_KEY }}
+          owner: the420code-open
+          repositories: open-source-holding
+          permission-issues: write
+      - name: a token for the public store only, with issues write
+        id: store
+        if: env.KEY_SET == 'true'
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.COPIER_CLIENT_ID }}
+          private-key: ${{ secrets.COPIER_KEY }}
+          owner: the420code-open
+          repositories: open-source
+          permission-issues: write
+      - name: the stub and the record number; all the logic is in this file
+        if: env.KEY_SET == 'true'
+        shell: python3 -I {0}
+        env:
+          HOLDING_REPO: the420code-open/open-source-holding
+          STORE_REPO: the420code-open/open-source
+          HOLDING_TOKEN: ${{ steps.holding.outputs.token }}
+          STORE_TOKEN: ${{ steps.store.outputs.token }}
+          COPIER_LOGIN: ${{ steps.store.outputs.app-slug }}[bot]
+        run: |
+          # What the public store's copier workflows share. Zero-Clause BSD, Studio G.
+          #
+          # This text is written whole into each workflow file that uses it (build_copier.py does that), so a workflow
+          # carries all its logic inside its own file and runs no other file from either repository.
+          #
+          # Text from a stranger is only ever data here: read through the API, parsed as text, written out through the
+          # API as JSON or as escaped text. Nothing here runs it, and nothing places it into a command.
+          import base64
+          import datetime as dt
+          import hashlib
+          import json
+          import os
+          import re
+          import sys
+          import time
+          import urllib.error
+          import urllib.request
+
+          API = os.environ.get("GITHUB_API_URL") or "https://api.github.com"     # set by GitHub on every runner
+          H_REPO = os.environ["HOLDING_REPO"]          # the holding repository: read only, but for the stubs
+          S_REPO = os.environ["STORE_REPO"]            # the public store
+          H_TOKEN = os.environ["HOLDING_TOKEN"]
+          S_TOKEN = os.environ["STORE_TOKEN"]
+          COPIER = os.environ["COPIER_LOGIN"]          # who the copier posts as: the app's bot
+          READ_BRANCH = "read"                         # where the reading's snapshots are kept, in the holding repository
+          RECORD_BRANCH = "record"                     # where the record and the counts are kept, in the public store
+
+          STATUSES = ["received", "needs-information", "under-review", "being-rerun", "shown", "declined", "withheld"]
+          PUBLIC = {"built-on-the-embryo": "Built on the Embryo", "independent-test": "Independent test", "approved": "Approved"}
+          TITLES = {"try": "I tried it", "proposal": "A proposal", "build": "A build", "result": "A result",
+                    "challenge": "A challenge to a claim", "comment": "A comment"}
+          INSIDE = ("admin", "maintain", "write")
+          ACK_TEXT = ("Thank you. Your work is received, dated, and in the record. A first reply comes within a week, "
+                      "and sooner where we can. If anything is unclear, we will ask here.")
+          NO_RESPONSE = "_No response_"
+          MARK = "Sent from the site, by "
+          WORK = "From the work, by Studio G."
+          EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+          SWITCH = re.compile(r"(?<![#/\w-])KS-[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*(?![\w-])", re.I)
+          EMAILED = re.compile(r"Replied by email on (\d{4}-\d{2}-\d{2})")
+          REASON = re.compile(r"^\s*(Declined|Withheld):\s*(.+)", re.S)
+          # the first line of everything the copier files, and of each comment it copies
+          ITEM_LINE = re.compile(r"^Record number (\d+)$")
+          COMMENT_LINE = re.compile(r"^Record number (\d+), comment (\d+), received (\d{4}-\d{2}-\d{2})\.$")
+          STUB_LINE = re.compile(r"^Record number (\d+)\.$")
+          STUB_TITLE = "Opened on GitHub"
+          sys.stdout.reconfigure(encoding="utf-8")
+
+
+          # ---------------------------------------------------------------- the API, one token for each repository
+
+          def _call(token, url, method="GET", body=None, accept="application/vnd.github+json", tries=4):
+              url = url if url.startswith("http") else API + url
+              data = None if body is None else json.dumps(body).encode()
+              for n in range(tries):
+                  req = urllib.request.Request(url, data=data, method=method, headers={
+                      "Authorization": "Bearer " + token, "Accept": accept, "User-Agent": "the420code-open-copier",
+                      "X-GitHub-Api-Version": "2022-11-28"})
+                  try:
+                      with urllib.request.urlopen(req, timeout=60) as r:
+                          raw = r.read()
+                          if "raw" in accept:
+                              return r.status, raw, r.headers
+                          return r.status, (json.loads(raw) if raw else None), r.headers
+                  except urllib.error.HTTPError as e:
+                      raw = e.read()
+                      if e.code in (500, 502, 503, 504) and n + 1 < tries:
+                          time.sleep(2 * (n + 1))
+                          continue
+                      try:
+                          return e.code, json.loads(raw), e.headers
+                      except ValueError:
+                          return e.code, None, e.headers
+                  except (urllib.error.URLError, OSError):
+                      if n + 1 < tries:
+                          time.sleep(2 * (n + 1))
+                          continue
+                      raise
+              raise RuntimeError("unreachable")
+
+
+          def hold(path, method="GET", body=None, accept="application/vnd.github+json"):
+              """The holding repository. Its token can read its contents and its issues, and write issues for the stubs."""
+              return _call(H_TOKEN, path, method, body, accept)
+
+
+          def store(path, method="GET", body=None, accept="application/vnd.github+json"):
+              return _call(S_TOKEN, path, method, body, accept)
+
+
+          def ok(result, what):
+              st, body, _ = result
+              if st >= 300:
+                  msg = body.get("message", "") if isinstance(body, dict) else ""
+                  raise SystemExit("%s: GitHub answered %s %s" % (what, st, msg))
+              return body
+
+
+          def pages(call, path):
+              out, url = [], API + path + ("&" if "?" in path else "?") + "per_page=100"
+              while url:
+                  st, body, h = call(url)
+                  if st != 200:
+                      raise SystemExit("%s: GitHub answered %s" % (path, st))
+                  out.extend(body)
+                  nxt = re.search(r'<([^>]+)>;\s*rel="next"', h.get("Link") or "")
+                  url = nxt.group(1) if nxt else None
+              return out
+
+
+          def holding_issues():
+              """Every issue of the holding repository, as metadata only: its number, its dates, its state, who opened it,
+              and its labels. Never its title, its text or its comments: the copy never reads the original again."""
+              owner, name = H_REPO.split("/")
+              q = ("query($o:String!,$n:String!,$a:String){repository(owner:$o,name:$n){issues(first:100,after:$a,"
+                   "orderBy:{field:CREATED_AT,direction:ASC}){pageInfo{hasNextPage endCursor}nodes{number createdAt "
+                   "closedAt state author{login} labels(first:60){nodes{name}}}}}}")
+              out, after = [], None
+              while True:
+                  res = ok(hold("/graphql", "POST", {"query": q, "variables": {"o": owner, "n": name, "a": after}}),
+                           "listing the holding repository's issues")
+                  if res.get("errors"):
+                      raise SystemExit("listing the holding repository's issues: %s" % res["errors"][0].get("message"))
+                  block = res["data"]["repository"]["issues"]
+                  for x in block["nodes"]:
+                      out.append({"number": x["number"], "created_at": x["createdAt"], "closed_at": x["closedAt"],
+                                  "state": x["state"].lower(), "user": ((x.get("author") or {}).get("login") or ""),
+                                  "labels": [l["name"] for l in x["labels"]["nodes"]]})
+                  if not block["pageInfo"]["hasNextPage"]:
+                      return out
+                  after = block["pageInfo"]["endCursor"]
+
+
+          # ---------------------------------------------------------------- the reading's signature
+
+          # Ed25519 (RFC 8032), verification only, written out here so the workflow needs nothing installed.
+          _P = 2 ** 255 - 19
+          _L = 2 ** 252 + 27742317777372353535851937790883648493
+          _D = -121665 * pow(121666, _P - 2, _P) % _P
+          _I = pow(2, (_P - 1) // 4, _P)
+
+
+          def _inv(x):
+              return pow(x, _P - 2, _P)
+
+
+          def _recover_x(y, sign):
+              if y >= _P:
+                  return None
+              x2 = (y * y - 1) * _inv(_D * y * y + 1)
+              if x2 == 0:
+                  return None if sign else 0
+              x = pow(x2, (_P + 3) // 8, _P)
+              if (x * x - x2) % _P:
+                  x = x * _I % _P
+              if (x * x - x2) % _P:
+                  return None
+              if (x & 1) != sign:
+                  x = _P - x
+              return x
+
+
+          def _add(p, q):
+              a = (p[1] - p[0]) * (q[1] - q[0]) % _P
+              b = (p[1] + p[0]) * (q[1] + q[0]) % _P
+              c = 2 * p[3] * q[3] * _D % _P
+              d = 2 * p[2] * q[2] % _P
+              e, f, g, h = b - a, d - c, d + c, b + a
+              return (e * f % _P, g * h % _P, f * g % _P, e * h % _P)
+
+
+          def _mul(s, p):
+              q = (0, 1, 1, 0)
+              while s > 0:
+                  if s & 1:
+                      q = _add(q, p)
+                  p = _add(p, p)
+                  s >>= 1
+              return q
+
+
+          def _equal(p, q):
+              return (p[0] * q[2] - q[0] * p[2]) % _P == 0 and (p[1] * q[2] - q[1] * p[2]) % _P == 0
+
+
+          def _decompress(s):
+              if len(s) != 32:
+                  return None
+              y = int.from_bytes(s, "little")
+              sign = y >> 255
+              y &= (1 << 255) - 1
+              x = _recover_x(y, sign)
+              return None if x is None else (x, y, 1, x * y % _P)
+
+
+          _GY = 4 * _inv(5) % _P
+          _GX = _recover_x(_GY, 0)
+          _G = (_GX, _GY, 1, _GX * _GY % _P)
+
+
+          def ed25519_verify(public, message, signature):
+              if len(public) != 32 or len(signature) != 64:
+                  return False
+              a = _decompress(public)
+              r = _decompress(signature[:32])
+              if a is None or r is None:
+                  return False
+              s = int.from_bytes(signature[32:], "little")
+              if s >= _L:
+                  return False
+              h = int.from_bytes(hashlib.sha512(signature[:32] + public + message).digest(), "little") % _L
+              return _equal(_mul(s, _G), _add(r, _mul(h, a)))
+
+
+          def canonical(snapshot):
+              """The bytes the reading signs: the snapshot as JSON, keys sorted, no spaces, ASCII only."""
+              return json.dumps(snapshot, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii")
+
+
+          def sha256(text):
+              return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+          def check_snapshot(n, raw, key_hex):
+              """A snapshot is taken only if the reading's key signed it, it is the snapshot of record number n, and every
+              text in it matches its SHA-256. Returns (snapshot, None) or (None, why)."""
+              try:
+                  doc = json.loads(raw.decode("utf-8"))
+                  sn, sig = doc["snapshot"], base64.b64decode(doc["ed25519"], validate=True)
+              except (ValueError, KeyError, TypeError) as e:
+                  return None, "not a snapshot (%s)" % type(e).__name__
+              if not ed25519_verify(bytes.fromhex(key_hex), canonical(sn), sig):
+                  return None, "its signature is not the reading's"
+              if sn.get("number") != n:
+                  return None, "it is signed, but for record number %s" % sn.get("number")
+              if sn.get("status") not in STATUSES or sn["status"] == "received":
+                  return None, "it is signed, but its status is %r" % sn.get("status")
+              if sn["status"] == "withheld":
+                  if "text" in sn or not sn.get("reason"):
+                      return None, "a withheld item's snapshot must hold its reason and no text"
+              elif sn.get("text_sha256") != sha256(sn.get("text", "")):
+                  return None, "its text does not match its SHA-256"
+              for c in sn.get("comments", []):
+                  if "withheld" not in c and c.get("text_sha256") != sha256(c.get("text", "")):
+                      return None, "comment %s does not match its SHA-256" % c.get("k")
+              return sn, None
+
+
+          # ---------------------------------------------------------------- reading what is filed, as data
+
+          def answers(body):
+              out = {}
+              parts = re.split(r"^### (.+)$", body or "", flags=re.M)
+              for i in range(1, len(parts) - 1, 2):
+                  v = parts[i + 1].strip()
+                  if v and v != NO_RESPONSE:
+                      out[parts[i].strip()] = v
+              return out
+
+
+          def ticked(text, option):
+              return bool(re.search(r"^- \[[xX]\] " + re.escape(option) + r"\s*$", text or "", re.M))
+
+
+          def labels(issue):
+              return [l["name"] if isinstance(l, dict) else l for l in issue.get("labels", [])]
+
+
+          def clean(text):
+              text = re.sub(r"[\x00-\x1f\x7f]+", " ", text or "")
+              return EMAIL.sub("[address removed]", text).strip()
+
+
+          def plain(text):
+              text = re.sub(r"[\x00-\x08\x0b-\x1f\x7f]+", " ", (text or "").replace("\r\n", "\n"))
+              text = re.sub(r"(?m)^\\(?=#|- \[)", "", text)
+              return EMAIL.sub("[address removed]", text).strip()
+
+
+          def md(text):
+              text = (text or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+              return re.sub(r"([\\`*_\[\]|~])", r"\\\1", text)
+
+
+          def day(ts):
+              return (ts or "")[:10] or None
+
+
+          def today():
+              return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+
+
+          def first_line(body):
+              return (body or "").split("\n", 1)[0].strip()
+
+
+          def same_login(a, b):
+              """The same account: the REST API writes an app's bot as "name[bot]", GraphQL as "name"."""
+              def strip(x):
+                  x = (x or "").lower()
+                  return x[:-5] if x.endswith("[bot]") else x
+              return bool(a) and strip(a) == strip(b)
+
+
+          def is_copy(issue):
+              """An issue the copier filed: by the copier, with "Record number N" as its first line."""
+              m = ITEM_LINE.match(first_line(issue.get("body")))
+              return int(m.group(1)) if m and same_login((issue.get("user") or {}).get("login"), COPIER) else None
+
+
+          def stub_comment(c):
+              """The copier's comment "Record number N." on an issue opened on GitHub."""
+              m = STUB_LINE.match((c.get("body") or "").strip())
+              return int(m.group(1)) if m and same_login((c.get("user") or {}).get("login"), COPIER) else None
+
+
+          def copied_comment(c):
+              """A comment the copier copied: (record number, k), or None."""
+              m = COMMENT_LINE.match(first_line(c.get("body")))
+              return (int(m.group(1)), int(m.group(2))) if m and same_login((c.get("user") or {}).get("login"), COPIER) else None
+
+
+          _rights = {}
+
+
+          def insider(user):
+              """Someone who keeps the store: read from their rights on it. The copier itself and every bot are not."""
+              login = (user or {}).get("login") or ""
+              if not login or (user or {}).get("type") == "Bot" or login.endswith("[bot]"):
+                  return False
+              if login not in _rights:
+                  st, body, _ = store("/repos/%s/collaborators/%s/permission" % (S_REPO, login))
+                  _rights[login] = st == 200 and (body or {}).get("permission") in INSIDE
+              return _rights[login]
+
+
+          def form_labels(have, body):
+              """The labels a form cannot add, read from its answers as data (as the acknowledgement does)."""
+              add = []
+              a = answers(body)
+              rung = {"A minute": "rung:minute", "An hour": "rung:hour", "A week": "rung:week"}
+              for k in ("Which rung", "Rung"):
+                  if a.get(k) in rung:
+                      add.append(rung[a[k]])
+              if "kind:try" in have and ticked(a.get("Self-scored"), "This is a self-scored card from the test card."):
+                  add.append("self-scored")
+              if "kind:result" in have:
+                  kind = {"Reproduction": "result:reproduction", "Generalisation": "result:generalisation",
+                          "Exploratory": "result:exploratory", "Rerun": "result:rerun",
+                          "Independent implementation": "result:independent"}
+                  outcome = {"Fires": "outcome:fires", "Holds": "outcome:holds", "Settles nothing": "outcome:settles-nothing",
+                             "Departed from its frozen plan": "outcome:departed"}
+                  if a.get("Its kind") in kind:
+                      add.append(kind[a["Its kind"]])
+                  if a.get("Its outcome") in outcome:
+                      add.append(outcome[a["Its outcome"]])
+              return add
+
+
+          def make_stub(issue):
+              """The stub of Part Two, for an issue opened on GitHub in the public store: an issue in the holding repository
+              holding only the link, and nothing the person wrote. Its number is the record number. Then "Record number N."
+              on the public issue, and the acknowledgement with its labels. Returns the record number."""
+              n_pub = issue["number"]
+              stub = ok(hold("/repos/%s/issues" % H_REPO, "POST",
+                             {"title": STUB_TITLE, "body": issue["html_url"], "labels": ["stub"]}), "filing the stub")
+              n = stub["number"]
+              # the stub only keeps the number: closed at once, so nothing in the holding repository waits on it
+              hold("/repos/%s/issues/%d" % (H_REPO, n), "PATCH", {"state": "closed", "state_reason": "completed"})
+              ok(store("/repos/%s/issues/%d/comments" % (S_REPO, n_pub), "POST", {"body": "Record number %d." % n}),
+                 "the record number")
+              have = labels(issue)
+              add = [] if any(s in have for s in STATUSES) else ["received"]
+              if not insider(issue.get("user")):
+                  add.append("from-outside")
+              add += form_labels(have, issue.get("body"))
+              ok(store("/repos/%s/issues/%d/comments" % (S_REPO, n_pub), "POST", {"body": ACK_TEXT}), "the acknowledgement")
+              add = [x for x in dict.fromkeys(add) if x not in have]
+              if add:
+                  ok(store("/repos/%s/issues/%d/labels" % (S_REPO, n_pub), "POST", {"labels": add}), "the labels")
+              print("issue %d of the store: stub %d in the holding repository, so record number %d; labels added: %s"
+                    % (n_pub, n, n, ", ".join(add) or "none"))
+              return n
+
+
+          def wants_stub(issue):
+              """Every issue opened on GitHub in the store wants a stub, but the copier's own copies, the bots' issues,
+              and the desk's own issues that came through no form (they carry no kind)."""
+              if "pull_request" in issue:
+                  return False
+              user = issue.get("user") or {}
+              if is_copy(issue) is not None or user.get("type") == "Bot" or (user.get("login") or "").endswith("[bot]"):
+                  return False
+              if insider(user) and not any(x.startswith("kind:") for x in labels(issue)):
+                  return False
+              return True
+
+
+          # The stub, for an issue opened on GitHub in the public store (before-launch brief v2, Part Two, "One number for
+          # everything"). Zero-Clause BSD, Studio G.
+          # Reads the issue as it is now, never as the event saw it: a run that starts late, or twice, changes nothing.
+          with open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8") as f:
+              n_pub = int(json.load(f)["issue"]["number"])
+          issue = ok(store("/repos/%s/issues/%d" % (S_REPO, n_pub)), "reading the issue")
+          if not wants_stub(issue):
+              print("issue %d: a copy, a bot's, or the desk's own; no stub" % n_pub)
+              raise SystemExit(0)
+          have = [stub_comment(c) for c in pages(store, "/repos/%s/issues/%d/comments" % (S_REPO, n_pub))]
+          if any(x is not None for x in have):
+              print("issue %d already has its record number" % n_pub)
+              raise SystemExit(0)
+          make_stub(issue)

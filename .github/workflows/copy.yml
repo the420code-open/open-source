@@ -1,0 +1,1507 @@
+# The copy workflow (before-launch brief v2, Part Two). Zero-Clause BSD, Studio G.
+# Every five minutes, and on dispatch: the reading's snapshots from the holding repository, and only those,
+# filed here; the reply clock; and the record and the counts, built here from both repositories.
+# It reads only data from the holding repository, never runs a file from it, and checks out nothing.
+# All its logic is in this file. Its tokens are the copier app's, minted for each run, each narrowed to one
+# repository and to the rights named below. While the app's key is not set, it does nothing and passes.
+name: copy
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "copy; or prove, to show what each of the copier's tokens can and cannot do"
+        required: false
+        default: "copy"
+permissions: {}
+concurrency:
+  group: copier
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions: {}
+    env:
+      KEY_SET: ${{ secrets.COPIER_KEY != '' && secrets.COPIER_CLIENT_ID != '' }}
+    steps:
+      - name: the copier's key is not set yet, so there is nothing to do
+        if: env.KEY_SET != 'true'
+        run: echo "The copier's key is not set yet. Nothing to do, and nothing fails."
+      - name: a token for the holding repository only, with contents read and issues write
+        id: holding
+        if: env.KEY_SET == 'true'
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.COPIER_CLIENT_ID }}
+          private-key: ${{ secrets.COPIER_KEY }}
+          owner: the420code-open
+          repositories: open-source-holding
+          permission-contents: read
+          permission-issues: write
+      - name: a token for the public store only, with contents write and issues write
+        id: store
+        if: env.KEY_SET == 'true'
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.COPIER_CLIENT_ID }}
+          private-key: ${{ secrets.COPIER_KEY }}
+          owner: the420code-open
+          repositories: open-source
+          permission-contents: write
+          permission-issues: write
+      - name: the copy, the reply clock, the record and the counts; all the logic is in this file
+        if: env.KEY_SET == 'true' && inputs.mode != 'prove'
+        shell: python3 -I {0}
+        env:
+          HOLDING_REPO: the420code-open/open-source-holding
+          STORE_REPO: the420code-open/open-source
+          HOLDING_TOKEN: ${{ steps.holding.outputs.token }}
+          STORE_TOKEN: ${{ steps.store.outputs.token }}
+          COPIER_LOGIN: ${{ steps.store.outputs.app-slug }}[bot]
+          READING_KEY: a0c1b12317f27090ae7107f23a28cc1b87884252fe0546dddb974052c5fedc20
+          REPLY_DAYS: "5"
+        run: |
+          # What the public store's copier workflows share. Zero-Clause BSD, Studio G.
+          #
+          # This text is written whole into each workflow file that uses it (build_copier.py does that), so a workflow
+          # carries all its logic inside its own file and runs no other file from either repository.
+          #
+          # Text from a stranger is only ever data here: read through the API, parsed as text, written out through the
+          # API as JSON or as escaped text. Nothing here runs it, and nothing places it into a command.
+          import base64
+          import datetime as dt
+          import hashlib
+          import json
+          import os
+          import re
+          import sys
+          import time
+          import urllib.error
+          import urllib.request
+
+          API = os.environ.get("GITHUB_API_URL") or "https://api.github.com"     # set by GitHub on every runner
+          H_REPO = os.environ["HOLDING_REPO"]          # the holding repository: read only, but for the stubs
+          S_REPO = os.environ["STORE_REPO"]            # the public store
+          H_TOKEN = os.environ["HOLDING_TOKEN"]
+          S_TOKEN = os.environ["STORE_TOKEN"]
+          COPIER = os.environ["COPIER_LOGIN"]          # who the copier posts as: the app's bot
+          READ_BRANCH = "read"                         # where the reading's snapshots are kept, in the holding repository
+          RECORD_BRANCH = "record"                     # where the record and the counts are kept, in the public store
+
+          STATUSES = ["received", "needs-information", "under-review", "being-rerun", "shown", "declined", "withheld"]
+          PUBLIC = {"built-on-the-embryo": "Built on the Embryo", "independent-test": "Independent test", "approved": "Approved"}
+          TITLES = {"try": "I tried it", "proposal": "A proposal", "build": "A build", "result": "A result",
+                    "challenge": "A challenge to a claim", "comment": "A comment"}
+          INSIDE = ("admin", "maintain", "write")
+          ACK_TEXT = ("Thank you. Your work is received, dated, and in the record. A first reply comes within a week, "
+                      "and sooner where we can. If anything is unclear, we will ask here.")
+          NO_RESPONSE = "_No response_"
+          MARK = "Sent from the site, by "
+          WORK = "From the work, by Studio G."
+          EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+          SWITCH = re.compile(r"(?<![#/\w-])KS-[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*(?![\w-])", re.I)
+          EMAILED = re.compile(r"Replied by email on (\d{4}-\d{2}-\d{2})")
+          REASON = re.compile(r"^\s*(Declined|Withheld):\s*(.+)", re.S)
+          # the first line of everything the copier files, and of each comment it copies
+          ITEM_LINE = re.compile(r"^Record number (\d+)$")
+          COMMENT_LINE = re.compile(r"^Record number (\d+), comment (\d+), received (\d{4}-\d{2}-\d{2})\.$")
+          STUB_LINE = re.compile(r"^Record number (\d+)\.$")
+          STUB_TITLE = "Opened on GitHub"
+          sys.stdout.reconfigure(encoding="utf-8")
+
+
+          # ---------------------------------------------------------------- the API, one token for each repository
+
+          def _call(token, url, method="GET", body=None, accept="application/vnd.github+json", tries=4):
+              url = url if url.startswith("http") else API + url
+              data = None if body is None else json.dumps(body).encode()
+              for n in range(tries):
+                  req = urllib.request.Request(url, data=data, method=method, headers={
+                      "Authorization": "Bearer " + token, "Accept": accept, "User-Agent": "the420code-open-copier",
+                      "X-GitHub-Api-Version": "2022-11-28"})
+                  try:
+                      with urllib.request.urlopen(req, timeout=60) as r:
+                          raw = r.read()
+                          if "raw" in accept:
+                              return r.status, raw, r.headers
+                          return r.status, (json.loads(raw) if raw else None), r.headers
+                  except urllib.error.HTTPError as e:
+                      raw = e.read()
+                      if e.code in (500, 502, 503, 504) and n + 1 < tries:
+                          time.sleep(2 * (n + 1))
+                          continue
+                      try:
+                          return e.code, json.loads(raw), e.headers
+                      except ValueError:
+                          return e.code, None, e.headers
+                  except (urllib.error.URLError, OSError):
+                      if n + 1 < tries:
+                          time.sleep(2 * (n + 1))
+                          continue
+                      raise
+              raise RuntimeError("unreachable")
+
+
+          def hold(path, method="GET", body=None, accept="application/vnd.github+json"):
+              """The holding repository. Its token can read its contents and its issues, and write issues for the stubs."""
+              return _call(H_TOKEN, path, method, body, accept)
+
+
+          def store(path, method="GET", body=None, accept="application/vnd.github+json"):
+              return _call(S_TOKEN, path, method, body, accept)
+
+
+          def ok(result, what):
+              st, body, _ = result
+              if st >= 300:
+                  msg = body.get("message", "") if isinstance(body, dict) else ""
+                  raise SystemExit("%s: GitHub answered %s %s" % (what, st, msg))
+              return body
+
+
+          def pages(call, path):
+              out, url = [], API + path + ("&" if "?" in path else "?") + "per_page=100"
+              while url:
+                  st, body, h = call(url)
+                  if st != 200:
+                      raise SystemExit("%s: GitHub answered %s" % (path, st))
+                  out.extend(body)
+                  nxt = re.search(r'<([^>]+)>;\s*rel="next"', h.get("Link") or "")
+                  url = nxt.group(1) if nxt else None
+              return out
+
+
+          def holding_issues():
+              """Every issue of the holding repository, as metadata only: its number, its dates, its state, who opened it,
+              and its labels. Never its title, its text or its comments: the copy never reads the original again."""
+              owner, name = H_REPO.split("/")
+              q = ("query($o:String!,$n:String!,$a:String){repository(owner:$o,name:$n){issues(first:100,after:$a,"
+                   "orderBy:{field:CREATED_AT,direction:ASC}){pageInfo{hasNextPage endCursor}nodes{number createdAt "
+                   "closedAt state author{login} labels(first:60){nodes{name}}}}}}")
+              out, after = [], None
+              while True:
+                  res = ok(hold("/graphql", "POST", {"query": q, "variables": {"o": owner, "n": name, "a": after}}),
+                           "listing the holding repository's issues")
+                  if res.get("errors"):
+                      raise SystemExit("listing the holding repository's issues: %s" % res["errors"][0].get("message"))
+                  block = res["data"]["repository"]["issues"]
+                  for x in block["nodes"]:
+                      out.append({"number": x["number"], "created_at": x["createdAt"], "closed_at": x["closedAt"],
+                                  "state": x["state"].lower(), "user": ((x.get("author") or {}).get("login") or ""),
+                                  "labels": [l["name"] for l in x["labels"]["nodes"]]})
+                  if not block["pageInfo"]["hasNextPage"]:
+                      return out
+                  after = block["pageInfo"]["endCursor"]
+
+
+          # ---------------------------------------------------------------- the reading's signature
+
+          # Ed25519 (RFC 8032), verification only, written out here so the workflow needs nothing installed.
+          _P = 2 ** 255 - 19
+          _L = 2 ** 252 + 27742317777372353535851937790883648493
+          _D = -121665 * pow(121666, _P - 2, _P) % _P
+          _I = pow(2, (_P - 1) // 4, _P)
+
+
+          def _inv(x):
+              return pow(x, _P - 2, _P)
+
+
+          def _recover_x(y, sign):
+              if y >= _P:
+                  return None
+              x2 = (y * y - 1) * _inv(_D * y * y + 1)
+              if x2 == 0:
+                  return None if sign else 0
+              x = pow(x2, (_P + 3) // 8, _P)
+              if (x * x - x2) % _P:
+                  x = x * _I % _P
+              if (x * x - x2) % _P:
+                  return None
+              if (x & 1) != sign:
+                  x = _P - x
+              return x
+
+
+          def _add(p, q):
+              a = (p[1] - p[0]) * (q[1] - q[0]) % _P
+              b = (p[1] + p[0]) * (q[1] + q[0]) % _P
+              c = 2 * p[3] * q[3] * _D % _P
+              d = 2 * p[2] * q[2] % _P
+              e, f, g, h = b - a, d - c, d + c, b + a
+              return (e * f % _P, g * h % _P, f * g % _P, e * h % _P)
+
+
+          def _mul(s, p):
+              q = (0, 1, 1, 0)
+              while s > 0:
+                  if s & 1:
+                      q = _add(q, p)
+                  p = _add(p, p)
+                  s >>= 1
+              return q
+
+
+          def _equal(p, q):
+              return (p[0] * q[2] - q[0] * p[2]) % _P == 0 and (p[1] * q[2] - q[1] * p[2]) % _P == 0
+
+
+          def _decompress(s):
+              if len(s) != 32:
+                  return None
+              y = int.from_bytes(s, "little")
+              sign = y >> 255
+              y &= (1 << 255) - 1
+              x = _recover_x(y, sign)
+              return None if x is None else (x, y, 1, x * y % _P)
+
+
+          _GY = 4 * _inv(5) % _P
+          _GX = _recover_x(_GY, 0)
+          _G = (_GX, _GY, 1, _GX * _GY % _P)
+
+
+          def ed25519_verify(public, message, signature):
+              if len(public) != 32 or len(signature) != 64:
+                  return False
+              a = _decompress(public)
+              r = _decompress(signature[:32])
+              if a is None or r is None:
+                  return False
+              s = int.from_bytes(signature[32:], "little")
+              if s >= _L:
+                  return False
+              h = int.from_bytes(hashlib.sha512(signature[:32] + public + message).digest(), "little") % _L
+              return _equal(_mul(s, _G), _add(r, _mul(h, a)))
+
+
+          def canonical(snapshot):
+              """The bytes the reading signs: the snapshot as JSON, keys sorted, no spaces, ASCII only."""
+              return json.dumps(snapshot, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii")
+
+
+          def sha256(text):
+              return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+          def check_snapshot(n, raw, key_hex):
+              """A snapshot is taken only if the reading's key signed it, it is the snapshot of record number n, and every
+              text in it matches its SHA-256. Returns (snapshot, None) or (None, why)."""
+              try:
+                  doc = json.loads(raw.decode("utf-8"))
+                  sn, sig = doc["snapshot"], base64.b64decode(doc["ed25519"], validate=True)
+              except (ValueError, KeyError, TypeError) as e:
+                  return None, "not a snapshot (%s)" % type(e).__name__
+              if not ed25519_verify(bytes.fromhex(key_hex), canonical(sn), sig):
+                  return None, "its signature is not the reading's"
+              if sn.get("number") != n:
+                  return None, "it is signed, but for record number %s" % sn.get("number")
+              if sn.get("status") not in STATUSES or sn["status"] == "received":
+                  return None, "it is signed, but its status is %r" % sn.get("status")
+              if sn["status"] == "withheld":
+                  if "text" in sn or not sn.get("reason"):
+                      return None, "a withheld item's snapshot must hold its reason and no text"
+              elif sn.get("text_sha256") != sha256(sn.get("text", "")):
+                  return None, "its text does not match its SHA-256"
+              for c in sn.get("comments", []):
+                  if "withheld" not in c and c.get("text_sha256") != sha256(c.get("text", "")):
+                      return None, "comment %s does not match its SHA-256" % c.get("k")
+              return sn, None
+
+
+          # ---------------------------------------------------------------- reading what is filed, as data
+
+          def answers(body):
+              out = {}
+              parts = re.split(r"^### (.+)$", body or "", flags=re.M)
+              for i in range(1, len(parts) - 1, 2):
+                  v = parts[i + 1].strip()
+                  if v and v != NO_RESPONSE:
+                      out[parts[i].strip()] = v
+              return out
+
+
+          def ticked(text, option):
+              return bool(re.search(r"^- \[[xX]\] " + re.escape(option) + r"\s*$", text or "", re.M))
+
+
+          def labels(issue):
+              return [l["name"] if isinstance(l, dict) else l for l in issue.get("labels", [])]
+
+
+          def clean(text):
+              text = re.sub(r"[\x00-\x1f\x7f]+", " ", text or "")
+              return EMAIL.sub("[address removed]", text).strip()
+
+
+          def plain(text):
+              text = re.sub(r"[\x00-\x08\x0b-\x1f\x7f]+", " ", (text or "").replace("\r\n", "\n"))
+              text = re.sub(r"(?m)^\\(?=#|- \[)", "", text)
+              return EMAIL.sub("[address removed]", text).strip()
+
+
+          def md(text):
+              text = (text or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+              return re.sub(r"([\\`*_\[\]|~])", r"\\\1", text)
+
+
+          def day(ts):
+              return (ts or "")[:10] or None
+
+
+          def today():
+              return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+
+
+          def first_line(body):
+              return (body or "").split("\n", 1)[0].strip()
+
+
+          def same_login(a, b):
+              """The same account: the REST API writes an app's bot as "name[bot]", GraphQL as "name"."""
+              def strip(x):
+                  x = (x or "").lower()
+                  return x[:-5] if x.endswith("[bot]") else x
+              return bool(a) and strip(a) == strip(b)
+
+
+          def is_copy(issue):
+              """An issue the copier filed: by the copier, with "Record number N" as its first line."""
+              m = ITEM_LINE.match(first_line(issue.get("body")))
+              return int(m.group(1)) if m and same_login((issue.get("user") or {}).get("login"), COPIER) else None
+
+
+          def stub_comment(c):
+              """The copier's comment "Record number N." on an issue opened on GitHub."""
+              m = STUB_LINE.match((c.get("body") or "").strip())
+              return int(m.group(1)) if m and same_login((c.get("user") or {}).get("login"), COPIER) else None
+
+
+          def copied_comment(c):
+              """A comment the copier copied: (record number, k), or None."""
+              m = COMMENT_LINE.match(first_line(c.get("body")))
+              return (int(m.group(1)), int(m.group(2))) if m and same_login((c.get("user") or {}).get("login"), COPIER) else None
+
+
+          _rights = {}
+
+
+          def insider(user):
+              """Someone who keeps the store: read from their rights on it. The copier itself and every bot are not."""
+              login = (user or {}).get("login") or ""
+              if not login or (user or {}).get("type") == "Bot" or login.endswith("[bot]"):
+                  return False
+              if login not in _rights:
+                  st, body, _ = store("/repos/%s/collaborators/%s/permission" % (S_REPO, login))
+                  _rights[login] = st == 200 and (body or {}).get("permission") in INSIDE
+              return _rights[login]
+
+
+          def form_labels(have, body):
+              """The labels a form cannot add, read from its answers as data (as the acknowledgement does)."""
+              add = []
+              a = answers(body)
+              rung = {"A minute": "rung:minute", "An hour": "rung:hour", "A week": "rung:week"}
+              for k in ("Which rung", "Rung"):
+                  if a.get(k) in rung:
+                      add.append(rung[a[k]])
+              if "kind:try" in have and ticked(a.get("Self-scored"), "This is a self-scored card from the test card."):
+                  add.append("self-scored")
+              if "kind:result" in have:
+                  kind = {"Reproduction": "result:reproduction", "Generalisation": "result:generalisation",
+                          "Exploratory": "result:exploratory", "Rerun": "result:rerun",
+                          "Independent implementation": "result:independent"}
+                  outcome = {"Fires": "outcome:fires", "Holds": "outcome:holds", "Settles nothing": "outcome:settles-nothing",
+                             "Departed from its frozen plan": "outcome:departed"}
+                  if a.get("Its kind") in kind:
+                      add.append(kind[a["Its kind"]])
+                  if a.get("Its outcome") in outcome:
+                      add.append(outcome[a["Its outcome"]])
+              return add
+
+
+          def make_stub(issue):
+              """The stub of Part Two, for an issue opened on GitHub in the public store: an issue in the holding repository
+              holding only the link, and nothing the person wrote. Its number is the record number. Then "Record number N."
+              on the public issue, and the acknowledgement with its labels. Returns the record number."""
+              n_pub = issue["number"]
+              stub = ok(hold("/repos/%s/issues" % H_REPO, "POST",
+                             {"title": STUB_TITLE, "body": issue["html_url"], "labels": ["stub"]}), "filing the stub")
+              n = stub["number"]
+              # the stub only keeps the number: closed at once, so nothing in the holding repository waits on it
+              hold("/repos/%s/issues/%d" % (H_REPO, n), "PATCH", {"state": "closed", "state_reason": "completed"})
+              ok(store("/repos/%s/issues/%d/comments" % (S_REPO, n_pub), "POST", {"body": "Record number %d." % n}),
+                 "the record number")
+              have = labels(issue)
+              add = [] if any(s in have for s in STATUSES) else ["received"]
+              if not insider(issue.get("user")):
+                  add.append("from-outside")
+              add += form_labels(have, issue.get("body"))
+              ok(store("/repos/%s/issues/%d/comments" % (S_REPO, n_pub), "POST", {"body": ACK_TEXT}), "the acknowledgement")
+              add = [x for x in dict.fromkeys(add) if x not in have]
+              if add:
+                  ok(store("/repos/%s/issues/%d/labels" % (S_REPO, n_pub), "POST", {"labels": add}), "the labels")
+              print("issue %d of the store: stub %d in the holding repository, so record number %d; labels added: %s"
+                    % (n_pub, n, n, ", ".join(add) or "none"))
+              return n
+
+
+          def wants_stub(issue):
+              """Every issue opened on GitHub in the store wants a stub, but the copier's own copies, the bots' issues,
+              and the desk's own issues that came through no form (they carry no kind)."""
+              if "pull_request" in issue:
+                  return False
+              user = issue.get("user") or {}
+              if is_copy(issue) is not None or user.get("type") == "Bot" or (user.get("login") or "").endswith("[bot]"):
+                  return False
+              if insider(user) and not any(x.startswith("kind:") for x in labels(issue)):
+                  return False
+              return True
+
+
+          # The copy (before-launch brief v2, Part Two). Zero-Clause BSD, Studio G.
+          #
+          # 1. Every issue opened on GitHub in the store that has no record number yet gets its stub (a sweep, in case
+          #    the stub's own run was missed).
+          # 2. Every snapshot the reading wrote, read/N.json on the holding repository's branch "read", signed with the
+          #    reading's key, is filed in the store under its plain title, its first line "Record number N". A withheld
+          #    item gives only its number, its date and its reason. Its comments, and its packet, go the same way.
+          #    The copy takes the snapshot, and only the snapshot: it never reads the original again.
+          # 3. The reply clock, wherever an item is.
+          # 4. The record and the counts, built in the store from both repositories, on the store's branch "record".
+          import statistics
+
+          KEY = os.environ["READING_KEY"]              # the reading's public key: only what it signed is copied
+          DAYS = float(os.environ.get("REPLY_DAYS") or 5)
+          NOT_TEXT = ("Title", "Room", "Page", "Credit", "No credit", "Terms")
+          CARRY = re.compile(r"^(kind:|rung:|result:|outcome:|rerun:)|^(from-site|from-mailbox|from-outside|self-scored|"
+                             r"replied-by-email|test|test-send|built-on-the-embryo|independent-test|approved)$")
+          NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$")
+          RESULT_FIELDS = ["What was run, and the proposal or switch it tests", "Its kind", "Its outcome",
+                           "The registry version", "The specification version", "The code version", "The seeds",
+                           "The run packet"]
+          CONTRIBUTIONS = ("proposal", "build", "result", "challenge")
+          HEX = re.compile(r"\b[0-9a-fA-F]{64}\b")
+          refused, to_clear, changed = [], [], []
+          now = dt.datetime.now(dt.timezone.utc)
+
+
+          def when(ts):
+              return dt.datetime.strptime(ts[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=dt.timezone.utc)
+
+
+          # ---------------------------------------------------------------- the store's own branch, "record"
+
+          def read_store_file(path, ref=RECORD_BRANCH):
+              st, body, _ = store("/repos/%s/contents/%s?ref=%s" % (S_REPO, path, ref))
+              if st == 404:
+                  return None, None
+              ok((st, body, None), "reading " + path)
+              return base64.b64decode(body["content"]).decode("utf-8"), body["sha"]
+
+
+          def ensure_record_branch():
+              st, _, _ = store("/repos/%s/git/ref/heads/%s" % (S_REPO, RECORD_BRANCH))
+              if st == 200:
+                  return
+              # a branch of its own, with no history from main: it holds only what the automation writes
+              readme = ("# The record\n\nThis branch is written only by the store's copy workflow: record.json and RECORD.md, "
+                        "counts.json, and copier.json. Terms: CC0 1.0 Universal.\n")
+              blob = ok(store("/repos/%s/git/blobs" % S_REPO, "POST", {"content": readme, "encoding": "utf-8"}), "a blob")
+              tree = ok(store("/repos/%s/git/trees" % S_REPO, "POST",
+                              {"tree": [{"path": "README.md", "mode": "100644", "type": "blob", "sha": blob["sha"]}]}), "a tree")
+              commit = ok(store("/repos/%s/git/commits" % S_REPO, "POST",
+                                {"message": "The record's branch, written only by the copy workflow", "tree": tree["sha"],
+                                 "parents": []}), "a commit")
+              st, body, _ = store("/repos/%s/git/refs" % S_REPO, "POST",
+                                  {"ref": "refs/heads/" + RECORD_BRANCH, "sha": commit["sha"]})
+              if st not in (201, 422):            # 422: made meanwhile by another run
+                  ok((st, body, None), "making the record's branch")
+              print("made the branch", RECORD_BRANCH)
+
+
+          def write_store_file(path, text, message):
+              for n in range(6):
+                  old, sha = read_store_file(path)
+                  if old == text:
+                      return False
+                  body = {"message": message, "branch": RECORD_BRANCH,
+                          "content": base64.b64encode(text.encode("utf-8")).decode("ascii")}
+                  if sha:
+                      body["sha"] = sha
+                  st, res, _ = store("/repos/%s/contents/%s" % (S_REPO, path), "PUT", body)
+                  if st in (200, 201):
+                      print("committed:", path)
+                      return True
+                  if st in (409, 422) and n < 5:
+                      time.sleep(1 + n)
+                      continue
+                  ok((st, res, None), "writing " + path)
+              return False
+
+
+          # ---------------------------------------------------------------- what is there now
+
+          ensure_record_branch()
+          raw_state, _ = read_store_file("copier.json")
+          state = json.loads(raw_state) if raw_state else {}
+          state.setdefault("applied", {})
+          state.setdefault("history_to_clear", [])
+          s_issues = [i for i in pages(store, "/repos/%s/issues?state=all&sort=created&direction=asc" % S_REPO)
+                      if "pull_request" not in i]
+          s_comments = {}
+          for c in pages(store, "/repos/%s/issues/comments?sort=created&direction=asc" % S_REPO):
+              s_comments.setdefault(int(c["issue_url"].rsplit("/", 1)[1]), []).append(c)
+          copies, by_stub = {}, {}
+          for i in s_issues:
+              n = is_copy(i)
+              if n is not None and n not in copies:
+                  copies[n] = i
+              for c in s_comments.get(i["number"], []):
+                  m = stub_comment(c)
+                  if m is not None and m not in by_stub:
+                      by_stub[m] = i
+
+          # 1. the sweep: an issue opened on GitHub, still without its record number
+          for i in s_issues:
+              if wants_stub(i) and not any(stub_comment(c) is not None for c in s_comments.get(i["number"], [])):
+                  n = make_stub(i)
+                  by_stub[n] = i
+                  changed.append("stub %d" % n)
+                  s_comments[i["number"]] = pages(store, "/repos/%s/issues/%d/comments" % (S_REPO, i["number"]))
+
+          h_issues = {x["number"]: x for x in holding_issues()}
+
+          # ---------------------------------------------------------------- 2. the copy
+
+          st, tree, _ = hold("/repos/%s/git/trees/%s?recursive=1" % (H_REPO, READ_BRANCH))
+          blobs = {x["path"]: x["sha"] for x in (tree or {}).get("tree", []) if x["type"] == "blob"} if st == 200 else {}
+          if st not in (200, 404, 409):
+              ok((st, tree, None), "reading the snapshots' branch")
+          snaps = {}
+          for path, sha in sorted(blobs.items()):
+              m = re.match(r"^read/(\d+)\.json$", path)
+              if not m:
+                  continue
+              n = int(m.group(1))
+              st, raw, _ = hold("/repos/%s/git/blobs/%s" % (H_REPO, sha), accept="application/vnd.github.raw+json")
+              if st != 200:
+                  refused.append((n, "its file could not be read (%s)" % st))
+                  continue
+              sn, why = check_snapshot(n, raw, KEY)
+              if why:
+                  refused.append((n, why))
+                  continue
+              h = h_issues.get(n)
+              if not h or not (any(x.startswith("kind:") for x in h["labels"]) or "withheld" in h["labels"]):
+                  refused.append((n, "it is signed, but the holding repository has no item %d" % n))
+                  continue
+              last = state["applied"].get(str(n), {}).get("read_at")
+              if last and sn["read_at"] < last:
+                  refused.append((n, "it is older than the reading already copied (%s): an old snapshot is never taken" % last))
+                  continue
+              snaps[n] = (sn, sha)
+
+
+          def withheld_body(n, sn):
+              return "Record number %d\n\nReceived %s. Withheld: %s." % (n, sn["received"], clean(sn["reason"]).rstrip("."))
+
+
+          def comment_body(n, c, item_withheld):
+              head = "Record number %d, comment %d, received %s." % (n, c["k"], c["date"])
+              if item_withheld:
+                  return head + "\n\nWithheld, with its item."
+              if "withheld" in c:
+                  return head + "\n\nWithheld: %s." % clean(c["withheld"]).rstrip(".")
+              who = (MARK + c["by"] + ".") if c["from"] == "site" else WORK
+              return head + "\n\n" + who + "\n\n" + c["text"]
+
+
+          def set_labels(issue, want):
+              have = [x for x in labels(issue) if x != "reply-due"]
+              if sorted(have) != sorted(want):
+                  keep = ["reply-due"] if "reply-due" in labels(issue) else []
+                  ok(store("/repos/%s/issues/%d/labels" % (S_REPO, issue["number"]), "PUT", {"labels": want + keep}), "labels")
+                  return True
+              return False
+
+
+          def packet(n, sn):
+              files = (sn.get("packet") or {}).get("files") or []
+              if not files:
+                  return
+              st, there, _ = store("/repos/%s/contents/packets/%d?ref=main" % (S_REPO, n))
+              there = {x["name"]: x["sha"] for x in there} if st == 200 and isinstance(there, list) else {}
+              new = []
+              for f in files:
+                  name = f.get("name", "")
+                  src = blobs.get("read/%d/packet/%s" % (n, name))
+                  if not NAME.match(name) or not src:
+                      refused.append((n, "its packet's file %r is not where the snapshot says" % name))
+                      return
+                  if there.get(name) == src:
+                      continue
+                  st, data, _ = hold("/repos/%s/git/blobs/%s" % (H_REPO, src), accept="application/vnd.github.raw+json")
+                  if st != 200 or hashlib.sha256(data).hexdigest() != f.get("sha256") or len(data) != f.get("bytes"):
+                      refused.append((n, "its packet's file %r does not match its SHA-256" % name))
+                      return
+                  b = ok(store("/repos/%s/git/blobs" % S_REPO, "POST",
+                               {"content": base64.b64encode(data).decode("ascii"), "encoding": "base64"}), "a packet blob")
+                  new.append({"path": "packets/%d/%s" % (n, name), "mode": "100644", "type": "blob", "sha": b["sha"]})
+              if not new:
+                  return
+              for attempt in range(5):
+                  head = ok(store("/repos/%s/git/ref/heads/main" % S_REPO), "main")["object"]["sha"]
+                  base = ok(store("/repos/%s/git/commits/%s" % (S_REPO, head)), "main's commit")["tree"]["sha"]
+                  tree = ok(store("/repos/%s/git/trees" % S_REPO, "POST", {"base_tree": base, "tree": new}), "a tree")
+                  commit = ok(store("/repos/%s/git/commits" % S_REPO, "POST", {
+                      "message": "packets/%d: the run packet of record number %d, copied after its reading\n\n%s" % (
+                          n, n, "\n".join("- %s: SHA-256 %s" % (f["name"], f["sha256"]) for f in files)),
+                      "tree": tree["sha"], "parents": [head]}), "a commit")
+                  st, res, _ = store("/repos/%s/git/refs/heads/main" % S_REPO, "PATCH", {"sha": commit["sha"], "force": False})
+                  if st == 200:
+                      changed.append("packets/%d" % n)
+                      print("record number %d: its packet copied into packets/%d/" % (n, n))
+                      return
+                  time.sleep(2 + attempt)
+              refused.append((n, "its packet could not be committed to main"))
+
+
+          for n, (sn, sha) in sorted(snaps.items()):
+              held = sn["status"] == "withheld"
+              want_labels = ["withheld"] + [x for x in sn["labels"] if x in ("test", "test-send")] if held else \
+                  sorted(x for x in sn["labels"] if CARRY.match(x)) + [sn["status"]]
+              want_title = "Withheld" if held else sn["title"]
+              want_body = withheld_body(n, sn) if held else "Record number %d\n\n%s" % (n, sn["text"])
+              issue = copies.get(n)
+              if issue is None:
+                  issue = ok(store("/repos/%s/issues" % S_REPO, "POST",
+                                   {"title": want_title, "body": want_body, "labels": want_labels}), "filing record %d" % n)
+                  copies[n] = issue
+                  s_comments[issue["number"]] = []
+                  changed.append("record %d filed" % n)
+                  print("record number %d: filed as issue %d of the store%s" % (n, issue["number"], ", withheld" if held else ""))
+              else:
+                  was_held = "withheld" in labels(issue) or issue.get("title") == "Withheld"
+                  if was_held and not held:
+                      refused.append((n, "its copy is withheld, and a withheld copy is never shown again by the copier"))
+                      continue
+                  edit = {}
+                  if issue.get("title") != want_title:
+                      edit["title"] = want_title
+                  if (issue.get("body") or "") != want_body:
+                      edit["body"] = want_body
+                  if edit:
+                      issue = ok(store("/repos/%s/issues/%d" % (S_REPO, issue["number"]), "PATCH", edit), "the copy")
+                      copies[n] = issue
+                      changed.append("record %d edited" % n)
+                      if held:
+                          to_clear.append("issue %d (record number %d): its body" % (issue["number"], n))
+                  if set_labels(issue, want_labels):
+                      changed.append("record %d labels" % n)
+              if held and not issue.get("locked"):
+                  store("/repos/%s/issues/%d/lock" % (S_REPO, issue["number"]), "PUT", {})
+              # its state follows the item's: a closed item is closed here too
+              h_state = h_issues[n]["state"]
+              if issue.get("state") != h_state:
+                  store("/repos/%s/issues/%d" % (S_REPO, issue["number"]), "PATCH", {"state": h_state})
+              # its comments, in the order they were read
+              mine = {}
+              for c in s_comments.get(issue["number"], []):
+                  k = copied_comment(c)
+                  if k and k[0] == n:
+                      mine[k[1]] = c
+              for c in sn.get("comments", []):
+                  body = comment_body(n, c, held)
+                  had = mine.get(c["k"])
+                  if had is None:
+                      if held:
+                          continue                    # a withheld item's comments are never copied
+                      ok(store("/repos/%s/issues/%d/comments" % (S_REPO, issue["number"]), "POST", {"body": body}), "a comment")
+                      changed.append("record %d comment %d" % (n, c["k"]))
+                  elif (had.get("body") or "") != body:
+                      ok(store("/repos/%s/issues/comments/%d" % (S_REPO, had["id"]), "PATCH", {"body": body}), "a comment")
+                      changed.append("record %d comment %d edited" % (n, c["k"]))
+                      if held or "withheld" in c:
+                          to_clear.append("comment %d on issue %d (record number %d, comment %d)" % (
+                              had["id"], issue["number"], n, c["k"]))
+              if not held:
+                  packet(n, sn)
+              state["applied"][str(n)] = {"read_at": sn["read_at"], "snapshot": sha, "issue": issue["number"]}
+
+          # the comments as they are now, after the copy
+          for n, issue in copies.items():
+              if n in snaps:
+                  s_comments[issue["number"]] = pages(store, "/repos/%s/issues/%d/comments" % (S_REPO, issue["number"]))
+
+          # ---------------------------------------------------------------- 4. the record, built from both repositories
+
+          def where(have):
+              if "from-site" in have:
+                  return "site"
+              if "from-mailbox" in have:
+                  return "mailbox"
+              return "github" if "from-outside" in have else "inside"
+
+
+          def one(prefix, have):
+              return next((x[len(prefix):] for x in have if x.startswith(prefix)), None)
+
+
+          def ticks(v):
+              if not re.search(r"(?m)^- \[[ xX]\] ", v):
+                  return v
+              return "\n".join(re.sub(r"^- \[[xX]\] ", "", l) for l in v.split("\n") if not l.startswith("- [ ] ")).strip()
+
+
+          def switch_codes(texts):
+              found = set()
+              for t in texts:
+                  for m in SWITCH.finditer(t or ""):
+                      found.add("KS-" + m.group(0)[3:])
+              return sorted(found)
+
+
+          def native(issue):
+              """The comments people made on the store's issue itself, on GitHub: never the copier's, never a bot's."""
+              out = []
+              for c in s_comments.get(issue["number"], []):
+                  user, b = c.get("user") or {}, c.get("body") or ""
+                  if stub_comment(c) is not None or copied_comment(c) or user.get("type") == "Bot" or b.strip() == ACK_TEXT:
+                      continue
+                  if REASON.match(b) and b.lstrip().startswith("Withheld"):
+                      continue
+                  out.append({"by": "Studio G" if insider(user) else user.get("login"), "date": day(c["created_at"]),
+                              "from": "the work" if insider(user) else "github", "text": plain(b)})
+              return out
+
+
+          def reply_date(t):
+              if t["from"] != "the work":
+                  return None
+              m = EMAILED.search(t["text"])
+              return m.group(1) if m else t["date"]
+
+
+          def credit_of(a, have, login):
+              if ticked(a.get("No credit"), "Do not credit me."):
+                  return "credit not wanted"
+              if a.get("Credit"):
+                  return clean(a["Credit"])
+              if "from-site" in have:
+                  return "a reader"
+              if "from-mailbox" in have:
+                  return "credit not given"
+              return login
+
+
+          def full_entry(base, have, status, text, thread, statuses, reason, login, title):
+              a = answers(text)
+              asked = {k: v for k, v in a.items() if k not in NOT_TEXT}
+              replies = [d for d in (reply_date(t) for t in thread) if d]
+              e = {**base,
+                   "title": clean(a.get("Title")) or title,
+                   "room": clean(a.get("Room")), "page": clean(a.get("Page")),
+                   "kind": one("kind:", have), "rung": one("rung:", have), "result_kind": one("result:", have),
+                   "outcome": one("outcome:", have), "rerun": one("rerun:", have),
+                   "switch_codes": switch_codes(asked.values()), "statuses": statuses,
+                   "reason": reason if status == "declined" else None,
+                   "first_reply": min(replies) if replies else None,
+                   "credit": credit_of(a, have, login), "from": where(have),
+                   "public_label": [PUBLIC[x] for x in PUBLIC if x in have],
+                   "text": [[clean(h), t] for h, t in ((h, ticks(plain(v))) for h, v in asked.items()) if t],
+                   "thread": thread}
+              return {k: v for k, v in e.items() if v not in (None, [], "")}
+
+
+          def entry_copy(n, sn, issue, h):
+              have, status = sn["labels"], sn["status"]
+              base = {"number": n, "received": sn["received"], "status": status, "link": issue["html_url"]}
+              if "test-send" in have:
+                  base["test"] = "a test send"
+                  if h.get("closed_at"):
+                      base["withdrawn"] = day(h["closed_at"])
+              if status == "withheld":
+                  return {**base, "reason": clean(sn["reason"])}
+              thread = [{"by": clean(c["by"]), "date": c["date"], "from": c["from"], "text": plain(c["text"])}
+                        for c in sn.get("comments", []) if "withheld" not in c]
+              thread = sorted(thread + native(issue), key=lambda t: t["date"])
+              e = full_entry(base, have, status, sn["text"], thread, sn.get("statuses", []), sn.get("reason"), None,
+                             sn["title"])
+              e["withheld_comments"] = [{"comment": c["k"], "received": c["date"], "reason": clean(c["withheld"])}
+                                        for c in sn.get("comments", []) if "withheld" in c]
+              if not e["withheld_comments"]:
+                  e.pop("withheld_comments")
+              return e
+
+
+          def entry_github(n, issue):
+              have = labels(issue)
+              history = [{"status": ev["label"]["name"], "since": day(ev["created_at"])}
+                         for ev in pages(store, "/repos/%s/issues/%d/timeline" % (S_REPO, issue["number"]))
+                         if ev.get("event") == "labeled" and (ev.get("label") or {}).get("name") in STATUSES]
+              status = "withheld" if "withheld" in have else next((s for s in STATUSES if s in have), "received")
+              base = {"number": n, "received": day(issue["created_at"]), "status": status, "link": issue["html_url"]}
+              if status == "withheld":
+                  reason = None
+                  for text in [issue.get("body") or ""] + [c.get("body") or "" for c in s_comments.get(issue["number"], [])
+                                                           if insider(c.get("user"))]:
+                      m = REASON.match(text)
+                      if m and m.group(1) == "Withheld":
+                          reason = clean(m.group(2).splitlines()[0])
+                  return {**base, "reason": reason}
+              reason = None
+              for c in s_comments.get(issue["number"], []):
+                  m = REASON.match(c.get("body") or "")
+                  if m and m.group(1) == "Declined" and insider(c.get("user")):
+                      reason = clean(m.group(2).splitlines()[0])
+              return full_entry(base, have, status, issue.get("body") or "", native(issue), history, reason,
+                                (issue.get("user") or {}).get("login"), clean(issue.get("title")))
+
+
+          entries = []
+          for n in sorted(h_issues, reverse=True):
+              h = h_issues[n]
+              have = h["labels"]
+              if "test" in have and "test-send" not in have:
+                  continue
+              if "stub" in have:
+                  if not same_login(h["user"], COPIER) or n not in by_stub:
+                      continue
+                  entries.append(entry_github(n, by_stub[n]))
+              elif any(x.startswith("kind:") for x in have) or "withheld" in have:
+                  if n in snaps and n in copies:
+                      entries.append(entry_copy(n, snaps[n][0], copies[n], h))
+                  else:
+                      e = {"number": n, "received": day(h["created_at"]), "status": "received", "reading": True}
+                      if "test-send" in have:
+                          e["test"] = "a test send"
+                          if h.get("closed_at"):
+                              e["withdrawn"] = day(h["closed_at"])
+                      entries.append(e)
+
+          # ---------------------------------------------------------------- 3. the reply clock, wherever an item is
+
+          issue_of = {n: copies[n] for n in copies if n in snaps}
+          issue_of.update({n: by_stub[n] for n in by_stub})
+          due = []
+          for e in entries:
+              if e.get("test") or e["status"] == "withheld" or e.get("first_reply"):
+                  continue
+              h = h_issues[e["number"]]
+              i = issue_of.get(e["number"])
+              is_open = (i or h).get("state") == "open"
+              since = i["created_at"] if "stub" in h["labels"] else h["created_at"]
+              waited = (now - when(since)).total_seconds() / 86400
+              if is_open and waited >= DAYS:
+                  due.append(e["number"])
+          for n, i in issue_of.items():
+              have = labels(i)
+              if n in due and "reply-due" not in have:
+                  store("/repos/%s/issues/%d/labels" % (S_REPO, i["number"]), "POST", {"labels": ["reply-due"]})
+                  print("record number %d: reply-due" % n)
+              elif n not in due and "reply-due" in have:
+                  store("/repos/%s/issues/%d/labels/reply-due" % (S_REPO, i["number"]), "DELETE")
+                  print("record number %d: reply-due off" % n)
+
+
+          def text_line(e):
+              mark = ""
+              if e.get("test"):
+                  mark = "; %s, withdrawn %s" % (e["test"], e["withdrawn"]) if e.get("withdrawn") else "; " + e["test"]
+              if e["status"] == "withheld":
+                  return "- Record number %d; received %s; withheld; reason: %s%s" % (
+                      e["number"], e["received"], md(e.get("reason") or "not given"), mark)
+              if e.get("reading"):
+                  if e.get("withdrawn"):
+                      return "- Record number %d; received %s%s" % (e["number"], e["received"], mark)
+                  return "- Record number %d; received %s; Received. Being read.%s" % (e["number"], e["received"], mark)
+              bits = ["Record number %d" % e["number"], md(e.get("title", ""))]
+              kind = e.get("kind") or "no kind"
+              for k in ("rung", "result_kind", "outcome", "rerun"):
+                  if e.get(k):
+                      kind += ", " + e[k]
+              bits.append(kind)
+              if e.get("switch_codes"):
+                  bits.append("switches: " + ", ".join(md(c) for c in e["switch_codes"]))
+              bits.append("received " + e["received"])
+              since = next((s["since"] for s in reversed(e.get("statuses", [])) if s["status"] == e["status"]), e["received"])
+              bits.append("%s since %s" % (e["status"], since))
+              if e.get("reason"):
+                  bits.append("reason: " + md(e["reason"]))
+              bits.append("first reply " + e["first_reply"] if e.get("first_reply") else "no reply yet")
+              bits.append("credit: " + md(e.get("credit") or ""))
+              bits.append("from " + e["from"])
+              if e.get("room"):
+                  bits.append("room: " + md(e["room"]))
+              if e.get("thread"):
+                  bits.append("%d in its thread" % len(e["thread"]))
+              if e.get("public_label"):
+                  bits.append("label: " + ", ".join(e["public_label"]))
+              bits.append(e["link"])
+              return "- " + "; ".join(bits) + mark
+
+
+          doc = {"repositories": [S_REPO, "and the holding repository, where everything from the site waits to be read"],
+                 "terms": "CC0 1.0 Universal",
+                 "about": "The open record of everything sent in, by record number, newest first. An item still waiting to be "
+                          "read for safety shows only its number, its date, and that it was received and is being read. A "
+                          "withheld item shows only its number, its date and its reason. A test send through the room's forms "
+                          "is kept, marked as a test, and withdrawn. Other items marked test are left out.",
+                 "entries": entries}
+          write_store_file("record.json", json.dumps(doc, ensure_ascii=False, indent=1) + "\n", "record.json")
+          lines = ["# The record", "",
+                   "Everything sent in, by record number, newest first, with its status and its dates. An item still waiting "
+                   "to be read shows only its number, its date, and \"Received. Being read.\"",
+                   "The same entries as data, with each one's text and thread: record.json. Terms: CC0 1.0 Universal.", ""]
+          lines += [text_line(e) for e in entries] or ["Nothing yet."]
+          write_store_file("RECORD.md", "\n".join(lines) + "\n", "RECORD.md")
+
+          # ---------------------------------------------------------------- the counts
+
+          counted = [e for e in entries if not e.get("test")]
+          read = [e for e in counted if not e.get("reading")]
+
+
+          def person(e):
+              c = e.get("credit")
+              if not c or c in ("a reader", "credit not wanted", "credit not given"):
+                  return (e.get("from"), "#%d" % e["number"])
+              return (e.get("from"), c)
+
+
+          people = {}
+          for e in read:
+              if e["status"] != "withheld" and e.get("from") != "inside":
+                  people[person(e)] = people.get(person(e), 0) + 1
+          waits = [(dt.date.fromisoformat(e["first_reply"]) - dt.date.fromisoformat(e["received"])).days
+                   for e in read if e.get("first_reply")]
+
+
+          def packet_here(n):
+              st, body, _ = store("/repos/%s/contents/packets/%d?ref=main" % (S_REPO, n))
+              return st == 200 and isinstance(body, list) and len(body) > 0
+
+
+          complete = 0
+          for e in read:
+              if e.get("kind") != "result" or e["status"] == "withheld":
+                  continue
+              t = dict((h, v) for h, v in e.get("text", []))
+              if all(t.get(f) for f in RESULT_FIELDS):
+                  p = t["The run packet"]
+                  if packet_here(e["number"]) or ("http" in p and HEX.search(p)):
+                      complete += 1
+          tested = {}
+          for e in read:
+              if e.get("kind") in ("proposal", "result"):
+                  for c in e.get("switch_codes", []):
+                      t = tested.setdefault(c, {"proposals": 0, "results": 0})
+                      t["proposals" if e["kind"] == "proposal" else "results"] += 1
+          withheld = [e for e in read if e["status"] == "withheld"]
+          counts = {
+              "tries": sum(1 for e in read if e.get("kind") == "try"),
+              "contributions": sum(1 for e in read if e.get("kind") in CONTRIBUTIONS),
+              "comments": sum(1 for e in read if e.get("kind") == "comment")
+                          + sum(1 for e in read for t in e.get("thread", []) if t["from"] != "the work")
+                          + sum(len(e.get("withheld_comments", [])) for e in read),
+              "where_from": {"site": sum(1 for e in read if e.get("from") == "site"),
+                             "email": sum(1 for e in read if e.get("from") == "mailbox"),
+                             "github": sum(1 for e in read if e.get("from") == "github")},
+              "contributors": len(people),
+              "returning_contributors": sum(1 for v in people.values() if v > 1),
+              "days_to_first_reply": {"middle": statistics.median(waits) if waits else 0,
+                                      "longest": max(waits) if waits else 0, "replied": len(waits)},
+              "replies_due": len(due),
+              "withheld": {"count": len(withheld), "reasons": [{"number": e["number"], "reason": e.get("reason")} for e in withheld]},
+              "withheld_comments": [{"number": e["number"], **w} for e in read for w in e.get("withheld_comments", [])],
+              "complete_run_packets": complete,
+              "independent_implementations": sum(1 for e in read if e.get("result_kind") == "independent"),
+              "reproduced": sum(1 for e in read if e.get("rerun") == "reproduced"),
+              "not_reproduced": sum(1 for e in read if e.get("rerun") == "not-reproduced"),
+              "tested": dict(sorted(tested.items())),
+              # nothing disappears while it is read: the items still waiting, by number and date only
+              "waiting": [{"number": e["number"], "received": e["received"]} for e in counted if e.get("reading")],
+          }
+          old, _ = read_store_file("counts.json")
+          prev = json.loads(old) if old else None
+          if prev is not None:
+              prev.pop("made", None)
+          if prev != counts:
+              write_store_file("counts.json", json.dumps({"made": today(), **counts}, ensure_ascii=False, indent=1) + "\n",
+                               "counts.json")
+
+          # ---------------------------------------------------------------- what the copier holds, and what it refused
+
+          state["history_to_clear"] = sorted(set(state["history_to_clear"]) | set(to_clear))
+          state["about"] = ("What the copy workflow has taken from each snapshot of the reading, so an older snapshot is never "
+                            "taken again; and, for an administrator, the edit histories to clear by hand after a withholding.")
+          write_store_file("copier.json", json.dumps(state, ensure_ascii=False, indent=1, sort_keys=True) + "\n", "copier.json")
+          print("copied: %d; in the record: %d; waiting: %d; changes this run: %d" % (
+              len(snaps), len(entries), len(counts["waiting"]), len(changed)))
+          for x in to_clear:
+              print("for an administrator: clear the edit history of", x)
+          if refused:
+              for n, why in refused:
+                  print("NOT TAKEN: read/%d.json: %s" % (n, why))
+              raise SystemExit("%d snapshot(s) not taken; nothing else was held back" % len(refused))
+      - name: the proof of the two tokens; all the logic is in this file
+        if: env.KEY_SET == 'true' && inputs.mode == 'prove'
+        shell: python3 -I {0}
+        env:
+          HOLDING_REPO: the420code-open/open-source-holding
+          STORE_REPO: the420code-open/open-source
+          HOLDING_TOKEN: ${{ steps.holding.outputs.token }}
+          STORE_TOKEN: ${{ steps.store.outputs.token }}
+          COPIER_LOGIN: ${{ steps.store.outputs.app-slug }}[bot]
+        run: |
+          # What the public store's copier workflows share. Zero-Clause BSD, Studio G.
+          #
+          # This text is written whole into each workflow file that uses it (build_copier.py does that), so a workflow
+          # carries all its logic inside its own file and runs no other file from either repository.
+          #
+          # Text from a stranger is only ever data here: read through the API, parsed as text, written out through the
+          # API as JSON or as escaped text. Nothing here runs it, and nothing places it into a command.
+          import base64
+          import datetime as dt
+          import hashlib
+          import json
+          import os
+          import re
+          import sys
+          import time
+          import urllib.error
+          import urllib.request
+
+          API = os.environ.get("GITHUB_API_URL") or "https://api.github.com"     # set by GitHub on every runner
+          H_REPO = os.environ["HOLDING_REPO"]          # the holding repository: read only, but for the stubs
+          S_REPO = os.environ["STORE_REPO"]            # the public store
+          H_TOKEN = os.environ["HOLDING_TOKEN"]
+          S_TOKEN = os.environ["STORE_TOKEN"]
+          COPIER = os.environ["COPIER_LOGIN"]          # who the copier posts as: the app's bot
+          READ_BRANCH = "read"                         # where the reading's snapshots are kept, in the holding repository
+          RECORD_BRANCH = "record"                     # where the record and the counts are kept, in the public store
+
+          STATUSES = ["received", "needs-information", "under-review", "being-rerun", "shown", "declined", "withheld"]
+          PUBLIC = {"built-on-the-embryo": "Built on the Embryo", "independent-test": "Independent test", "approved": "Approved"}
+          TITLES = {"try": "I tried it", "proposal": "A proposal", "build": "A build", "result": "A result",
+                    "challenge": "A challenge to a claim", "comment": "A comment"}
+          INSIDE = ("admin", "maintain", "write")
+          ACK_TEXT = ("Thank you. Your work is received, dated, and in the record. A first reply comes within a week, "
+                      "and sooner where we can. If anything is unclear, we will ask here.")
+          NO_RESPONSE = "_No response_"
+          MARK = "Sent from the site, by "
+          WORK = "From the work, by Studio G."
+          EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+          SWITCH = re.compile(r"(?<![#/\w-])KS-[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*(?![\w-])", re.I)
+          EMAILED = re.compile(r"Replied by email on (\d{4}-\d{2}-\d{2})")
+          REASON = re.compile(r"^\s*(Declined|Withheld):\s*(.+)", re.S)
+          # the first line of everything the copier files, and of each comment it copies
+          ITEM_LINE = re.compile(r"^Record number (\d+)$")
+          COMMENT_LINE = re.compile(r"^Record number (\d+), comment (\d+), received (\d{4}-\d{2}-\d{2})\.$")
+          STUB_LINE = re.compile(r"^Record number (\d+)\.$")
+          STUB_TITLE = "Opened on GitHub"
+          sys.stdout.reconfigure(encoding="utf-8")
+
+
+          # ---------------------------------------------------------------- the API, one token for each repository
+
+          def _call(token, url, method="GET", body=None, accept="application/vnd.github+json", tries=4):
+              url = url if url.startswith("http") else API + url
+              data = None if body is None else json.dumps(body).encode()
+              for n in range(tries):
+                  req = urllib.request.Request(url, data=data, method=method, headers={
+                      "Authorization": "Bearer " + token, "Accept": accept, "User-Agent": "the420code-open-copier",
+                      "X-GitHub-Api-Version": "2022-11-28"})
+                  try:
+                      with urllib.request.urlopen(req, timeout=60) as r:
+                          raw = r.read()
+                          if "raw" in accept:
+                              return r.status, raw, r.headers
+                          return r.status, (json.loads(raw) if raw else None), r.headers
+                  except urllib.error.HTTPError as e:
+                      raw = e.read()
+                      if e.code in (500, 502, 503, 504) and n + 1 < tries:
+                          time.sleep(2 * (n + 1))
+                          continue
+                      try:
+                          return e.code, json.loads(raw), e.headers
+                      except ValueError:
+                          return e.code, None, e.headers
+                  except (urllib.error.URLError, OSError):
+                      if n + 1 < tries:
+                          time.sleep(2 * (n + 1))
+                          continue
+                      raise
+              raise RuntimeError("unreachable")
+
+
+          def hold(path, method="GET", body=None, accept="application/vnd.github+json"):
+              """The holding repository. Its token can read its contents and its issues, and write issues for the stubs."""
+              return _call(H_TOKEN, path, method, body, accept)
+
+
+          def store(path, method="GET", body=None, accept="application/vnd.github+json"):
+              return _call(S_TOKEN, path, method, body, accept)
+
+
+          def ok(result, what):
+              st, body, _ = result
+              if st >= 300:
+                  msg = body.get("message", "") if isinstance(body, dict) else ""
+                  raise SystemExit("%s: GitHub answered %s %s" % (what, st, msg))
+              return body
+
+
+          def pages(call, path):
+              out, url = [], API + path + ("&" if "?" in path else "?") + "per_page=100"
+              while url:
+                  st, body, h = call(url)
+                  if st != 200:
+                      raise SystemExit("%s: GitHub answered %s" % (path, st))
+                  out.extend(body)
+                  nxt = re.search(r'<([^>]+)>;\s*rel="next"', h.get("Link") or "")
+                  url = nxt.group(1) if nxt else None
+              return out
+
+
+          def holding_issues():
+              """Every issue of the holding repository, as metadata only: its number, its dates, its state, who opened it,
+              and its labels. Never its title, its text or its comments: the copy never reads the original again."""
+              owner, name = H_REPO.split("/")
+              q = ("query($o:String!,$n:String!,$a:String){repository(owner:$o,name:$n){issues(first:100,after:$a,"
+                   "orderBy:{field:CREATED_AT,direction:ASC}){pageInfo{hasNextPage endCursor}nodes{number createdAt "
+                   "closedAt state author{login} labels(first:60){nodes{name}}}}}}")
+              out, after = [], None
+              while True:
+                  res = ok(hold("/graphql", "POST", {"query": q, "variables": {"o": owner, "n": name, "a": after}}),
+                           "listing the holding repository's issues")
+                  if res.get("errors"):
+                      raise SystemExit("listing the holding repository's issues: %s" % res["errors"][0].get("message"))
+                  block = res["data"]["repository"]["issues"]
+                  for x in block["nodes"]:
+                      out.append({"number": x["number"], "created_at": x["createdAt"], "closed_at": x["closedAt"],
+                                  "state": x["state"].lower(), "user": ((x.get("author") or {}).get("login") or ""),
+                                  "labels": [l["name"] for l in x["labels"]["nodes"]]})
+                  if not block["pageInfo"]["hasNextPage"]:
+                      return out
+                  after = block["pageInfo"]["endCursor"]
+
+
+          # ---------------------------------------------------------------- the reading's signature
+
+          # Ed25519 (RFC 8032), verification only, written out here so the workflow needs nothing installed.
+          _P = 2 ** 255 - 19
+          _L = 2 ** 252 + 27742317777372353535851937790883648493
+          _D = -121665 * pow(121666, _P - 2, _P) % _P
+          _I = pow(2, (_P - 1) // 4, _P)
+
+
+          def _inv(x):
+              return pow(x, _P - 2, _P)
+
+
+          def _recover_x(y, sign):
+              if y >= _P:
+                  return None
+              x2 = (y * y - 1) * _inv(_D * y * y + 1)
+              if x2 == 0:
+                  return None if sign else 0
+              x = pow(x2, (_P + 3) // 8, _P)
+              if (x * x - x2) % _P:
+                  x = x * _I % _P
+              if (x * x - x2) % _P:
+                  return None
+              if (x & 1) != sign:
+                  x = _P - x
+              return x
+
+
+          def _add(p, q):
+              a = (p[1] - p[0]) * (q[1] - q[0]) % _P
+              b = (p[1] + p[0]) * (q[1] + q[0]) % _P
+              c = 2 * p[3] * q[3] * _D % _P
+              d = 2 * p[2] * q[2] % _P
+              e, f, g, h = b - a, d - c, d + c, b + a
+              return (e * f % _P, g * h % _P, f * g % _P, e * h % _P)
+
+
+          def _mul(s, p):
+              q = (0, 1, 1, 0)
+              while s > 0:
+                  if s & 1:
+                      q = _add(q, p)
+                  p = _add(p, p)
+                  s >>= 1
+              return q
+
+
+          def _equal(p, q):
+              return (p[0] * q[2] - q[0] * p[2]) % _P == 0 and (p[1] * q[2] - q[1] * p[2]) % _P == 0
+
+
+          def _decompress(s):
+              if len(s) != 32:
+                  return None
+              y = int.from_bytes(s, "little")
+              sign = y >> 255
+              y &= (1 << 255) - 1
+              x = _recover_x(y, sign)
+              return None if x is None else (x, y, 1, x * y % _P)
+
+
+          _GY = 4 * _inv(5) % _P
+          _GX = _recover_x(_GY, 0)
+          _G = (_GX, _GY, 1, _GX * _GY % _P)
+
+
+          def ed25519_verify(public, message, signature):
+              if len(public) != 32 or len(signature) != 64:
+                  return False
+              a = _decompress(public)
+              r = _decompress(signature[:32])
+              if a is None or r is None:
+                  return False
+              s = int.from_bytes(signature[32:], "little")
+              if s >= _L:
+                  return False
+              h = int.from_bytes(hashlib.sha512(signature[:32] + public + message).digest(), "little") % _L
+              return _equal(_mul(s, _G), _add(r, _mul(h, a)))
+
+
+          def canonical(snapshot):
+              """The bytes the reading signs: the snapshot as JSON, keys sorted, no spaces, ASCII only."""
+              return json.dumps(snapshot, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii")
+
+
+          def sha256(text):
+              return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+          def check_snapshot(n, raw, key_hex):
+              """A snapshot is taken only if the reading's key signed it, it is the snapshot of record number n, and every
+              text in it matches its SHA-256. Returns (snapshot, None) or (None, why)."""
+              try:
+                  doc = json.loads(raw.decode("utf-8"))
+                  sn, sig = doc["snapshot"], base64.b64decode(doc["ed25519"], validate=True)
+              except (ValueError, KeyError, TypeError) as e:
+                  return None, "not a snapshot (%s)" % type(e).__name__
+              if not ed25519_verify(bytes.fromhex(key_hex), canonical(sn), sig):
+                  return None, "its signature is not the reading's"
+              if sn.get("number") != n:
+                  return None, "it is signed, but for record number %s" % sn.get("number")
+              if sn.get("status") not in STATUSES or sn["status"] == "received":
+                  return None, "it is signed, but its status is %r" % sn.get("status")
+              if sn["status"] == "withheld":
+                  if "text" in sn or not sn.get("reason"):
+                      return None, "a withheld item's snapshot must hold its reason and no text"
+              elif sn.get("text_sha256") != sha256(sn.get("text", "")):
+                  return None, "its text does not match its SHA-256"
+              for c in sn.get("comments", []):
+                  if "withheld" not in c and c.get("text_sha256") != sha256(c.get("text", "")):
+                      return None, "comment %s does not match its SHA-256" % c.get("k")
+              return sn, None
+
+
+          # ---------------------------------------------------------------- reading what is filed, as data
+
+          def answers(body):
+              out = {}
+              parts = re.split(r"^### (.+)$", body or "", flags=re.M)
+              for i in range(1, len(parts) - 1, 2):
+                  v = parts[i + 1].strip()
+                  if v and v != NO_RESPONSE:
+                      out[parts[i].strip()] = v
+              return out
+
+
+          def ticked(text, option):
+              return bool(re.search(r"^- \[[xX]\] " + re.escape(option) + r"\s*$", text or "", re.M))
+
+
+          def labels(issue):
+              return [l["name"] if isinstance(l, dict) else l for l in issue.get("labels", [])]
+
+
+          def clean(text):
+              text = re.sub(r"[\x00-\x1f\x7f]+", " ", text or "")
+              return EMAIL.sub("[address removed]", text).strip()
+
+
+          def plain(text):
+              text = re.sub(r"[\x00-\x08\x0b-\x1f\x7f]+", " ", (text or "").replace("\r\n", "\n"))
+              text = re.sub(r"(?m)^\\(?=#|- \[)", "", text)
+              return EMAIL.sub("[address removed]", text).strip()
+
+
+          def md(text):
+              text = (text or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+              return re.sub(r"([\\`*_\[\]|~])", r"\\\1", text)
+
+
+          def day(ts):
+              return (ts or "")[:10] or None
+
+
+          def today():
+              return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+
+
+          def first_line(body):
+              return (body or "").split("\n", 1)[0].strip()
+
+
+          def same_login(a, b):
+              """The same account: the REST API writes an app's bot as "name[bot]", GraphQL as "name"."""
+              def strip(x):
+                  x = (x or "").lower()
+                  return x[:-5] if x.endswith("[bot]") else x
+              return bool(a) and strip(a) == strip(b)
+
+
+          def is_copy(issue):
+              """An issue the copier filed: by the copier, with "Record number N" as its first line."""
+              m = ITEM_LINE.match(first_line(issue.get("body")))
+              return int(m.group(1)) if m and same_login((issue.get("user") or {}).get("login"), COPIER) else None
+
+
+          def stub_comment(c):
+              """The copier's comment "Record number N." on an issue opened on GitHub."""
+              m = STUB_LINE.match((c.get("body") or "").strip())
+              return int(m.group(1)) if m and same_login((c.get("user") or {}).get("login"), COPIER) else None
+
+
+          def copied_comment(c):
+              """A comment the copier copied: (record number, k), or None."""
+              m = COMMENT_LINE.match(first_line(c.get("body")))
+              return (int(m.group(1)), int(m.group(2))) if m and same_login((c.get("user") or {}).get("login"), COPIER) else None
+
+
+          _rights = {}
+
+
+          def insider(user):
+              """Someone who keeps the store: read from their rights on it. The copier itself and every bot are not."""
+              login = (user or {}).get("login") or ""
+              if not login or (user or {}).get("type") == "Bot" or login.endswith("[bot]"):
+                  return False
+              if login not in _rights:
+                  st, body, _ = store("/repos/%s/collaborators/%s/permission" % (S_REPO, login))
+                  _rights[login] = st == 200 and (body or {}).get("permission") in INSIDE
+              return _rights[login]
+
+
+          def form_labels(have, body):
+              """The labels a form cannot add, read from its answers as data (as the acknowledgement does)."""
+              add = []
+              a = answers(body)
+              rung = {"A minute": "rung:minute", "An hour": "rung:hour", "A week": "rung:week"}
+              for k in ("Which rung", "Rung"):
+                  if a.get(k) in rung:
+                      add.append(rung[a[k]])
+              if "kind:try" in have and ticked(a.get("Self-scored"), "This is a self-scored card from the test card."):
+                  add.append("self-scored")
+              if "kind:result" in have:
+                  kind = {"Reproduction": "result:reproduction", "Generalisation": "result:generalisation",
+                          "Exploratory": "result:exploratory", "Rerun": "result:rerun",
+                          "Independent implementation": "result:independent"}
+                  outcome = {"Fires": "outcome:fires", "Holds": "outcome:holds", "Settles nothing": "outcome:settles-nothing",
+                             "Departed from its frozen plan": "outcome:departed"}
+                  if a.get("Its kind") in kind:
+                      add.append(kind[a["Its kind"]])
+                  if a.get("Its outcome") in outcome:
+                      add.append(outcome[a["Its outcome"]])
+              return add
+
+
+          def make_stub(issue):
+              """The stub of Part Two, for an issue opened on GitHub in the public store: an issue in the holding repository
+              holding only the link, and nothing the person wrote. Its number is the record number. Then "Record number N."
+              on the public issue, and the acknowledgement with its labels. Returns the record number."""
+              n_pub = issue["number"]
+              stub = ok(hold("/repos/%s/issues" % H_REPO, "POST",
+                             {"title": STUB_TITLE, "body": issue["html_url"], "labels": ["stub"]}), "filing the stub")
+              n = stub["number"]
+              # the stub only keeps the number: closed at once, so nothing in the holding repository waits on it
+              hold("/repos/%s/issues/%d" % (H_REPO, n), "PATCH", {"state": "closed", "state_reason": "completed"})
+              ok(store("/repos/%s/issues/%d/comments" % (S_REPO, n_pub), "POST", {"body": "Record number %d." % n}),
+                 "the record number")
+              have = labels(issue)
+              add = [] if any(s in have for s in STATUSES) else ["received"]
+              if not insider(issue.get("user")):
+                  add.append("from-outside")
+              add += form_labels(have, issue.get("body"))
+              ok(store("/repos/%s/issues/%d/comments" % (S_REPO, n_pub), "POST", {"body": ACK_TEXT}), "the acknowledgement")
+              add = [x for x in dict.fromkeys(add) if x not in have]
+              if add:
+                  ok(store("/repos/%s/issues/%d/labels" % (S_REPO, n_pub), "POST", {"labels": add}), "the labels")
+              print("issue %d of the store: stub %d in the holding repository, so record number %d; labels added: %s"
+                    % (n_pub, n, n, ", ".join(add) or "none"))
+              return n
+
+
+          def wants_stub(issue):
+              """Every issue opened on GitHub in the store wants a stub, but the copier's own copies, the bots' issues,
+              and the desk's own issues that came through no form (they carry no kind)."""
+              if "pull_request" in issue:
+                  return False
+              user = issue.get("user") or {}
+              if is_copy(issue) is not None or user.get("type") == "Bot" or (user.get("login") or "").endswith("[bot]"):
+                  return False
+              if insider(user) and not any(x.startswith("kind:") for x in labels(issue)):
+                  return False
+              return True
+
+
+          # The proof of the copier's tokens (before-launch brief v2, Part Three). Zero-Clause BSD, Studio G.
+          # Each run mints two tokens, each narrowed by GitHub to one repository and to the rights named in this file. This
+          # shows, with GitHub's own answers, what each can and cannot do. Nothing it tries can change anything: a write that
+          # should be refused points a new branch at a commit that does not exist, so if GitHub ever let it through, it would
+          # still answer that the commit is not there (422), and the proof would fail.
+          results = []
+
+
+          def expect(what, got, want):
+              held = got in want
+              results.append((what, got, "holds" if held else "DOES NOT HOLD"))
+
+
+          def repos_of(call):
+              st, body, _ = call("/installation/repositories?per_page=100")
+              return sorted(r["full_name"] for r in (body or {}).get("repositories", [])) if st == 200 else ["(%s)" % st]
+
+
+          NOWHERE = {"ref": "refs/heads/prove-nothing", "sha": "0" * 40}
+          results.append(("the holding token reaches", ", ".join(repos_of(hold)), "holds" if repos_of(hold) == [H_REPO] else "DOES NOT HOLD"))
+          results.append(("the store token reaches", ", ".join(repos_of(store)), "holds" if repos_of(store) == [S_REPO] else "DOES NOT HOLD"))
+          expect("the holding token reads the snapshots' branch", hold("/repos/%s/branches" % H_REPO)[0], (200,))
+          expect("the holding token cannot write the holding repository's contents",
+                 hold("/repos/%s/git/refs" % H_REPO, "POST", NOWHERE)[0], (403,))
+          expect("the holding token cannot reach the store's settings", hold("/repos/%s/actions/permissions" % S_REPO)[0], (403, 404))
+          expect("the store token cannot reach the holding repository", store("/repos/%s" % H_REPO)[0], (404,))
+          expect("the store token cannot read the store's secrets", store("/repos/%s/actions/secrets" % S_REPO)[0], (403,))
+          expect("the store token cannot read the store's administration",
+                 store("/repos/%s/actions/permissions" % S_REPO)[0], (403,))
+
+          # a changed workflow file, pushed with the store token, must be refused: the copier has no workflows right
+          head = ok(store("/repos/%s/git/ref/heads/main" % S_REPO), "main")["object"]["sha"]
+          base = ok(store("/repos/%s/git/commits/%s" % (S_REPO, head)), "main's commit")["tree"]["sha"]
+          blob = ok(store("/repos/%s/git/blobs" % S_REPO, "POST", {"content": "# a changed workflow, never merged\n",
+                                                                   "encoding": "utf-8"}), "a blob")
+          tree = ok(store("/repos/%s/git/trees" % S_REPO, "POST", {"base_tree": base, "tree": [
+              {"path": ".github/workflows/copy.yml", "mode": "100644", "type": "blob", "sha": blob["sha"]}]}), "a tree")
+          commit = ok(store("/repos/%s/git/commits" % S_REPO, "POST", {"message": "a changed workflow file: must be refused",
+                                                                       "tree": tree["sha"], "parents": [head]}), "a commit")
+          st, body, _ = store("/repos/%s/git/refs" % S_REPO, "POST", {"ref": "refs/heads/prove-workflows", "sha": commit["sha"]})
+          if st == 201:                                   # it must never get here; if it does, the branch goes at once
+              store("/repos/%s/git/refs/heads/prove-workflows" % S_REPO, "DELETE")
+          results.append(("the store token cannot push a changed workflow file", "%s %s" % (
+              st, (body or {}).get("message", "") if isinstance(body, dict) else ""), "holds" if st in (403, 404, 422)
+              else "DOES NOT HOLD"))
+          for what, got, verdict in results:
+              print("%-62s %-40s %s" % (what, str(got)[:40], verdict))
+          if any(v != "holds" for _, _, v in results):
+              raise SystemExit("a proof does not hold")
+          print("every proof holds")
