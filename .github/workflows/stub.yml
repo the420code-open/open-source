@@ -84,8 +84,13 @@ jobs:
           TITLES = {"try": "I tried it", "proposal": "A proposal", "build": "A build", "result": "A result",
                     "challenge": "A challenge to a claim", "comment": "A comment"}
           INSIDE = ("admin", "maintain", "write")
-          ACK_TEXT = ("Thank you. Your work is received, dated, and in the record. A first reply comes within a week, "
-                      "and sooner where we can. If anything is unclear, we will ask here.")
+          # The acknowledgement, posted at once on every new item (G, 18 November 2026: a first reply "within 7 days", and
+          # nothing more). Items acknowledged before then keep the old text, so both are recognised; only ACK_TEXT is posted.
+          ACK_TEXT = ("Thank you. Your work is received, dated, and in the record. A first reply comes within 7 days. "
+                      "If anything is unclear, we will ask here.")
+          ACK_OLD = ("Thank you. Your work is received, dated, and in the record. A first reply comes within a week, "
+                     "and sooner where we can. If anything is unclear, we will ask here.")
+          ACK_TEXTS = (ACK_TEXT, ACK_OLD)
           NO_RESPONSE = "_No response_"
           MARK = "Sent from the site, by "
           WORK = "From the work, by Studio G."
