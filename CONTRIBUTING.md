@@ -4,7 +4,7 @@
 
 **How to send.** Choose Send your work, in the Open Source room on the family's sites. Each form asks only what the work needs. There is nothing to sign up for. Prefer email? Write to open@studiog.global, and we will put it into the record for you, without your address. If you already work on GitHub, the forms under Issues do the same.
 
-**What happens next.** You get a thank-you at once. You get a first reply within a week, and sooner where we can. Everything you send is shown in the open record, labelled as from outside, with its status and its date. A serious challenge is shown at once. It never waits for the work's answer.
+**What happens next.** You get a thank-you at once. You get a first reply within 7 days. Everything you send is shown in the open record, labelled as from outside, with its status and its date. A serious challenge is shown at once. It never waits for the work's answer.
 
 **What a result needs.** Name the kill switch it tests, by its code, and the registry version you read it from. Send the whole run: every seed, every run, not only the good ones. Upload a small run packet with the form, or link to where it is kept, with the fingerprint of each file. A result that fires a switch is the system doing what it was built to do. It is shown, checked by running it again, and never repaired.
 
