@@ -80,7 +80,7 @@ jobs:
           RECORD_BRANCH = "record"                     # where the record and the counts are kept, in the public store
 
           STATUSES = ["received", "needs-information", "under-review", "being-rerun", "shown", "declined", "withheld"]
-          PUBLIC = {"built-on-the-embryo": "Built on the Embryo", "independent-test": "Independent test", "approved": "Approved"}
+          PUBLIC = {"built-on-the-embryo": "Built on the Embryo", "independent-test": "A test by another hand", "approved": "Approved"}
           TITLES = {"try": "I tried it", "proposal": "A proposal", "build": "A build", "result": "A result",
                     "challenge": "A challenge to a claim", "comment": "A comment"}
           INSIDE = ("admin", "maintain", "write")
@@ -406,7 +406,8 @@ jobs:
               if "kind:result" in have:
                   kind = {"Reproduction": "result:reproduction", "Generalisation": "result:generalisation",
                           "Exploratory": "result:exploratory", "Rerun": "result:rerun",
-                          "Independent implementation": "result:independent"}
+                          "Independent implementation": "result:independent",
+                          "Implementation by another hand": "result:independent"}
                   outcome = {"Fires": "outcome:fires", "Holds": "outcome:holds", "Settles nothing": "outcome:settles-nothing",
                              "Departed from its frozen plan": "outcome:departed"}
                   if a.get("Its kind") in kind:

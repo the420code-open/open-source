@@ -10,7 +10,7 @@
 
 **The terms.** What you send is shared under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD for code. The 420 Code itself is never altered. You may quote it. You may build on it.
 
-**Three labels, and only three.** Built on the Embryo: for a build that keeps the floor and passes its hard-floor tests. Independent test: for any test or run. Approved: for what I have read and approved. Nothing else may present itself as the work's own.
+**Three labels, and only three.** Built on the Embryo: for a build that keeps the floor and passes its hard-floor tests. A test by another hand: for any test or run. Approved: for what I have read and approved. Nothing else may present itself as the work's own.
 
 **Credit.** You are credited by the name or handle you give. Ask for none, and you get none.
 

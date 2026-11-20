@@ -1,5 +1,5 @@
 name: "A result"
-description: "A run, a test result, a rerun, or an independent implementation."
+description: "A run, a test result, a rerun, or an implementation by another hand."
 labels: ["kind:result"]
 body:
   - type: markdown
@@ -20,7 +20,7 @@ body:
         - "Generalisation"
         - "Exploratory"
         - "Rerun"
-        - "Independent implementation"
+        - "Implementation by another hand"
     validations:
       required: true
   - type: dropdown
