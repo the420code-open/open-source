@@ -2,11 +2,20 @@
  "version": "1.1",
  "status": "final",
  "fingerprint": "840204308bf393b648de2e8ee616807ab059178cbc5d5c3d17c61a756302b380",
- "date": "2026-11-16",
- "passed": true,
- "page_line": null,
- "page_lines": [],
- "named": [],
+ "date": "2026-11-23",
+ "passed": false,
+ "page_line": "A source has changed since this version was read. A new version follows.",
+ "page_lines": [
+  {
+   "line": "A source has changed since this version was read. A new version follows.",
+   "named": [
+    "F3.5"
+   ]
+  }
+ ],
+ "named": [
+  "F3.5"
+ ],
  "registry": {
   "floor_reads": "v5.41",
   "live": "v5.41"
@@ -15,15 +24,25 @@
  "checks": [
   {
    "check": "the source's own rules",
-   "ok": true,
-   "notes": [],
+   "ok": false,
+   "notes": [
+    "status is final, but a check fails"
+   ],
    "pending_desk_lines": []
   },
   {
    "check": "every extract, against its source",
-   "ok": true,
-   "notes": [],
-   "sources_changed_since_snapshot": []
+   "ok": false,
+   "notes": [
+    "F3.5: not found word for word in AX (A source has changed since this version was read. A new version follows.); the source reads: The α-flow runs around the held break - +α leakage outward as actualisation (records being written), -α replenishment back as defragmentation (records releasing their structure into potential), balanced at every AS-instant, net zero. α is the symbol; its value, one part"
+   ],
+   "sources_changed_since_snapshot": [
+    "AP32N",
+    "AX",
+    "IN17",
+    "IN23",
+    "OA"
+   ]
   },
   {
    "check": "every key, against the registry the floor was made from, v5.41",
