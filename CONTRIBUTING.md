@@ -8,7 +8,7 @@
 
 **What a result needs.** Name the kill switch it tests, by its code, and the registry version you read it from. Send the whole run: every seed, every run, not only the good ones. Upload a small run packet with the form, or link to where it is kept, with the fingerprint of each file. A result that fires a switch is the system doing what it was built to do. It is shown, checked by running it again, and never repaired.
 
-**The terms.** What you send is shared under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD for code. The 420 Code itself is never altered. You may quote it. You may build on it.
+**The terms.** What you send is shared under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD or MIT for code, at the user's choice. The 420 Code itself is never altered. You may quote it. You may build on it.
 
 **Three labels, and only three.** Built on the Embryo: for a build that keeps the floor and passes its hard-floor tests. A test by another hand: for any test or run. Approved: for what I have read and approved. Nothing else may present itself as the work's own.
 

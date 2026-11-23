@@ -4,6 +4,9 @@ labels: ["kind:try"]
 body:
   - type: markdown
     attributes:
+      value: "Under 18? Send it from the [Open Source page on aiethics.global](https://aiethics.global/open-source/) instead. There, nothing of yours is published."
+  - type: markdown
+    attributes:
       value: "Tell us what you tried, and what happened. A few short answers."
   - type: dropdown
     id: rung
@@ -54,5 +57,5 @@ body:
     attributes:
       label: Terms
       options:
-        - label: "I share what I send under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD for code. I know a public repository keeps its history."
+        - label: "I share what I send under the same free terms as everything built here: CC0 for text and data, Zero-Clause BSD or MIT for code, at the user's choice. I know a public repository keeps its history."
           required: true
